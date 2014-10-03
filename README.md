@@ -1,6 +1,6 @@
 <h1>BME-NominateAndVote</h1>
 
-<p><em>Homework for the Software Architectures subject (BME, autumn of 2014)</em></p>
+<p><em>Homework for the Software Architectures subject (BME, autumn of 2014). Authors: Ágnes Barta and Lajos Cseppentő</em></p>
 
 <h2>Introduction</h2>
 

@@ -21,9 +21,9 @@
       </ul>
     </li>
     <li>
-      Realisation of the whole nomination-voting process, which is the following:
+      Realisation of the whole nomination-voting workflow, which is the following:
       <ol type="1">
-        <li>An administrator creates a new nomination-voting process</li>
+        <li>An administrator creates a new nomination-voting workflow</li>
         <li>Users can nominate movies/series for the vote</li>
         <li>After the nomination deadnile an administrator cleans the list of nominations</li>
         <li>Users can vote for the candidates</li>

@@ -44,6 +44,9 @@ TODO UC diagram
 <p>The application has three layers: a simple data layer, a REST service and an HTML5 client- The target infrastructure was Microsoft Azure. We used Visual Studio 2013 Ultimate (MSDNAA) along with MVC4 and Azure SDK 2.4 for development.</p>
 
 TODO why azure? why not aws?
+
 TODO write used cloud services in detail
+
 TODO list other libraries/frameworks like angularjs, jquery, mvc4
+
 TODO add architectural diagram

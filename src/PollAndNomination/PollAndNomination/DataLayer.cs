@@ -26,7 +26,7 @@ namespace PollAndNomination
          * Annak lekerdezese, hogy a felhasznalo szavazott-e mar az adott pollra
         */
 
-        List<User> GetUsers();
+       /* List<User> GetUsers();
         void AddUser(User user);
         Boolean IsBanned(User user);
         Boolean userIsVoted(User user, Poll poll);
@@ -39,14 +39,12 @@ namespace PollAndNomination
         List<Poll> getPollsUnderNomination();
         void addNomination(Nomination nomination, Poll poll, User user);
         void addVote(Vote vote);
-
-        //Table, blob storage, EF framework
         
         List<PollSubject> getPollSubjects();
         List<Nomination> getPollNominations(Poll poll);
 
         List<News> getNews();
-        void addNews(News news);
+        void addNews(News news);*/
 
     }
 }

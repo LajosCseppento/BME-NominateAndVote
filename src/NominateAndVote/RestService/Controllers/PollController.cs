@@ -24,10 +24,11 @@ namespace RestService.Controllers
         }
 
         // GET api/<controller>/5
-        public Poll Get(int id)
+        public Poll Get2(int id)
         {
-            DataModel d=new DataModel();
-            return d.Polls[id];
+            //DataModel d=new DataModel();
+            //return d.Polls[id];
+            return null;
         }
 
         // POST api/<controller>

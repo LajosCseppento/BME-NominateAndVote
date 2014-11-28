@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NominateAndVote.DataModel.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Model;
 
 namespace DataModel.Tests
 {
     [TestClass]
-    public class NominateAndVoteModelTest
+    public class RefreshPocoRelationalListsTest
     {
         [TestMethod]
         public void NominationAddToPoll()
@@ -83,7 +82,7 @@ namespace DataModel.Tests
             NominateAndVoteModel d = new NominateAndVoteModel();
 
             User u = new User();
-            Nomination n = new Nomination() { User=u };
+            Nomination n = new Nomination() { User = u };
 
             d.Users.Add(u);
             d.Nominations.Add(n);
@@ -151,7 +150,7 @@ namespace DataModel.Tests
             NominateAndVoteModel d = new NominateAndVoteModel();
 
             Nomination n = new Nomination();
-            Vote v = new Vote(){ Nomination = n };
+            Vote v = new Vote() { Nomination = n };
 
             d.Votes.Add(v);
             d.Nominations.Add(n);
@@ -212,7 +211,5 @@ namespace DataModel.Tests
 
             Assert.IsFalse(n.Votes.Contains(v));
         }
-
-
     }
 }

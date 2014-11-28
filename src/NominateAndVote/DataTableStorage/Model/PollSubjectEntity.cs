@@ -11,11 +11,7 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public int Year { get; set; }
 
-        public PollSubjectEntity()
-        {
-        }
-
-        public PollSubjectEntity(PollSubject poco)
+        public PollSubjectEntity(PollSubject poco = null)
         {
             PartitionKey = poco.ID.ToString().PadLeft(8, '0');
             RowKey = "";

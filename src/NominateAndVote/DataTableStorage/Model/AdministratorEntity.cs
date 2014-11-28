@@ -1,6 +1,7 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel.Model;
 using System;
+using System.Diagnostics.Contracts;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
@@ -14,8 +15,11 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public AdministratorEntity(Administrator poco)
         {
-            PartitionKey = poco.UserID.ToString();
-            RowKey = "";
+            if (poco != null)
+            {
+                PartitionKey = poco.UserID.ToString();
+                RowKey = "";
+            }
         }
 
         public Administrator ToPoco()

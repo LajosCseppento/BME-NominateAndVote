@@ -20,21 +20,20 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public DateTime AnnouncementDate { get; set; }
 
-        public PollEntity()
+        public PollEntity(Poll poco = null)
         {
-        }
+            if (poco != null)
+            {
+                PartitionKey = poco.State.ToString();
+                RowKey = poco.ID.ToString();
 
-        public PollEntity(Poll poco)
-        {
-            PartitionKey = poco.State.ToString();
-            RowKey = poco.ID.ToString();
-
-            Text = poco.Text;
-            PublicationDate = poco.PublicationDate;
-            NominationDeadline = poco.NominationDeadline;
-            VotingStartDate = poco.VotingStartDate;
-            VotingDeadline = poco.VotingDeadline;
-            AnnouncementDate = poco.AnnouncementDate;
+                Text = poco.Text;
+                PublicationDate = poco.PublicationDate;
+                NominationDeadline = poco.NominationDeadline;
+                VotingStartDate = poco.VotingStartDate;
+                VotingDeadline = poco.VotingDeadline;
+                AnnouncementDate = poco.AnnouncementDate;
+            }
         }
     }
 }

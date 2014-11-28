@@ -13,19 +13,20 @@ namespace NominateAndVote.DataTableStorage.Model
         public string Text { get; set; }
 
         public DateTime PublicationDate { get; set; }
-
         public NewsEntity()
         {
         }
-
-        public NewsEntity(News poco)
+        public NewsEntity(News poco = null)
         {
-            PartitionKey = poco.ID.ToString();
-            RowKey = "";
+            if (poco != null)
+            {
+                PartitionKey = poco.ID.ToString();
+                RowKey = "";
 
-            Title = poco.Title;
-            Text = poco.Text;
-            PublicationDate = poco.PublicationDate;
+                Title = poco.Title;
+                Text = poco.Text;
+                PublicationDate = poco.PublicationDate;
+            }
         }
     }
 }

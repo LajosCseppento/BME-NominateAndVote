@@ -14,20 +14,22 @@ namespace NominateAndVote.DataTableStorage.Model
         public string Text { get; set; }
 
         public int VoteCount { get; set; }
-
         public NominationEntity()
         {
+
         }
-
-        public NominationEntity(Nomination poco)
+        public NominationEntity(Nomination poco = null)
         {
-            PartitionKey = poco.Poll.ID.ToString();
-            RowKey = poco.ID.ToString();
+            if (poco != null)
+            {
+                PartitionKey = poco.Poll.ID.ToString();
+                RowKey = poco.ID.ToString();
 
-            UserID = poco.User.ID.ToString();
-            SubjectID = poco.Subject.ID.ToString();
-            Text = poco.Text;
-            VoteCount = poco.VoteCount;
+                UserID = poco.User.ID.ToString();
+                SubjectID = poco.Subject.ID.ToString();
+                Text = poco.Text;
+                VoteCount = poco.VoteCount;
+            }
         }
     }
 }

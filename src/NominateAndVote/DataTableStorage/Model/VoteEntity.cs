@@ -10,11 +10,7 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public DateTime Date { get; set; }
 
-        public VoteEntity()
-        {
-        }
-
-        public VoteEntity(Vote poco)
+        public VoteEntity(Vote poco = null)
         {
             PartitionKey = poco.Nomination.ID.ToString();
             RowKey = poco.User.ID.ToString();

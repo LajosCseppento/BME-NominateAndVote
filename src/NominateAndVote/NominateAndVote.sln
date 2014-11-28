@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\RestService-WAWS-dev.json = PublishScripts\Configurations\RestService-WAWS-dev.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel.Tests", "DataModel.Tests\DataModel.Tests.csproj", "{9AF45C16-8047-47AC-872E-3A4F7FD78684}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,16 @@ Global
 		{ABD39FC9-9C2B-452C-9FC0-55D34C5DE7A6}.Release|ARM.ActiveCfg = Release|Any CPU
 		{ABD39FC9-9C2B-452C-9FC0-55D34C5DE7A6}.Release|x64.ActiveCfg = Release|Any CPU
 		{ABD39FC9-9C2B-452C-9FC0-55D34C5DE7A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|x64.ActiveCfg = Release|Any CPU
+		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

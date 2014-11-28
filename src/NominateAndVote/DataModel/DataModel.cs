@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NominateAndVote.DataModel
 {
-    public class DataModel
+    public class NominateAndVoteModel
     {
         public List<Administrator> Administrators { get; private set; }
 
@@ -19,7 +19,7 @@ namespace NominateAndVote.DataModel
 
         public List<Vote> Votes { get; private set; }
 
-        public DataModel()
+        public NominateAndVoteModel()
         {
             Administrators = new List<Administrator>();
             News = new List<News>();
@@ -28,6 +28,47 @@ namespace NominateAndVote.DataModel
             PollSubjects = new List<PollSubject>();
             Users = new List<User>();
             Votes = new List<Vote>();
+        }
+
+        public void RefreshPocoRelationalLists()
+        {
+            // Clear lists
+            foreach (var nomination in Nominations)
+            {
+                nomination.Votes.Clear();
+            }
+
+            foreach (var poll in Polls)
+            {
+                poll.Nominations.Clear();
+            }
+
+            foreach (var user in Users)
+            {
+                user.Nominations.Clear();
+            }
+
+            // Add items to lists
+            foreach (var vote in Votes)
+            {
+                if (vote.Nomination != null)
+                {
+                    vote.Nomination.Votes.Add(vote);
+                }
+            }
+
+            foreach (var nomination in Nominations)
+            {
+                if (nomination.Poll != null)
+                {
+                    nomination.Poll.Nominations.Add(nomination);
+                }
+
+                if (nomination.User != null)
+                {
+                    nomination.User.Nominations.Add(nomination);
+                }
+            }
         }
     }
 }

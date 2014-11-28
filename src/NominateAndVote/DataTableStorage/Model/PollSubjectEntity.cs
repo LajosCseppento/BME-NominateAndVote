@@ -5,6 +5,8 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class PollSubjectEntity : TableEntity
     {
+        public static string TableName { get { return "pollsubject"; } }
+
         public string Title { get; set; }
 
         public int Year { get; set; }

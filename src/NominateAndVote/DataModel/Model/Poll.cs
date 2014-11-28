@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace NominateAndVote.DataModel.Model
 {
@@ -7,11 +8,6 @@ namespace NominateAndVote.DataModel.Model
 
     public class Poll
     {
-        public Poll()
-        {
-            Nominations = new List<Nomination>();
-        }
-
         public Guid ID { get; set; }
 
         public string Text { get; set; }
@@ -29,5 +25,10 @@ namespace NominateAndVote.DataModel.Model
         public DateTime AnnouncementDate { get; set; }
 
         public List<Nomination> Nominations { get; private set; }
+
+        public Poll()
+        {
+            Nominations = new List<Nomination>();
+        }
     }
 }

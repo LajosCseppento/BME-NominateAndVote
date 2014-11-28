@@ -5,11 +5,6 @@ namespace NominateAndVote.DataModel.Model
 {
     public class Nomination
     {
-        public Nomination()
-        {
-            Votes = new List<Vote>();
-        }
-
         public Guid ID { get; set; }
 
         public Poll Poll { get; set; }
@@ -23,5 +18,9 @@ namespace NominateAndVote.DataModel.Model
         public List<Vote> Votes { get; private set; }
 
         public int VoteCount { get; set; }
+        public Nomination()
+        {
+            Votes = new List<Vote>();
+        }
     }
 }

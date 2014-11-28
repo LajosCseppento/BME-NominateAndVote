@@ -5,11 +5,6 @@ namespace NominateAndVote.DataModel.Model
 {
     public class User
     {
-        public User()
-        {
-            Nominations = new List<Nomination>();
-        }
-
         public Guid ID { get; set; }
 
         public string Name { get; set; }
@@ -17,5 +12,9 @@ namespace NominateAndVote.DataModel.Model
         public bool IsBanned { get; set; }
 
         public List<Nomination> Nominations { get; private set; }
+        public User()
+        {
+            Nominations = new List<Nomination>();
+        }
     }
 }

@@ -6,6 +6,10 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class VoteEntity : TableEntity
     {
+        public static string TableName { get { return "vote"; } }
+
+        public DateTime Date { get; set; }
+
         public VoteEntity()
         {
         }
@@ -17,7 +21,5 @@ namespace NominateAndVote.DataTableStorage.Model
 
             Date = poco.Date;
         }
-
-        public DateTime Date { get; set; }
     }
 }

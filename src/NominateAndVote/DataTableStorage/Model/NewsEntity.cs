@@ -6,6 +6,8 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class NewsEntity : TableEntity
     {
+        public static string TableName { get { return "news"; } }
+
         public string Title { get; set; }
 
         public string Text { get; set; }

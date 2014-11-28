@@ -6,6 +6,8 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class AdministratorEntity : TableEntity
     {
+        public static string TableName { get { return "administrator"; } }
+
         public AdministratorEntity()
         {
         }

@@ -3,7 +3,7 @@ using System;
 
 namespace NominateAndVote.DataModel
 {
-    public class SampleDataModel : DataModel
+    public class SampleDataModel : NominateAndVoteModel
     {
         public SampleDataModel()
             : base()
@@ -92,6 +92,9 @@ namespace NominateAndVote.DataModel
             Votes.Add(vote);
             Votes.Add(vote1);
             Votes.Add(vote2);
+
+            // Refresh the relational lists
+            RefreshPocoRelationalLists();
         }
     }
 }

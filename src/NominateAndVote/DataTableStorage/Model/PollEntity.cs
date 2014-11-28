@@ -20,7 +20,11 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public DateTime AnnouncementDate { get; set; }
 
-        public PollEntity(Poll poco = null)
+        public PollEntity()
+        {
+        }
+
+        public PollEntity(Poll poco)
         {
             if (poco != null)
             {

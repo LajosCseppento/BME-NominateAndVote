@@ -1,7 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel.Model;
 using System;
-using System.Diagnostics.Contracts;
 
 namespace NominateAndVote.DataTableStorage.Model
 {

@@ -11,7 +11,11 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public bool IsBanned { get; set; }
 
-        public UserEntity(User poco = null)
+        public UserEntity()
+        {
+        }
+
+        public UserEntity(User poco)
         {
             PartitionKey = poco.ID.ToString();
             RowKey = "";

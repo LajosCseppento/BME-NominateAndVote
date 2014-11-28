@@ -13,10 +13,12 @@ namespace NominateAndVote.DataTableStorage.Model
         public string Text { get; set; }
 
         public DateTime PublicationDate { get; set; }
+
         public NewsEntity()
         {
         }
-        public NewsEntity(News poco = null)
+
+        public NewsEntity(News poco)
         {
             if (poco != null)
             {

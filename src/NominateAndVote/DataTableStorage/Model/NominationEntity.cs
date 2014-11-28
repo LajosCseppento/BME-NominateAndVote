@@ -14,11 +14,12 @@ namespace NominateAndVote.DataTableStorage.Model
         public string Text { get; set; }
 
         public int VoteCount { get; set; }
+
         public NominationEntity()
         {
-
         }
-        public NominationEntity(Nomination poco = null)
+
+        public NominationEntity(Nomination poco)
         {
             if (poco != null)
             {

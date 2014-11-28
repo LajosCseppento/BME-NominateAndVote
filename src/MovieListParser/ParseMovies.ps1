@@ -1,21 +1,21 @@
 $file = Resolve-Path "movies.list"
-$fileCSV = "movies.csv"
-$fileSkip = "movies_skip.txt"
+$fileOut = "movies_parsed.list"
+$fileSkip = "movies_skip.list"
 $patten = '^([A-Za-z0-9 -,].*)\s\((\d+)[IV/]*\)\s.*'
 
 # use a hash set to avoid duplicates
 $set = New-Object -TypeName System.Collections.Generic.HashSet[string]
 
-$null > $fileCSV
+$null > $fileOut
 $null > $fileSkip
 
-$fileCSV = Resolve-Path $fileCSV
+$fileOut = Resolve-Path $fileOut
 $fileSkip = Resolve-Path $fileSkip
 
 $encoding = [System.Text.Encoding]::GetEncoding("ISO-8859-1")
 
 try {
-    $streamMovies = New-Object -TypeName System.IO.StreamWriter -ArgumentList @($fileCSV, $false, $encoding)
+    $streamMovies = New-Object -TypeName System.IO.StreamWriter -ArgumentList @($fileOut, $false, $encoding)
     $streamSkip = [System.IO.StreamWriter] $fileSkip.ToString()
     $i = 1;
     foreach ($line in [System.IO.File]::ReadLines($file, $encoding)) {
@@ -27,10 +27,10 @@ try {
                 $title = $title.Substring(1, $title.Length-2)
             }
 
-            $csvLine = '"' + $title + '","' + $year + '"'
+            $outLine = $year + ' ' + $title # in this format reading+splitting will be faster
 
-            if($set.Add($csvLine)) {
-                $streamMovies.WriteLine($csvLine)
+            if($set.Add($outLine)) {
+                $streamMovies.WriteLine($outLine)
             }
         } else {
             # no match, skip

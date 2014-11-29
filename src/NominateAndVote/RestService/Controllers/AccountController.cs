@@ -118,7 +118,11 @@ namespace RestService.Controllers
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
-            if (!ModelState.IsValid)
+            if (model == null)
+            {
+                return BadRequest("No data");
+            }
+            else if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

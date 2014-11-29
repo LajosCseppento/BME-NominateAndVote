@@ -1,34 +1,73 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Model;
 using System.Collections.Generic;
 using System.Web.Http;
 
 namespace RestService.Controllers
 {
+    [RoutePrefix("api/Poll")]
     public class PollController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private IDataManager dataManager;
+
+        public PollController()
+            : base()
         {
-            return new string[] { "value1", "value2" };
+            // a modellt ne nagyon haszbált, csak azt, amid a datamanager enged elérni! így csak kicseréljük pár helyen és megy majd a felhővel is. Msot a te adataiddal dolgozik
+            SimpleDataModel model = new SimpleDataModel();
+            model.LoadSampleData();
+            dataManager = new DataModelManager(model);
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET: api/Poll/ClosedPolls
+        [Route("ClosedPolls")]
+        public IEnumerable<Poll> GetClosedPolls()
         {
-            return "value";
+            return dataManager.QueryPolls(PollState.CLOSED);
         }
 
-        // GET api/<controller>/5
-        public Poll Get2(int id)
+        // GET: api/Poll/NominationPolls
+        [Route("NominationPolls")]
+        public IEnumerable<Poll> GetNominationPolls()
         {
-            //DataModel d=new DataModel();
-            //return d.Polls[id];
-            return null;
+            return QueryPolls(PollState.NOMINATION);
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        private List<Poll> QueryPolls(PollState state)
         {
+            List<Poll> polls = dataManager.QueryPolls(state);
+
+            // avoid circle references
+            foreach (var poll in polls)
+            {
+                foreach (var nomination in poll.Nominations)
+                {
+                    nomination.Poll = null;
+                    nomination.User = null;
+                    nomination.Votes.Clear();
+                }
+            }
+
+            return polls;
+        }
+
+        // GET: api/Poll/VotingPolls
+        [Route("VotingPolls")]
+        public IEnumerable<Poll> GetVotingPolls()
+        {
+            return dataManager.QueryPolls(PollState.VOTING);
+        }
+
+        // GET: api/Poll/{id}
+        public Poll Get(int id)
+        {
+            /*foreach (Poll p in dataManager.QueryPolls()) {
+                if (p.ID.Equals(id))
+                {
+                    return p;
+                }
+            }*/
+            return dataManager.QueryPolls()[id];
         }
 
         // PUT api/<controller>/5

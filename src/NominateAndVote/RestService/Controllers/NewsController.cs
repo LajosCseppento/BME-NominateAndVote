@@ -1,10 +1,13 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using RestService.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
 namespace RestService.Controllers
 {
+    [RoutePrefix("api/News")]
     public class NewsController : ApiController
     {
         private IDataManager dataManager;
@@ -25,14 +28,51 @@ namespace RestService.Controllers
         }
 
         // GET: api/News/5
-        public string Get(int id)
+        public News Get(int id)
         {
-            return "value";
+            /*News news;
+            for(News n: dataManager.QueryNews()){
+                n.ID
+            }*/
+            return null;
         }
 
-        // POST: api/News
-        public void Post([FromBody]string value)
+        // POST: api/News/Save
+        [Route("Save")]
+        [HttpPost]
+        public IHttpActionResult Save(SaveNewsBindingModel newsBindingModel)
         {
+            if (newsBindingModel == null)
+            {
+                return BadRequest("No data");
+            }
+            else if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            News news = newsBindingModel.ToPoco();
+            if (news.ID.Equals(Guid.Empty))
+            {
+                news.ID = Guid.NewGuid();
+                news.PublicationDate = DateTime.Now;
+            }
+            else
+            {
+                News oldNews = dataManager.QueryNews(news.ID);
+                if (oldNews == null)
+                {
+                    news.PublicationDate = DateTime.Now;
+                }
+                else
+                {
+                    news.PublicationDate = oldNews.PublicationDate;
+                }
+            }
+
+            dataManager.SaveNews(news);
+
+            return Ok();
         }
 
         // PUT: api/News/5
@@ -43,6 +83,8 @@ namespace RestService.Controllers
         // DELETE: api/News/5
         public void Delete(int id)
         {
+            /*dataManager.QueryNews.
+            dataManager.DeleteNews(news);*/
         }
     }
 }

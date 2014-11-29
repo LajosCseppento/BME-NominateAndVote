@@ -12,6 +12,7 @@ namespace NominateAndVote.DataModel.Model
         public bool IsBanned { get; set; }
 
         public List<Nomination> Nominations { get; private set; }
+
         public User()
         {
             Nominations = new List<Nomination>();

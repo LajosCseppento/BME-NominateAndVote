@@ -18,6 +18,7 @@ namespace NominateAndVote.DataModel.Model
         public List<Vote> Votes { get; private set; }
 
         public int VoteCount { get; set; }
+
         public Nomination()
         {
             Votes = new List<Vote>();

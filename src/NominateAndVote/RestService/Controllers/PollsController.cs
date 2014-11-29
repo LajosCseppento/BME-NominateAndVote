@@ -2,16 +2,19 @@
 using NominateAndVote.DataModel.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    [RoutePrefix("api/Poll")]
-    public class PollController : ApiController
+    [RoutePrefix("api/Polls")]
+    public class PollsController : ApiController
     {
         private IDataManager dataManager;
 
-        public PollController()
+        public PollsController()
             : base()
         {
             SimpleDataModel model = new SimpleDataModel();
@@ -19,7 +22,7 @@ namespace NominateAndVote.RestService.Controllers
             dataManager = new DataModelManager(model);
         }
 
-        public PollController(IDataManager dataManager)
+        public PollsController(IDataManager dataManager)
             : base()
         {
             if (dataManager == null)
@@ -36,40 +39,6 @@ namespace NominateAndVote.RestService.Controllers
         public IEnumerable<Poll> GetClosedPolls()
         {
             return dataManager.QueryPolls(PollState.CLOSED);
-        }
-
-        // GET: api/Poll/NominationPolls
-        [Route("NominationPolls")]
-        [HttpGet]
-        public IEnumerable<Poll> GetNominationPolls()
-        {
-            return QueryPolls(PollState.NOMINATION);
-        }
-
-        // GET: api/Poll/VotingPolls
-        [Route("VotingPolls")]
-        [HttpGet]
-        public IEnumerable<Poll> GetVotingPolls()
-        {
-            return dataManager.QueryPolls(PollState.VOTING);
-        }
-
-        private List<Poll> QueryPolls(PollState state)
-        {
-            List<Poll> polls = dataManager.QueryPolls(state);
-
-            // avoid circle references
-            foreach (var poll in polls)
-            {
-                foreach (var nomination in poll.Nominations)
-                {
-                    nomination.Poll = null;
-                    nomination.User = null;
-                    nomination.Votes.Clear();
-                }
-            }
-
-            return polls;
         }
 
         // GET: api/Poll/{id}

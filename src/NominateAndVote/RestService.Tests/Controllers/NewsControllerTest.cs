@@ -26,7 +26,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
         // Save_Null
 
-        [TestMethod]
+        /*[TestMethod]
         public void Save_New()
         {
             // Arrange
@@ -45,7 +45,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
             Assert.AreEqual(result.Content, dataManager.QueryNews(result.Content.ID));
-        }
+        }*/
 
         // Save_Existing
 

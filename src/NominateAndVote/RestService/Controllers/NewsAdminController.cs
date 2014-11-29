@@ -1,114 +1,81 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    public class NewsAdminController : Controller
+    [RoutePrefix("api/AdminNews")]
+    public class NewsAdminController : ApiController
     {
         private IDataManager dataManager;
 
         public NewsAdminController()
             : base()
         {
-            // a modellt ne nagyon haszbált, csak azt, amid a datamanager enged elérni! így csak kicseréljük pár helyen és megy majd a felhővel is. Msot a te adataiddal dolgozik
             SimpleDataModel model = new SimpleDataModel();
             model.LoadSampleData();
             dataManager = new DataModelManager(model);
         }
 
-        // GET: NewsAdmin/Details/5
-        public ActionResult Details(int id)
+        public NewsAdminController(IDataManager dataManager)
+            : base()
         {
-            return View();
-        }
+            if (dataManager == null)
+            {
+                throw new ArgumentNullException("The data manager must not be null", "dataManager");
+            }
 
-        // GET: NewsAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
+            this.dataManager = dataManager;
         }
 
         // GET: api/News
-        public List<News> Get()
+        public IEnumerable<News> Get()
         {
             return dataManager.QueryNews();
         }
 
-        //PUT api/News/Create
-        public void Create([FromBody]string title, [FromBody]string text)
-        {
-            new News
-            {
-                ID = Guid.NewGuid(),
-                Title = title,
-                Text = text,
-                PublicationDate = DateTime.Now
-            };
-        }
-
-        /*
-        // POST: NewsAdmin/Create
+        // POST: api/News/Save
+        [Route("Save")]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public IHttpActionResult Save(SaveNewsBindingModel newsBindingModel)
         {
-            try
+            if (newsBindingModel == null)
             {
-                // TODO: Add insert logic here
+                return BadRequest("No data");
+            }
+            else if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            News news = newsBindingModel.ToPoco();
+            if (news.ID.Equals(Guid.Empty))
             {
-                return View();
+                news.ID = Guid.NewGuid();
+                news.PublicationDate = DateTime.Now;
             }
+            else
+            {
+                News oldNews = dataManager.QueryNews(news.ID);
+                if (oldNews == null)
+                {
+                    news.PublicationDate = DateTime.Now;
+                }
+                else
+                {
+                    news.PublicationDate = oldNews.PublicationDate;
+                }
+            }
+
+            dataManager.SaveNews(news);
+
+            return Ok(news);
         }
-
-        // GET: NewsAdmin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: NewsAdmin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: NewsAdmin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: NewsAdmin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 }

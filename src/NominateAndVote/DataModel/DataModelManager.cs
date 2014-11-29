@@ -128,6 +128,17 @@ namespace NominateAndVote.DataModel
             return q.ToList();
         }
 
+        public List<Nomination> QueryNominations(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException("The user must not be null", "user");
+            }
+
+            return (from n in user.Nominations
+                    select n).ToList();
+        }
+
         public void SaveNomination(Nomination nomination)
         {
             if (nomination == null)
@@ -200,6 +211,35 @@ namespace NominateAndVote.DataModel
                     select p;
 
             return q.ToList();
+        }
+
+        public void SavePoll(Poll poll) {
+            if (poll == null)
+            {
+                throw new ArgumentNullException("The poll must not be null", "poll");
+            }
+
+            if (poll.ID.Equals(Guid.Empty))
+            {
+                // now ID, new object
+                poll.ID = Guid.NewGuid();
+            }
+            else
+            {
+                // maybe a new, maybe an old object
+                Poll oldPoll = (from p in DataModel.Polls
+                                            where p.ID.Equals(poll.ID)
+                                            select p).SingleOrDefault();
+
+                if (oldPoll != null)
+                {
+                    // remove old
+                    DataModel.Polls.Remove(oldPoll);
+                }
+            }
+
+            // add new
+            DataModel.Polls.Add(poll);
         }
 
         public PollSubject QueryPollSubject(long id)

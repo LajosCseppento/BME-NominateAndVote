@@ -1,4 +1,3 @@
-
 /*=============================================================
     Authour URI: www.binarytheme.com
     License: Commons Attribution 3.0
@@ -7,15 +6,12 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
-
-
 /* ===========================================================
-   GENERAL STYLESHEET BY BYINARY THEME    
+   GENERAL STYLESHEET BY BYINARY THEME
    ============================================================*/
-
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -112,7 +108,6 @@ p {
 
 .color-brown {
     color: #EB8F2D;
-   
 }
 
 .color-black {
@@ -177,7 +172,6 @@ border: 1px solid #E9E9E9;
             border-bottom: 0;
         }
 
-   
         #pricing-section .plan-main.featured .plan-price {
             color: #fff;
             background-color: #242424;
@@ -185,12 +179,9 @@ border: 1px solid #E9E9E9;
             margin: 0;
         }
 
-
-
 /*==========================================
    SOCIAL ICON STYLES
     =====================================================*/
-
 
 .color-facebook {
     color: #3B5998;
@@ -212,14 +203,13 @@ border: 1px solid #E9E9E9;
     color: #cb2027;
 }
 /* ===========================================================
-   COMPONENT.CSS  CHANGES   
+   COMPONENT.CSS  CHANGES
    ============================================================*/
 .slideshow nav span.nav-prev, .slideshow nav span.nav-next {
 left: 33%!important;
-
 }
 .slideshow {
-    z-index: 1500!important; 
+    z-index: 1500!important;
 }
 .slideshow nav span.nav-close {
 color: #FF0000;
@@ -228,7 +218,7 @@ color: #FF0000;
         color: #FF0000;
     }
 /* ===========================================================
-   SLIDER ADJUSTMENTS (slider.css)  
+   SLIDER ADJUSTMENTS (slider.css)
    ============================================================*/
 
      .slidesjs-container {
@@ -239,7 +229,7 @@ color: #FF0000;
     padding:0px 0px 15px 0px;
 }
 /* ===========================================================
-   BOOTSTRAP ELEMENTS CHANGES   
+   BOOTSTRAP ELEMENTS CHANGES
    ============================================================*/
 .navbar {
     font-weight: 500;
@@ -271,11 +261,9 @@ color: #FF0000;
         color: #FFFFFF;
     }
 
-
 /* ==========================================================================
    FOOTER SECTION
    ========================================================================== */
-
 
 #footer {
     background-color: #000;

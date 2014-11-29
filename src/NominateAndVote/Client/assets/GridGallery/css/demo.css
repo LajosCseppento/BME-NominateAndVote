@@ -164,7 +164,6 @@ a:hover {
 }
 
 @media screen and (max-width: 55em) {
-
 	.container > header h1,
 	.container > header nav {
 		float: none;

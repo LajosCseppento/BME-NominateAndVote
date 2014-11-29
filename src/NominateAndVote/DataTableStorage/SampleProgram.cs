@@ -14,6 +14,23 @@
 
         public static void Main(string[] args)
         {
+            /*
+            CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            TableStorageDataManager d = new TableStorageDataManager(storageAccount);
+
+            d.CreateTablesIfNeeded();
+
+            Console.ReadLine();
+
+            PollSubject ps = new PollSubject() { ID = 1,  Year = 200 };
+            bool ret = d.SaveEntity(new PollSubjectEntity(ps));
+            Console.WriteLine(ret);
+            // d.DeleteTablesIfNeeded();
+
+            throw new NotImplementedException("END");
+            */
+
             Console.WriteLine("Azure Storage Table Sample\n");
 
             CloudTable table = CreateTablePollSubjectEntity();
@@ -43,6 +60,7 @@
 
             // Create a table client for interacting with the table service
             CloudTable table = tableClient.GetTableReference(TableName);
+
             try
             {
                 if (table.CreateIfNotExists())

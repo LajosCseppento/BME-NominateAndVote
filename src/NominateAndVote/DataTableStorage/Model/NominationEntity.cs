@@ -5,8 +5,6 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class NominationEntity : TableEntity
     {
-        public static string TableName { get { return "nomination"; } }
-
         public string UserID { get; set; }
 
         public string SubjectID { get; set; }

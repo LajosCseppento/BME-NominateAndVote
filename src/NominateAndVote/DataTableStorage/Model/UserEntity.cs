@@ -5,8 +5,6 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class UserEntity : TableEntity
     {
-        public static string TableName { get { return "user"; } }
-
         public string Name { get; set; }
 
         public bool IsBanned { get; set; }
@@ -17,11 +15,14 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public UserEntity(User poco)
         {
-            PartitionKey = poco.ID.ToString();
-            RowKey = "";
+            if (poco != null)
+            {
+                PartitionKey = poco.ID.ToString();
+                RowKey = "";
 
-            Name = poco.Name;
-            IsBanned = poco.IsBanned;
+                Name = poco.Name;
+                IsBanned = poco.IsBanned;
+            }
         }
     }
 }

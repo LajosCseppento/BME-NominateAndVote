@@ -6,8 +6,6 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class VoteEntity : TableEntity
     {
-        public static string TableName { get { return "vote"; } }
-
         public DateTime Date { get; set; }
 
         public VoteEntity()
@@ -16,10 +14,13 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public VoteEntity(Vote poco)
         {
-            PartitionKey = poco.Nomination.ID.ToString();
-            RowKey = poco.User.ID.ToString();
+            if (poco != null)
+            {
+                PartitionKey = poco.Nomination.ID.ToString();
+                RowKey = poco.User.ID.ToString();
 
-            Date = poco.Date;
+                Date = poco.Date;
+            }
         }
     }
 }

@@ -5,8 +5,6 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class PollSubjectEntity : TableEntity
     {
-        public static string TableName { get { return "pollsubject"; } }
-
         public string Title { get; set; }
 
         public int Year { get; set; }
@@ -17,11 +15,14 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public PollSubjectEntity(PollSubject poco)
         {
-            PartitionKey = poco.ID.ToString().PadLeft(8, '0');
-            RowKey = "";
+            if (poco != null)
+            {
+                PartitionKey = poco.ID.ToString().PadLeft(8, '0');
+                RowKey = "";
 
-            Title = poco.Title;
-            Year = poco.Year;
+                Title = poco.Title;
+                Year = poco.Year;
+            }
         }
     }
 }

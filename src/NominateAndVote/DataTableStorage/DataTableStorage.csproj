@@ -131,7 +131,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataLayer.cs" />
+    <Compile Include="TableNames.cs" />
+    <Compile Include="TableStorageDataManager.cs" />
     <Compile Include="Model\AdministratorEntity.cs" />
     <Compile Include="Model\NominationEntity.cs" />
     <Compile Include="Model\PollEntity.cs" />

@@ -38,6 +38,13 @@ namespace NominateAndVote.DataModel
                     select n).ToList();
         }
 
+        public News QueryNews(Guid id)
+        {
+            return (from n in DataModel.News
+                    where n.ID.Equals(id)
+                    select n).SingleOrDefault();
+        }
+
         public void SaveNews(News news)
         {
             if (news == null)

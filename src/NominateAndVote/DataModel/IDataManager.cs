@@ -16,6 +16,8 @@ namespace NominateAndVote.DataModel
 
         List<News> QueryNews();
 
+        News QueryNews(Guid id);
+
         void SaveNews(News news);
 
         void DeleteNews(News news);
@@ -75,7 +77,6 @@ namespace NominateAndVote.DataModel
         #endregion Vote
 
         //Lekerdezesek
-        // TODO Ági nézd át!!!
         /*
          * Userek listája -> nem kell, csak a bannoltaké (QueryBannedUsers), valamint név szerint keresünk (SearchUsers)
          * User hozzaadasa -> SaveUser

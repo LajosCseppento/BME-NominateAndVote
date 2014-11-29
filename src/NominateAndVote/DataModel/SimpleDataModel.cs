@@ -3,11 +3,15 @@ using System;
 
 namespace NominateAndVote.DataModel
 {
-    public class SampleDataModel : NominateAndVoteModel
+    public class SimpleDataModel : DefaultDataModel
     {
-        public SampleDataModel()
-            : base()
+        public void LoadSampleData()
         {
+            Clear();
+
+            // TODO Ági: poll subject hozzáadása???
+            // rakd rendbe kérlek
+
             News news1 = new News { ID = Guid.NewGuid(), Title = "First", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-2) };
 
             // Users

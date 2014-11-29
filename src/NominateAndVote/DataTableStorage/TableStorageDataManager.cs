@@ -96,6 +96,11 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
+        public List<Nomination> QueryNominations(User user) 
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveNomination(Nomination nomination)
         {
             throw new NotImplementedException();
@@ -118,6 +123,10 @@ namespace NominateAndVote.DataTableStorage
 
         public List<Poll> QueryPolls(PollState state)
         {
+            throw new NotImplementedException();
+        }
+
+        public void SavePoll(Poll poll) {
             throw new NotImplementedException();
         }
 

@@ -30,6 +30,8 @@ namespace NominateAndVote.DataModel
 
         List<Nomination> QueryNominations(Poll poll, User user);
 
+        List<Nomination> QueryNominations(User user);
+
         void SaveNomination(Nomination nomination);
 
         void DeleteNomination(Nomination nomination);
@@ -43,6 +45,8 @@ namespace NominateAndVote.DataModel
         List<Poll> QueryPolls(PollState state);
 
         Poll QueryPoll(Guid id);
+
+        void SavePoll(Poll poll);
 
         #endregion Polls
 

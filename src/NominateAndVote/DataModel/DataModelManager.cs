@@ -161,6 +161,13 @@ namespace NominateAndVote.DataModel
                     select p).ToList();
         }
 
+        public Poll QueryPoll(Guid id)
+        {
+            return (from p in DataModel.Polls
+                    where p.ID.Equals(id)
+                    select p).SingleOrDefault();
+        }
+
         public List<Poll> QueryPolls(PollState state)
         {
             return (from p in DataModel.Polls

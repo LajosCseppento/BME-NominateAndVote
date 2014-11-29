@@ -111,6 +111,11 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
+        public Poll QueryPoll(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Poll> QueryPolls(PollState state)
         {
             throw new NotImplementedException();

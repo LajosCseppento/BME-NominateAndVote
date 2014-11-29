@@ -42,6 +42,8 @@ namespace NominateAndVote.DataModel
 
         List<Poll> QueryPolls(PollState state);
 
+        Poll QueryPoll(Guid id);
+
         #endregion Polls
 
         #region PollSubject

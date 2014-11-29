@@ -3,7 +3,7 @@ using NominateAndVote.DataModel.Model;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestService.Models
+namespace NominateAndVote.RestService.Models
 {
     // Models used as parameters to AccountController actions.
 

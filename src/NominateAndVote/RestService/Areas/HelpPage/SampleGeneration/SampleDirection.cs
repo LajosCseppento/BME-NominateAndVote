@@ -1,4 +1,4 @@
-namespace RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

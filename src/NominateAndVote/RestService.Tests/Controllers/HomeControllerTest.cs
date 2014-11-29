@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestService.Controllers;
+using NominateAndVote.RestService.Controllers;
 using System.Web.Mvc;
 
-namespace RestService.Tests.Controllers
+namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

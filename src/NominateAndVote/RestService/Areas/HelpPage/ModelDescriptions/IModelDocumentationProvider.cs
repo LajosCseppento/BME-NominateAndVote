@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace RestService.Areas.HelpPage.ModelDescriptions
+namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

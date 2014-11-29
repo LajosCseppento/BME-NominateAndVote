@@ -1,6 +1,6 @@
 using System;
 
-namespace RestService.Areas.HelpPage.ModelDescriptions
+namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

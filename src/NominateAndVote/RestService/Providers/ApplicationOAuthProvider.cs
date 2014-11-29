@@ -2,13 +2,13 @@
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RestService.Models;
+using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace RestService.Providers
+namespace NominateAndVote.RestService.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

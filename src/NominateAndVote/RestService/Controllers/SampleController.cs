@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public class SampleController : ApiController
     {

@@ -1,4 +1,4 @@
-using RestService.Areas.HelpPage.ModelDescriptions;
+using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
 
-namespace RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

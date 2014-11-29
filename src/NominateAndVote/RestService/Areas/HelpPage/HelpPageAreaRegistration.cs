@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

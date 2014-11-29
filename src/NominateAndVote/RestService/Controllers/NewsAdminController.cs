@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     public class NewsAdminController : Controller
     {

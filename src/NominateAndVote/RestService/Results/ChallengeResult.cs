@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace RestService.Results
+namespace NominateAndVote.RestService.Results
 {
     public class ChallengeResult : IHttpActionResult
     {

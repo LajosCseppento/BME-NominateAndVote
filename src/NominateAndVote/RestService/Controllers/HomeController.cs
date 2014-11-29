@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     public class HomeController : Controller
     {

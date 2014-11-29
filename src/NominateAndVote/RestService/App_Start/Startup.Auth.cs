@@ -3,11 +3,11 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using RestService.Models;
-using RestService.Providers;
+using NominateAndVote.RestService.Models;
+using NominateAndVote.RestService.Providers;
 using System;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public partial class Startup
     {

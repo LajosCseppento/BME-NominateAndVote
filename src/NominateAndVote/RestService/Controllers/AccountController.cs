@@ -4,9 +4,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RestService.Models;
-using RestService.Providers;
-using RestService.Results;
+using NominateAndVote.RestService.Models;
+using NominateAndVote.RestService.Providers;
+using NominateAndVote.RestService.Results;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -17,7 +17,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

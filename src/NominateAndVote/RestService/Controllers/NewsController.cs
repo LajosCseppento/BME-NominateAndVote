@@ -1,11 +1,11 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
-using RestService.Models;
+using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/News")]
     public class NewsController : ApiController
@@ -19,6 +19,17 @@ namespace RestService.Controllers
             SimpleDataModel model = new SimpleDataModel();
             model.LoadSampleData();
             dataManager = new DataModelManager(model);
+        }
+
+        public NewsController(IDataManager dataManager)
+            : base()
+        {
+            if (dataManager == null)
+            {
+                throw new ArgumentNullException("The data manager must not be null", "dataManager");
+            }
+
+            this.dataManager = dataManager;
         }
 
         // GET: api/News
@@ -72,7 +83,7 @@ namespace RestService.Controllers
 
             dataManager.SaveNews(news);
 
-            return Ok();
+            return Ok(news);
         }
 
         // PUT: api/News/5

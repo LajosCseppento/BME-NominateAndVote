@@ -1,10 +1,10 @@
-using RestService.Areas.HelpPage.ModelDescriptions;
+using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
 
-namespace RestService.Areas.HelpPage.Models
+namespace NominateAndVote.RestService.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

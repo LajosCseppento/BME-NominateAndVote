@@ -3,7 +3,7 @@ using NominateAndVote.DataModel.Model;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/Poll")]
     public class PollController : ApiController

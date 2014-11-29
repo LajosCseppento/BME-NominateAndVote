@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public class BundleConfig
     {

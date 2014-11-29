@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public class FilterConfig
     {

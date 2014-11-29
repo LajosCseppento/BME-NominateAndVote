@@ -13,7 +13,7 @@ using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using System.Xml.Linq;
 
-namespace RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage
 {
     /// <summary>
     /// This class will generate the samples for the help page.

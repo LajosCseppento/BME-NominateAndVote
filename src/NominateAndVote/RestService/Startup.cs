@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(RestService.Startup))]
+[assembly: OwinStartup(typeof(NominateAndVote.RestService.Startup))]
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public partial class Startup
     {

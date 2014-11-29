@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace RestService.Controllers
+namespace NominateAndVote.RestService.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

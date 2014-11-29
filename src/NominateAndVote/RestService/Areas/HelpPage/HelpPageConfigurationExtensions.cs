@@ -1,5 +1,5 @@
-using RestService.Areas.HelpPage.ModelDescriptions;
-using RestService.Areas.HelpPage.Models;
+using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions;
+using NominateAndVote.RestService.Areas.HelpPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +14,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 
-namespace RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

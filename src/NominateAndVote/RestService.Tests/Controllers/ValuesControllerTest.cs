@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestService.Controllers;
+using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestService.Tests.Controllers
+namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest

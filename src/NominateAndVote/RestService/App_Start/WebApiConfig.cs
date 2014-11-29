@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public static class WebApiConfig
     {

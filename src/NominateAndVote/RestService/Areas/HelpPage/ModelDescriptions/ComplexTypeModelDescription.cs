@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace RestService.Areas.HelpPage.ModelDescriptions
+namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

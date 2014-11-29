@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace RestService
+namespace NominateAndVote.RestService
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

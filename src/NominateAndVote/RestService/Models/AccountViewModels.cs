@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RestService.Models
+namespace NominateAndVote.RestService.Models
 {
     // Models returned by AccountController actions.
 

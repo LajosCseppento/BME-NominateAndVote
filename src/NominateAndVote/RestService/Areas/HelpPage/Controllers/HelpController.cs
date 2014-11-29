@@ -1,10 +1,10 @@
-using RestService.Areas.HelpPage.ModelDescriptions;
-using RestService.Areas.HelpPage.Models;
+using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions;
+using NominateAndVote.RestService.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace RestService.Areas.HelpPage.Controllers
+namespace NominateAndVote.RestService.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

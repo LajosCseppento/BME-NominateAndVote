@@ -237,7 +237,24 @@ namespace NominateAndVote.DataModel
 
         public void SavePollSubject(PollSubject pollSubject)
         {
-            throw new NotImplementedException();
+            if (pollSubject == null)
+            {
+                throw new ArgumentNullException("The poll subject must not be null", "pollSubject");
+            }
+
+            // maybe a new, maybe an old object
+            PollSubject oldPollSubject = (from ps in DataModel.PollSubjects
+                                          where ps.ID == pollSubject.ID
+                                          select ps).SingleOrDefault();
+
+            if (oldPollSubject != null)
+            {
+                // remove old
+                DataModel.PollSubjects.Remove(oldPollSubject);
+            }
+
+            // add new
+            DataModel.PollSubjects.Add(pollSubject);
         }
 
         public void SavePollSubjectsBatch(List<PollSubject> pollSubjects)
@@ -277,7 +294,32 @@ namespace NominateAndVote.DataModel
 
         public void SaveUser(User user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentNullException("The user must not be null", "user");
+            }
+
+            if (user.ID.Equals(Guid.Empty))
+            {
+                // now ID, new object
+                user.ID = Guid.NewGuid();
+            }
+            else
+            {
+                // maybe a new, maybe an old object
+                User oldUser = (from n in DataModel.Users
+                                where n.ID.Equals(user.ID)
+                                select n).SingleOrDefault();
+
+                if (oldUser != null)
+                {
+                    // remove old
+                    DataModel.Users.Remove(oldUser);
+                }
+            }
+
+            // add new
+            DataModel.Users.Add(user);
         }
 
         public Vote QueryVote(Poll poll, User user)
@@ -298,7 +340,24 @@ namespace NominateAndVote.DataModel
 
         public void SaveVote(Vote vote)
         {
-            throw new NotImplementedException();
+            if (vote == null)
+            {
+                throw new ArgumentNullException("The vote must not be null", "vote");
+            }
+
+            // maybe a new, maybe an old object
+            Vote oldVote = (from v in DataModel.Votes
+                            where v.Nomination.ID.Equals(vote.Nomination.ID) && v.User.ID.Equals(vote.User.ID)
+                            select v).SingleOrDefault();
+
+            if (oldVote != null)
+            {
+                // remove old
+                DataModel.Votes.Remove(oldVote);
+            }
+
+            // add new
+            DataModel.Votes.Add(vote);
         }
     }
 }

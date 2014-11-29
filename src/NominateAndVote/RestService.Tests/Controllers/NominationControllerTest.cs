@@ -2,14 +2,13 @@
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Controllers;
-using System.Collections.Generic;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class NewsControllerTest
+    public class NominationControllerTest
     {
-        private NewsController controller;
+        private NominationController controller;
         private DataModelManager dataManager;
 
         [TestInitialize]
@@ -19,19 +18,22 @@ namespace NominateAndVote.RestService.Tests.Controllers
             model.LoadSampleData();
             dataManager = new DataModelManager(model);
 
-            controller = new NewsController(dataManager);
+            controller = new NominationController(dataManager);
         }
 
         [TestMethod]
-        public void Get()
+        public void DeleteNomination()
         {
             // Arrange
+            Nomination nomination = dataManager.QueryPolls()[1].Nominations[0];
 
             // Act
-            var result = controller.Get() as List<News>;
+            controller.Delete(nomination.ID.ToString());
 
             // Assert
-            Assert.IsTrue((dataManager.QueryNews().Count == result.Count));
+            Assert.IsFalse(dataManager.QueryPolls()[1].Nominations.Contains(nomination));
         }
     }
+
+    
 }

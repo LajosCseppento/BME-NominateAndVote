@@ -6,10 +6,13 @@ using System.Collections.Generic;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
+    /// <summary>
+    /// Summary description for UnitTest1
+    /// </summary>
     [TestClass]
-    public class PollControllerTest
+    public class PollsControllerTest
     {
-        private PollController controller;
+        private PollsController controller;
         private DataModelManager dataManager;
 
         [TestInitialize]
@@ -19,31 +22,32 @@ namespace NominateAndVote.RestService.Tests.Controllers
             model.LoadSampleData();
             dataManager = new DataModelManager(model);
 
-            controller = new PollController(dataManager);
+            controller = new PollsController(dataManager);
         }
 
         [TestMethod]
-        public void GetNomination()
+        public void GetClosed()
         {
             // Arrange
 
             // Act
-            var result = controller.GetNominationPolls() as List<Poll>;
+            var result = controller.GetClosedPolls() as List<Poll>;
 
             // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.NOMINATION)).Count == result.Count);
+            Assert.IsTrue((dataManager.QueryPolls(PollState.CLOSED)).Count == result.Count);
         }
 
         [TestMethod]
-        public void GetVoting()
+        public void GetByID()
         {
             // Arrange
 
             // Act
-            var result = controller.GetVotingPolls() as List<Poll>;
+            Poll poll = dataManager.QueryPolls()[0];
+            var result = controller.Get(poll.ID.ToString()) as Poll;
 
             // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.VOTING)).Count == result.Count);
+            Assert.AreEqual(poll, result);
         }
     }
 }

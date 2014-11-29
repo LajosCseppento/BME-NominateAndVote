@@ -1,7 +1,6 @@
-﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestService;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestService.Controllers;
+using System.Web.Mvc;
 
 namespace RestService.Tests.Controllers
 {

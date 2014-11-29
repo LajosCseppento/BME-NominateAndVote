@@ -1,9 +1,4 @@
-﻿using NominateAndVote.DataModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace RestService
@@ -20,7 +15,7 @@ namespace RestService
         public string Get(int id)
         {
             // new SampleDataModel().PollSubjects[id];
-            return "value"+id;
+            return "value" + id;
         }
 
         // POST api/<controller>

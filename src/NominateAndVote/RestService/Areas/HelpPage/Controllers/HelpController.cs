@@ -1,8 +1,8 @@
+using RestService.Areas.HelpPage.ModelDescriptions;
+using RestService.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using RestService.Areas.HelpPage.ModelDescriptions;
-using RestService.Areas.HelpPage.Models;
 
 namespace RestService.Areas.HelpPage.Controllers
 {

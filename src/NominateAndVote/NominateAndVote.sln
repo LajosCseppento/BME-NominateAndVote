@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel.Tests", "DataModel.Tests\DataModel.Tests.csproj", "{9AF45C16-8047-47AC-872E-3A4F7FD78684}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableStorage.Tests", "DataTableStorage.Tests\DataTableStorage.Tests.csproj", "{3B8D684C-F095-44C0-B216-DF339851F7AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,16 @@ Global
 		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|ARM.ActiveCfg = Release|Any CPU
 		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|x64.ActiveCfg = Release|Any CPU
 		{9AF45C16-8047-47AC-872E-3A4F7FD78684}.Release|x86.ActiveCfg = Release|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Release|x64.ActiveCfg = Release|Any CPU
+		{3B8D684C-F095-44C0-B216-DF339851F7AE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

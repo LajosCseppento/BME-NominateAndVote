@@ -71,6 +71,11 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
+        public News QueryNews(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveNews(News news)
         {
             throw new NotImplementedException();

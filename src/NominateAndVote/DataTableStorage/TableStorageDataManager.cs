@@ -9,8 +9,8 @@ namespace NominateAndVote.DataTableStorage
 {
     public class TableStorageDataManager : IDataManager
     {
-        private CloudStorageAccount storageAccount;
-        private CloudTableClient tableClient;
+        private readonly CloudStorageAccount _storageAccount;
+        private readonly CloudTableClient _tableClient;
 
         public TableStorageDataManager(CloudStorageAccount storageAccount)
         {
@@ -19,46 +19,38 @@ namespace NominateAndVote.DataTableStorage
                 throw new ArgumentException("The storage account must not be null", "storageAccount");
             }
 
-            this.storageAccount = storageAccount;
-            this.tableClient = storageAccount.CreateCloudTableClient();
+            this._storageAccount = storageAccount;
+            this._tableClient = storageAccount.CreateCloudTableClient();
         }
 
-        public bool CreateTablesIfNeeded()
+        public void CreateTablesIfNeeded()
         {
-            bool allOk = true;
             foreach (var entityType in TableNames.GetEntityTypes())
             {
-                bool ok = getTableReference(entityType).CreateIfNotExists();
-                allOk = ok && allOk;
+                GetTableReference(entityType).CreateIfNotExists();
             }
-
-            return allOk;
         }
 
-        public bool DeleteTablesIfNeeded()
+        public void DeleteTablesIfNeeded()
         {
-            bool allOk = true;
             foreach (var entityType in TableNames.GetEntityTypes())
             {
-                bool ok = getTableReference(entityType).DeleteIfExists();
-                allOk = ok && allOk;
+                GetTableReference(entityType).DeleteIfExists();
             }
-
-            return allOk;
         }
 
         private bool SaveEntity(ITableEntity entity)
         {
-            CloudTable table = getTableReference(entity.GetType());
+            CloudTable table = GetTableReference(entity.GetType());
 
             TableOperation op = TableOperation.InsertOrReplace(entity);
             TableResult result = table.Execute(op);
             return result.Result.Equals(entity);
         }
 
-        private CloudTable getTableReference(Type entityType)
+        private CloudTable GetTableReference(Type entityType)
         {
-            return tableClient.GetTableReference(TableNames.GetTableName(entityType));
+            return _tableClient.GetTableReference(TableNames.GetTableName(entityType));
         }
 
         public bool IsAdmin(User user)
@@ -81,7 +73,7 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public void DeleteNews(News news)
+        public void DeleteNews(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -101,7 +93,7 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public void DeleteNomination(Nomination nomination)
+        public void DeleteNomination(Guid id)
         {
             throw new NotImplementedException();
         }

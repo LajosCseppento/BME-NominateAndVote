@@ -20,7 +20,7 @@ namespace NominateAndVote.DataModel
 
         void SaveNews(News news);
 
-        void DeleteNews(News news);
+        void DeleteNews(Guid id);
 
         #endregion News
 
@@ -32,7 +32,7 @@ namespace NominateAndVote.DataModel
 
         void SaveNomination(Nomination nomination);
 
-        void DeleteNomination(Nomination nomination);
+        void DeleteNomination(Guid id);
 
         #endregion Nominations
 

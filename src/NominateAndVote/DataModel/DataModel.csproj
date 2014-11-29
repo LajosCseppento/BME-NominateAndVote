@@ -82,6 +82,8 @@
     <Compile Include="IDataModel.cs" />
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="DefaultDataModel.cs" />
+    <Compile Include="Model\BasePocoWithID.cs" />
+    <Compile Include="Model\BasePoco.cs" />
     <Compile Include="Model\News.cs" />
     <Compile Include="Model\Nomination.cs" />
     <Compile Include="Model\Poll.cs" />

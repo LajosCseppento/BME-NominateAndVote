@@ -13,7 +13,7 @@ namespace NominateAndVote.DataModel
         {
             if (dataModel == null)
             {
-                throw new ArgumentNullException("The data model must not be null", "dataModel");
+                throw new ArgumentNullException("dataModel", "The data model must not be null");
             }
 
             DataModel = dataModel;
@@ -23,7 +23,7 @@ namespace NominateAndVote.DataModel
         {
             if (user == null)
             {
-                throw new ArgumentNullException("The user must not be null", "user");
+                throw new ArgumentNullException("user", "The user must not be null");
             }
 
             return (from a in DataModel.Administrators
@@ -33,23 +33,27 @@ namespace NominateAndVote.DataModel
 
         public List<News> QueryNews()
         {
-            return (from n in DataModel.News
+            var q = from n in DataModel.News
                     orderby n.PublicationDate descending
-                    select n).ToList();
+                    select n;
+
+            return q.ToList();
         }
 
         public News QueryNews(Guid id)
         {
-            return (from n in DataModel.News
+            var q = from n in DataModel.News
                     where n.ID.Equals(id)
-                    select n).SingleOrDefault();
+                    select n;
+
+            return q.SingleOrDefault();
         }
 
         public void SaveNews(News news)
         {
             if (news == null)
             {
-                throw new ArgumentNullException("The news must not be null", "news");
+                throw new ArgumentNullException("news", "The news must not be null");
             }
 
             if (news.ID.Equals(Guid.Empty))
@@ -60,9 +64,11 @@ namespace NominateAndVote.DataModel
             else
             {
                 // maybe a new, maybe an old object
-                News oldNews = (from n in DataModel.News
-                                where n.ID.Equals(news.ID)
-                                select n).SingleOrDefault();
+                var q = from n in DataModel.News
+                        where n.ID.Equals(news.ID)
+                        select n;
+
+                News oldNews = q.SingleOrDefault();
 
                 if (oldNews != null)
                 {
@@ -75,50 +81,58 @@ namespace NominateAndVote.DataModel
             DataModel.News.Add(news);
         }
 
-        public void DeleteNews(News news)
+        public void DeleteNews(Guid id)
         {
-            if (news == null)
-            {
-                throw new ArgumentNullException("The news must not be null", "news");
-            }
+            var q = from n in DataModel.News
+                    where n.ID.Equals(id)
+                    select n;
 
-            DataModel.News.Remove(news);
+            News news = q.SingleOrDefault();
+
+            if (news != null)
+            {
+                DataModel.News.Remove(news);
+            }
         }
 
         public List<Nomination> QueryNominations(Poll poll)
         {
             if (poll == null)
             {
-                throw new ArgumentNullException("The poll must not be null", "poll");
+                throw new ArgumentNullException("poll", "The poll must not be null");
             }
 
-            return (from n in poll.Nominations
+            var q = from n in poll.Nominations
                     orderby n.Subject.Title, n.Subject.Year
-                    select n).ToList();
+                    select n;
+
+            return q.ToList();
         }
 
         public List<Nomination> QueryNominations(Poll poll, User user)
         {
             if (poll == null)
             {
-                throw new ArgumentNullException("The poll must not be null", "poll");
+                throw new ArgumentNullException("poll", "The poll must not be null");
             }
             else if (user == null)
             {
-                throw new ArgumentNullException("The user must not be null", "user");
+                throw new ArgumentNullException("user", "The user must not be null");
             }
 
-            return (from n in poll.Nominations
+            var q = from n in poll.Nominations
                     where n.User != null && n.User.ID.Equals(user.ID)
                     orderby n.Subject.Title, n.Subject.Year
-                    select n).ToList();
+                    select n;
+
+            return q.ToList();
         }
 
         public void SaveNomination(Nomination nomination)
         {
             if (nomination == null)
             {
-                throw new ArgumentNullException("The nomination must not be null", "nomination");
+                throw new ArgumentNullException("nomination", "The nomination must not be null");
             }
 
             if (nomination.ID.Equals(Guid.Empty))
@@ -129,9 +143,11 @@ namespace NominateAndVote.DataModel
             else
             {
                 // maybe a new, maybe an old object
-                Nomination oldNomination = (from n in DataModel.Nominations
-                                            where n.ID.Equals(nomination.ID)
-                                            select n).SingleOrDefault();
+                var q = from n in DataModel.Nominations
+                        where n.ID.Equals(nomination.ID)
+                        select n;
+
+                Nomination oldNomination = q.SingleOrDefault();
 
                 if (oldNomination != null)
                 {
@@ -144,68 +160,84 @@ namespace NominateAndVote.DataModel
             DataModel.Nominations.Add(nomination);
         }
 
-        public void DeleteNomination(Nomination nomination)
+        public void DeleteNomination(Guid id)
         {
-            if (nomination == null)
-            {
-                throw new ArgumentNullException("The nomination must not be null", "nomination");
-            }
+            var q = from n in DataModel.Nominations
+                    where n.ID.Equals(id)
+                    select n;
 
-            DataModel.Nominations.Remove(nomination);
+            Nomination nomination = q.SingleOrDefault();
+
+            if (nomination != null)
+            {
+                DataModel.Nominations.Remove(nomination);
+            }
         }
 
         public List<Poll> QueryPolls()
         {
-            return (from p in DataModel.Polls
+            var q = from p in DataModel.Polls
                     orderby p.AnnouncementDate descending
-                    select p).ToList();
+                    select p;
+
+            return q.ToList();
         }
 
         public Poll QueryPoll(Guid id)
         {
-            return (from p in DataModel.Polls
+            var q = from p in DataModel.Polls
                     where p.ID.Equals(id)
-                    select p).SingleOrDefault();
+                    select p;
+
+            return q.SingleOrDefault();
         }
 
         public List<Poll> QueryPolls(PollState state)
         {
-            return (from p in DataModel.Polls
+            var q = from p in DataModel.Polls
                     where p.State.Equals(state)
                     orderby p.AnnouncementDate descending
-                    select p).ToList();
+                    select p;
+
+            return q.ToList();
         }
 
         public PollSubject QueryPollSubject(long id)
         {
-            return (from ps in DataModel.PollSubjects
+            var q = from ps in DataModel.PollSubjects
                     where ps.ID == id
-                    select ps).SingleOrDefault();
+                    select ps;
+
+            return q.SingleOrDefault();
         }
 
         public List<PollSubject> SearchPollSubjects(string term)
         {
             if (term == null)
             {
-                throw new ArgumentNullException("The search term must not be null", "term");
+                throw new ArgumentNullException("term", "The search term must not be null");
             }
 
-            return (from ps in DataModel.PollSubjects
+            var q = from ps in DataModel.PollSubjects
                     where ps.Title.StartsWith(term)
-                    select ps).ToList();
+                    select ps;
+
+            return q.ToList();
         }
 
         public void SavePollSubject(PollSubject pollSubject)
         {
             if (pollSubject == null)
             {
-                throw new ArgumentNullException("The poll subject must not be null", "pollSubject");
+                throw new ArgumentNullException("pollSubject", "The poll subject must not be null");
             }
 
             // maybe a new, maybe an old object
-            PollSubject oldPollSubject = (from ps in DataModel.PollSubjects
-                                          where ps.ID == pollSubject.ID
-                                          select ps).SingleOrDefault();
+            var q = from ps in DataModel.PollSubjects
+                    where ps.ID == pollSubject.ID
+                    select ps;
+
+            PollSubject oldPollSubject = q.SingleOrDefault();
 
             if (oldPollSubject != null)
             {
@@ -228,35 +260,41 @@ namespace NominateAndVote.DataModel
 
         public List<User> QueryBannedUsers()
         {
-            return (from u in DataModel.Users
+            var q = from u in DataModel.Users
                     where u.IsBanned
-                    select u).ToList();
+                    select u;
+
+            return q.ToList();
         }
 
         public User QueryUser(Guid id)
         {
-            return (from u in DataModel.Users
+            var q = from u in DataModel.Users
                     where u.ID.Equals(id)
-                    select u).SingleOrDefault();
+                    select u;
+
+            return q.SingleOrDefault();
         }
 
         public List<User> SearchUsers(string term)
         {
             if (term == null)
             {
-                throw new ArgumentNullException("The search term must not be null", "term");
+                throw new ArgumentNullException("term", "The search term must not be null");
             }
 
-            return (from u in DataModel.Users
+            var q = from u in DataModel.Users
                     where u.Name.StartsWith(term)
-                    select u).ToList();
+                    select u;
+
+            return q.ToList();
         }
 
         public void SaveUser(User user)
         {
             if (user == null)
             {
-                throw new ArgumentNullException("The user must not be null", "user");
+                throw new ArgumentNullException("user", "The user must not be null");
             }
 
             if (user.ID.Equals(Guid.Empty))
@@ -267,9 +305,11 @@ namespace NominateAndVote.DataModel
             else
             {
                 // maybe a new, maybe an old object
-                User oldUser = (from n in DataModel.Users
-                                where n.ID.Equals(user.ID)
-                                select n).SingleOrDefault();
+                var q = from n in DataModel.Users
+                        where n.ID.Equals(user.ID)
+                        select n;
+
+                User oldUser = q.SingleOrDefault();
 
                 if (oldUser != null)
                 {
@@ -286,11 +326,11 @@ namespace NominateAndVote.DataModel
         {
             if (poll == null)
             {
-                throw new ArgumentNullException("The poll must not be null", "poll");
+                throw new ArgumentNullException("poll", "The poll must not be null");
             }
             else if (user == null)
             {
-                throw new ArgumentNullException("The user must not be null", "user");
+                throw new ArgumentNullException("user", "The user must not be null");
             }
 
             return (from v in DataModel.Votes
@@ -302,13 +342,15 @@ namespace NominateAndVote.DataModel
         {
             if (vote == null)
             {
-                throw new ArgumentNullException("The vote must not be null", "vote");
+                throw new ArgumentNullException("vote", "The vote must not be null");
             }
 
             // maybe a new, maybe an old object
-            Vote oldVote = (from v in DataModel.Votes
-                            where v.Nomination.ID.Equals(vote.Nomination.ID) && v.User.ID.Equals(vote.User.ID)
-                            select v).SingleOrDefault();
+            var q = from v in DataModel.Votes
+                    where v.Nomination.ID.Equals(vote.Nomination.ID) && v.User.ID.Equals(vote.User.ID)
+                    select v;
+
+            Vote oldVote = q.SingleOrDefault();
 
             if (oldVote != null)
             {

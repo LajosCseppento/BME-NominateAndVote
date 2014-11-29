@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NominateAndVote.DataModel.Model;
 using System;
 
 namespace NominateAndVote.DataModel.Model.Tests

@@ -3,14 +3,16 @@ using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
+    /// <summary>
+    /// Summary description for UnitTest1
+    /// </summary>
     [TestClass]
-    public class PollControllerTest
+    public class PollsControllerTest
     {
-        private PollController controller;
+        private PollsController controller;
         private DataModelManager dataManager;
 
         [TestInitialize]
@@ -20,11 +22,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
             model.LoadSampleData();
             dataManager = new DataModelManager(model);
 
-            controller = new PollController(dataManager);
+            controller = new PollsController(dataManager);
         }
 
         [TestMethod]
-        public void Get_Closed()
+        public void GetClosed()
         {
             // Arrange
 
@@ -36,36 +38,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
         }
 
         [TestMethod]
-        public void GetNomination()
+        public void GetByID()
         {
             // Arrange
 
             // Act
-            var result = controller.GetNominationPolls() as List<Poll>;
-
-            // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.NOMINATION)).Count == result.Count);
-        }
-
-        [TestMethod]
-        public void GetVoting()
-        {
-            // Arrange
-
-            // Act
-            var result = controller.GetVotingPolls() as List<Poll>;
-
-            // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.VOTING)).Count == result.Count);
-        }
-
-        [TestMethod]
-        public void Get_ByID()
-        {
-            // Arrange
-
-            // Act
-            Poll poll = dataManager.QueryPolls().ElementAt(0);
+            Poll poll = dataManager.QueryPolls()[0];
             var result = controller.Get(poll.ID.ToString()) as Poll;
 
             // Assert

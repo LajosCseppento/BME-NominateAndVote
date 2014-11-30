@@ -30,7 +30,6 @@ namespace NominateAndVote.RestService.Controllers
             this.dataManager = dataManager;
         }
 
-        // GET: api/Poll/ClosedPolls
         [Route("ClosedPolls")]
         [HttpGet]
         public IEnumerable<Poll> GetClosedPolls()
@@ -38,7 +37,6 @@ namespace NominateAndVote.RestService.Controllers
             return dataManager.QueryPolls(PollState.CLOSED);
         }
 
-        // GET: api/Poll/{id}
         [Route("Poll")]
         [HttpGet]
         public Poll Get(string id)

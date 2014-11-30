@@ -30,7 +30,6 @@ namespace NominateAndVote.RestService.Controllers
             this.dataManager = dataManager;
         }
 
-        // GET: api/News
         public IEnumerable<News> Get()
         {
             return dataManager.QueryNews();

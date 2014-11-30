@@ -30,15 +30,6 @@ namespace NominateAndVote.RestService.Controllers
             this.dataManager = dataManager;
         }
 
-        // GET: api/Poll/ClosedPolls
-        [Route("ClosedPolls")]
-        [HttpGet]
-        public IEnumerable<Poll> GetClosedPolls()
-        {
-            return dataManager.QueryPolls(PollState.CLOSED);
-        }
-
-        // GET: api/Poll/NominationPolls
         [Route("NominationPolls")]
         [HttpGet]
         public IEnumerable<Poll> GetNominationPolls()
@@ -46,12 +37,18 @@ namespace NominateAndVote.RestService.Controllers
             return QueryPolls(PollState.NOMINATION);
         }
 
-        // GET: api/Poll/VotingPolls
         [Route("VotingPolls")]
         [HttpGet]
         public IEnumerable<Poll> GetVotingPolls()
         {
             return dataManager.QueryPolls(PollState.VOTING);
+        }
+
+        [Route("ClosedPolls")]
+        [HttpGet]
+        public IEnumerable<Poll> GetClosedPolls()
+        {
+            return dataManager.QueryPolls(PollState.CLOSED);
         }
 
         private List<Poll> QueryPolls(PollState state)
@@ -70,22 +67,6 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             return polls;
-        }
-
-        // GET: api/Poll/{id}
-        [Route("Poll")]
-        [HttpGet]
-        public Poll Get(string id)
-        {
-            Guid idGuid = Guid.Empty;
-            if (Guid.TryParse(id, out idGuid))
-            {
-                return dataManager.QueryPoll(idGuid);
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }

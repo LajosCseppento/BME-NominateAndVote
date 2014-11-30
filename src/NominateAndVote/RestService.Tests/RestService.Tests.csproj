@@ -135,8 +135,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\NewsControllerTest.cs" />
+    <Compile Include="Controllers\NewsAdminControllerTest.cs" />
+    <Compile Include="Controllers\NewsControllerTests.cs" />
+    <Compile Include="Controllers\PollAdminControllerTest.cs" />
     <Compile Include="Controllers\PollControllerTest.cs" />
+    <Compile Include="Controllers\PollsControllerTest.cs" />
+    <Compile Include="Controllers\NominationControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />

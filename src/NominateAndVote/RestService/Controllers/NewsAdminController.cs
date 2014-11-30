@@ -31,13 +31,6 @@ namespace NominateAndVote.RestService.Controllers
             this.dataManager = dataManager;
         }
 
-        // GET: api/News
-        public IEnumerable<News> Get()
-        {
-            return dataManager.QueryNews();
-        }
-
-        // POST: api/News/Save
         [Route("Save")]
         [HttpPost]
         public IHttpActionResult Save(SaveNewsBindingModel newsBindingModel)
@@ -73,6 +66,17 @@ namespace NominateAndVote.RestService.Controllers
             dataManager.SaveNews(news);
 
             return Ok(news);
+        }
+
+        [Route("Delete")]
+        [HttpGet]
+        public void Delete(string id)
+        {
+            Guid idGuid = Guid.Empty;
+            if (Guid.TryParse(id, out idGuid))
+            {
+                dataManager.DeleteNews(idGuid);
+            }
         }
     }
 }

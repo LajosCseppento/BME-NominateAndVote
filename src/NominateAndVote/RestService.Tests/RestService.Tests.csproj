@@ -149,6 +149,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.sample.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

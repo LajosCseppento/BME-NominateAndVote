@@ -1,6 +1,7 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Common;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataTableStorage.Model;
 using System;
@@ -64,25 +65,28 @@ namespace NominateAndVote.DataTableStorage
             return _tableClient.GetTableReference(TableNames.GetTableName(entityType));
         }
 
+        // TODO
+        /*
+        private TEntity RetrieveEntity<TEntity>(string partitionKey, string rowKey) where TEntity : ITableEntity
+        {
+            var table = GetTableReference(typeof(TEntity));
+            var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(partitionKey, rowKey);
+            var result = table.Execute(retrieveOperation);
+            var entity = result.Result as PollSubjectEntity;
+        }
+        */
+
         public bool IsAdmin(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            // check
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
+            // query
             var table = GetTableReference(typeof(Administrator));
             var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(user.Id.ToString("D8"), "");
             var result = table.Execute(retrieveOperation);
             var entity = result.Result as PollSubjectEntity;
-            if (entity != null)
-            {
-                Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey, entity.Title, entity.Year);
-            }
-
-            //return entity;
-
-            throw new NotImplementedException();
+            return entity != null;
         }
 
         public List<News> QueryNews()

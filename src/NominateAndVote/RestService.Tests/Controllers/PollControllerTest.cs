@@ -1,12 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
@@ -36,7 +33,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsTrue((dataManager.QueryPolls(PollState.CLOSED)).Count == result.Count);
-
         }
 
         [TestMethod]
@@ -49,7 +45,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsTrue((dataManager.QueryPolls(PollState.NOMINATION)).Count == result.Count);
-
         }
 
         [TestMethod]
@@ -62,7 +57,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsTrue((dataManager.QueryPolls(PollState.VOTING)).Count == result.Count);
-
         }
 
         [TestMethod]
@@ -71,12 +65,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
             // Arrange
 
             // Act
-            Poll poll=dataManager.QueryPolls().ElementAt(0);
+            Poll poll = dataManager.QueryPolls().ElementAt(0);
             var result = controller.Get(poll.ID.ToString()) as Poll;
 
             // Assert
             Assert.AreEqual(poll, result);
-
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Controllers;
-using NominateAndVote.RestService.Models;
-using System;
-using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {

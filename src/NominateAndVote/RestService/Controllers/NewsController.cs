@@ -1,6 +1,5 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
-using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -36,6 +35,5 @@ namespace NominateAndVote.RestService.Controllers
         {
             return dataManager.QueryNews();
         }
-
     }
 }

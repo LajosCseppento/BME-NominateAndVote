@@ -88,7 +88,7 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public List<Nomination> QueryNominations(User user) 
+        public List<Nomination> QueryNominations(User user)
         {
             throw new NotImplementedException();
         }
@@ -118,7 +118,8 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public void SavePoll(Poll poll) {
+        public void SavePoll(Poll poll)
+        {
             throw new NotImplementedException();
         }
 

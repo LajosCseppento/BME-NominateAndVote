@@ -30,8 +30,6 @@ namespace NominateAndVote.DataModel
             nom.Subject = subject;
             nom.Poll = poll1;
 
-            poll1.Nominations.Add(nom);
-
             // Poll in Vote state with 2 nominations and 1 vote
             Poll poll2 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.VOTING, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-2), VotingStartDate = DateTime.Now.AddDays(-1), VotingDeadline = DateTime.Now.AddDays(+8), AnnouncementDate = DateTime.Now.AddDays(+12) };
 
@@ -39,14 +37,11 @@ namespace NominateAndVote.DataModel
             Nomination nom2 = new Nomination { ID = Guid.NewGuid(), Text = "Vicces", User = user2, VoteCount = 0 };
             nom1.Subject = subject2;
             nom2.Subject = subject3;
-            poll2.Nominations.Add(nom1);
-            poll2.Nominations.Add(nom2);
             nom1.Poll = poll2;
             nom2.Poll = poll2;
 
             Vote vote = new Vote { Date = DateTime.Now.AddDays(-1), User = user2, Nomination = nom2 };
-            nom2.Votes.Add(vote);
-            nom2.VoteCount += 1;
+            nom2.VoteCount = 1;
 
             // Poll in Closed State
             Poll poll3 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.VOTING, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-8), VotingStartDate = DateTime.Now.AddDays(-6), VotingDeadline = DateTime.Now.AddDays(-4), AnnouncementDate = DateTime.Now.AddDays(-1) };
@@ -55,17 +50,13 @@ namespace NominateAndVote.DataModel
             Nomination nom4 = new Nomination { ID = Guid.NewGuid(), Text = "Jo a tortenet", User = user2, VoteCount = 0 };
             nom3.Subject = subject2;
             nom4.Subject = subject3;
-            poll3.Nominations.Add(nom3);
-            poll3.Nominations.Add(nom4);
             nom3.Poll = poll3;
             nom4.Poll = poll3;
 
             Vote vote1 = new Vote { Date = DateTime.Now.AddDays(-2), User = user2, Nomination = nom3 };
             Vote vote2 = new Vote { Date = DateTime.Now.AddDays(-3), User = user1, Nomination = nom4 };
-            nom3.Votes.Add(vote1);
-            nom3.Votes.Add(vote2);
-            nom3.VoteCount += 1;
-            nom4.VoteCount += 1;
+            nom3.VoteCount = 1;
+            nom4.VoteCount = 1;
 
             // Merge
             Poll poll4 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.NOMINATION, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-8), VotingStartDate = DateTime.Now.AddDays(+2), VotingDeadline = DateTime.Now.AddDays(+7), AnnouncementDate = DateTime.Now.AddDays(+12) };
@@ -74,8 +65,6 @@ namespace NominateAndVote.DataModel
             Nomination nom6 = new Nomination { ID = Guid.NewGuid(), Text = "Csak", User = user2, VoteCount = 0, Subject = subject2 };
             nom5.Subject = subject2;
             nom6.Subject = subject2;
-            poll4.Nominations.Add(nom5);
-            poll4.Nominations.Add(nom6);
             nom5.Poll = poll4;
             nom6.Poll = poll4;
 

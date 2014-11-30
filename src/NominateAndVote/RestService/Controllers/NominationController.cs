@@ -2,14 +2,11 @@
 using NominateAndVote.DataModel.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-     [RoutePrefix("api/Nomination")]
+    [RoutePrefix("api/Nomination")]
     public class NominationController : ApiController
     {
         private IDataManager dataManager;
@@ -58,10 +55,8 @@ namespace NominateAndVote.RestService.Controllers
             Guid idGuid = Guid.Empty;
             if (Guid.TryParse(id, out idGuid))
             {
-               // dataManager.DeleteNomination(idGuid);
+                // dataManager.DeleteNomination(idGuid);
             }
         }
-
-
     }
 }

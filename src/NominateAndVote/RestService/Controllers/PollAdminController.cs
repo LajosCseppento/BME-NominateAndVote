@@ -1,12 +1,9 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using NominateAndVote.RestService.Models;
 
 namespace NominateAndVote.RestService.Controllers
 {
@@ -92,7 +89,6 @@ namespace NominateAndVote.RestService.Controllers
             }
         }
 
-
         [Route("Save")]
         [HttpPost]
         public IHttpActionResult Save(PollBindingModell pollBindingModel)
@@ -120,6 +116,5 @@ namespace NominateAndVote.RestService.Controllers
 
             return Ok(poll);
         }
-
     }
 }

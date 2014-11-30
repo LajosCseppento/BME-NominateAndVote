@@ -1,9 +1,6 @@
 ﻿using NominateAndVote.DataModel.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace NominateAndVote.RestService.Models
 {
@@ -69,7 +66,6 @@ namespace NominateAndVote.RestService.Models
                 Poll = new Poll() { ID = pollId },
                 User = new User() { ID = userId },
                 Subject = new PollSubject() { ID = PollSubjectID }
-
             };
         }
     }

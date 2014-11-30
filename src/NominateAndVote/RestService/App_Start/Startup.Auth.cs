@@ -2,9 +2,9 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using Owin;
 using NominateAndVote.RestService.Models;
 using NominateAndVote.RestService.Providers;
+using Owin;
 using System;
 
 namespace NominateAndVote.RestService

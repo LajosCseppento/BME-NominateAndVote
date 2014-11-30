@@ -213,7 +213,8 @@ namespace NominateAndVote.DataModel
             return q.ToList();
         }
 
-        public void SavePoll(Poll poll) {
+        public void SavePoll(Poll poll)
+        {
             if (poll == null)
             {
                 throw new ArgumentNullException("The poll must not be null", "poll");
@@ -228,8 +229,8 @@ namespace NominateAndVote.DataModel
             {
                 // maybe a new, maybe an old object
                 Poll oldPoll = (from p in DataModel.Polls
-                                            where p.ID.Equals(poll.ID)
-                                            select p).SingleOrDefault();
+                                where p.ID.Equals(poll.ID)
+                                select p).SingleOrDefault();
 
                 if (oldPoll != null)
                 {

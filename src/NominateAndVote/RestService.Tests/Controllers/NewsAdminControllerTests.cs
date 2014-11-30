@@ -7,6 +7,7 @@ using NominateAndVote.RestService.Models;
 using System;
 using System.Linq;
 using System.Web.Http.Results;
+using System.Web.Http;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
@@ -24,7 +25,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
     {
         protected override IDataManager CreateDataManager()
         {
-            // TODO Lali - mindegyiknél legyen ott a todo
+            // TODO Lali 
             return new SampleDataModel().CreateDataManager();
         }
     }
@@ -48,15 +49,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SaveNews_Null()
         {
             // Act
-            var result = _controller.Save(null) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(null) as BadRequestErrorMessageResult;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
-            Assert.AreEqual("title", result.Content.Title);
-            Assert.AreEqual("text", result.Content.Text);
-            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
+            Assert.AreEqual(result.Message, "No data");
         }
 
         //Correct object
@@ -91,28 +88,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
             {
                 Title = "title",
                 Text = "text"
-            };
-
-            // Act
-            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
-            Assert.AreEqual("title", result.Content.Title);
-            Assert.AreEqual("text", result.Content.Text);
-            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
-        }
-
-        // Save_Invalid
-        [TestMethod]
-        public void SaveNews_Invalid()
-        {
-            // Arrange
-            var bindingModel = new SaveNewsBindingModel
-            {
-                Title = "title"
             };
 
             // Act

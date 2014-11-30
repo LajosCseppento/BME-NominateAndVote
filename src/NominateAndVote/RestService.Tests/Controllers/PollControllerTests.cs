@@ -8,7 +8,25 @@ using System.Collections.Generic;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class PollControllerTests
+    public class PollControllerMemoryTests : PollControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    [TestClass]
+    public class PollControllerTableStorageTests : PollControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            // TODO Lali 
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    public abstract class PollControllerGenericTests
     {
         private PollController _controller;
         private IDataManager _dataManager;
@@ -16,9 +34,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
         [TestInitialize]
         public void Initialize()
         {
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = CreateDataManager();
             _controller = new PollController(_dataManager);
         }
+
+        protected abstract IDataManager CreateDataManager();
 
         [TestMethod]
         public void GetNomination()
@@ -45,5 +65,5 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.IsTrue((_dataManager.QueryPolls(PollState.Voting)).Count == result.Count);
         }
-    }
+    }    
 }

@@ -11,7 +11,25 @@ namespace NominateAndVote.RestService.Tests.Controllers
     /// Summary description for UnitTest1
     /// </summary>
     [TestClass]
-    public class PollsControllerTests
+    public class PollsControllerMemoryTests : PollsControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    [TestClass]
+    public class PollsControllerTableStorageTests : PollsControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            // TODO Lali 
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    public abstract class PollsControllerGenericTests
     {
         private PollsController _controller;
         private IDataManager _dataManager;
@@ -19,9 +37,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
         [TestInitialize]
         public void Initialize()
         {
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = CreateDataManager();
             _controller = new PollsController(_dataManager);
         }
+
+        protected abstract IDataManager CreateDataManager();
 
         [TestMethod]
         public void GetClosed()
@@ -50,5 +70,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             // Assert
             Assert.AreEqual(poll, result);
         }
+       
     }
+    
 }

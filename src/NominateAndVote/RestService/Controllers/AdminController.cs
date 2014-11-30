@@ -1,11 +1,10 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Tests;
 using System;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    [RoutePrefix("api/User")]
+    [RoutePrefix("api/Admin")]
     public class AdminController : ApiController
     {
         private readonly IDataManager _dataManager;
@@ -13,7 +12,7 @@ namespace NominateAndVote.RestService.Controllers
         public AdminController()
         {
             // TODO Lali tablestorage / config alapján
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public AdminController(IDataManager dataManager)
@@ -26,9 +25,9 @@ namespace NominateAndVote.RestService.Controllers
             _dataManager = dataManager;
         }
 
-        [Route("Ban")]
+        [Route("BanUser")]
         [HttpPost]
-        public IHttpActionResult Ban(string id)
+        public IHttpActionResult BanUser(string id)
         {
             Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
@@ -40,9 +39,9 @@ namespace NominateAndVote.RestService.Controllers
             return null;
         }
 
-        [Route("UnBan")]
+        [Route("UnBanUser")]
         [HttpPost]
-        public IHttpActionResult UnBan(string id)
+        public IHttpActionResult UnBanUser(string id)
         {
             Guid idGuid;
             if (Guid.TryParse(id, out idGuid))

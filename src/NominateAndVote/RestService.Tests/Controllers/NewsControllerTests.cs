@@ -7,8 +7,27 @@ using System.Collections.Generic;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
+
     [TestClass]
-    public class NewsControllerTests
+    public class NewsControllerMemoryTests : NewsControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    [TestClass]
+    public class NewsControllerTableStorageTests : NewsControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            // TODO Lali
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    public abstract class NewsControllerGenericTests
     {
         private NewsController _controller;
         private IDataManager _dataManager;
@@ -20,8 +39,10 @@ namespace NominateAndVote.RestService.Tests.Controllers
             _controller = new NewsController(_dataManager);
         }
 
+        protected abstract IDataManager CreateDataManager();
+
         [TestMethod]
-        public void GetList()
+        public void Get()
         {
             // Act
             var result = _controller.Get() as List<News>;

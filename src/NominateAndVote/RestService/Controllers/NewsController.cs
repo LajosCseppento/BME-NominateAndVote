@@ -1,6 +1,5 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
-using NominateAndVote.DataModel.Tests;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -15,7 +14,7 @@ namespace NominateAndVote.RestService.Controllers
         public NewsController()
         {
             // TODO Lali tablestorage / config alapján
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public NewsController(IDataManager dataManager)

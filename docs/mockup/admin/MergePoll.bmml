@@ -5,12 +5,12 @@
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="220" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="225" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>news%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml%2CPolls%26bm%3BPolls.bmml%26bm%3BPolls.bmml%26bm%3BPolls.bmml%2C%2C</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22223%2C97%2C400%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%221%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22400%2C97%2C559%2C124%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%221%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22223%2C97%2C397%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%221%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22397%2C97%2C552%2C124%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%221%22/%3E%0A</map>
         <selectedIndex>-1</selectedIndex>
-        <text>News%2C%20Polls%2C%20Ban%2C%20Logout</text>
+        <text>News%2C%20Polls%2C%20Ban%2C%20Log%20out</text>
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
@@ -23,138 +23,138 @@
         <text>Create%20poll</text>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="36" y="209" w="926" h="141" measuredW="845" measuredH="141" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Poll%20title%2C%20Publication%20date%2C%20Nomination%20date%2C%20Vote%20date%2C%20Vote%20deadline%20date%2C%20Announcement%20date%2C%20State%2C%20Edit%20or%20delete%2C%20Merge%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C</text>
-      </controlProperties>
-    </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="810" y="229" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Edit</text>
-      </controlProperties>
-    </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="810" y="258" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Edit</text>
-      </controlProperties>
-    </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="810" y="289" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Edit</text>
-      </controlProperties>
-    </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="810" y="318" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Edit</text>
-      </controlProperties>
-    </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::Button" x="860" y="229" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Del</text>
-      </controlProperties>
-    </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="860" y="258" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Del</text>
-      </controlProperties>
-    </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="860" y="289" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Del</text>
-      </controlProperties>
-    </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Button" x="860" y="318" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Del</text>
-      </controlProperties>
-    </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Button" x="906" y="229" w="61" h="27" measuredW="59" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::ModalScreen" x="21" y="92" w="957" h="653" measuredW="320" measuredH="240" zOrder="18" locked="false" isInGroup="-1"/>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::TitleWindow" x="278" y="184" w="450" h="544" measuredW="450" measuredH="400" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Merge</text>
       </controlProperties>
     </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="906" y="258" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Merge</text>
-      </controlProperties>
-    </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="906" y="289" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Merge</text>
-      </controlProperties>
-    </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="906" y="318" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Merge</text>
-      </controlProperties>
-    </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::ModalScreen" x="21" y="91" w="957" h="653" measuredW="320" measuredH="240" zOrder="17" locked="false" isInGroup="-1"/>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::TitleWindow" x="278" y="183" w="450" h="544" measuredW="450" measuredH="400" zOrder="18" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Merge</text>
-      </controlProperties>
-    </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::SubTitle" x="295" y="217" w="172" h="-1" measuredW="112" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::SubTitle" x="295" y="218" w="172" h="-1" measuredW="112" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Merge%20poll</text>
       </controlProperties>
     </control>
-    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="619" y="663" w="94" h="32" measuredW="52" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="619" y="664" w="94" h="32" measuredW="52" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <href>LoggedInPolls%26bm%3BLoggedInPolls.bmml%26bm%3BLoggedInPolls.bmml%26bm%3BLoggedInPolls.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22598%2C643%2C692%2C675%22%20href%3D%22LoggedInPolls.bmml%22%20alt%3D%22LoggedInPolls%22%20id%3D%2220%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22598%2C644%2C692%2C676%22%20href%3D%22LoggedInPolls.bmml%22%20alt%3D%22LoggedInPolls%22%20id%3D%2220%22/%3E</map>
         <text>Save</text>
       </controlProperties>
     </control>
-    <control controlID="37" controlTypeID="com.balsamiq.mockups::Label" x="315" y="257" w="-1" h="-1" measuredW="96" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Label" x="315" y="258" w="-1" h="-1" measuredW="96" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Nomination1%20title</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="284" w="354" h="60" measuredW="200" measuredH="140" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="285" w="354" h="60" measuredW="200" measuredH="140" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="39" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="350" w="354" h="72" measuredW="200" measuredH="140" zOrder="23" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="351" w="354" h="72" measuredW="200" measuredH="140" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetur%20adipiscing%20elit.%20Praesent%20ac%20purus%20vel%20est%20hendrerit%20ullamcorper.%20Cras%20elementum%20maximus%20arcu%2C%20id%20sodales%20dolor%20vestibulum%20vel.</text>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="431" w="354" h="48" measuredW="200" measuredH="140" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="432" w="354" h="48" measuredW="200" measuredH="140" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetur%20adipiscing%20elit.%20Praesent%20ac%20purus%20vel%20est%20hendrerit%20ullamcorper.</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="315" y="494" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="315" y="495" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Nomination2%20title</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="521" w="354" h="60" measuredW="200" measuredH="140" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="522" w="354" h="60" measuredW="200" measuredH="140" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="587" w="354" h="72" measuredW="200" measuredH="140" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TextArea" x="329" y="588" w="354" h="72" measuredW="200" measuredH="140" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetur%20adipiscing%20elit.%20Praesent%20ac%20purus%20vel%20est%20hendrerit%20ullamcorper.%20Cras%20elementum%20maximus%20arcu%2C%20id%20sodales%20dolor%20vestibulum%20vel.</text>
       </controlProperties>
     </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::CheckBox" x="619" y="484" w="-1" h="-1" measuredW="63" measuredH="22" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::CheckBox" x="619" y="485" w="-1" h="-1" measuredW="63" measuredH="22" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Include</text>
       </controlProperties>
     </control>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::CheckBox" x="619" y="260" w="-1" h="-1" measuredW="63" measuredH="22" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::CheckBox" x="619" y="261" w="-1" h="-1" measuredW="63" measuredH="22" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <state>selected</state>
         <text>Include</text>
       </controlProperties>
     </control>
-    <control controlID="46" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="159" w="-1" h="-1" measuredW="50" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="159" w="-1" h="-1" measuredW="50" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Polls</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::DataGrid" x="28" y="209" w="945" h="141" measuredW="845" measuredH="141" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Poll%20title%2C%20Publication%20date%2C%20Nomination%20date%2C%20Vote%20date%2C%20Vote%20deadline%20date%2C%20Announcement%20date%2C%20State%2C%20Edit%20or%20delete%2C%20Merge%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C%0ANews1%20title%2C%202014.04.15.%2C%202014.04.20.%2C%202014.05.02.%2C%202014.05.15.%2C%202014.05.17%2C%20Nomination%2C</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="816" y="229" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Button" x="816" y="258" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="816" y="289" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Button" x="816" y="318" w="-1" h="-1" measuredW="46" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Button" x="866" y="229" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Del</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="866" y="258" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Del</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Button" x="866" y="289" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Del</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Button" x="866" y="318" w="-1" h="-1" measuredW="42" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Del</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="912" y="258" w="59" h="27" measuredW="59" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Merge</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Button" x="912" y="289" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Merge</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Button" x="912" y="318" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Merge</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Button" x="912" y="229" w="59" h="27" measuredW="59" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Merge</text>
       </controlProperties>
     </control>
   </controls>

@@ -14,7 +14,7 @@ namespace NominateAndVote.RestService.Controllers
         public PollAdminController()
         {
             // TODO Lali tablestorage / config alapján
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public PollAdminController(IDataManager dataManager)
@@ -41,14 +41,6 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var poll = pollBindingModel.ToPoco();
-            if (poll.Id == Guid.Empty)
-            {
-                poll.Id = Guid.NewGuid();
-            }
-            else
-            {
-                var oldPoll = _dataManager.QueryPoll(poll.Id);
-            }
 
             _dataManager.SavePoll(poll);
 

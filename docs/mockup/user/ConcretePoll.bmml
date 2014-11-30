@@ -15,12 +15,12 @@
         <text>Poll%20name</text>
       </controlProperties>
     </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="391" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="396" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>news%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml%2CPolls%26bm%3BPolls.bmml%26bm%3BPolls.bmml%26bm%3BPolls.bmml%2CFAQ%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%2CcontactUs%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%2C</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22220%2C98%2C320%2C125%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22320%2C98%2C409%2C125%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22409%2C98%2C495%2C125%22%20href%3D%22FAQ.bmml%22%20alt%3D%22FAQ%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22495%2C98%2C653%2C125%22%20href%3D%22contactUs.bmml%22%20alt%3D%22contactUs%22%20id%3D%227%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22220%2C98%2C318%2C125%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22318%2C98%2C406%2C125%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22406%2C98%2C491%2C125%22%20href%3D%22FAQ.bmml%22%20alt%3D%22FAQ%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22491%2C98%2C647%2C125%22%20href%3D%22contactUs.bmml%22%20alt%3D%22contactUs%22%20id%3D%227%22/%3E%0A</map>
         <selectedIndex>-1</selectedIndex>
-        <text>News%2C%20Polls%2C%20FAQ%2C%20Contact%20us%2C%20Login%20with%20Facebook</text>
+        <text>News%2C%20Polls%2C%20FAQ%2C%20Contact%20us%2C%20Log%20in%20with%20Facebook</text>
       </controlProperties>
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::List" x="51" y="239" w="172" h="72" measuredW="100" measuredH="126" zOrder="4" locked="false" isInGroup="-1">

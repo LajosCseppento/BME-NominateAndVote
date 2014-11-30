@@ -5,12 +5,12 @@
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="220" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="225" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>news%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml%2CPolls%26bm%3BPolls.bmml%26bm%3BPolls.bmml%26bm%3BPolls.bmml%2C%2C</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22223%2C97%2C400%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22400%2C97%2C559%2C124%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%227%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22223%2C97%2C397%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%227%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22397%2C97%2C552%2C124%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%227%22/%3E%0A</map>
         <selectedIndex>-1</selectedIndex>
-        <text>News%2C%20Polls%2C%20Ban%2C%20Logout</text>
+        <text>News%2C%20Polls%2C%20Ban%2C%20Log%20out</text>
       </controlProperties>
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="2" locked="false" isInGroup="-1">

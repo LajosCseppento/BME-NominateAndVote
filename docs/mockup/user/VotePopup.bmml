@@ -1,6 +1,6 @@
 <mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="976" measuredH="766" mockupW="960" mockupH="750">
   <controls>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::ModalScreen" x="16" y="89" w="960" h="647" measuredW="320" measuredH="240" zOrder="13" locked="false" isInGroup="-1"/>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::ModalScreen" x="16" y="90" w="960" h="646" measuredW="320" measuredH="240" zOrder="13" locked="false" isInGroup="-1"/>
     <control controlID="20" controlTypeID="com.balsamiq.mockups::TitleWindow" x="282" y="182" w="450" h="478" measuredW="450" measuredH="400" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Vote</text>
@@ -118,40 +118,35 @@
         <text>Poll1%20title</text>
       </controlProperties>
     </control>
-    <control controlID="77" controlTypeID="com.balsamiq.mockups::ButtonBar" x="233" y="113" w="700" h="27" measuredW="427" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::ButtonBar" x="233" y="113" w="700" h="27" measuredW="432" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>news%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml%2CLoggedInPolls%26bm%3BLoggedInPolls.bmml%26bm%3BLoggedInPolls.bmml%26bm%3BLoggedInPolls.bmml%2CMyNominations%26bm%3BMyNominations.bmml%26bm%3BMyNominations.bmml%26bm%3BMyNominations.bmml%2CFAQ%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%2CcontactUs%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%2Cnews%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22217%2C97%2C310%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22310%2C97%2C393%2C124%22%20href%3D%22LoggedInPolls.bmml%22%20alt%3D%22LoggedInPolls%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22393%2C97%2C581%2C124%22%20href%3D%22MyNominations.bmml%22%20alt%3D%22MyNominations%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22581%2C97%2C661%2C124%22%20href%3D%22FAQ.bmml%22%20alt%3D%22FAQ%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22661%2C97%2C808%2C124%22%20href%3D%22contactUs.bmml%22%20alt%3D%22contactUs%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22808%2C97%2C914%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%2277%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22217%2C97%2C309%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22309%2C97%2C391%2C124%22%20href%3D%22LoggedInPolls.bmml%22%20alt%3D%22LoggedInPolls%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22391%2C97%2C577%2C124%22%20href%3D%22MyNominations.bmml%22%20alt%3D%22MyNominations%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22577%2C97%2C656%2C124%22%20href%3D%22FAQ.bmml%22%20alt%3D%22FAQ%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22656%2C97%2C801%2C124%22%20href%3D%22contactUs.bmml%22%20alt%3D%22contactUs%22%20id%3D%2277%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22801%2C97%2C914%2C124%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%2277%22/%3E%0A</map>
         <selectedIndex>-1</selectedIndex>
-        <text>News%2C%20Polls%2C%20My%20nominations%2C%20FAQ%2C%20Contact%20us%2C%20Logout</text>
+        <text>News%2C%20Polls%2C%20My%20nominations%2C%20FAQ%2C%20Contact%20us%2C%20Log%20out</text>
       </controlProperties>
     </control>
-    <control controlID="78" controlTypeID="com.balsamiq.mockups::Paragraph" x="799" y="143" w="129" h="22" measuredW="200" measuredH="80" zOrder="21" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Youe%20are%20login%20as%20XY.</text>
-      </controlProperties>
-    </control>
-    <control controlID="79" controlTypeID="com.balsamiq.mockups::SubTitle" x="30" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::SubTitle" x="30" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Logo/%20Title</text>
       </controlProperties>
     </control>
-    <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="117" y="213" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="117" y="213" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>winner%20is%20XY%20%2870%25%29</text>
       </controlProperties>
     </control>
-    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="119" y="243" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="119" y="243" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <text>winner%20is%20XY%20%2870%25%29</text>
       </controlProperties>
     </control>
-    <control controlID="82" controlTypeID="com.balsamiq.mockups::Label" x="117" y="268" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Label" x="117" y="268" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>winner%20is%20XY%20%2870%25%29</text>
       </controlProperties>
     </control>
-    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="117" y="296" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="117" y="296" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>winner%20is%20XY%20%2870%25%29</text>
       </controlProperties>

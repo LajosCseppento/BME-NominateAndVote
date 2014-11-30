@@ -1,5 +1,4 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Web.Http;
@@ -14,7 +13,7 @@ namespace NominateAndVote.RestService.Controllers
         public NewsAdminController()
         {
             // TODO Lali tablestorage / config alapján
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public NewsAdminController(IDataManager dataManager)
@@ -41,9 +40,9 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var news = newsBindingModel.ToPoco();
+            
             if (news.Id == Guid.Empty)
             {
-                news.Id = Guid.NewGuid();
                 news.PublicationDate = DateTime.Now;
             }
             else

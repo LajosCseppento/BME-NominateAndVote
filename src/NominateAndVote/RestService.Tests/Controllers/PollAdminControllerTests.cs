@@ -13,7 +13,25 @@ namespace NominateAndVote.RestService.Tests.Controllers
     /// Summary description for PollAdminController
     /// </summary>
     [TestClass]
-    public class PollAdminControllerTests
+    public class PollAdminControllerMemoryTests : PollAdminControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    [TestClass]
+    public class PollAdminControllerTableStorageTests : PollAdminControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            // TODO Lali 
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    public abstract class PollAdminControllerGenericTests
     {
         private PollAdminController _controller;
         private IDataManager _dataManager;
@@ -21,9 +39,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
         [TestInitialize]
         public void Initialize()
         {
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = CreateDataManager();
             _controller = new PollAdminController(_dataManager);
         }
+
+        protected abstract IDataManager CreateDataManager();
 
         //Correct object
         [TestMethod]
@@ -53,4 +73,5 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual(result.Content, _dataManager.QueryPoll(result.Content.Id));
         }
     }
+   
 }

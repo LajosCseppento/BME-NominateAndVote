@@ -1,6 +1,5 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
-using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace NominateAndVote.RestService.Controllers
         public NominationController()
         {
             // TODO Lali tablestorage / config alapján
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public NominationController(IDataManager dataManager)
@@ -44,10 +43,9 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Save")]
         [HttpPost]
-        public IHttpActionResult Save(NominationBindingModel newsBindingModel)
+        public IHttpActionResult Save(NominationBindingModel nominationBindingModel)
         {
-            // TODO ezt beszéljük meg
-            if (newsBindingModel == null)
+            if (nominationBindingModel == null)
             {
                 return BadRequest("No data");
             }
@@ -56,27 +54,7 @@ namespace NominateAndVote.RestService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var nomination = newsBindingModel.ToPoco();
-            if (nomination.Id == Guid.Empty)
-            {
-                nomination.Id = Guid.NewGuid();
-            }
-            else
-            {
-                var poll = _dataManager.QueryPoll(nomination.Poll.Id);
-                var user = _dataManager.QueryUser(nomination.User.Id);
-                var nominations = _dataManager.QueryNominations(poll, user);
-                Nomination oldNomination;
-                foreach (var n in nominations)
-                {
-                    if (n.Id == nomination.Id)
-                    {
-                        oldNomination = nomination;
-                        break;
-                    }
-                }
-            }
-
+            var nomination = nominationBindingModel.ToPoco();
             _dataManager.SaveNomination(nomination);
 
             return Ok(nomination);

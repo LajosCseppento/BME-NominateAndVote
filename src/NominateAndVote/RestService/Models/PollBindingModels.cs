@@ -69,29 +69,24 @@ namespace NominateAndVote.RestService.Models
             Guid id = Guid.Empty;
             Guid.TryParse(ID, out id);
             PollState state;
-            if (State.Equals("CLOSED"))
-            {
+            if (State.Equals("CLOSED")) {
                 state = PollState.CLOSED;
-            }
-            else if (State.Equals("NOMINATION"))
-            {
-                state = PollState.NOMINATION;
-            }
-            else
-            {
-                state = PollState.VOTING;
+            } else if(State.Equals("NOMINATION")){
+                state=PollState.NOMINATION;
+            } else{
+                state=PollState.VOTING;
             }
 
             return new Poll()
             {
                 ID = id,
                 Text = Text,
-                PublicationDate = PublicationDate,
-                NominationDeadline = NominationDeadline,
-                VotingStartDate = VotingStartDate,
-                VotingDeadline = VotingDeadline,
-                AnnouncementDate = AnnouncementDate,
-                State = state
+                PublicationDate=PublicationDate,
+                NominationDeadline=NominationDeadline,
+                VotingStartDate=VotingStartDate,
+                VotingDeadline=VotingDeadline,
+                AnnouncementDate=AnnouncementDate,
+                State=state
             };
         }
     }

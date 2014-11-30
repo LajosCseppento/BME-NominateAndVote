@@ -3,11 +3,14 @@ using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    [RoutePrefix("api/Nomination")]
+     [RoutePrefix("api/Nomination")]
     public class NominationController : ApiController
     {
         private IDataManager dataManager;
@@ -68,14 +71,12 @@ namespace NominateAndVote.RestService.Controllers
             else
             {
                 Poll poll = dataManager.QueryPoll(nomination.Poll.ID);
-                User user = dataManager.QueryUser(nomination.User.ID);
-                List<Nomination> nominations = dataManager.QueryNominations(poll, user);
+                User user= dataManager.QueryUser(nomination.User.ID);
+                List<Nomination> nominations=dataManager.QueryNominations(poll, user);
                 Nomination oldNomination;
-                foreach (Nomination n in nominations)
-                {
-                    if (nomination.ID == nomination.ID)
-                    {
-                        oldNomination = nomination;
+                foreach(Nomination n in nominations){
+                    if(nomination.ID==nomination.ID){
+                        oldNomination=nomination;
                     }
                 }
             }
@@ -92,8 +93,10 @@ namespace NominateAndVote.RestService.Controllers
             Guid idGuid = Guid.Empty;
             if (Guid.TryParse(id, out idGuid))
             {
-                dataManager.DeleteNomination(idGuid);
+               dataManager.DeleteNomination(idGuid);
             }
         }
+
+
     }
 }

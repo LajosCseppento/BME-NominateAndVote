@@ -136,7 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NewsAdminControllerTest.cs" />
-    <Compile Include="Controllers\NewsControllerTests.cs" />
+    <Compile Include="Controllers\NewsControllerTest.cs" />
     <Compile Include="Controllers\PollAdminControllerTest.cs" />
     <Compile Include="Controllers\PollControllerTest.cs" />
     <Compile Include="Controllers\PollsControllerTest.cs" />

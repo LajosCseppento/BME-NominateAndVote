@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class NewsControllerTests
+    public class NewsControllerTest
     {
         private NewsController controller;
         private DataModelManager dataManager;

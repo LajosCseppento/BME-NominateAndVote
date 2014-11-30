@@ -44,13 +44,6 @@ namespace NominateAndVote.RestService.Controllers
             return dataManager.QueryPolls(PollState.VOTING);
         }
 
-        [Route("ClosedPolls")]
-        [HttpGet]
-        public IEnumerable<Poll> GetClosedPolls()
-        {
-            return dataManager.QueryPolls(PollState.CLOSED);
-        }
-
         private List<Poll> QueryPolls(PollState state)
         {
             List<Poll> polls = dataManager.QueryPolls(state);

@@ -3,7 +3,6 @@ using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
@@ -21,18 +20,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
             dataManager = new DataModelManager(model);
 
             controller = new PollController(dataManager);
-        }
-
-        [TestMethod]
-        public void Get_Closed()
-        {
-            // Arrange
-
-            // Act
-            var result = controller.GetClosedPolls() as List<Poll>;
-
-            // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.CLOSED)).Count == result.Count);
         }
 
         [TestMethod]
@@ -57,19 +44,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsTrue((dataManager.QueryPolls(PollState.VOTING)).Count == result.Count);
-        }
-
-        [TestMethod]
-        public void Get_ByID()
-        {
-            // Arrange
-
-            // Act
-            Poll poll = dataManager.QueryPolls().ElementAt(0);
-            var result = controller.Get(poll.ID.ToString()) as Poll;
-
-            // Assert
-            Assert.AreEqual(poll, result);
         }
     }
 }

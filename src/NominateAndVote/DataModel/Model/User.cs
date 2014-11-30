@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NominateAndVote.DataModel.Model
 {
-    public class User : BasePocoWithId<Guid, User>
+    public class User : BasePocoWithId<long, User>
     {
         public string Name { get; set; }
 

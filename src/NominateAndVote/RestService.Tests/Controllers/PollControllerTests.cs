@@ -21,7 +21,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
     {
         protected override IDataManager CreateDataManager()
         {
-            // TODO Lali 
+            // TODO Lali
             return new SampleDataModel().CreateDataManager();
         }
     }
@@ -65,5 +65,5 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.IsTrue((_dataManager.QueryPolls(PollState.Voting)).Count == result.Count);
         }
-    }    
+    }
 }

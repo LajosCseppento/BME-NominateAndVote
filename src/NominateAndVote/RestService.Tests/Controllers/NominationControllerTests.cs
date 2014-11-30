@@ -9,7 +9,6 @@ using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-
     [TestClass]
     public class NominationControllerMemoryTests : NominationControllerGenericTests
     {
@@ -55,9 +54,9 @@ namespace NominateAndVote.RestService.Tests.Controllers
             {
                 Text = "text",
                 VoteCount = 0,
-                PollId=poll.Id.ToString(),
-                UserId=user.Id.ToString(),
-                PollSubjectId=subject.Id
+                PollId = poll.Id.ToString(),
+                UserId = user.Id.ToString(),
+                PollSubjectId = subject.Id
             };
 
             // Act

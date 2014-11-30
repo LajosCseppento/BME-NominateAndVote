@@ -7,7 +7,6 @@ using NominateAndVote.RestService.Models;
 using System;
 using System.Linq;
 using System.Web.Http.Results;
-using System.Web.Http;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
@@ -25,7 +24,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
     {
         protected override IDataManager CreateDataManager()
         {
-            // TODO Lali 
+            // TODO Lali
             return new SampleDataModel().CreateDataManager();
         }
     }

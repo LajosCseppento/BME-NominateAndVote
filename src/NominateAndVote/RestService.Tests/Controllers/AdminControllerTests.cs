@@ -1,11 +1,9 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Model;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
-using NominateAndVote.DataModel.Model;
+using System;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers

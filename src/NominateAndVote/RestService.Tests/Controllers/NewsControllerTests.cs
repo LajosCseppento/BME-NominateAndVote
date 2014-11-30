@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-
     [TestClass]
     public class NewsControllerMemoryTests : NewsControllerGenericTests
     {

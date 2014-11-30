@@ -31,7 +31,6 @@ namespace NominateAndVote.RestService.Controllers
         {
             // TODO Lali
             return Ok();
-
         }
 
         [Route("Logout")]
@@ -40,7 +39,6 @@ namespace NominateAndVote.RestService.Controllers
         {
             // TODO Lali
             return Ok();
-
         }
     }
 }

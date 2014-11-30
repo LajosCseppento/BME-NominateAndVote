@@ -40,7 +40,7 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var news = newsBindingModel.ToPoco();
-            
+
             if (news.Id == Guid.Empty)
             {
                 news.PublicationDate = DateTime.Now;

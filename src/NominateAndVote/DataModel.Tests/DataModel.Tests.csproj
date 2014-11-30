@@ -98,6 +98,8 @@
     <Compile Include="Unit\DefaultDataModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleDataModel.cs" />
+    <Compile Include="Unit\PocoStoreTests.cs" />
+    <Compile Include="Unit\PocoWithIdStoreTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj">

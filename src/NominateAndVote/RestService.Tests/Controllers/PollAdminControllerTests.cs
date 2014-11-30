@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
@@ -50,8 +50,9 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SavePoll_Correct()
         {
             // Arrange
-            var bindingModel = new PollBindingModell
+            var bindingModel = new SavePollBindingModel
             {
+                Title = "title",
                 Text = "text",
                 State = "VOTING",
                 AnnouncementDate = DateTime.Now.AddDays(+5),
@@ -68,6 +69,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual(PollState.Voting, result.Content.State);
+            Assert.AreEqual("title", result.Content.Title);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
             Assert.AreEqual(result.Content, _dataManager.QueryPoll(result.Content.Id));

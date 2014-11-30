@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;

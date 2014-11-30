@@ -1,11 +1,13 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
     public class PollEntity : TableEntity
     {
+        public string Title { get; set; }
+
         public string Text { get; set; }
 
         public DateTime PublicationDate { get; set; }
@@ -32,6 +34,7 @@ namespace NominateAndVote.DataTableStorage.Model
             PartitionKey = poco.State.ToString();
             RowKey = poco.Id.ToString();
 
+            Title = poco.Title;
             Text = poco.Text;
             PublicationDate = poco.PublicationDate;
             NominationDeadline = poco.NominationDeadline;

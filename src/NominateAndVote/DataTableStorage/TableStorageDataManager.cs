@@ -1,7 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
+using NominateAndVote.DataTableStorage.Model;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +17,7 @@ namespace NominateAndVote.DataTableStorage
         {
             if (storageAccount == null)
             {
-                throw new ArgumentException("The storage account must not be null", "storageAccount");
+                throw new ArgumentNullException("storageAccount", "The storage account must not be null");
             }
 
             _storageAccount = storageAccount;
@@ -41,6 +42,11 @@ namespace NominateAndVote.DataTableStorage
 
         private bool SaveEntity(ITableEntity entity)
         {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity", "The entity must not be null");
+            }
+
             var table = GetTableReference(entity.GetType());
 
             var op = TableOperation.InsertOrReplace(entity);
@@ -50,11 +56,32 @@ namespace NominateAndVote.DataTableStorage
 
         private CloudTable GetTableReference(Type entityType)
         {
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("entityType", "The entity type must not be null");
+            }
+
             return _tableClient.GetTableReference(TableNames.GetTableName(entityType));
         }
 
         public bool IsAdmin(User user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException("user", "The user must not be null");
+            }
+
+            var table = GetTableReference(typeof(Administrator));
+            var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(user.Id.ToString("D8"), "");
+            var result = table.Execute(retrieveOperation);
+            var entity = result.Result as PollSubjectEntity;
+            if (entity != null)
+            {
+                Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey, entity.Title, entity.Year);
+            }
+
+            //return entity;
+
             throw new NotImplementedException();
         }
 
@@ -148,7 +175,7 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public User QueryUser(Guid id)
+        public User QueryUser(long id)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataModel.Tests.Unit
@@ -30,7 +30,7 @@ namespace NominateAndVote.DataModel.Tests.Unit
         [TestMethod]
         public void Administrator_Constructor()
         {
-            Assert.AreEqual(Guid.Empty, _administrator.UserId);
+            Assert.AreEqual(0, _administrator.UserId);
         }
 
         [TestMethod]
@@ -58,6 +58,7 @@ namespace NominateAndVote.DataModel.Tests.Unit
         public void Poll_Constructor()
         {
             Assert.AreEqual(Guid.Empty, _poll.Id);
+            Assert.IsNull(_poll.Title);
             Assert.IsNull(_poll.Text);
             Assert.AreEqual(PollState.Nomination, _poll.State);
             Assert.AreEqual(DateTime.MinValue, _poll.PublicationDate);
@@ -79,7 +80,7 @@ namespace NominateAndVote.DataModel.Tests.Unit
         [TestMethod]
         public void User_Constructor()
         {
-            Assert.AreEqual(Guid.Empty, _user.Id);
+            Assert.AreEqual(0, _user.Id);
             Assert.IsNull(_user.Name);
             Assert.AreEqual(false, _user.IsBanned);
             Assert.AreEqual(0, _user.Nominations.Count);

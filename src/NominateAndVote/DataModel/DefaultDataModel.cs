@@ -1,33 +1,34 @@
-﻿using NominateAndVote.DataModel.Model;
-using System.Collections.Generic;
+﻿using NominateAndVote.DataModel.Common;
+using NominateAndVote.DataModel.Poco;
+using System;
 
 namespace NominateAndVote.DataModel
 {
     public class DefaultDataModel : IDataModel
     {
-        public List<Administrator> Administrators { get; private set; }
+        public PocoStore<Administrator> Administrators { get; private set; }
 
-        public List<News> News { get; private set; }
+        public PocoWithIdStore<Guid, News> News { get; private set; }
 
-        public List<Nomination> Nominations { get; private set; }
+        public PocoWithIdStore<Guid, Nomination> Nominations { get; private set; }
 
-        public List<Poll> Polls { get; private set; }
+        public PocoWithIdStore<Guid, Poll> Polls { get; private set; }
 
-        public List<PollSubject> PollSubjects { get; private set; }
+        public PocoWithIdStore<long, PollSubject> PollSubjects { get; private set; }
 
-        public List<User> Users { get; private set; }
+        public PocoWithIdStore<long, User> Users { get; private set; }
 
-        public List<Vote> Votes { get; private set; }
+        public PocoStore<Vote> Votes { get; private set; }
 
         public DefaultDataModel()
         {
-            Administrators = new List<Administrator>();
-            News = new List<News>();
-            Nominations = new List<Nomination>();
-            Polls = new List<Poll>();
-            PollSubjects = new List<PollSubject>();
-            Users = new List<User>();
-            Votes = new List<Vote>();
+            Administrators = new PocoStore<Administrator>();
+            News = new PocoWithIdStore<Guid, News>();
+            Nominations = new PocoWithIdStore<Guid, Nomination>();
+            Polls = new PocoWithIdStore<Guid, Poll>();
+            PollSubjects = new PocoWithIdStore<long, PollSubject>();
+            Users = new PocoWithIdStore<long, User>();
+            Votes = new PocoStore<Vote>();
         }
 
         public void Clear()
@@ -64,7 +65,7 @@ namespace NominateAndVote.DataModel
             {
                 if (vote.Nomination != null)
                 {
-                    vote.Nomination.Votes.Add(vote);
+                    vote.Nomination.Votes.AddOrUpdate(vote);
                 }
             }
 
@@ -72,12 +73,12 @@ namespace NominateAndVote.DataModel
             {
                 if (nomination.Poll != null)
                 {
-                    nomination.Poll.Nominations.Add(nomination);
+                    nomination.Poll.Nominations.AddOrUpdate(nomination);
                 }
 
                 if (nomination.User != null)
                 {
-                    nomination.User.Nominations.Add(nomination);
+                    nomination.User.Nominations.AddOrUpdate(nomination);
                 }
             }
         }

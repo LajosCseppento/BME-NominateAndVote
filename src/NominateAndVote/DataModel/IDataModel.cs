@@ -1,23 +1,24 @@
-﻿using NominateAndVote.DataModel.Model;
-using System.Collections.Generic;
+﻿using NominateAndVote.DataModel.Common;
+using NominateAndVote.DataModel.Poco;
+using System;
 
 namespace NominateAndVote.DataModel
 {
     public interface IDataModel
     {
-        List<Administrator> Administrators { get; }
+        PocoStore<Administrator> Administrators { get; }
 
-        List<News> News { get; }
+        PocoWithIdStore<Guid, News> News { get; }
 
-        List<Nomination> Nominations { get; }
+        PocoWithIdStore<Guid, Nomination> Nominations { get; }
 
-        List<Poll> Polls { get; }
+        PocoWithIdStore<Guid, Poll> Polls { get; }
 
-        List<PollSubject> PollSubjects { get; }
+        PocoWithIdStore<long, PollSubject> PollSubjects { get; }
 
-        List<User> Users { get; }
+        PocoWithIdStore<long, User> Users { get; }
 
-        List<Vote> Votes { get; }
+        PocoStore<Vote> Votes { get; }
 
         void Clear();
 

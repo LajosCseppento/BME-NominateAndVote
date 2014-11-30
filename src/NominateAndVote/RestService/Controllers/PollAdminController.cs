@@ -1,12 +1,11 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    [RoutePrefix("api/AdminPoll")]
+    [RoutePrefix("api/PollAdmin")]
     public class PollAdminController : ApiController
     {
         private readonly IDataManager _dataManager;
@@ -29,9 +28,9 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Save")]
         [HttpPost]
-        public IHttpActionResult Save(PollBindingModell pollBindingModel)
+        public IHttpActionResult Save(SavePollBindingModel savePollBindingModel)
         {
-            if (pollBindingModel == null)
+            if (savePollBindingModel == null)
             {
                 return BadRequest("No data");
             }
@@ -40,7 +39,7 @@ namespace NominateAndVote.RestService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var poll = pollBindingModel.ToPoco();
+            var poll = savePollBindingModel.ToPoco();
 
             _dataManager.SavePoll(poll);
 

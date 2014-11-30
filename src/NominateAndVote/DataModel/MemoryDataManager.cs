@@ -1,4 +1,5 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Common;
+using NominateAndVote.DataModel.Poco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,379 +8,233 @@ namespace NominateAndVote.DataModel
 {
     public class MemoryDataManager : IDataManager
     {
-        public IDataModel DataModel { get; private set; }
+        private IDataModel DataModel { get; set; }
 
         public MemoryDataManager(IDataModel dataModel)
         {
-            if (dataModel == null)
-            {
-                throw new ArgumentNullException("dataModel", "The data model must not be null");
-            }
+            if (dataModel == null) { throw new ArgumentNullException("dataModel", "The data model must not be null"); }
 
             DataModel = dataModel;
         }
 
         public bool IsAdmin(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            var q = from a in DataModel.Administrators
-                    where a.UserId == user.Id
-                    select a;
-
-            return q.Any();
+            return DataModel.Administrators.Any(a => (a.UserId == user.Id));
         }
 
         public List<News> QueryNews()
         {
-            var q = from n in DataModel.News
-                    orderby n.PublicationDate descending
-                    select n;
-
-            return q.ToList();
+            return DataModel.News.ToSortedList();
         }
 
         public News QueryNews(Guid id)
         {
-            var q = from n in DataModel.News
-                    where n.Id == id
-                    select n;
-
-            return q.SingleOrDefault();
+            return DataModel.News.Get(id);
         }
 
         public void SaveNews(News news)
         {
-            if (news == null)
-            {
-                throw new ArgumentNullException("news", "The news must not be null");
-            }
+            // check
+            if (news == null) { throw new ArgumentNullException("news", "The news must not be null"); }
 
-            if (news.Id == Guid.Empty)
-            {
-                // now ID, new object
-                news.Id = Guid.NewGuid();
-            }
-            else
-            {
-                // maybe a new, maybe an old object
-                var q = from n in DataModel.News
-                        where n.Id == news.Id
-                        select n;
+            // new object, new ID
+            if (news.Id == Guid.Empty) { news.Id = Guid.NewGuid(); }
 
-                var oldNews = q.SingleOrDefault();
+            // save
+            DataModel.News.AddOrUpdate(news);
 
-                if (oldNews != null)
-                {
-                    // remove old
-                    DataModel.News.Remove(oldNews);
-                }
-            }
-
-            // add new
-            DataModel.News.Add(news);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public void DeleteNews(Guid id)
         {
-            var q = from n in DataModel.News
-                    where n.Id == id
-                    select n;
+            // remove
+            DataModel.News.Remove(id);
 
-            var news = q.SingleOrDefault();
-
-            if (news != null)
-            {
-                DataModel.News.Remove(news);
-            }
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public List<Nomination> QueryNominations(Poll poll)
         {
-            if (poll == null)
-            {
-                throw new ArgumentNullException("poll", "The poll must not be null");
-            }
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
 
-            var q = from n in poll.Nominations
-                    orderby n.Subject.Title, n.Subject.Year
-                    select n;
+            poll = DataModel.Polls.Get(poll);
+            if (poll == null) { throw new ArgumentException("The given poll is not present in the data model", "poll"); }
 
-            return q.ToList();
+            // query
+            return poll.Nominations.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(Poll poll, User user)
         {
-            if (poll == null)
-            {
-                throw new ArgumentNullException("poll", "The poll must not be null");
-            }
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            var q = from n in poll.Nominations
-                    where n.User != null && n.User.Id == user.Id
-                    orderby n.Subject.Title, n.Subject.Year
-                    select n;
+            poll = DataModel.Polls.Get(poll);
+            user = DataModel.Users.Get(user);
+            if (poll == null) { throw new ArgumentException("The given poll is not present in the data model", "poll"); }
+            if (user == null) { throw new ArgumentException("The given user is not present in the data model", "user"); }
 
-            return q.ToList();
+            // query
+            var q = poll.Nominations.Where(n => (n.User != null && n.User.Id == user.Id));
+            return q.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            // check
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            var q = from n in user.Nominations
-                    select n;
+            user = DataModel.Users.Get(user);
+            if (user == null) { throw new ArgumentException("The given user is not present in the data model", "user"); }
 
-            return q.ToList();
+            // query
+            return user.Nominations.ToSortedList();
         }
 
         public void SaveNomination(Nomination nomination)
         {
-            if (nomination == null)
-            {
-                throw new ArgumentNullException("nomination", "The nomination must not be null");
-            }
+            // check
+            if (nomination == null) { throw new ArgumentNullException("nomination", "The nomination must not be null"); }
 
-            if (nomination.Id == Guid.Empty)
-            {
-                // now ID, new object
-                nomination.Id = Guid.NewGuid();
-            }
-            else
-            {
-                // maybe a new, maybe an old object
-                var q = from n in DataModel.Nominations
-                        where n.Id == nomination.Id
-                        select n;
+            // new object, new ID
+            if (nomination.Id == Guid.Empty) { nomination.Id = Guid.NewGuid(); }
 
-                var oldNomination = q.SingleOrDefault();
+            // save
+            DataModel.Nominations.AddOrUpdate(nomination);
 
-                if (oldNomination != null)
-                {
-                    // remove old
-                    DataModel.Nominations.Remove(oldNomination);
-                }
-            }
-
-            // add new
-            DataModel.Nominations.Add(nomination);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public void DeleteNomination(Guid id)
         {
-            var q = from n in DataModel.Nominations
-                    where n.Id == id
-                    select n;
+            // remove
+            DataModel.Nominations.Remove(id);
 
-            var nomination = q.SingleOrDefault();
-
-            if (nomination != null)
-            {
-                DataModel.Nominations.Remove(nomination);
-            }
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public List<Poll> QueryPolls()
         {
-            var q = from p in DataModel.Polls
-                    orderby p.AnnouncementDate descending
-                    select p;
-
-            return q.ToList();
+            return DataModel.Polls.ToSortedList();
         }
 
         public Poll QueryPoll(Guid id)
         {
-            var q = from p in DataModel.Polls
-                    where p.Id == id
-                    select p;
-
-            return q.SingleOrDefault();
+            return DataModel.Polls.Get(id);
         }
 
         public List<Poll> QueryPolls(PollState state)
         {
-            var q = from p in DataModel.Polls
-                    where p.State == state
-                    orderby p.AnnouncementDate descending
-                    select p;
-
-            return q.ToList();
+            var q = DataModel.Polls.Where(p => (p.State == state));
+            return q.ToSortedList();
         }
 
         public void SavePoll(Poll poll)
         {
-            if (poll == null)
-            {
-                throw new ArgumentNullException("poll", "The poll must not be null");
-            }
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
 
-            if (poll.Id == Guid.Empty)
-            {
-                // now ID, new object
-                poll.Id = Guid.NewGuid();
-            }
-            else
-            {
-                // maybe a new, maybe an old object
-                var q = from p in DataModel.Polls
-                        where p.Id == poll.Id
-                        select p;
+            // new object, new ID
+            if (poll.Id == Guid.Empty) { poll.Id = Guid.NewGuid(); }
 
-                var oldPoll = q.SingleOrDefault();
+            // save
+            DataModel.Polls.AddOrUpdate(poll);
 
-                if (oldPoll != null)
-                {
-                    // remove old
-                    DataModel.Polls.Remove(oldPoll);
-                }
-            }
-
-            // add new
-            DataModel.Polls.Add(poll);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public PollSubject QueryPollSubject(long id)
         {
-            var q = from ps in DataModel.PollSubjects
-                    where ps.Id == id
-                    select ps;
-
-            return q.SingleOrDefault();
+            return DataModel.PollSubjects.Get(id);
         }
 
         public List<PollSubject> SearchPollSubjects(string term)
         {
-            if (term == null)
-            {
-                throw new ArgumentNullException("term", "The search term must not be null");
-            }
+            // check
+            if (term == null) { throw new ArgumentNullException("term", "The search term must not be null"); }
 
-            var q = from ps in DataModel.PollSubjects
-                    where ps.Title.StartsWith(term)
-                    select ps;
-
-            return q.ToList();
+            // query
+            var q = DataModel.PollSubjects.Where(ps => (ps.Title.StartsWith(term)));
+            return q.ToSortedList();
         }
 
         public void SavePollSubject(PollSubject pollSubject)
         {
-            if (pollSubject == null)
-            {
-                throw new ArgumentNullException("pollSubject", "The poll subject must not be null");
-            }
+            // check
+            if (pollSubject == null) { throw new ArgumentNullException("pollSubject", "The poll subject must not be null"); }
 
-            // maybe a new, maybe an old object
-            var q = from ps in DataModel.PollSubjects
-                    where ps.Id == pollSubject.Id
-                    select ps;
+            // save
+            DataModel.PollSubjects.AddOrUpdate(pollSubject);
 
-            var oldPollSubject = q.SingleOrDefault();
-
-            if (oldPollSubject != null)
-            {
-                // remove old
-                DataModel.PollSubjects.Remove(oldPollSubject);
-            }
-
-            // add new
-            DataModel.PollSubjects.Add(pollSubject);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public void SavePollSubjectsBatch(IEnumerable<PollSubject> pollSubjects)
         {
-            // it makes sense during the long import into the cloud
+            // check
+            if (pollSubjects == null) { throw new ArgumentNullException("pollSubjects", "The poll subjects must not be null"); }
+
+            // save
             foreach (var ps in pollSubjects)
             {
-                SavePollSubject(ps);
+                DataModel.PollSubjects.AddOrUpdate(ps);
             }
+
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public List<User> QueryBannedUsers()
         {
-            var q = from u in DataModel.Users
-                    where u.IsBanned
-                    select u;
-
-            return q.ToList();
+            var q = DataModel.Users.Where(u => u.IsBanned);
+            return q.ToSortedList();
         }
 
-        public User QueryUser(Guid id)
+        public User QueryUser(long id)
         {
-            var q = from u in DataModel.Users
-                    where u.Id == id
-                    select u;
-
-            return q.SingleOrDefault();
+            return DataModel.Users.Get(id);
         }
 
         public List<User> SearchUsers(string term)
         {
-            if (term == null)
-            {
-                throw new ArgumentNullException("term", "The search term must not be null");
-            }
+            // check
+            if (term == null) { throw new ArgumentNullException("term", "The search term must not be null"); }
 
-            var q = from u in DataModel.Users
-                    where u.Name.StartsWith(term)
-                    select u;
-
-            return q.ToList();
+            // query
+            var q = DataModel.Users.Where(u => u.Name.StartsWith(term));
+            return q.ToSortedList();
         }
 
         public void SaveUser(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            // check
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            if (user.Id == Guid.Empty)
-            {
-                // now ID, new object
-                user.Id = Guid.NewGuid();
-            }
-            else
-            {
-                // maybe a new, maybe an old object
-                var q = from n in DataModel.Users
-                        where n.Id == user.Id
-                        select n;
+            // save
+            DataModel.Users.AddOrUpdate(user);
 
-                var oldUser = q.SingleOrDefault();
-
-                if (oldUser != null)
-                {
-                    // remove old
-                    DataModel.Users.Remove(oldUser);
-                }
-            }
-
-            // add new
-            DataModel.Users.Add(user);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
 
         public Vote QueryVote(Poll poll, User user)
         {
-            if (poll == null)
-            {
-                throw new ArgumentNullException("poll", "The poll must not be null");
-            }
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "The user must not be null");
-            }
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
+            // query
             var q = from v in DataModel.Votes
                     where v.Nomination.Poll.Id == poll.Id && v.User.Id == user.Id
                     select v;
@@ -389,26 +244,14 @@ namespace NominateAndVote.DataModel
 
         public void SaveVote(Vote vote)
         {
-            if (vote == null)
-            {
-                throw new ArgumentNullException("vote", "The vote must not be null");
-            }
+            // check
+            if (vote == null) { throw new ArgumentNullException("vote", "The vote must not be null"); }
 
-            // maybe a new, maybe an old object
-            var q = from v in DataModel.Votes
-                    where v.Nomination.Id == vote.Nomination.Id && v.User.Id == vote.User.Id
-                    select v;
+            // save
+            DataModel.Votes.AddOrUpdate(vote);
 
-            var oldVote = q.SingleOrDefault();
-
-            if (oldVote != null)
-            {
-                // remove old
-                DataModel.Votes.Remove(oldVote);
-            }
-
-            // add new
-            DataModel.Votes.Add(vote);
+            // refresh
+            DataModel.RefreshPocoRelationalLists();
         }
     }
 }

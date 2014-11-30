@@ -1,4 +1,4 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Poco;
 using System;
 using System.Collections.Generic;
 
@@ -66,7 +66,7 @@ namespace NominateAndVote.DataModel
 
         List<User> QueryBannedUsers();
 
-        User QueryUser(Guid id);
+        User QueryUser(long id);
 
         List<User> SearchUsers(string term);
 

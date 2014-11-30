@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
+using System.Linq;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -46,17 +47,17 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SaveNomination()
         {
             // Arrange
-            Poll poll = _dataManager.QueryPolls()[0];
-            User user = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Kis Bela" };
+            var poll = _dataManager.QueryPolls()[0];
+            var user = new User { Id = 888, IsBanned = false, Name = "Kis Bela" };
             _dataManager.SaveUser(user);
-            PollSubject subject = _dataManager.QueryPollSubject(1);
-            var bindingModel = new NominationBindingModel
+            var subject = _dataManager.QueryPollSubject(1);
+
+            var bindingModel = new SaveNominationBindingModel
             {
                 Text = "text",
-                VoteCount = 0,
                 PollId = poll.Id.ToString(),
-                UserId = user.Id.ToString(),
-                PollSubjectId = subject.Id
+                UserId = user.Id,
+                SubjectId = subject.Id
             };
 
             // Act
@@ -72,13 +73,16 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void DeleteNomination()
         {
             // Arrange
-            var nomination = _dataManager.QueryPolls()[1].Nominations[0];
+            var poll = _dataManager.QueryPolls()[1];
+            var nomination = poll.Nominations.First();
 
             // Act
-            _controller.Delete(nomination.Id.ToString());
+            var result = _controller.Delete(nomination.Id.ToString());
 
             // Assert
-            Assert.IsFalse(_dataManager.QueryPolls()[1].Nominations.Contains(nomination));
+            poll = _dataManager.QueryPolls()[1];
+            Assert.IsTrue(result);
+            Assert.IsFalse(poll.Nominations.Contains(nomination));
         }
     }
 }

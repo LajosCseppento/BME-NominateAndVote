@@ -12,7 +12,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void GetValue()
         {
             // Arrange
-            var controller = new ValuesController();
+            var controller = new ZzValuesController();
 
             // Act
             var result = controller.Get();
@@ -30,7 +30,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            var controller = new ValuesController();
+            var controller = new ZzValuesController();
 
             // Act
             var result = controller.Get(5);
@@ -43,7 +43,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void Post()
         {
             // Arrange
-            var controller = new ValuesController();
+            var controller = new ZzValuesController();
 
             // Act
             controller.Post("value");
@@ -56,7 +56,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void PutValue()
         {
             // Arrange
-            var controller = new ValuesController();
+            var controller = new ZzValuesController();
 
             // Act
             controller.Put(5, "value");
@@ -69,7 +69,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            var controller = new ValuesController();
+            var controller = new ZzValuesController();
 
             // Act
             controller.Delete(5);

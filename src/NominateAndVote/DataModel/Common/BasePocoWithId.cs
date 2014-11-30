@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace NominateAndVote.DataModel.Model
+namespace NominateAndVote.DataModel.Common
 {
     public abstract class BasePocoWithId<TId, TPoco> : BasePoco<TPoco>
         where TId : struct
-        where TPoco : BasePocoWithId<TId, TPoco>
+        where TPoco : BasePocoWithId<TId, TPoco>, new()
     {
         public TId Id { get; set; }
+
+        public sealed override bool Equals(TPoco other)
+        {
+            return IdEquals(other);
+        }
 
         public bool IdEquals(TPoco other)
         {
@@ -19,15 +24,7 @@ namespace NominateAndVote.DataModel.Model
             return Id.Equals(otherId);
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((TPoco)obj);
-        }
-
-        public override int GetHashCode()
+        public sealed override int GetHashCode()
         {
             return EqualityComparer<TId>.Default.GetHashCode(Id);
         }

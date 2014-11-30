@@ -1,6 +1,7 @@
-﻿namespace NominateAndVote.DataTableStorage
+﻿using NominateAndVote.DataModel.Poco;
+
+namespace NominateAndVote.DataTableStorage
 {
-    using DataModel.Model;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;

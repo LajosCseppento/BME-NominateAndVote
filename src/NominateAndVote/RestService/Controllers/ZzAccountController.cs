@@ -19,17 +19,17 @@ using System.Web.Http;
 namespace NominateAndVote.RestService.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    [RoutePrefix("api/ZzAccount")]
+    public class ZzAccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public ZzAccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public ZzAccountController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;

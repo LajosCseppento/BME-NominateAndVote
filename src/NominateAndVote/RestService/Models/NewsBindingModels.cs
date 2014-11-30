@@ -1,11 +1,9 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Poco;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace NominateAndVote.RestService.Models
 {
-    // Models used as parameters to AccountController actions.
-
     public class SaveNewsBindingModel
     {
         [DataType(DataType.Text)]
@@ -35,12 +33,9 @@ namespace NominateAndVote.RestService.Models
 
         public News ToPoco()
         {
-            var id = Guid.Empty;
-            Guid.TryParse(Id, out id);
-
             return new News
             {
-                Id = id,
+                Id = (Id != null ? Guid.Parse(Id) : Guid.Empty),
                 Title = Title,
                 Text = Text
             };

@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
-using System;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -50,10 +49,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
             [TestMethod]
             public void BanUser()
             {
-                // Act
-                var user = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Kis Bela" };
+                // Arrange
+                var user = new User { Id = 999, IsBanned = false, Name = "Kiss Bela" };
                 _dataManager.SaveUser(user);
-                var result = _controller.BanUser(user.Id.ToString()) as OkNegotiatedContentResult<User>;
+
+                // Act
+                var result = _controller.BanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
 
                 // Assert
                 Assert.IsNotNull(result);
@@ -63,10 +64,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
             [TestMethod]
             public void UnBanUser()
             {
-                // Act
-                var user = new User { Id = Guid.NewGuid(), IsBanned = true, Name = "Kis Bela" };
+                // Arrange
+                var user = new User { Id = 999, IsBanned = true, Name = "Kiss Bela" };
                 _dataManager.SaveUser(user);
-                var result = _controller.UnBanUser(user.Id.ToString()) as OkNegotiatedContentResult<User>;
+
+                // Act
+                var result = _controller.UnBanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
 
                 // Assert
                 Assert.IsNotNull(result);

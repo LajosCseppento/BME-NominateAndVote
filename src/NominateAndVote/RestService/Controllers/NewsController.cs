@@ -1,5 +1,5 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -27,7 +27,9 @@ namespace NominateAndVote.RestService.Controllers
             _dataManager = dataManager;
         }
 
-        public IEnumerable<News> Get()
+        [Route("ListNews")]
+        [HttpGet]
+        public IEnumerable<News> ListNews()
         {
             return _dataManager.QueryNews();
         }

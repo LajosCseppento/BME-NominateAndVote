@@ -1,5 +1,5 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
@@ -28,14 +28,14 @@ namespace NominateAndVote.RestService.Controllers
             _dataManager = dataManager;
         }
 
-        [Route("User")]
+        [Route("GetForUser")]
         [HttpGet]
-        public List<Nomination> Get(string id)
+        public IEnumerable<Nomination> GetForUser(string userId)
         {
-            Guid idGuid;
-            if (Guid.TryParse(id, out idGuid))
+            long id;
+            if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(idGuid);
+                var user = _dataManager.QueryUser(id);
                 return _dataManager.QueryNominations(user);
             }
             return null;
@@ -43,9 +43,9 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Save")]
         [HttpPost]
-        public IHttpActionResult Save(NominationBindingModel nominationBindingModel)
+        public IHttpActionResult Save(SaveNominationBindingModel saveNominationBindingModel)
         {
-            if (nominationBindingModel == null)
+            if (saveNominationBindingModel == null)
             {
                 return BadRequest("No data");
             }
@@ -54,7 +54,7 @@ namespace NominateAndVote.RestService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var nomination = nominationBindingModel.ToPoco();
+            var nomination = saveNominationBindingModel.ToPoco();
             _dataManager.SaveNomination(nomination);
 
             return Ok(nomination);
@@ -62,12 +62,12 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Delete")]
         [HttpDelete]
-        public bool Delete(string id)
+        public bool Delete(string nominationId)
         {
-            Guid idGuid;
-            if (Guid.TryParse(id, out idGuid))
+            Guid id;
+            if (Guid.TryParse(nominationId, out id))
             {
-                _dataManager.DeleteNomination(idGuid);
+                _dataManager.DeleteNomination(id);
                 return true;
             }
             return false;

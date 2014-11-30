@@ -1,4 +1,4 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataModel.Tests
@@ -18,10 +18,10 @@ namespace NominateAndVote.DataModel.Tests
             var news1 = new News { Id = Guid.NewGuid(), Title = "First", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-2) };
 
             // Users
-            var user1 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Lali" };
-            var user2 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Agi" };
-            var user3 = new User { Id = Guid.NewGuid(), IsBanned = true, Name = "Noemi" };
-            var user4 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Admin" };
+            var user1 = new User { Id = 1, IsBanned = false, Name = "Lali" };
+            var user2 = new User { Id = 2, IsBanned = false, Name = "Agi" };
+            var user3 = new User { Id = 3, IsBanned = true, Name = "Noemi" };
+            var user4 = new User { Id = 4, IsBanned = false, Name = "Admin" };
             var admin = new Administrator { UserId = user4.Id };
 
             // Poll subjects
@@ -33,7 +33,8 @@ namespace NominateAndVote.DataModel.Tests
             var poll1 = new Poll
             {
                 Id = Guid.NewGuid(),
-                Text = "Ki a legjobb?",
+                Title = "Ki a legjobb?",
+                Text = "Na?",
                 State = PollState.Nomination,
                 PublicationDate = DateTime.Now.AddDays(-2),
                 NominationDeadline = DateTime.Now.AddDays(+2),
@@ -56,8 +57,8 @@ namespace NominateAndVote.DataModel.Tests
             var poll2 = new Poll
             {
                 Id = Guid.NewGuid(),
-                Text =
-                    "Melyik a legjobb magyar film?",
+                Title = "Melyik a legjobb magyar film?",
+                Text = "Na?",
                 State = PollState.Voting,
                 PublicationDate = DateTime.Now.AddDays(-10),
                 NominationDeadline = DateTime.Now.AddDays(-2),
@@ -93,7 +94,8 @@ namespace NominateAndVote.DataModel.Tests
             var poll3 = new Poll
             {
                 Id = Guid.NewGuid(),
-                Text = "Melyik a legjobb magyar film?",
+                Title = "Melyik a legjobb magyar film?",
+                Text = "Na?",
                 State = PollState.Voting,
                 PublicationDate = DateTime.Now.AddDays(-10),
                 NominationDeadline = DateTime.Now.AddDays(-8),
@@ -131,7 +133,8 @@ namespace NominateAndVote.DataModel.Tests
             var poll4 = new Poll
             {
                 Id = Guid.NewGuid(),
-                Text = "Melyik a legjobb magyar film?",
+                Title = "Melyik a legjobb magyar film?",
+                Text = "Na?",
                 State = PollState.Nomination,
                 PublicationDate = DateTime.Now.AddDays(-10),
                 NominationDeadline = DateTime.Now.AddDays(-8),
@@ -161,35 +164,35 @@ namespace NominateAndVote.DataModel.Tests
             };
 
             // Add objects to the lists
-            Users.Add(user1);
-            Users.Add(user2);
-            Users.Add(user3);
-            Users.Add(user4);
+            Users.AddOrUpdate(user1);
+            Users.AddOrUpdate(user2);
+            Users.AddOrUpdate(user3);
+            Users.AddOrUpdate(user4);
 
-            Administrators.Add(admin);
+            Administrators.AddOrUpdate(admin);
 
-            News.Add(news1);
+            News.AddOrUpdate(news1);
 
-            Nominations.Add(poll1Nom);
-            Nominations.Add(poll2Nom1);
-            Nominations.Add(poll2Nom2);
-            Nominations.Add(poll3Nom1);
-            Nominations.Add(poll3Nom2);
-            Nominations.Add(poll4Nom1);
-            Nominations.Add(poll4Nom2);
+            Nominations.AddOrUpdate(poll1Nom);
+            Nominations.AddOrUpdate(poll2Nom1);
+            Nominations.AddOrUpdate(poll2Nom2);
+            Nominations.AddOrUpdate(poll3Nom1);
+            Nominations.AddOrUpdate(poll3Nom2);
+            Nominations.AddOrUpdate(poll4Nom1);
+            Nominations.AddOrUpdate(poll4Nom2);
 
-            PollSubjects.Add(ps1);
-            PollSubjects.Add(ps2);
-            PollSubjects.Add(ps3);
+            PollSubjects.AddOrUpdate(ps1);
+            PollSubjects.AddOrUpdate(ps2);
+            PollSubjects.AddOrUpdate(ps3);
 
-            Polls.Add(poll1);
-            Polls.Add(poll2);
-            Polls.Add(poll3);
-            Polls.Add(poll4);
+            Polls.AddOrUpdate(poll1);
+            Polls.AddOrUpdate(poll2);
+            Polls.AddOrUpdate(poll3);
+            Polls.AddOrUpdate(poll4);
 
-            Votes.Add(vote);
-            Votes.Add(vote1);
-            Votes.Add(vote2);
+            Votes.AddOrUpdate(vote);
+            Votes.AddOrUpdate(vote1);
+            Votes.AddOrUpdate(vote2);
 
             // Refresh the relational lists
             RefreshPocoRelationalLists();

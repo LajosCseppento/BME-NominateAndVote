@@ -1,5 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Model

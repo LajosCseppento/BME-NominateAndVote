@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NominateAndVote.DataModel.Common;
 
-namespace NominateAndVote.DataModel.Model
+namespace NominateAndVote.DataModel.Poco
 {
     public class Administrator : BasePoco<Administrator>
     {
         public long UserId { get; set; }
+
+        public override int GetHashCode()
+        {
+            return UserId.GetHashCode();
+        }
 
         public override bool Equals(Administrator other)
         {
@@ -14,24 +18,12 @@ namespace NominateAndVote.DataModel.Model
             return UserId == other.UserId;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((Administrator)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return UserId.GetHashCode();
-        }
-
         public override int CompareTo(Administrator other)
         {
+            // UserID ASC
             if (ReferenceEquals(null, other)) return 1;
             if (ReferenceEquals(this, other)) return 0;
-            return UserId.CompareTo(other.userId);
+            return UserId.CompareTo(other.UserId);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-    [RoutePrefix("api/AdminNews")]
+    [RoutePrefix("api/NewsAdmin")]
     public class NewsAdminController : ApiController
     {
         private readonly IDataManager _dataManager;
@@ -65,12 +65,12 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Delete")]
         [HttpDelete]
-        public bool Delete(string id)
+        public bool Delete(string newsId)
         {
-            Guid idGuid;
-            if (Guid.TryParse(id, out idGuid))
+            Guid id;
+            if (Guid.TryParse(newsId, out id))
             {
-                _dataManager.DeleteNews(idGuid);
+                _dataManager.DeleteNews(id);
                 return true;
             }
             return false;

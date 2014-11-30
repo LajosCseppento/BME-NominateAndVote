@@ -1,5 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Model
@@ -32,7 +32,7 @@ namespace NominateAndVote.DataTableStorage.Model
             }
 
             PartitionKey = nomination.Id.ToString();
-            RowKey = user.Id.ToString();
+            RowKey = user.Id.ToString("D8");
 
             Date = poco.Date;
         }

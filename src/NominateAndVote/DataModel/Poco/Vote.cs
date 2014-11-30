@@ -1,6 +1,7 @@
-﻿using System;
+﻿using NominateAndVote.DataModel.Common;
+using System;
 
-namespace NominateAndVote.DataModel.Model
+namespace NominateAndVote.DataModel.Poco
 {
     public class Vote : BasePoco<Vote>
     {
@@ -14,15 +15,7 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(User, other.User) && Equals(Nomination, other.Nomination) && Date == other.Date;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((Vote)obj);
+            return Object.Equals(User, other.User) && Object.Equals(Nomination, other.Nomination);
         }
 
         public override int GetHashCode()
@@ -31,9 +24,17 @@ namespace NominateAndVote.DataModel.Model
             {
                 var hashCode = (User != null ? User.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Nomination != null ? Nomination.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Date.GetHashCode();
                 return hashCode;
             }
+        }
+
+        public override int CompareTo(Vote other)
+        {
+            // Date ASC
+            if (ReferenceEquals(null, other)) return 1;
+            if (ReferenceEquals(this, other)) return 0;
+
+            return Date.CompareTo(other.Date);
         }
     }
 }

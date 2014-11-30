@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void Get()
         {
             // Act
-            var result = _controller.Get() as List<News>;
+            var result = _controller.ListNews() as List<News>;
 
             // Assert
             Assert.IsNotNull(result);

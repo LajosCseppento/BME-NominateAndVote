@@ -139,7 +139,6 @@
     <Compile Include="Controllers\NewsControllerTests.cs" />
     <Compile Include="Controllers\PollAdminControllerTests.cs" />
     <Compile Include="Controllers\PollControllerTests.cs" />
-    <Compile Include="Controllers\PollsControllerTests.cs" />
     <Compile Include="Controllers\NominationControllerTests.cs" />
     <Compile Include="Controllers\AdminControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

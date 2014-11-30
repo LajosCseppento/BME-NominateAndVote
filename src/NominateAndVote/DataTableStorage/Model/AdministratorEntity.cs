@@ -1,5 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Model
@@ -17,13 +17,13 @@ namespace NominateAndVote.DataTableStorage.Model
                 throw new ArgumentNullException("poco", "The poco must not be null");
             }
 
-            PartitionKey = poco.UserId.ToString();
+            PartitionKey = poco.UserId.ToString("D8");
             RowKey = "";
         }
 
         public Administrator ToPoco()
         {
-            return new Administrator { UserId = Guid.Parse(PartitionKey) };
+            return new Administrator { UserId = long.Parse(PartitionKey) };
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Poco;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace NominateAndVote.RestService.Models
 {
-    // Models used as parameters to AccountController actions.
-
-    public class PollBindingModell
+    public class SavePollBindingModel
     {
         [DataType(DataType.Text)]
         [Display(Name = "Poll ID")]
@@ -14,32 +12,37 @@ namespace NominateAndVote.RestService.Models
 
         [Required]
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Poll text")]
+        [Display(Name = "Poll Title")]
+        public string Title { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Poll Text")]
         public string Text { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Publication date")]
+        [Display(Name = "Publication Date")]
         public DateTime PublicationDate { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Nomination deadline")]
+        [Display(Name = "Nomination Deadline")]
         public DateTime NominationDeadline { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Voting start date")]
+        [Display(Name = "Voting Start Date")]
         public DateTime VotingStartDate { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Voting deadline")]
+        [Display(Name = "Voting Deadline")]
         public DateTime VotingDeadline { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Announcement date")]
+        [Display(Name = "Announcement Date")]
         public DateTime AnnouncementDate { get; set; }
 
         private PollState _state;
@@ -64,11 +67,11 @@ namespace NominateAndVote.RestService.Models
             }
         }
 
-        public PollBindingModell()
+        public SavePollBindingModel()
         {
         }
 
-        public PollBindingModell(Poll poll)
+        public SavePollBindingModel(Poll poll)
         {
             if (poll == null)
             {
@@ -76,6 +79,7 @@ namespace NominateAndVote.RestService.Models
             }
 
             Id = poll.Id.ToString();
+            Title = poll.Title;
             Text = poll.Text;
             PublicationDate = poll.PublicationDate;
             NominationDeadline = poll.NominationDeadline;
@@ -87,13 +91,10 @@ namespace NominateAndVote.RestService.Models
 
         public Poll ToPoco()
         {
-            // TODO WTF
-            var id = Guid.Empty;
-            Guid.TryParse(Id, out id);
-
             return new Poll
             {
-                Id = id,
+                Id = (Id != null ? Guid.Parse(Id) : Guid.Empty),
+                Title = Title,
                 Text = Text,
                 PublicationDate = PublicationDate,
                 NominationDeadline = NominationDeadline,

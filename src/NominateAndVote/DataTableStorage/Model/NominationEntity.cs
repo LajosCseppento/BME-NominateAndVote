@@ -1,12 +1,12 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
     public class NominationEntity : TableEntity
     {
-        public string UserId { get; set; }
+        public long UserId { get; set; }
 
         public string SubjectId { get; set; }
 
@@ -45,7 +45,7 @@ namespace NominateAndVote.DataTableStorage.Model
             PartitionKey = poll.Id.ToString();
             RowKey = poco.Id.ToString();
 
-            UserId = user.Id.ToString();
+            UserId = user.Id;
             SubjectId = pollSubject.Id.ToString("D8");
             Text = poco.Text;
             VoteCount = poco.VoteCount;

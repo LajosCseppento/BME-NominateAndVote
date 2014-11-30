@@ -27,30 +27,44 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("BanUser")]
         [HttpPost]
-        public IHttpActionResult BanUser(string id)
+        public IHttpActionResult BanUser(string userId)
         {
-            Guid idGuid;
-            if (Guid.TryParse(id, out idGuid))
+            long id;
+            if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(idGuid);
+                var user = _dataManager.QueryUser(id);
                 user.IsBanned = true;
+                _dataManager.SaveUser(user);
+
                 return Ok(user);
             }
-            return null;
+
+            return NotFound();
         }
 
         [Route("UnBanUser")]
         [HttpPost]
-        public IHttpActionResult UnBanUser(string id)
+        public IHttpActionResult UnBanUser(string userId)
         {
-            Guid idGuid;
-            if (Guid.TryParse(id, out idGuid))
+            long id;
+            if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(idGuid);
-                user.IsBanned = false;
-                return Ok(user);
+                var user = _dataManager.QueryUser(id);
+
+                if (user != null)
+                {
+                    user.IsBanned = false;
+                    _dataManager.SaveUser(user);
+
+                    return Ok(user);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            return null;
+
+            return NotFound();
         }
     }
 }

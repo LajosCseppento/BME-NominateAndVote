@@ -1,5 +1,5 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Poco;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -27,18 +27,37 @@ namespace NominateAndVote.RestService.Controllers
             _dataManager = dataManager;
         }
 
-        [Route("NominationPolls")]
+        [Route("GetPoll")]
         [HttpGet]
-        public IEnumerable<Poll> GetNominationPolls()
+        public Poll GetPoll(string pollId)
+        {
+            Guid id;
+            if (Guid.TryParse(pollId, out id))
+            {
+                return _dataManager.QueryPoll(id);
+            }
+            return null;
+        }
+
+        [Route("ListNominationPolls")]
+        [HttpGet]
+        public IEnumerable<Poll> ListNominationPolls()
         {
             return QueryPolls(PollState.Nomination);
         }
 
-        [Route("VotingPolls")]
+        [Route("ListVotingPolls")]
         [HttpGet]
-        public IEnumerable<Poll> GetVotingPolls()
+        public IEnumerable<Poll> ListVotingPolls()
         {
-            return _dataManager.QueryPolls(PollState.Voting);
+            return QueryPolls(PollState.Voting);
+        }
+
+        [Route("ListClosedPolls")]
+        [HttpGet]
+        public IEnumerable<Poll> ListClosedPolls()
+        {
+            return _dataManager.QueryPolls(PollState.Closed);
         }
 
         private IEnumerable<Poll> QueryPolls(PollState state)

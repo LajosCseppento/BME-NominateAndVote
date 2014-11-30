@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
@@ -10,20 +11,37 @@ using System.Web.Http.Results;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class NewsAdminControllerTests
+    public class NewsAdminControllerMemoryTests : NewsAdminControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    [TestClass]
+    public class NewsAdminControllerTableStorageTests : NewsAdminControllerGenericTests
+    {
+        protected override IDataManager CreateDataManager()
+        {
+            // TODO Lali - mindegyiknél legyen ott a todo
+            return new SampleDataModel().CreateDataManager();
+        }
+    }
+
+    public abstract class NewsAdminControllerGenericTests
     {
         private NewsAdminController _controller;
-        private DataModelManager _dataManager;
+        private IDataManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
-
+            _dataManager = CreateDataManager();
             _controller = new NewsAdminController(_dataManager);
         }
+
+        protected abstract IDataManager CreateDataManager();
 
         // Save_Null
         [TestMethod]

@@ -1,11 +1,16 @@
 ﻿using NominateAndVote.DataModel.Model;
 using System;
 
-namespace NominateAndVote.DataModel
+namespace NominateAndVote.DataModel.Tests
 {
-    public class SimpleDataModel : DefaultDataModel
+    public class SampleDataModel : DefaultDataModel
     {
-        public void LoadSampleData()
+        public SampleDataModel()
+        {
+            ReloadSampleData();
+        }
+
+        public void ReloadSampleData()
         {
             Clear();
 
@@ -188,6 +193,11 @@ namespace NominateAndVote.DataModel
 
             // Refresh the relational lists
             RefreshPocoRelationalLists();
+        }
+
+        public IDataManager CreateDataManager()
+        {
+            return new MemoryDataManager(this);
         }
     }
 }

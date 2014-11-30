@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -8,15 +9,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
     public class NominationControllerTests
     {
         private NominationController _controller;
-        private DataModelManager _dataManager;
+        private IDataManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
-
+            _dataManager = new SampleDataModel().CreateDataManager();
             _controller = new NominationController(_dataManager);
         }
 

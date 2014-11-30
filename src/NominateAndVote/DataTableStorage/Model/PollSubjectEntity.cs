@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel.Model;
+using System;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
@@ -15,14 +16,16 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public PollSubjectEntity(PollSubject poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.Id.ToString().PadLeft(8, '0');
-                RowKey = "";
-
-                Title = poco.Title;
-                Year = poco.Year;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            PartitionKey = poco.Id.ToString("D8");
+            RowKey = "";
+
+            Title = poco.Title;
+            Year = poco.Year;
         }
     }
 }

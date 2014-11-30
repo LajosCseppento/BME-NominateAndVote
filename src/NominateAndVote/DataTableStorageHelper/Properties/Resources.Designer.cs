@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NominateAndVote.DataTableStorageHelper.Properties {
-    using System;
-    
-    
+namespace NominateAndVote.DataTableStorageHelper.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

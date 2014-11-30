@@ -56,6 +56,7 @@ namespace NominateAndVote.RestService.Models
 
         public Nomination ToPoco()
         {
+            // TODO WTF
             var id = Guid.Empty;
             Guid.TryParse(Id, out id);
             var pollId = Guid.Empty;

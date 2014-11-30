@@ -332,6 +332,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataModel.Tests\DataModel.Tests.csproj">
+      <Project>{9AF45C16-8047-47AC-872E-3A4F7FD78684}</Project>
+      <Name>DataModel.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{5a337d57-f738-4122-8ab6-bff83c3f49e8}</Project>
       <Name>DataModel</Name>

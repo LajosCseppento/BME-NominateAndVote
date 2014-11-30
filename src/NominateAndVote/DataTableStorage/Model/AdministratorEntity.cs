@@ -12,11 +12,13 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public AdministratorEntity(Administrator poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.UserId.ToString();
-                RowKey = "";
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            PartitionKey = poco.UserId.ToString();
+            RowKey = "";
         }
 
         public Administrator ToPoco()

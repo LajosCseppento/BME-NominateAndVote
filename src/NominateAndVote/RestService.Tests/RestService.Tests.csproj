@@ -152,9 +152,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataModel.Tests\DataModel.Tests.csproj">
+      <Project>{9af45c16-8047-47ac-872e-3a4f7fd78684}</Project>
+      <Name>DataModel.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{5a337d57-f738-4122-8ab6-bff83c3f49e8}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableStorage.Tests\DataTableStorage.Tests.csproj">
+      <Project>{3b8d684c-f095-44c0-b216-df339851f7ae}</Project>
+      <Name>DataTableStorage.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataTableStorage\DataTableStorage.csproj">
       <Project>{058d9126-c9c7-4cb2-b38a-5849f7bfc32d}</Project>

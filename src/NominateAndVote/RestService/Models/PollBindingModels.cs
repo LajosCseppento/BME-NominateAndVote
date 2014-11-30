@@ -42,10 +42,27 @@ namespace NominateAndVote.RestService.Models
         [Display(Name = "Announcement date")]
         public DateTime AnnouncementDate { get; set; }
 
+        private PollState _state;
+
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "State")]
-        public string State { get; set; }
+        public string State
+        {
+            get { return _state.ToString(); }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value", "The value must not be null");
+                }
+
+                if (!Enum.TryParse(value, true, out _state))
+                {
+                    throw new ArgumentException("The value does not represent a valid state", "value");
+                }
+            }
+        }
 
         public PollBindingModell()
         {
@@ -65,26 +82,14 @@ namespace NominateAndVote.RestService.Models
             VotingStartDate = poll.VotingStartDate;
             VotingDeadline = poll.VotingDeadline;
             AnnouncementDate = poll.AnnouncementDate;
-            State = poll.State.ToString();
+            _state = poll.State;
         }
 
         public Poll ToPoco()
         {
+            // TODO WTF
             var id = Guid.Empty;
             Guid.TryParse(Id, out id);
-            PollState state;
-            if (State.Equals("CLOSED"))
-            {
-                state = PollState.Closed;
-            }
-            else if (State.Equals("NOMINATION"))
-            {
-                state = PollState.Nomination;
-            }
-            else
-            {
-                state = PollState.Voting;
-            }
 
             return new Poll
             {
@@ -95,7 +100,7 @@ namespace NominateAndVote.RestService.Models
                 VotingStartDate = VotingStartDate,
                 VotingDeadline = VotingDeadline,
                 AnnouncementDate = AnnouncementDate,
-                State = state
+                State = _state
             };
         }
     }

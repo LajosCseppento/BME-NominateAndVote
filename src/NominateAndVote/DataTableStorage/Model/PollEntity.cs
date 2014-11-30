@@ -24,18 +24,20 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public PollEntity(Poll poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.State.ToString();
-                RowKey = poco.Id.ToString();
-
-                Text = poco.Text;
-                PublicationDate = poco.PublicationDate;
-                NominationDeadline = poco.NominationDeadline;
-                VotingStartDate = poco.VotingStartDate;
-                VotingDeadline = poco.VotingDeadline;
-                AnnouncementDate = poco.AnnouncementDate;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            PartitionKey = poco.State.ToString();
+            RowKey = poco.Id.ToString();
+
+            Text = poco.Text;
+            PublicationDate = poco.PublicationDate;
+            NominationDeadline = poco.NominationDeadline;
+            VotingStartDate = poco.VotingStartDate;
+            VotingDeadline = poco.VotingDeadline;
+            AnnouncementDate = poco.AnnouncementDate;
         }
     }
 }

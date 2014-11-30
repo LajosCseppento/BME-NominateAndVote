@@ -1,4 +1,5 @@
 ﻿using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Web.Http;
@@ -11,19 +12,16 @@ namespace NominateAndVote.RestService.Controllers
         private readonly IDataManager _dataManager;
 
         public PollAdminController()
-            : base()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
+            // TODO Lali tablestorage / config alapján
+            _dataManager = new SampleDataModel().CreateDataManager();
         }
 
         public PollAdminController(IDataManager dataManager)
-            : base()
         {
             if (dataManager == null)
             {
-                throw new ArgumentNullException("The data manager must not be null", "dataManager");
+                throw new ArgumentNullException("dataManager", "The data manager must not be null");
             }
 
             _dataManager = dataManager;
@@ -43,7 +41,7 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var poll = pollBindingModel.ToPoco();
-            if (poll.Id.Equals(Guid.Empty))
+            if (poll.Id == Guid.Empty)
             {
                 poll.Id = Guid.NewGuid();
             }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Controllers;
 using System.Collections.Generic;
 
@@ -13,15 +14,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
     public class PollsControllerTests
     {
         private PollsController _controller;
-        private DataModelManager _dataManager;
+        private IDataManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
-
+            _dataManager = new SampleDataModel().CreateDataManager();
             _controller = new PollsController(_dataManager);
         }
 
@@ -44,9 +42,9 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void GetById()
         {
             // Arrange
+            var poll = _dataManager.QueryPolls()[0];
 
             // Act
-            var poll = _dataManager.QueryPolls()[0];
             var result = _controller.Get(poll.Id.ToString());
 
             // Assert

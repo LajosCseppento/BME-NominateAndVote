@@ -97,6 +97,7 @@
     <Compile Include="Unit\ModelPocoTests.cs" />
     <Compile Include="Unit\DefaultDataModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleDataModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj">

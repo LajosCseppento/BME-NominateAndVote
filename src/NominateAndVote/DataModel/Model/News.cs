@@ -15,7 +15,7 @@ namespace NominateAndVote.DataModel.Model
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return IdEquals(other) && string.Equals(Title, other.Title) && string.Equals(Text, other.Text) &&
-                   PublicationDate.Equals(other.PublicationDate);
+                   PublicationDate == other.PublicationDate;
         }
 
         public override int GetHashCode()

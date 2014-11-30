@@ -32,7 +32,10 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return IdEquals(other) && string.Equals(Text, other.Text) && State == other.State && PublicationDate.Equals(other.PublicationDate) && NominationDeadline.Equals(other.NominationDeadline) && VotingStartDate.Equals(other.VotingStartDate) && VotingDeadline.Equals(other.VotingDeadline) && AnnouncementDate.Equals(other.AnnouncementDate);
+            return IdEquals(other) && Text == other.Text && State == other.State
+                && PublicationDate == other.PublicationDate && NominationDeadline == other.NominationDeadline
+                && VotingStartDate == other.VotingStartDate && VotingDeadline == other.VotingDeadline
+                && AnnouncementDate == other.AnnouncementDate;
         }
 
         public override int GetHashCode()

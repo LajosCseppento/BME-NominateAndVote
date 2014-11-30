@@ -90,7 +90,7 @@
             // Demonstrate how to Update the entity by changing the phone number
             Console.WriteLine("2. Update an existing Entity using the InsertOrMerge Upsert Operation.");
             entity.Title = "Hunger Games I";
-            entity = InsertOrMergeEntityPollSubjectEntity(table, entity);
+            InsertOrMergeEntityPollSubjectEntity(table, entity);
 
             // Demonstrate how to Read the updated entity using a point query
             Console.WriteLine("3. Reading the updated Entity.");
@@ -186,7 +186,7 @@
             // The following code  generates test data for use during the query samples.
             for (var i = 0; i < 100; i++)
             {
-                batchOperation.InsertOrMerge(new PollSubjectEntity(new PollSubject { Id = 10000, Title = "Hunger Games (" + i + ")", Year = 2012 }) { RowKey = i.ToString() });
+                batchOperation.InsertOrMerge(new PollSubjectEntity(new PollSubject { Id = 10000, Title = "Hunger Games (" + i + ")", Year = 2012 }) { RowKey = i.ToString("D") });
             }
 
             // Execute the batch operation.

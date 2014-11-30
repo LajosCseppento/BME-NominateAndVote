@@ -1,5 +1,6 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Tests;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,16 @@ namespace NominateAndVote.RestService.Controllers
         private readonly IDataManager _dataManager;
 
         public NominationController()
-            : base()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
+            // TODO Lali tablestorage / config alapján
+            _dataManager = new SampleDataModel().CreateDataManager();
         }
 
         public NominationController(IDataManager dataManager)
-            : base()
         {
             if (dataManager == null)
             {
-                throw new ArgumentNullException("The data manager must not be null", "dataManager");
+                throw new ArgumentNullException("dataManager", "The data manager must not be null");
             }
 
             _dataManager = dataManager;
@@ -48,6 +46,7 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult Save(NominationBindingModel newsBindingModel)
         {
+            // TODO ezt beszéljük meg
             if (newsBindingModel == null)
             {
                 return BadRequest("No data");
@@ -58,7 +57,7 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var nomination = newsBindingModel.ToPoco();
-            if (nomination.Id.Equals(Guid.Empty))
+            if (nomination.Id == Guid.Empty)
             {
                 nomination.Id = Guid.NewGuid();
             }

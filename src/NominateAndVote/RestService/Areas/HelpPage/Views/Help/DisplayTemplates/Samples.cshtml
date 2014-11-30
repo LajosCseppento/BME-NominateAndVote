@@ -15,15 +15,15 @@
         <div class="sample-content">
             <span><b>Sample:</b></span>
             @{
-                var sample = samples[mediaType];
-                if (sample == null)
-                {
-                <p>Sample not available.</p>
-                }
-                else
-                {
-                @Html.DisplayFor(s => sample);
-                }
+        var sample = samples[mediaType];
+        if (sample == null)
+        {
+            <p>Sample not available.</p>
+        }
+        else
+        {
+            @Html.DisplayFor(s => sample)
+        }
             }
         </div>
     }

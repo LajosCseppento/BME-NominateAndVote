@@ -1,5 +1,6 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Model;
+using NominateAndVote.DataModel.Tests;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -12,15 +13,12 @@ namespace NominateAndVote.RestService.Controllers
         private readonly IDataManager _dataManager;
 
         public PollsController()
-            : base()
         {
-            var model = new SimpleDataModel();
-            model.LoadSampleData();
-            _dataManager = new DataModelManager(model);
+            // TODO Lali tablestorage / config alapján
+            _dataManager = new SampleDataModel().CreateDataManager();
         }
 
         public PollsController(IDataManager dataManager)
-            : base()
         {
             if (dataManager == null)
             {

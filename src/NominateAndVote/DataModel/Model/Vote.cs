@@ -14,7 +14,7 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(User, other.User) && Equals(Nomination, other.Nomination) && Date.Equals(other.Date);
+            return Equals(User, other.User) && Equals(Nomination, other.Nomination) && Date == other.Date;
         }
 
         public override bool Equals(object obj)

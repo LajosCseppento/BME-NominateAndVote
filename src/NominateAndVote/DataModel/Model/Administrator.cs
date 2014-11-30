@@ -10,7 +10,7 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return UserId.Equals(other.UserId);
+            return UserId == other.UserId;
         }
 
         public override bool Equals(object obj)

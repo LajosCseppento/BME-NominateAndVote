@@ -18,15 +18,17 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public NewsEntity(News poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.Id.ToString();
-                RowKey = "";
-
-                Title = poco.Title;
-                Text = poco.Text;
-                PublicationDate = poco.PublicationDate;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            PartitionKey = poco.Id.ToString();
+            RowKey = "";
+
+            Title = poco.Title;
+            Text = poco.Text;
+            PublicationDate = poco.PublicationDate;
         }
     }
 }

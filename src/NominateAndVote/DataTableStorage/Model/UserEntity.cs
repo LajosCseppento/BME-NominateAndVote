@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel.Model;
+using System;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
@@ -15,14 +16,16 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public UserEntity(User poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.Id.ToString();
-                RowKey = "";
-
-                Name = poco.Name;
-                IsBanned = poco.IsBanned;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            PartitionKey = poco.Id.ToString();
+            RowKey = "";
+
+            Name = poco.Name;
+            IsBanned = poco.IsBanned;
         }
     }
 }

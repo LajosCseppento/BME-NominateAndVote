@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NominateAndVote.DataModel.Model;
 using System;
 
-namespace NominateAndVote.DataModel.Model.Tests.Unit
+namespace NominateAndVote.DataModel.Tests.Unit
 {
     [TestClass]
     public class ModelPocoTests

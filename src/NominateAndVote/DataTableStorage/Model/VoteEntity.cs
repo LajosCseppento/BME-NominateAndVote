@@ -14,13 +14,27 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public VoteEntity(Vote poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.Nomination.Id.ToString();
-                RowKey = poco.User.Id.ToString();
-
-                Date = poco.Date;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            var nomination = poco.Nomination;
+            var user = poco.User;
+
+            if (nomination == null)
+            {
+                throw new ArgumentException("poco.Nomination must not be null", "poco");
+            }
+            if (user == null)
+            {
+                throw new ArgumentException("poco.User must not be null", "poco");
+            }
+
+            PartitionKey = nomination.Id.ToString();
+            RowKey = user.Id.ToString();
+
+            Date = poco.Date;
         }
     }
 }

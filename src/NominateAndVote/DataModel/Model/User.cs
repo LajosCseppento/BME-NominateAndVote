@@ -20,7 +20,7 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return IdEquals(other) && string.Equals(Name, other.Name) && IsBanned.Equals(other.IsBanned);
+            return IdEquals(other) && Name == other.Name && IsBanned == other.IsBanned;
         }
 
         public override bool Equals(object obj)

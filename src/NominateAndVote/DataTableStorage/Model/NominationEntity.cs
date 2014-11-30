@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel.Model;
+using System;
 
 namespace NominateAndVote.DataTableStorage.Model
 {
@@ -19,16 +20,35 @@ namespace NominateAndVote.DataTableStorage.Model
 
         public NominationEntity(Nomination poco)
         {
-            if (poco != null)
+            if (poco == null)
             {
-                PartitionKey = poco.Poll.Id.ToString();
-                RowKey = poco.Id.ToString();
-
-                UserId = poco.User.Id.ToString();
-                SubjectId = poco.Subject.Id.ToString();
-                Text = poco.Text;
-                VoteCount = poco.VoteCount;
+                throw new ArgumentNullException("poco", "The poco must not be null");
             }
+
+            var poll = poco.Poll;
+            var user = poco.User;
+            var pollSubject = poco.Subject;
+
+            if (poll == null)
+            {
+                throw new ArgumentException("poco.Poll must not be null", "poco");
+            }
+            if (user == null)
+            {
+                throw new ArgumentException("poco.User must not be null", "poco");
+            }
+            if (pollSubject == null)
+            {
+                throw new ArgumentException("poco.PollSubject must not be null", "poco");
+            }
+
+            PartitionKey = poll.Id.ToString();
+            RowKey = poco.Id.ToString();
+
+            UserId = user.Id.ToString();
+            SubjectId = pollSubject.Id.ToString("D8");
+            Text = poco.Text;
+            VoteCount = poco.VoteCount;
         }
     }
 }

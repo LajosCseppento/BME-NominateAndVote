@@ -58,7 +58,7 @@ namespace NominateAndVote.DataModel
 
         void SavePollSubject(PollSubject pollSubject);
 
-        void SavePollSubjectsBatch(List<PollSubject> pollSubjects);
+        void SavePollSubjectsBatch(IEnumerable<PollSubject> pollSubjects);
 
         #endregion PollSubject
 
@@ -81,44 +81,5 @@ namespace NominateAndVote.DataModel
         void SaveVote(Vote vote);
 
         #endregion Vote
-
-        //Lekerdezesek
-        /*
-         * Userek listája -> nem kell, csak a bannoltaké (QueryBannedUsers), valamint név szerint keresünk (SearchUsers)
-         * User hozzaadasa -> SaveUser
-         * Le van-e tiltva a felhasznalo -> QueryUser
-         *
-         * Aktiv pollok lekerdezese -> QueryPolls(PollState state) - gondolom itt arra gondoltál amire szavaznak
-         * Lezarult pollok lekerdezese -> QueryPolls(PollState state)
-         * Jeloles alatt levo pollok lekerdezese -> QueryPolls(PollState state)
-         *
-         * Userhez tartozo Nominationok megtekintese -> QueryNominations(Poll poll, User)
-         * Nomination modositasok elkuldese - SaveNomination
-         * Nomination leadasa - SaveNomination
-         * Nomination torlese - DeleteNomination
-         *
-         * Vote elkuldese -> SaveVote
-         * Annak lekerdezese, hogy a felhasznalo szavazott-e mar az adott pollra -> QueryVote
-        */
-
-        /* List<User> GetUsers();
-         void AddUser(User user);
-         Boolean IsBanned(User user);
-         Boolean userIsVoted(User user, Poll poll);
-         List<Nomination> getUserNomination(User user);
-         void modifyNominations(List<Nomination> nominations, User user);
-         Boolean userIsVoted(Poll poll, User user);
-
-         List<Poll> getActivePolls();
-         List<Poll> getClosedPolls();
-         List<Poll> getPollsUnderNomination();
-         void addNomination(Nomination nomination, Poll poll, User user);
-         void addVote(Vote vote);
-
-         List<PollSubject> getPollSubjects();
-         List<Nomination> getPollNominations(Poll poll);
-
-         List<News> getNews();
-         void addNews(News news);*/
     }
 }

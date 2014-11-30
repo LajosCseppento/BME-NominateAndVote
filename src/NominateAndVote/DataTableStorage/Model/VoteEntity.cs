@@ -16,8 +16,8 @@ namespace NominateAndVote.DataTableStorage.Model
         {
             if (poco != null)
             {
-                PartitionKey = poco.Nomination.ID.ToString();
-                RowKey = poco.User.ID.ToString();
+                PartitionKey = poco.Nomination.Id.ToString();
+                RowKey = poco.User.Id.ToString();
 
                 Date = poco.Date;
             }

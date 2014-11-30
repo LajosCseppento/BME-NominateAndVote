@@ -22,7 +22,7 @@ namespace NominateAndVote.RestService.Results
         {
             Request.GetOwinContext().Authentication.Challenge(LoginProvider);
 
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            var response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
             response.RequestMessage = Request;
             return Task.FromResult(response);
         }

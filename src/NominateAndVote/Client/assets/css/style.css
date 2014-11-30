@@ -35,9 +35,11 @@ h1 {
 h5 {
     padding-bottom: 30px;
 }
-h4{
+
+h4 {
     margin-top: 4px;
 }
+
 .text-center {
     text-align: center;
 }
@@ -118,34 +120,36 @@ p {
     background-color: #4E63D1;
     color: #fff;
 }
+
 .circle-body {
- width: 150px;
-height: 150px;
-margin: 0 auto 14px auto;
-border: 5px solid #ADA2EB;
-border-radius: 100%;
-background-color: #FFFFFF;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 14px auto;
+    border: 5px solid #ADA2EB;
+    border-radius: 100%;
+    background-color: #FFFFFF;
 }
+
 .icon-set {
     position: relative;
-padding: 30px;
+    padding: 30px;
 }
 /* ==========================================================================
    PRICE SECTION
    ========================================================================== */
 
 .active-div {
-    background: #83BEFF!important;
+    background: #83BEFF !important;
 }
 
 #pricing-section .plan-main {
     background: #FFFFFF;
-list-style: none;
-margin: 0 0 20px;
-text-align: center;
-padding: 0;
-border-bottom: 1px solid #e1e1e1;
-border: 1px solid #E9E9E9;
+    list-style: none;
+    margin: 0 0 20px;
+    text-align: center;
+    padding: 0;
+    border-bottom: 1px solid #e1e1e1;
+    border: 1px solid #E9E9E9;
 }
 
     #pricing-section .plan-main li {
@@ -172,12 +176,12 @@ border: 1px solid #E9E9E9;
             border-bottom: 0;
         }
 
-        #pricing-section .plan-main.featured .plan-price {
-            color: #fff;
-            background-color: #242424;
-            border-bottom-color: #52b6ec;
-            margin: 0;
-        }
+    #pricing-section .plan-main.featured .plan-price {
+        color: #fff;
+        background-color: #242424;
+        border-bottom-color: #52b6ec;
+        margin: 0;
+    }
 
 /*==========================================
    SOCIAL ICON STYLES
@@ -206,14 +210,17 @@ border: 1px solid #E9E9E9;
    COMPONENT.CSS  CHANGES
    ============================================================*/
 .slideshow nav span.nav-prev, .slideshow nav span.nav-next {
-left: 33%!important;
+    left: 33% !important;
 }
+
 .slideshow {
-    z-index: 1500!important;
+    z-index: 1500 !important;
 }
-.slideshow nav span.nav-close {
-color: #FF0000;
-}
+
+    .slideshow nav span.nav-close {
+        color: #FF0000;
+    }
+
     .slideshow nav span {
         color: #FF0000;
     }
@@ -221,12 +228,13 @@ color: #FF0000;
    SLIDER ADJUSTMENTS (slider.css)
    ============================================================*/
 
-     .slidesjs-container {
-            height:550px!important;
-        }
+.slidesjs-container {
+    height: 550px !important;
+}
+
 #slides {
-    border:1px dashed #e1e1e1;
-    padding:0px 0px 15px 0px;
+    border: 1px dashed #e1e1e1;
+    padding: 0px 0px 15px 0px;
 }
 /* ===========================================================
    BOOTSTRAP ELEMENTS CHANGES

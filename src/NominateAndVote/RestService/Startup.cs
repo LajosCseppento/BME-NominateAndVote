@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin;
+using NominateAndVote.RestService;
 using Owin;
 
-[assembly: OwinStartup(typeof(NominateAndVote.RestService.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace NominateAndVote.RestService
 {

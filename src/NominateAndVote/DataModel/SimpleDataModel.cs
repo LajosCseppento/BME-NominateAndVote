@@ -8,87 +8,180 @@ namespace NominateAndVote.DataModel
         public void LoadSampleData()
         {
             Clear();
+
             // News
-            News news1 = new News { ID = Guid.NewGuid(), Title = "First", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-2) };
+            var news1 = new News { Id = Guid.NewGuid(), Title = "First", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-2) };
 
             // Users
-            User user1 = new User { ID = Guid.NewGuid(), IsBanned = false, Name = "Lali" };
-            User user2 = new User { ID = Guid.NewGuid(), IsBanned = false, Name = "Agi" };
-            User user3 = new User { ID = Guid.NewGuid(), IsBanned = true, Name = "Noemi" };
-            User user4 = new User { ID = Guid.NewGuid(), IsBanned = false, Name = "Admin" };
-            Administrator admin = new Administrator { UserID = user4.ID };
+            var user1 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Lali" };
+            var user2 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Agi" };
+            var user3 = new User { Id = Guid.NewGuid(), IsBanned = true, Name = "Noemi" };
+            var user4 = new User { Id = Guid.NewGuid(), IsBanned = false, Name = "Admin" };
+            var admin = new Administrator { UserId = user4.Id };
 
-            // Subjects
-            PollSubject subject = new PollSubject { ID = 1, Title = "Ehezok viadala", Year = 2013 };
-            PollSubject subject2 = new PollSubject { ID = 2, Title = "Valami Amerika", Year = 2005 };
-            PollSubject subject3 = new PollSubject { ID = 3, Title = "Valami Amerika 2", Year = 2007 };
+            // Poll subjects
+            var ps1 = new PollSubject { Id = 1, Title = "Ehezok viadala", Year = 2013 };
+            var ps2 = new PollSubject { Id = 2, Title = "Valami Amerika", Year = 2005 };
+            var ps3 = new PollSubject { Id = 3, Title = "Valami Amerika 2", Year = 2007 };
 
-            // Poll in nomination state with 1 Nomination
-            Poll poll1 = new Poll { ID = Guid.NewGuid(), Text = "Ki a legjobb?", State = PollState.NOMINATION, PublicationDate = DateTime.Now.AddDays(-2), NominationDeadline = DateTime.Now.AddDays(+2), VotingStartDate = DateTime.Now.AddDays(+4), VotingDeadline = DateTime.Now.AddDays(+8), AnnouncementDate = DateTime.Now.AddDays(+12) };
+            // Poll in nomination state with 1 nomination
+            var poll1 = new Poll
+            {
+                Id = Guid.NewGuid(),
+                Text = "Ki a legjobb?",
+                State = PollState.Nomination,
+                PublicationDate = DateTime.Now.AddDays(-2),
+                NominationDeadline = DateTime.Now.AddDays(+2),
+                VotingStartDate = DateTime.Now.AddDays(+4),
+                VotingDeadline = DateTime.Now.AddDays(+8),
+                AnnouncementDate = DateTime.Now.AddDays(+12)
+            };
 
-            Nomination nom = new Nomination { ID = Guid.NewGuid(), Text = "Mert en azt mondtam", User = user1, VoteCount = 0 };
-            nom.Subject = subject;
-            nom.Poll = poll1;
+            var poll1Nom = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Mert en azt mondtam",
+                User = user1,
+                VoteCount = 0,
+                Subject = ps1,
+                Poll = poll1
+            };
 
-            // Poll in Vote state with 2 nominations and 1 vote
-            Poll poll2 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.VOTING, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-2), VotingStartDate = DateTime.Now.AddDays(-1), VotingDeadline = DateTime.Now.AddDays(+8), AnnouncementDate = DateTime.Now.AddDays(+12) };
+            // Poll with voting state with 2 nominations and 1 vote
+            var poll2 = new Poll
+            {
+                Id = Guid.NewGuid(),
+                Text =
+                    "Melyik a legjobb magyar film?",
+                State = PollState.Voting,
+                PublicationDate = DateTime.Now.AddDays(-10),
+                NominationDeadline = DateTime.Now.AddDays(-2),
+                VotingStartDate = DateTime.Now.AddDays(-1),
+                VotingDeadline = DateTime.Now.AddDays(+8),
+                AnnouncementDate = DateTime.Now.AddDays(+12)
+            };
 
-            Nomination nom1 = new Nomination { ID = Guid.NewGuid(), Text = "A kedvencem", User = user1, VoteCount = 0 };
-            Nomination nom2 = new Nomination { ID = Guid.NewGuid(), Text = "Vicces", User = user2, VoteCount = 0 };
-            nom1.Subject = subject2;
-            nom2.Subject = subject3;
-            nom1.Poll = poll2;
-            nom2.Poll = poll2;
+            var poll2Nom1 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "A kedvencem",
+                User = user1,
+                VoteCount = 0,
+                Subject = ps2,
+                Poll = poll2
+            };
 
-            Vote vote = new Vote { Date = DateTime.Now.AddDays(-1), User = user2, Nomination = nom2 };
-            nom2.VoteCount = 1;
+            var poll2Nom2 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Vicces",
+                User = user2,
+                VoteCount = 0,
+                Subject = ps3,
+                Poll = poll2
+            };
 
-            // Poll in Closed State
-            Poll poll3 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.VOTING, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-8), VotingStartDate = DateTime.Now.AddDays(-6), VotingDeadline = DateTime.Now.AddDays(-4), AnnouncementDate = DateTime.Now.AddDays(-1) };
+            var vote = new Vote { Date = DateTime.Now.AddDays(-1), User = user2, Nomination = poll2Nom2 };
+            poll2Nom2.VoteCount = 1;
 
-            Nomination nom3 = new Nomination { ID = Guid.NewGuid(), Text = "Jok a szineszek", User = user1, VoteCount = 0 };
-            Nomination nom4 = new Nomination { ID = Guid.NewGuid(), Text = "Jo a tortenet", User = user2, VoteCount = 0 };
-            nom3.Subject = subject2;
-            nom4.Subject = subject3;
-            nom3.Poll = poll3;
-            nom4.Poll = poll3;
+            // Poll with closed state
+            var poll3 = new Poll
+            {
+                Id = Guid.NewGuid(),
+                Text = "Melyik a legjobb magyar film?",
+                State = PollState.Voting,
+                PublicationDate = DateTime.Now.AddDays(-10),
+                NominationDeadline = DateTime.Now.AddDays(-8),
+                VotingStartDate = DateTime.Now.AddDays(-6),
+                VotingDeadline = DateTime.Now.AddDays(-4),
+                AnnouncementDate = DateTime.Now.AddDays(-1)
+            };
 
-            Vote vote1 = new Vote { Date = DateTime.Now.AddDays(-2), User = user2, Nomination = nom3 };
-            Vote vote2 = new Vote { Date = DateTime.Now.AddDays(-3), User = user1, Nomination = nom4 };
-            nom3.VoteCount = 1;
-            nom4.VoteCount = 1;
+            var poll3Nom1 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Jok a szineszek",
+                User = user1,
+                VoteCount = 0,
+                Subject = ps2,
+                Poll = poll3
+            };
 
-            // Merge
-            Poll poll4 = new Poll { ID = Guid.NewGuid(), Text = "Melyik a legjobb magyar film?", State = PollState.NOMINATION, PublicationDate = DateTime.Now.AddDays(-10), NominationDeadline = DateTime.Now.AddDays(-8), VotingStartDate = DateTime.Now.AddDays(+2), VotingDeadline = DateTime.Now.AddDays(+7), AnnouncementDate = DateTime.Now.AddDays(+12) };
+            var poll3Nom2 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Jo a tortenet",
+                User = user2,
+                VoteCount = 0,
+                Subject = ps3,
+                Poll = poll3
+            };
 
-            Nomination nom5 = new Nomination { ID = Guid.NewGuid(), Text = "Valami", User = user1, VoteCount = 0, Subject = subject2 };
-            Nomination nom6 = new Nomination { ID = Guid.NewGuid(), Text = "Csak", User = user2, VoteCount = 0, Subject = subject2 };
-            nom5.Subject = subject2;
-            nom6.Subject = subject2;
-            nom5.Poll = poll4;
-            nom6.Poll = poll4;
+            var vote1 = new Vote { Date = DateTime.Now.AddDays(-2), User = user2, Nomination = poll3Nom1 };
+            var vote2 = new Vote { Date = DateTime.Now.AddDays(-3), User = user1, Nomination = poll3Nom2 };
+            poll3Nom1.VoteCount = 1;
+            poll3Nom2.VoteCount = 1;
 
-            // Add object to Lists
+            // Poll with nominations on the same subject (to be merged)
+            var poll4 = new Poll
+            {
+                Id = Guid.NewGuid(),
+                Text = "Melyik a legjobb magyar film?",
+                State = PollState.Nomination,
+                PublicationDate = DateTime.Now.AddDays(-10),
+                NominationDeadline = DateTime.Now.AddDays(-8),
+                VotingStartDate = DateTime.Now.AddDays(+2),
+                VotingDeadline = DateTime.Now.AddDays(+7),
+                AnnouncementDate = DateTime.Now.AddDays(+12)
+            };
+
+            var poll4Nom1 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Valami",
+                User = user1,
+                VoteCount = 0,
+                Subject = ps2,
+                Poll = poll4
+            };
+
+            var poll4Nom2 = new Nomination
+            {
+                Id = Guid.NewGuid(),
+                Text = "Csak",
+                User = user2,
+                VoteCount = 0,
+                Subject = ps2,
+                Poll = poll4
+            };
+
+            // Add objects to the lists
             Users.Add(user1);
             Users.Add(user2);
             Users.Add(user3);
             Users.Add(user4);
+
             Administrators.Add(admin);
+
             News.Add(news1);
-            Nominations.Add(nom);
-            Nominations.Add(nom1);
-            Nominations.Add(nom2);
-            Nominations.Add(nom3);
-            Nominations.Add(nom4);
-            Nominations.Add(nom5);
-            Nominations.Add(nom6);
-            PollSubjects.Add(subject);
-            PollSubjects.Add(subject2);
-            PollSubjects.Add(subject3);
+
+            Nominations.Add(poll1Nom);
+            Nominations.Add(poll2Nom1);
+            Nominations.Add(poll2Nom2);
+            Nominations.Add(poll3Nom1);
+            Nominations.Add(poll3Nom2);
+            Nominations.Add(poll4Nom1);
+            Nominations.Add(poll4Nom2);
+
+            PollSubjects.Add(ps1);
+            PollSubjects.Add(ps2);
+            PollSubjects.Add(ps3);
+
             Polls.Add(poll1);
             Polls.Add(poll2);
             Polls.Add(poll3);
             Polls.Add(poll4);
+
             Votes.Add(vote);
             Votes.Add(vote1);
             Votes.Add(vote2);

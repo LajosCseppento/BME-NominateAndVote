@@ -19,8 +19,8 @@ namespace NominateAndVote.DataTableStorage
                 throw new ArgumentException("The storage account must not be null", "storageAccount");
             }
 
-            this._storageAccount = storageAccount;
-            this._tableClient = storageAccount.CreateCloudTableClient();
+            _storageAccount = storageAccount;
+            _tableClient = storageAccount.CreateCloudTableClient();
         }
 
         public void CreateTablesIfNeeded()
@@ -41,10 +41,10 @@ namespace NominateAndVote.DataTableStorage
 
         private bool SaveEntity(ITableEntity entity)
         {
-            CloudTable table = GetTableReference(entity.GetType());
+            var table = GetTableReference(entity.GetType());
 
-            TableOperation op = TableOperation.InsertOrReplace(entity);
-            TableResult result = table.Execute(op);
+            var op = TableOperation.InsertOrReplace(entity);
+            var result = table.Execute(op);
             return result.Result.Equals(entity);
         }
 
@@ -138,7 +138,7 @@ namespace NominateAndVote.DataTableStorage
             throw new NotImplementedException();
         }
 
-        public void SavePollSubjectsBatch(List<PollSubject> pollSubjects)
+        public void SavePollSubjectsBatch(IEnumerable<PollSubject> pollSubjects)
         {
             throw new NotImplementedException();
         }

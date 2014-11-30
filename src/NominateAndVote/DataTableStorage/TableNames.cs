@@ -9,90 +9,103 @@ namespace NominateAndVote.DataTableStorage
 {
     public static class TableNames
     {
-        private static string TABLE_NAME_PATTERN = "^[A-Za-z][A-Za-z0-9]{2,62}$";
-        private static Dictionary<Type, string> tableNames = new Dictionary<Type, string>();
+        private const string TableNamePattern = "^[A-Za-z][A-Za-z0-9]{2,62}$";
+        private static readonly Dictionary<Type, string> TableNamesDictionary = new Dictionary<Type, string>();
 
         static TableNames()
         {
-            SetTableName(typeof(AdministratorEntity), "administrator");
-            SetTableName(typeof(NewsEntity), "news");
-            SetTableName(typeof(NominationEntity), "nomination");
-            SetTableName(typeof(PollEntity), "poll");
-            SetTableName(typeof(PollSubjectEntity), "pollsubject");
-            SetTableName(typeof(UserEntity), "user");
-            SetTableName(typeof(VoteEntity), "vote");
+            ResetToDefault();
+        }
+
+        public static void ResetToDefault(string prefix = null)
+        {
+            if (prefix == null)
+            {
+                prefix = "";
+            }
+
+            TableNamesDictionary.Clear();
+            SetTableName(typeof(AdministratorEntity), prefix + "administrator");
+            SetTableName(typeof(NewsEntity), prefix + "news");
+            SetTableName(typeof(NominationEntity), prefix + "nomination");
+            SetTableName(typeof(PollEntity), prefix + "poll");
+            SetTableName(typeof(PollSubjectEntity), prefix + "pollsubject");
+            SetTableName(typeof(UserEntity), prefix + "user");
+            SetTableName(typeof(VoteEntity), prefix + "vote");
         }
 
         public static void SetTableName(Type entityType, String tableName)
         {
-            checkType(entityType);
-            checkTableName(tableName);
+            CheckType(entityType);
+            CheckTableName(tableName);
 
             // table names are case-insensitive, so make it lowercase
             tableName = tableName.ToLower();
 
-            if (tableNames.ContainsKey(entityType))
+            if (TableNamesDictionary.ContainsKey(entityType))
             {
-                tableNames[entityType] = tableName;
+                TableNamesDictionary[entityType] = tableName;
             }
             else
             {
-                tableNames.Add(entityType, tableName);
+                TableNamesDictionary.Add(entityType, tableName);
             }
         }
 
         public static string GetTableName(Type entityType)
         {
-            checkType(entityType);
+            CheckType(entityType);
 
-            if (tableNames.ContainsKey(entityType))
+            string tableName;
+            if (TableNamesDictionary.TryGetValue(entityType, out tableName))
             {
-                return tableNames[entityType];
+                return tableName;
             }
-            else
-            {
-                throw new ArgumentException("No table name is set for the given entity type '" + entityType.FullName + "'", "entityType");
-            }
+            throw new ArgumentException("No table name is set for the given entity type '" + entityType.FullName + "'", "entityType");
         }
 
         public static List<Type> GetEntityTypes()
         {
-            return (from entityType in tableNames.Keys
+            var q = from entityType in TableNamesDictionary.Keys
                     orderby entityType.FullName
-                    select entityType).ToList();
+                    select entityType;
+
+            return q.ToList();
         }
 
         public static List<string> GetTableNames()
         {
-            return (from tableName in tableNames.Values
+            var q = from tableName in TableNamesDictionary.Values
                     orderby tableName
-                    select tableName).ToList();
+                    select tableName;
+
+            return q.ToList();
         }
 
-        public static Dictionary<Type, string> GetDictonary()
+        public static Dictionary<Type, string> GetDictionary()
         {
-            return new Dictionary<Type, string>(tableNames);
+            return new Dictionary<Type, string>(TableNamesDictionary);
         }
 
-        private static void checkTableName(String tableName)
+        private static void CheckTableName(string tableName)
         {
             if (tableName == null)
             {
-                throw new ArgumentNullException("The table name must not be null", "tableName");
+                throw new ArgumentNullException("tableName", "The table name must not be null");
             }
-            else if (!Regex.IsMatch(tableName, TABLE_NAME_PATTERN))
+            if (!Regex.IsMatch(tableName, TableNamePattern))
             {
-                throw new ArgumentException("The table name '" + tableName + "' must match the '" + TABLE_NAME_PATTERN + "' regular expression ", "tableName");
+                throw new ArgumentException("The table name '" + tableName + "' must match the '" + TableNamePattern + "' regular expression ", "tableName");
             }
         }
 
-        private static void checkType(Type entityType)
+        private static void CheckType(Type entityType)
         {
             if (entityType == null)
             {
-                throw new ArgumentNullException("The entity type must not be null", "entityType");
+                throw new ArgumentNullException("entityType", "The entity type must not be null");
             }
-            else if (!entityType.GetInterfaces().Contains(typeof(ITableEntity)))
+            if (!entityType.GetInterfaces().Contains(typeof(ITableEntity)))
             {
                 throw new ArgumentException("The entity type '" + entityType.FullName + "' must implement the " + typeof(ITableEntity).FullName + " interface", "entityType");
             }

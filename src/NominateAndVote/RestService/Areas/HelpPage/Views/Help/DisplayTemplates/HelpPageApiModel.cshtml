@@ -1,11 +1,8 @@
-@using System.Web.Http
-@using System.Web.Http.Description
 @using NominateAndVote.RestService.Areas.HelpPage.Models
-@using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
 @model HelpPageApiModel
 
 @{
-    ApiDescription description = Model.ApiDescription;
+    var description = Model.ApiDescription;
 }
 <h1>@description.HttpMethod.Method @description.RelativePath</h1>
 <div>
@@ -25,7 +22,7 @@
         @Html.DisplayFor(m => m.RequestModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.RequestModelDescription })
         if (Model.RequestBodyParameters != null)
         {
-            @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
+        @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
         }
     }
     else
@@ -50,7 +47,7 @@
         @Html.DisplayFor(m => m.ResourceDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ResourceDescription })
         if (Model.ResourceProperties != null)
         {
-            @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
+        @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
         }
     }
     else

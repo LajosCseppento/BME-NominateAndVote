@@ -12,19 +12,19 @@ namespace NominateAndVote.RestService.Tests.Controllers
     /// Summary description for PollAdminController
     /// </summary>
     [TestClass]
-    public class PollAdminControllerTest
+    public class PollAdminControllerTests
     {
-        private PollAdminController controller;
-        private DataModelManager dataManager;
+        private PollAdminController _controller;
+        private DataModelManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
 
-            controller = new PollAdminController(dataManager);
+            _controller = new PollAdminController(_dataManager);
         }
 
         //Correct object
@@ -32,7 +32,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SavePoll_Correct()
         {
             // Arrange
-            PollBindingModell bindingModel = new PollBindingModell()
+            var bindingModel = new PollBindingModell
             {
                 Text = "text",
                 State = "VOTING",
@@ -44,14 +44,15 @@ namespace NominateAndVote.RestService.Tests.Controllers
             };
 
             // Act
-            var result = controller.Save(bindingModel) as OkNegotiatedContentResult<Poll>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<Poll>;
 
             // Assert
-            Assert.AreNotEqual(Guid.Empty, result.Content.ID);
-            Assert.AreEqual(PollState.VOTING, result.Content.State);
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
+            Assert.AreEqual(PollState.Voting, result.Content.State);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, dataManager.QueryPoll(result.Content.ID));
+            Assert.AreEqual(result.Content, _dataManager.QueryPoll(result.Content.Id));
         }
     }
 }

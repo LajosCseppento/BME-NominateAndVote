@@ -17,7 +17,7 @@ namespace NominateAndVote.DataTableStorage.Model
         {
             if (poco != null)
             {
-                PartitionKey = poco.ID.ToString().PadLeft(8, '0');
+                PartitionKey = poco.Id.ToString().PadLeft(8, '0');
                 RowKey = "";
 
                 Title = poco.Title;

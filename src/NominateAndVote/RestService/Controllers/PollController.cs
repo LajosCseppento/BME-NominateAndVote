@@ -9,14 +9,14 @@ namespace NominateAndVote.RestService.Controllers
     [RoutePrefix("api/Poll")]
     public class PollController : ApiController
     {
-        private IDataManager dataManager;
+        private readonly IDataManager _dataManager;
 
         public PollController()
             : base()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
         }
 
         public PollController(IDataManager dataManager)
@@ -27,26 +27,26 @@ namespace NominateAndVote.RestService.Controllers
                 throw new ArgumentNullException("The data manager must not be null", "dataManager");
             }
 
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [Route("NominationPolls")]
         [HttpGet]
         public IEnumerable<Poll> GetNominationPolls()
         {
-            return QueryPolls(PollState.NOMINATION);
+            return QueryPolls(PollState.Nomination);
         }
 
         [Route("VotingPolls")]
         [HttpGet]
         public IEnumerable<Poll> GetVotingPolls()
         {
-            return dataManager.QueryPolls(PollState.VOTING);
+            return _dataManager.QueryPolls(PollState.Voting);
         }
 
-        private List<Poll> QueryPolls(PollState state)
+        private IEnumerable<Poll> QueryPolls(PollState state)
         {
-            List<Poll> polls = dataManager.QueryPolls(state);
+            var polls = _dataManager.QueryPolls(state);
 
             // avoid circle references
             foreach (var poll in polls)

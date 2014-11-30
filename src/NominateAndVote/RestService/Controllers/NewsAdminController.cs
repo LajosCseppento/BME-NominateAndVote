@@ -1,11 +1,6 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
@@ -13,14 +8,14 @@ namespace NominateAndVote.RestService.Controllers
     [RoutePrefix("api/AdminNews")]
     public class NewsAdminController : ApiController
     {
-        private IDataManager dataManager;
+        private readonly IDataManager _dataManager;
 
         public NewsAdminController()
             : base()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
         }
 
         public NewsAdminController(IDataManager dataManager)
@@ -31,7 +26,7 @@ namespace NominateAndVote.RestService.Controllers
                 throw new ArgumentNullException("The data manager must not be null", "dataManager");
             }
 
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [Route("Save")]
@@ -42,20 +37,20 @@ namespace NominateAndVote.RestService.Controllers
             {
                 return BadRequest("No data");
             }
-            else if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            News news = newsBindingModel.ToPoco();
-            if (news.ID.Equals(Guid.Empty))
+            var news = newsBindingModel.ToPoco();
+            if (news.Id.Equals(Guid.Empty))
             {
-                news.ID = Guid.NewGuid();
+                news.Id = Guid.NewGuid();
                 news.PublicationDate = DateTime.Now;
             }
             else
             {
-                News oldNews = dataManager.QueryNews(news.ID);
+                var oldNews = _dataManager.QueryNews(news.Id);
                 if (oldNews == null)
                 {
                     news.PublicationDate = DateTime.Now;
@@ -66,7 +61,7 @@ namespace NominateAndVote.RestService.Controllers
                 }
             }
 
-            dataManager.SaveNews(news);
+            _dataManager.SaveNews(news);
 
             return Ok(news);
         }
@@ -75,15 +70,13 @@ namespace NominateAndVote.RestService.Controllers
         [HttpDelete]
         public bool Delete(string id)
         {
-            Guid idGuid = Guid.Empty;
+            Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
             {
-                dataManager.DeleteNews(idGuid);
+                _dataManager.DeleteNews(idGuid);
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
     }
 }

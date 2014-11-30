@@ -20,14 +20,14 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return IDEquals(other) && string.Equals(Name, other.Name) && IsBanned.Equals(other.IsBanned);
+            return IdEquals(other) && string.Equals(Name, other.Name) && IsBanned.Equals(other.IsBanned);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((User)obj);
         }
 
@@ -35,7 +35,7 @@ namespace NominateAndVote.DataModel.Model
         {
             unchecked
             {
-                int hashCode = base.GetHashCode();
+                var hashCode = base.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ IsBanned.GetHashCode();
                 return hashCode;

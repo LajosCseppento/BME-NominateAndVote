@@ -21,7 +21,7 @@ namespace NominateAndVote.DataModel.Model
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((Vote)obj);
         }
 
@@ -29,7 +29,7 @@ namespace NominateAndVote.DataModel.Model
         {
             unchecked
             {
-                int hashCode = (User != null ? User.GetHashCode() : 0);
+                var hashCode = (User != null ? User.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Nomination != null ? Nomination.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Date.GetHashCode();
                 return hashCode;

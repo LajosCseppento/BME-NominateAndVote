@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Model;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +10,7 @@ namespace NominateAndVote.RestService.Models
     {
         [DataType(DataType.Text)]
         [Display(Name = "Poll ID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
@@ -54,7 +53,12 @@ namespace NominateAndVote.RestService.Models
 
         public PollBindingModell(Poll poll)
         {
-            ID = poll.ID.ToString();
+            if (poll == null)
+            {
+                throw new ArgumentNullException("poll", "The poll must not be null");
+            }
+
+            Id = poll.Id.ToString();
             Text = poll.Text;
             PublicationDate = poll.PublicationDate;
             NominationDeadline = poll.NominationDeadline;
@@ -66,27 +70,32 @@ namespace NominateAndVote.RestService.Models
 
         public Poll ToPoco()
         {
-            Guid id = Guid.Empty;
-            Guid.TryParse(ID, out id);
+            var id = Guid.Empty;
+            Guid.TryParse(Id, out id);
             PollState state;
-            if (State.Equals("CLOSED")) {
-                state = PollState.CLOSED;
-            } else if(State.Equals("NOMINATION")){
-                state=PollState.NOMINATION;
-            } else{
-                state=PollState.VOTING;
+            if (State.Equals("CLOSED"))
+            {
+                state = PollState.Closed;
+            }
+            else if (State.Equals("NOMINATION"))
+            {
+                state = PollState.Nomination;
+            }
+            else
+            {
+                state = PollState.Voting;
             }
 
-            return new Poll()
+            return new Poll
             {
-                ID = id,
+                Id = id,
                 Text = Text,
-                PublicationDate=PublicationDate,
-                NominationDeadline=NominationDeadline,
-                VotingStartDate=VotingStartDate,
-                VotingDeadline=VotingDeadline,
-                AnnouncementDate=AnnouncementDate,
-                State=state
+                PublicationDate = PublicationDate,
+                NominationDeadline = NominationDeadline,
+                VotingStartDate = VotingStartDate,
+                VotingDeadline = VotingDeadline,
+                AnnouncementDate = AnnouncementDate,
+                State = state
             };
         }
     }

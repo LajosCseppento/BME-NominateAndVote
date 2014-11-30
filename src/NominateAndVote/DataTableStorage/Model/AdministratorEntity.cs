@@ -14,14 +14,14 @@ namespace NominateAndVote.DataTableStorage.Model
         {
             if (poco != null)
             {
-                PartitionKey = poco.UserID.ToString();
+                PartitionKey = poco.UserId.ToString();
                 RowKey = "";
             }
         }
 
         public Administrator ToPoco()
         {
-            return new Administrator { UserID = Guid.Parse(PartitionKey) };
+            return new Administrator { UserId = Guid.Parse(PartitionKey) };
         }
     }
 }

@@ -2,34 +2,34 @@
 
 namespace NominateAndVote.DataModel.Model
 {
-    public abstract class BasePocoWithId<TID, TPoco> : BasePoco<TPoco>
-        where TID : struct
-        where TPoco : BasePocoWithId<TID, TPoco>
+    public abstract class BasePocoWithId<TId, TPoco> : BasePoco<TPoco>
+        where TId : struct
+        where TPoco : BasePocoWithId<TId, TPoco>
     {
-        public TID ID { get; set; }
+        public TId Id { get; set; }
 
-        public bool IDEquals(TPoco other)
+        public bool IdEquals(TPoco other)
         {
             if (other == null) return false;
-            else return IDEquals(other.ID);
+            return IdEquals(other.Id);
         }
 
-        public bool IDEquals(TID otherID)
+        public bool IdEquals(TId otherId)
         {
-            return ID.Equals(otherID);
+            return Id.Equals(otherId);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((TPoco)obj);
         }
 
         public override int GetHashCode()
         {
-            return EqualityComparer<TID>.Default.GetHashCode(ID);
+            return EqualityComparer<TId>.Default.GetHashCode(Id);
         }
     }
 }

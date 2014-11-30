@@ -20,7 +20,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
 
         public override bool Equals(object obj)
         {
-            TextSample other = obj as TextSample;
+            var other = obj as TextSample;
             return other != null && Text == other.Text;
         }
 

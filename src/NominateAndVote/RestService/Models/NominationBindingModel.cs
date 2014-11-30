@@ -1,9 +1,6 @@
 ﻿using NominateAndVote.DataModel.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace NominateAndVote.RestService.Models
 {
@@ -11,7 +8,7 @@ namespace NominateAndVote.RestService.Models
     {
         [DataType(DataType.Text)]
         [Display(Name = "Nomination ID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
@@ -26,17 +23,17 @@ namespace NominateAndVote.RestService.Models
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Poll ID")]
-        public string PollID { get; set; }
+        public string PollId { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "User ID")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [Range(0, long.MaxValue)]
         [Display(Name = "Poll subject ID")]
-        public long PollSubjectID { get; set; }
+        public long PollSubjectId { get; set; }
 
         public NominationBindingModel()
         {
@@ -44,32 +41,36 @@ namespace NominateAndVote.RestService.Models
 
         public NominationBindingModel(Nomination nomination)
         {
-            ID = nomination.ID.ToString();
+            if (nomination == null)
+            {
+                throw new ArgumentNullException("nomination", "The nomination must not be null");
+            }
+
+            Id = nomination.Id.ToString();
             Text = nomination.Text;
             VoteCount = nomination.VoteCount;
-            PollID = nomination.Poll.ID.ToString();
-            UserID = nomination.User.ID.ToString();
-            PollSubjectID = nomination.Subject.ID;
+            PollId = nomination.Poll.Id.ToString();
+            UserId = nomination.User.Id.ToString();
+            PollSubjectId = nomination.Subject.Id;
         }
 
         public Nomination ToPoco()
         {
-            Guid id = Guid.Empty;
-            Guid.TryParse(ID, out id);
-            Guid pollId = Guid.Empty;
-            Guid.TryParse(PollID, out pollId);
-            Guid userId = Guid.Empty;
-            Guid.TryParse(UserID, out pollId);
+            var id = Guid.Empty;
+            Guid.TryParse(Id, out id);
+            var pollId = Guid.Empty;
+            Guid.TryParse(PollId, out pollId);
+            var userId = Guid.Empty;
+            Guid.TryParse(UserId, out pollId);
 
-            return new Nomination()
+            return new Nomination
             {
-                ID = id,
+                Id = id,
                 Text = Text,
                 VoteCount = VoteCount,
-                Poll = new Poll() { ID = pollId },
-                User = new User() { ID = userId },
-                Subject = new PollSubject() { ID = PollSubjectID }
-
+                Poll = new Poll { Id = pollId },
+                User = new User { Id = userId },
+                Subject = new PollSubject { Id = PollSubjectId }
             };
         }
     }

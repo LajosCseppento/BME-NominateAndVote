@@ -10,19 +10,19 @@ namespace NominateAndVote.RestService.Tests.Controllers
     /// Summary description for UnitTest1
     /// </summary>
     [TestClass]
-    public class PollsControllerTest
+    public class PollsControllerTests
     {
-        private PollsController controller;
-        private DataModelManager dataManager;
+        private PollsController _controller;
+        private DataModelManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
 
-            controller = new PollsController(dataManager);
+            _controller = new PollsController(_dataManager);
         }
 
         [TestMethod]
@@ -31,20 +31,23 @@ namespace NominateAndVote.RestService.Tests.Controllers
             // Arrange
 
             // Act
-            var result = controller.GetClosedPolls() as List<Poll>;
+            var result = _controller.GetClosedPolls() as List<Poll>;
 
             // Assert
-            Assert.IsTrue((dataManager.QueryPolls(PollState.CLOSED)).Count == result.Count);
+            Assert.IsNotNull(result);
+            var polls = _dataManager.QueryPolls(PollState.Closed);
+            var originalCount = polls.Count;
+            Assert.AreEqual(originalCount, result.Count);
         }
 
         [TestMethod]
-        public void GetByID()
+        public void GetById()
         {
             // Arrange
 
             // Act
-            Poll poll = dataManager.QueryPolls()[0];
-            var result = controller.Get(poll.ID.ToString()) as Poll;
+            var poll = _dataManager.QueryPolls()[0];
+            var result = _controller.Get(poll.Id.ToString());
 
             // Assert
             Assert.AreEqual(poll, result);

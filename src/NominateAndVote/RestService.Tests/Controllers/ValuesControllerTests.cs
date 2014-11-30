@@ -6,32 +6,34 @@ using System.Linq;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class ValuesControllerTest
+    public class ValuesControllerTests
     {
         [TestMethod]
-        public void Get()
+        public void GetValue()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            var result = controller.Get();
 
             // Assert
+            var list = result as IList<string> ?? result.ToList();
+
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
+            Assert.AreEqual(2, list.Count());
+            Assert.AreEqual("value1", list.ElementAt(0));
+            Assert.AreEqual("value2", list.ElementAt(1));
         }
 
         [TestMethod]
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
-            string result = controller.Get(5);
+            var result = controller.Get(5);
 
             // Assert
             Assert.AreEqual("value", result);
@@ -41,36 +43,39 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Post("value");
 
             // Assert
+            // TODO
         }
 
         [TestMethod]
-        public void Put()
+        public void PutValue()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Put(5, "value");
 
             // Assert
+            // TODO
         }
 
         [TestMethod]
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Delete(5);
 
             // Assert
+            // TODO
         }
     }
 }

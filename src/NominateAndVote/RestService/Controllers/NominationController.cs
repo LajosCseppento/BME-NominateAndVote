@@ -3,24 +3,21 @@ using NominateAndVote.DataModel.Model;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
-     [RoutePrefix("api/Nomination")]
+    [RoutePrefix("api/Nomination")]
     public class NominationController : ApiController
     {
-        private IDataManager dataManager;
+        private readonly IDataManager _dataManager;
 
         public NominationController()
             : base()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
         }
 
         public NominationController(IDataManager dataManager)
@@ -31,23 +28,20 @@ namespace NominateAndVote.RestService.Controllers
                 throw new ArgumentNullException("The data manager must not be null", "dataManager");
             }
 
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [Route("User")]
         [HttpGet]
         public List<Nomination> Get(string id)
         {
-            Guid idGuid = Guid.Empty;
+            Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
             {
-                User user = dataManager.QueryUser(idGuid);
-                return dataManager.QueryNominations(user);
+                var user = _dataManager.QueryUser(idGuid);
+                return _dataManager.QueryNominations(user);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         [Route("Save")]
@@ -58,30 +52,33 @@ namespace NominateAndVote.RestService.Controllers
             {
                 return BadRequest("No data");
             }
-            else if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Nomination nomination = newsBindingModel.ToPoco();
-            if (nomination.ID.Equals(Guid.Empty))
+            var nomination = newsBindingModel.ToPoco();
+            if (nomination.Id.Equals(Guid.Empty))
             {
-                nomination.ID = Guid.NewGuid();
+                nomination.Id = Guid.NewGuid();
             }
             else
             {
-                Poll poll = dataManager.QueryPoll(nomination.Poll.ID);
-                User user= dataManager.QueryUser(nomination.User.ID);
-                List<Nomination> nominations=dataManager.QueryNominations(poll, user);
+                var poll = _dataManager.QueryPoll(nomination.Poll.Id);
+                var user = _dataManager.QueryUser(nomination.User.Id);
+                var nominations = _dataManager.QueryNominations(poll, user);
                 Nomination oldNomination;
-                foreach(Nomination n in nominations){
-                    if(nomination.ID==nomination.ID){
-                        oldNomination=nomination;
+                foreach (var n in nominations)
+                {
+                    if (n.Id == nomination.Id)
+                    {
+                        oldNomination = nomination;
+                        break;
                     }
                 }
             }
 
-            dataManager.SaveNomination(nomination);
+            _dataManager.SaveNomination(nomination);
 
             return Ok(nomination);
         }
@@ -90,17 +87,13 @@ namespace NominateAndVote.RestService.Controllers
         [HttpDelete]
         public bool Delete(string id)
         {
-            Guid idGuid = Guid.Empty;
+            Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
             {
-                dataManager.DeleteNomination(idGuid);
+                _dataManager.DeleteNomination(idGuid);
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
-
-
     }
 }

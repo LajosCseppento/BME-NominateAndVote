@@ -10,37 +10,35 @@ using System.Web.Http.Results;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class NewsAdminControllerTest
+    public class NewsAdminControllerTests
     {
-        private NewsAdminController controller;
-        private DataModelManager dataManager;
+        private NewsAdminController _controller;
+        private DataModelManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
 
-            controller = new NewsAdminController(dataManager);
+            _controller = new NewsAdminController(_dataManager);
         }
 
         // Save_Null
         [TestMethod]
         public void SaveNews_Null()
         {
-            // Arrange
-            SaveNewsBindingModel bindingModel = null;
-
             // Act
-            var result = controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(null) as OkNegotiatedContentResult<News>;
 
             // Assert
-            Assert.AreNotEqual(Guid.Empty, result.Content.ID);
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("title", result.Content.Title);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, dataManager.QueryNews(result.Content.ID));
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
         }
 
         //Correct object
@@ -48,21 +46,22 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SaveNews_Correct()
         {
             // Arrange
-            SaveNewsBindingModel bindingModel = new SaveNewsBindingModel()
+            var bindingModel = new SaveNewsBindingModel
             {
                 Title = "title",
                 Text = "text"
             };
 
             // Act
-            var result = controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
 
             // Assert
-            Assert.AreNotEqual(Guid.Empty, result.Content.ID);
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("title", result.Content.Title);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, dataManager.QueryNews(result.Content.ID));
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
         }
 
         // Save_Existing
@@ -70,21 +69,22 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SaveNews_Existing()
         {
             // Arrange
-            SaveNewsBindingModel bindingModel = new SaveNewsBindingModel()
+            var bindingModel = new SaveNewsBindingModel
             {
                 Title = "title",
                 Text = "text"
             };
 
             // Act
-            var result = controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
 
             // Assert
-            Assert.AreNotEqual(Guid.Empty, result.Content.ID);
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("title", result.Content.Title);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, dataManager.QueryNews(result.Content.ID));
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
         }
 
         // Save_Invalid
@@ -92,33 +92,34 @@ namespace NominateAndVote.RestService.Tests.Controllers
         public void SaveNews_Invalid()
         {
             // Arrange
-            SaveNewsBindingModel bindingModel = new SaveNewsBindingModel()
+            var bindingModel = new SaveNewsBindingModel
             {
                 Title = "title"
             };
 
             // Act
-            var result = controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
 
             // Assert
-            Assert.AreNotEqual(Guid.Empty, result.Content.ID);
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("title", result.Content.Title);
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, dataManager.QueryNews(result.Content.ID));
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
         }
 
         [TestMethod]
         public void DeleteNews()
         {
             // Arrange
-            News news = dataManager.QueryNews().ElementAt(0);
+            var news = _dataManager.QueryNews().ElementAt(0);
 
             // Act
-            controller.Delete(news.ID.ToString());
+            _controller.Delete(news.Id.ToString());
 
             // Assert
-            Assert.IsFalse(dataManager.QueryNews().Contains(news));
+            Assert.IsFalse(_dataManager.QueryNews().Contains(news));
         }
     }
 }

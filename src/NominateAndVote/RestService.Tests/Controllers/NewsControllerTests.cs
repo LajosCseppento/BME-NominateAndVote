@@ -7,31 +7,30 @@ using System.Collections.Generic;
 namespace NominateAndVote.RestService.Tests.Controllers
 {
     [TestClass]
-    public class NewsControllerTest
+    public class NewsControllerTests
     {
-        private NewsController controller;
-        private DataModelManager dataManager;
+        private NewsController _controller;
+        private DataModelManager _dataManager;
 
         [TestInitialize]
         public void Initialize()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
 
-            controller = new NewsController(dataManager);
+            _controller = new NewsController(_dataManager);
         }
 
         [TestMethod]
-        public void Get()
+        public void GetList()
         {
-            // Arrange
-
             // Act
-            var result = controller.Get() as List<News>;
+            var result = _controller.Get() as List<News>;
 
             // Assert
-            Assert.IsTrue((dataManager.QueryNews().Count == result.Count));
+            Assert.IsNotNull(result);
+            Assert.IsTrue((_dataManager.QueryNews().Count == result.Count));
         }
     }
 }

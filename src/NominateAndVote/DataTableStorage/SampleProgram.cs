@@ -1,12 +1,11 @@
 ﻿namespace NominateAndVote.DataTableStorage
 {
+    using DataModel.Model;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
-    using NominateAndVote.DataModel.Model;
-    using NominateAndVote.DataTableStorage.Model;
+    using Model;
     using System;
-    using System.Collections.Generic;
 
     public class SampleProgram
     {
@@ -33,7 +32,7 @@
 
             Console.WriteLine("Azure Storage Table Sample\n");
 
-            CloudTable table = CreateTablePollSubjectEntity();
+            var table = CreateTablePollSubjectEntity();
 
             BasicTableOperationsPollSubjectEntity(table);
 
@@ -51,15 +50,15 @@
         private static CloudTable CreateTablePollSubjectEntity()
         {
             // Retrieve storage account information from connection string.
-            CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            var storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
             // Create a table client for interacting with the table service
-            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+            var tableClient = storageAccount.CreateCloudTableClient();
 
             Console.WriteLine("1. Create a Table for the demo");
 
             // Create a table client for interacting with the table service
-            CloudTable table = tableClient.GetTableReference(TableName);
+            var table = tableClient.GetTableReference(TableName);
 
             try
             {
@@ -85,7 +84,7 @@
         private static void BasicTableOperationsPollSubjectEntity(CloudTable table)
         {
             // Create an instance of a customer entity. See the Model\PollSubjectEntity.cs for a description of the entity.
-            PollSubjectEntity entity = new PollSubjectEntity(new PollSubject { ID = 1, Title = "Hunger Games", Year = 2012 }
+            var entity = new PollSubjectEntity(new PollSubject { Id = 1, Title = "Hunger Games", Year = 2012 }
                 );
 
             // Demonstrate how to Update the entity by changing the phone number
@@ -147,19 +146,19 @@
             }
 
             // Create the InsertOrReplace  TableOperation
-            TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+            var insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
 
             // Execute the operation.
-            TableResult result = table.Execute(insertOrMergeOperation);
-            PollSubjectEntity insertedCustomer = result.Result as PollSubjectEntity;
+            var result = table.Execute(insertOrMergeOperation);
+            var insertedCustomer = result.Result as PollSubjectEntity;
             return insertedCustomer;
         }
 
         private static PollSubjectEntity RetrieveEntityUsingPointQueryPollSubjectEntity(CloudTable table, string partitionKey, string rowKey)
         {
-            TableOperation retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(partitionKey, rowKey);
-            TableResult result = table.Execute(retrieveOperation);
-            PollSubjectEntity entity = result.Result as PollSubjectEntity;
+            var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(partitionKey, rowKey);
+            var result = table.Execute(retrieveOperation);
+            var entity = result.Result as PollSubjectEntity;
             if (entity != null)
             {
                 Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey, entity.Title, entity.Year);
@@ -175,23 +174,23 @@
                 throw new ArgumentNullException("deleteEntity");
             }
 
-            TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+            var deleteOperation = TableOperation.Delete(deleteEntity);
             table.Execute(deleteOperation);
         }
 
         private static void BatchInsertOfCustomerEntitiesPollSubjectEntity(CloudTable table)
         {
             // Create the batch operation.
-            TableBatchOperation batchOperation = new TableBatchOperation();
+            var batchOperation = new TableBatchOperation();
 
             // The following code  generates test data for use during the query samples.
-            for (int i = 0; i < 100; i++)
+            for (var i = 0; i < 100; i++)
             {
-                batchOperation.InsertOrMerge(new PollSubjectEntity(new PollSubject { ID = 10000, Title = "Hunger Games (" + i + ")", Year = 2012 }) { RowKey = i.ToString() });
+                batchOperation.InsertOrMerge(new PollSubjectEntity(new PollSubject { Id = 10000, Title = "Hunger Games (" + i + ")", Year = 2012 }) { RowKey = i.ToString() });
             }
 
             // Execute the batch operation.
-            IList<TableResult> results = table.ExecuteBatch(batchOperation);
+            var results = table.ExecuteBatch(batchOperation);
 
             foreach (var res in results)
             {
@@ -203,7 +202,7 @@
         private static void PartitionRangeQueryPollSubjectEntity(CloudTable table, string partitionKey, string startRowKey, string endRowKey)
         {
             // Create the range query using the fluid API
-            TableQuery<PollSubjectEntity> rangeQuery = new TableQuery<PollSubjectEntity>().Where(
+            var rangeQuery = new TableQuery<PollSubjectEntity>().Where(
                 TableQuery.CombineFilters(
                         TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
                         TableOperators.And,
@@ -217,9 +216,9 @@
             rangeQuery.TakeCount = 50;
             do
             {
-                TableQuerySegment<PollSubjectEntity> segment = table.ExecuteQuerySegmented(rangeQuery, token);
+                var segment = table.ExecuteQuerySegmented(rangeQuery, token);
                 token = segment.ContinuationToken;
-                foreach (PollSubjectEntity entity in segment)
+                foreach (var entity in segment)
                 {
                     Console.WriteLine("Customer: {0},{1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey, entity.Title, entity.Year);
                 }
@@ -229,16 +228,16 @@
 
         private static void PartitionScanPollSubjectEntity(CloudTable table, string partitionKey)
         {
-            TableQuery<PollSubjectEntity> partitionScanQuery = new TableQuery<PollSubjectEntity>().Where
+            var partitionScanQuery = new TableQuery<PollSubjectEntity>().Where
                 (TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
 
             TableContinuationToken token = null;
             // Page through the results
             do
             {
-                TableQuerySegment<PollSubjectEntity> segment = table.ExecuteQuerySegmented(partitionScanQuery, token);
+                var segment = table.ExecuteQuerySegmented(partitionScanQuery, token);
                 token = segment.ContinuationToken;
-                foreach (PollSubjectEntity entity in segment)
+                foreach (var entity in segment)
                 {
                     Console.WriteLine("Customer: {0},{1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey, entity.Title, entity.Year);
                 }

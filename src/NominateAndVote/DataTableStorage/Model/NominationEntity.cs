@@ -5,9 +5,9 @@ namespace NominateAndVote.DataTableStorage.Model
 {
     public class NominationEntity : TableEntity
     {
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
-        public string SubjectID { get; set; }
+        public string SubjectId { get; set; }
 
         public string Text { get; set; }
 
@@ -21,11 +21,11 @@ namespace NominateAndVote.DataTableStorage.Model
         {
             if (poco != null)
             {
-                PartitionKey = poco.Poll.ID.ToString();
-                RowKey = poco.ID.ToString();
+                PartitionKey = poco.Poll.Id.ToString();
+                RowKey = poco.Id.ToString();
 
-                UserID = poco.User.ID.ToString();
-                SubjectID = poco.Subject.ID.ToString();
+                UserId = poco.User.Id.ToString();
+                SubjectId = poco.Subject.Id.ToString();
                 Text = poco.Text;
                 VoteCount = poco.VoteCount;
             }

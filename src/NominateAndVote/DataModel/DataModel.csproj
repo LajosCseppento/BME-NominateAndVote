@@ -8,8 +8,8 @@
     <ProjectGuid>{5A337D57-F738-4122-8AB6-BFF83C3F49E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataModel</RootNamespace>
-    <AssemblyName>DataModel</AssemblyName>
+    <RootNamespace>NominateAndVote.DataModel</RootNamespace>
+    <AssemblyName>NominateAndVote.DataModel</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -30,7 +30,7 @@
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
     <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
-    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
     <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
     <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
     <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
@@ -82,7 +82,7 @@
     <Compile Include="IDataModel.cs" />
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="DefaultDataModel.cs" />
-    <Compile Include="Model\BasePocoWithID.cs" />
+    <Compile Include="Model\BasePocoWithId.cs" />
     <Compile Include="Model\BasePoco.cs" />
     <Compile Include="Model\News.cs" />
     <Compile Include="Model\Nomination.cs" />

@@ -1,26 +1,21 @@
 ﻿using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 using NominateAndVote.RestService.Models;
+using System;
+using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/AdminPoll")]
     public class PollAdminController : ApiController
     {
-        private IDataManager dataManager;
+        private readonly IDataManager _dataManager;
 
         public PollAdminController()
             : base()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
         }
 
         public PollAdminController(IDataManager dataManager)
@@ -31,7 +26,7 @@ namespace NominateAndVote.RestService.Controllers
                 throw new ArgumentNullException("The data manager must not be null", "dataManager");
             }
 
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [Route("Save")]
@@ -42,25 +37,24 @@ namespace NominateAndVote.RestService.Controllers
             {
                 return BadRequest("No data");
             }
-            else if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Poll poll = pollBindingModel.ToPoco();
-            if (poll.ID.Equals(Guid.Empty))
+            var poll = pollBindingModel.ToPoco();
+            if (poll.Id.Equals(Guid.Empty))
             {
-                poll.ID = Guid.NewGuid();
+                poll.Id = Guid.NewGuid();
             }
             else
             {
-                Poll oldPoll = dataManager.QueryPoll(poll.ID);
+                var oldPoll = _dataManager.QueryPoll(poll.Id);
             }
 
-            dataManager.SavePoll(poll);
+            _dataManager.SavePoll(poll);
 
             return Ok(poll);
         }
-
     }
 }

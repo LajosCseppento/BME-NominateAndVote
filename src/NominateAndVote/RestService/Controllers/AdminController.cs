@@ -1,9 +1,5 @@
 ﻿using NominateAndVote.DataModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
@@ -11,14 +7,14 @@ namespace NominateAndVote.RestService.Controllers
     [RoutePrefix("api/User")]
     public class AdminController : ApiController
     {
-        private IDataManager dataManager;
+        private readonly IDataManager _dataManager;
 
         public AdminController()
             : base()
         {
-            SimpleDataModel model = new SimpleDataModel();
+            var model = new SimpleDataModel();
             model.LoadSampleData();
-            dataManager = new DataModelManager(model);
+            _dataManager = new DataModelManager(model);
         }
 
         public AdminController(IDataManager dataManager)
@@ -29,41 +25,35 @@ namespace NominateAndVote.RestService.Controllers
                 throw new ArgumentNullException("The data manager must not be null", "dataManager");
             }
 
-            this.dataManager = dataManager;
+            _dataManager = dataManager;
         }
 
         [Route("Ban")]
         [HttpPost]
         public IHttpActionResult Ban(string id)
         {
-            Guid idGuid = Guid.Empty;
+            Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
             {
-                var user = dataManager.QueryUser(idGuid);
+                var user = _dataManager.QueryUser(idGuid);
                 user.IsBanned = true;
                 return Ok(user);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         [Route("UnBan")]
         [HttpPost]
         public IHttpActionResult UnBan(string id)
         {
-            Guid idGuid = Guid.Empty;
+            Guid idGuid;
             if (Guid.TryParse(id, out idGuid))
             {
-                var user = dataManager.QueryUser(idGuid);
+                var user = _dataManager.QueryUser(idGuid);
                 user.IsBanned = false;
                 return Ok(user);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 }

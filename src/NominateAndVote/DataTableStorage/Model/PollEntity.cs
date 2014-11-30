@@ -27,7 +27,7 @@ namespace NominateAndVote.DataTableStorage.Model
             if (poco != null)
             {
                 PartitionKey = poco.State.ToString();
-                RowKey = poco.ID.ToString();
+                RowKey = poco.Id.ToString();
 
                 Text = poco.Text;
                 PublicationDate = poco.PublicationDate;

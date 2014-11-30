@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using NominateAndVote.DataModel.Model;
+﻿using NominateAndVote.DataModel.Model;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +10,7 @@ namespace NominateAndVote.RestService.Models
     {
         [DataType(DataType.Text)]
         [Display(Name = "News ID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
@@ -29,19 +28,19 @@ namespace NominateAndVote.RestService.Models
 
         public SaveNewsBindingModel(News news)
         {
-            ID = news.ID.ToString();
+            Id = news.Id.ToString();
             Title = news.Title;
             Text = news.Text;
         }
 
         public News ToPoco()
         {
-            Guid id = Guid.Empty;
-            Guid.TryParse(ID, out id);
+            var id = Guid.Empty;
+            Guid.TryParse(Id, out id);
 
-            return new News()
+            return new News
             {
-                ID = id,
+                Id = id,
                 Title = Title,
                 Text = Text
             };

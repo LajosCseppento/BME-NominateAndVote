@@ -72,13 +72,17 @@ namespace NominateAndVote.RestService.Controllers
         }
 
         [Route("Delete")]
-        [HttpGet]
-        public void Delete(string id)
+        [HttpDelete]
+        public bool Delete(string id)
         {
             Guid idGuid = Guid.Empty;
             if (Guid.TryParse(id, out idGuid))
             {
                 dataManager.DeleteNews(idGuid);
+                return true;
+            }
+            else {
+                return false;
             }
         }
     }

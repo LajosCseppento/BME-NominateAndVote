@@ -14,7 +14,7 @@
     <packageHasNamedElement>
       <class
         Id="1db4de6f-a6a6-4f29-9406-88de08117c02"
-        name="Int32"
+        name="int"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -65,7 +65,7 @@
     <packageHasNamedElement>
       <class
         Id="758c511f-93a3-4e20-8eb4-e075f014e743"
-        name="Boolean"
+        name="bool"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -167,7 +167,7 @@
     <packageHasNamedElement>
       <class
         Id="2e45f421-a98f-4228-b728-0b251209233a"
-        name="String"
+        name="string"
         isAbstract="false"
         isLeaf="true"
         isActiveClass="false">
@@ -274,15 +274,9 @@
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <packageMoniker
-        Id="df146041-9ab1-48fc-b0bc-0aacbe01cd22"
-        LastKnownName="Collections"
-        LastKnownLocation="Package4_1721.uml" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <class
         Id="9d728fa2-3042-4f74-9c43-815372b83a8a"
-        name="Int64"
+        name="long"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -333,7 +327,7 @@
     <packageHasNamedElement>
       <class
         Id="e126dc10-d9b2-4ffb-a616-deed7628dea6"
-        name="Object"
+        name="object"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">

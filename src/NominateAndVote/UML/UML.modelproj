@@ -25,12 +25,6 @@
     <Content Include="ModelDefinition\Package3_1721.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\Package4_1721.uml">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="ModelDefinition\Package5_1721.uml">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="POCO.classdiagram">
       <SubType>Content</SubType>
     </Content>

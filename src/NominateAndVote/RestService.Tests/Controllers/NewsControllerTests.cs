@@ -1,54 +1,79 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
+using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-    [TestClass]
-    public class NewsControllerMemoryTests : NewsControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    [TestClass]
-    public class NewsControllerTableStorageTests : NewsControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            // TODO Lali
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    public abstract class NewsControllerGenericTests
+    public abstract class NewsControllerTests
     {
         private NewsController _controller;
         private IDataManager _dataManager;
 
-        [TestInitialize]
-        public void Initialize()
+        public abstract void Initialize();
+
+        private void DoInitialize(IDataManager dataManager)
         {
-            _dataManager = new SampleDataModel().CreateDataManager();
+            _dataManager = dataManager;
             _controller = new NewsController(_dataManager);
         }
 
-        protected abstract IDataManager CreateDataManager();
+        public abstract void Get();
 
-        [TestMethod]
-        public void Get()
+        private void DoGet()
         {
             // Act
-            var result = _controller.ListNews() as List<News>;
+            var result = _controller.List();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsTrue((_dataManager.QueryNews().Count == result.Count));
+            Assert.AreEqual(_dataManager.QueryNews().Count, result.Count());
+        }
+
+        [TestClass]
+        public class NewsControllerMemoryTests : NewsControllerTests
+        {
+            [TestInitialize]
+            public override void Initialize()
+            {
+                DoInitialize(new SampleDataModel().CreateDataManager());
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NewsController")]
+            public override void Get()
+            {
+                DoGet();
+            }
+        }
+
+        [TestClass]
+        public class NewsControllerTableStorageTests : NewsControllerTests
+        {
+            private DataTableStorageTestHelper _helper;
+
+            [TestInitialize]
+            public override void Initialize()
+            {
+                _helper = new DataTableStorageTestHelper();
+                _helper.Initialize(new SampleDataModel());
+                DoInitialize(_helper.TableStorageDataManager);
+            }
+
+            [TestCleanup]
+            public void Cleanup()
+            {
+                _helper.CleanUp();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NewsController")]
+            public override void Get()
+            {
+                DoGet();
+            }
         }
     }
 }

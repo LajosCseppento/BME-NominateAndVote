@@ -7,29 +7,20 @@ using System.Web.Http;
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/Poll")]
-    public class PollController : ApiController
+    public class PollController : BaseApiController
     {
-        private readonly IDataManager _dataManager;
-
         public PollController()
         {
-            // TODO Lali tablestorage / config alapján
-            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public PollController(IDataManager dataManager)
+            : base(dataManager)
         {
-            if (dataManager == null)
-            {
-                throw new ArgumentNullException("dataManager", "The data manager must not be null");
-            }
-
-            _dataManager = dataManager;
         }
 
-        [Route("GetPoll")]
+        [Route("Get")]
         [HttpGet]
-        public Poll GetPoll(string pollId)
+        public Poll Get(string pollId)
         {
             Guid id;
             if (Guid.TryParse(pollId, out id))

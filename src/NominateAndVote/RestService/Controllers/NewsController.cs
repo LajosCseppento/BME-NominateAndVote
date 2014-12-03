@@ -1,35 +1,25 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Poco;
-using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/News")]
-    public class NewsController : ApiController
+    public class NewsController : BaseApiController
     {
-        private readonly IDataManager _dataManager;
-
         public NewsController()
         {
-            // TODO Lali tablestorage / config alapján
-            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public NewsController(IDataManager dataManager)
+            : base(dataManager)
         {
-            if (dataManager == null)
-            {
-                throw new ArgumentNullException("dataManager", "The data manager must not be null");
-            }
-
-            _dataManager = dataManager;
         }
 
-        [Route("ListNews")]
+        [Route("List")]
         [HttpGet]
-        public IEnumerable<News> ListNews()
+        public IEnumerable<News> List()
         {
             return _dataManager.QueryNews();
         }

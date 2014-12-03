@@ -8,30 +8,22 @@ using System.Web.Http;
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/Nomination")]
-    public class NominationController : ApiController
+    public class NominationController : BaseApiController
     {
-        private readonly IDataManager _dataManager;
-
         public NominationController()
         {
-            // TODO Lali tablestorage / config alapján
-            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public NominationController(IDataManager dataManager)
+            : base(dataManager)
         {
-            if (dataManager == null)
-            {
-                throw new ArgumentNullException("dataManager", "The data manager must not be null");
-            }
-
-            _dataManager = dataManager;
         }
 
         [Route("GetForUser")]
         [HttpGet]
         public IEnumerable<Nomination> GetForUser(string userId)
         {
+            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {
@@ -45,6 +37,7 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult Save(SaveNominationBindingModel saveNominationBindingModel)
         {
+            // TODO Ági teszt invalid bejövő adatokra
             if (saveNominationBindingModel == null)
             {
                 return BadRequest("No data");

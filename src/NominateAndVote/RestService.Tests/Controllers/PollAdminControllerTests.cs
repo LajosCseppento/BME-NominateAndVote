@@ -2,6 +2,7 @@
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
+using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
@@ -9,46 +10,24 @@ using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-    /// <summary>
-    /// Summary description for PollAdminController
-    /// </summary>
-    [TestClass]
-    public class PollAdminControllerMemoryTests : PollAdminControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    [TestClass]
-    public class PollAdminControllerTableStorageTests : PollAdminControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            // TODO Lali
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    public abstract class PollAdminControllerGenericTests
+    public abstract class PollAdminControllerTests
     {
         private PollAdminController _controller;
         private IDataManager _dataManager;
 
-        [TestInitialize]
-        public void Initialize()
+        public abstract void Initialize();
+
+        private void DoInitialize(IDataManager dataManager)
         {
-            _dataManager = CreateDataManager();
+            _dataManager = dataManager;
             _controller = new PollAdminController(_dataManager);
         }
 
-        protected abstract IDataManager CreateDataManager();
+        public abstract void Save();
 
-        //Correct object
-        [TestMethod]
-        public void SavePoll_Correct()
+        private void DoSave()
         {
+            // TODO Ági ide csak egy teszteset van? egyébként a felhasználótól bejövő adatokat ellenőrizni kell! (pl datetime ki van-e töltve!)
             // Arrange
             var bindingModel = new SavePollBindingModel
             {
@@ -73,6 +52,50 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual("text", result.Content.Text);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
             Assert.AreEqual(result.Content, _dataManager.QueryPoll(result.Content.Id));
+        }
+
+        [TestClass]
+        public class PollAdminControllerMemoryTests : PollAdminControllerTests
+        {
+            [TestInitialize]
+            public override void Initialize()
+            {
+                DoInitialize(new SampleDataModel().CreateDataManager());
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/PollAdminController")]
+            public override void Save()
+            {
+                DoSave();
+            }
+        }
+
+        [TestClass]
+        public class PollAdminControllerTableStorageTests : PollAdminControllerTests
+        {
+            private DataTableStorageTestHelper _helper;
+
+            [TestInitialize]
+            public override void Initialize()
+            {
+                _helper = new DataTableStorageTestHelper();
+                _helper.Initialize(new SampleDataModel());
+                DoInitialize(_helper.TableStorageDataManager);
+            }
+
+            [TestCleanup]
+            public void Cleanup()
+            {
+                _helper.CleanUp();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/PollAdminController")]
+            public override void Save()
+            {
+                DoSave();
+            }
         }
     }
 }

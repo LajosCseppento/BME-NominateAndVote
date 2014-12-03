@@ -1,34 +1,25 @@
 ﻿using NominateAndVote.DataModel;
-using System;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/Admin")]
-    public class AdminController : ApiController
+    public class AdminController : BaseApiController
     {
-        private readonly IDataManager _dataManager;
-
         public AdminController()
         {
-            // TODO Lali tablestorage / config alapján
-            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public AdminController(IDataManager dataManager)
+            : base(dataManager)
         {
-            if (dataManager == null)
-            {
-                throw new ArgumentNullException("dataManager", "The data manager must not be null");
-            }
-
-            _dataManager = dataManager;
         }
 
         [Route("BanUser")]
         [HttpPost]
         public IHttpActionResult BanUser(string userId)
         {
+            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {
@@ -46,6 +37,7 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult UnBanUser(string userId)
         {
+            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {

@@ -2,6 +2,7 @@
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
+using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
@@ -10,44 +11,26 @@ using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-    [TestClass]
-    public class NominationControllerMemoryTests : NominationControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    [TestClass]
-    public class NominationControllerTableStoregeTests : NominationControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            // TODO Lali
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    public abstract class NominationControllerGenericTests
+    public abstract class NominationControllerTests
     {
         private NominationController _controller;
         private IDataManager _dataManager;
 
-        [TestInitialize]
-        public void Initialize()
+        public abstract void Initialize();
+
+        private void DoInitialize(IDataManager dataManager)
         {
-            _dataManager = CreateDataManager();
+            _dataManager = dataManager;
             _controller = new NominationController(_dataManager);
         }
 
-        protected abstract IDataManager CreateDataManager();
+        public abstract void Save();
 
-        [TestMethod]
-        public void SaveNomination()
+        private void DoSave()
         {
             // Arrange
             var poll = _dataManager.QueryPolls()[0];
+
             var user = new User { Id = 888, IsBanned = false, Name = "Kis Bela" };
             _dataManager.SaveUser(user);
             var subject = _dataManager.QueryPollSubject(1);
@@ -69,11 +52,13 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual("text", result.Content.Text);
         }
 
-        [TestMethod]
-        public void DeleteNomination()
+        public abstract void Delete();
+
+        private void DoDelete()
         {
             // Arrange
             var poll = _dataManager.QueryPolls()[1];
+
             var nomination = poll.Nominations.First();
 
             // Act
@@ -81,8 +66,67 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             poll = _dataManager.QueryPolls()[1];
+
             Assert.IsTrue(result);
             Assert.IsFalse(poll.Nominations.Contains(nomination));
+        }
+
+        [TestClass]
+        public class NominationControllerMemoryTests : NominationControllerTests
+        {
+            [TestInitialize]
+            public override void Initialize()
+            {
+                DoInitialize(new SampleDataModel().CreateDataManager());
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NominationController")]
+            public override void Save()
+            {
+                DoSave();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NominationController")]
+            public override void Delete()
+            {
+                DoDelete();
+            }
+        }
+
+        [TestClass]
+        public class NominationControllerTableStoregeTests : NominationControllerTests
+        {
+            private DataTableStorageTestHelper _helper;
+
+            [TestInitialize]
+            public override void Initialize()
+            {
+                _helper = new DataTableStorageTestHelper();
+                _helper.Initialize(new SampleDataModel());
+                DoInitialize(_helper.TableStorageDataManager);
+            }
+
+            [TestCleanup]
+            public void Cleanup()
+            {
+                _helper.CleanUp();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NominationController")]
+            public override void Save()
+            {
+                DoSave();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NominationController")]
+            public override void Delete()
+            {
+                DoDelete();
+            }
         }
     }
 }

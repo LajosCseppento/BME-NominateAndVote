@@ -2,50 +2,78 @@
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
+using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
-using System.Linq;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-    [TestClass]
-    public class NewsAdminControllerMemoryTests : NewsAdminControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    [TestClass]
-    public class NewsAdminControllerTableStorageTests : NewsAdminControllerGenericTests
-    {
-        protected override IDataManager CreateDataManager()
-        {
-            // TODO Lali
-            return new SampleDataModel().CreateDataManager();
-        }
-    }
-
-    public abstract class NewsAdminControllerGenericTests
+    public abstract class NewsAdminControllerTests
     {
         private NewsAdminController _controller;
         private IDataManager _dataManager;
 
-        [TestInitialize]
-        public void Initialize()
+        public abstract void Initialize();
+
+        private void DoInitialize(IDataManager dataManager)
         {
-            _dataManager = CreateDataManager();
+            _dataManager = dataManager;
             _controller = new NewsAdminController(_dataManager);
         }
 
-        protected abstract IDataManager CreateDataManager();
+        public abstract void Save_New();
 
-        // Save_Null
-        [TestMethod]
-        public void SaveNews_Null()
+        private void DoSave_New()
+        {
+            // TODO Ági ugyanaz mint a save_update, mi a különbség / cél??
+            // Arrange
+            var bindingModel = new SaveNewsBindingModel
+            {
+                Title = "title",
+                Text = "text"
+            };
+
+            // Act
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
+            Assert.AreEqual("title", result.Content.Title);
+            Assert.AreEqual("text", result.Content.Text);
+            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
+        }
+
+        public abstract void Save_Update();
+
+        private void DoSave_Update()
+        {
+            // TODO Ági ugyanaz mint a Save_new, nem értem a különbséget, valamint így nem is sok értelme van! légyszi gondold át
+            // Arrange
+            var bindingModel = new SaveNewsBindingModel
+            {
+                Title = "title",
+                Text = "text"
+            };
+
+            // Act
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
+            Assert.AreEqual("title", result.Content.Title);
+            Assert.AreEqual("text", result.Content.Text);
+            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
+            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
+        }
+
+        public abstract void Save_Null();
+
+        private void DoSave_Null()
         {
             // Act
             var result = _controller.Save(null) as BadRequestErrorMessageResult;
@@ -55,63 +83,104 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual(result.Message, "No data");
         }
 
-        //Correct object
-        [TestMethod]
-        public void SaveNews_Correct()
+        public abstract void Delete();
+
+        private void DoDelete()
         {
             // Arrange
-            var bindingModel = new SaveNewsBindingModel
-            {
-                Title = "title",
-                Text = "text"
-            };
-
-            // Act
-            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
-            Assert.AreEqual("title", result.Content.Title);
-            Assert.AreEqual("text", result.Content.Text);
-            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
-        }
-
-        // Save_Existing
-        [TestMethod]
-        public void SaveNews_Existing()
-        {
-            // Arrange
-            var bindingModel = new SaveNewsBindingModel
-            {
-                Title = "title",
-                Text = "text"
-            };
-
-            // Act
-            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
-            Assert.AreEqual("title", result.Content.Title);
-            Assert.AreEqual("text", result.Content.Text);
-            Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
-        }
-
-        [TestMethod]
-        public void DeleteNews()
-        {
-            // Arrange
-            var news = _dataManager.QueryNews().ElementAt(0);
+            var news = _dataManager.QueryNews()[0];
 
             // Act
             _controller.Delete(news.Id.ToString());
 
             // Assert
             Assert.IsFalse(_dataManager.QueryNews().Contains(news));
+        }
+
+        [TestClass]
+        public class NewsAdminControllerMemoryTests : NewsAdminControllerTests
+        {
+            [TestInitialize]
+            public override void Initialize()
+            {
+                DoInitialize(new SampleDataModel().CreateDataManager());
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NewsAdminController")]
+            public override void Save_New()
+            {
+                DoSave_New();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NewsAdminController")]
+            public override void Save_Update()
+            {
+                DoSave_Update();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NewsAdminController")]
+            public override void Save_Null()
+            {
+                DoSave_Null();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NewsAdminController")]
+            public override void Delete()
+            {
+                DoDelete();
+            }
+        }
+
+        [TestClass]
+        public class NewsAdminControllerTableStorageTests : NewsAdminControllerTests
+        {
+            private DataTableStorageTestHelper _helper;
+
+            [TestInitialize]
+            public override void Initialize()
+            {
+                _helper = new DataTableStorageTestHelper();
+                _helper.Initialize(new SampleDataModel());
+                DoInitialize(_helper.TableStorageDataManager);
+            }
+
+            [TestCleanup]
+            public void Cleanup()
+            {
+                _helper.CleanUp();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NewsAdminController")]
+            public override void Save_New()
+            {
+                DoSave_New();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NewsAdminController")]
+            public override void Save_Update()
+            {
+                DoSave_Update();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NewsAdminController")]
+            public override void Save_Null()
+            {
+                DoSave_Null();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NewsAdminController")]
+            public override void Delete()
+            {
+                DoDelete();
+            }
         }
     }
 }

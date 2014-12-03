@@ -2,78 +2,116 @@
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
+using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
 {
-    /// <summary>
-    /// Summary description for UnitTest1
-    /// </summary>
-    [TestClass]
-    public class AdminControllerTests
+    public abstract class AdminControllerTests
     {
-        [TestClass]
-        public class AdminControllerMemoryTests : AdminControllerGenericTests
+        // TODO Ági hiányoznak azok, amikor nem létező usert piszkálunk
+        // TODO Ági assert-nél le kellene kérdezni újra az adattárból
+
+        private AdminController _controller;
+
+        private IDataManager _dataManager;
+
+        public abstract void Initialize();
+
+        private void DoInitialize(IDataManager dataManager)
         {
-            protected override IDataManager CreateDataManager()
+            _dataManager = dataManager;
+            _controller = new AdminController(_dataManager);
+        }
+
+        public abstract void BanUser();
+
+        private void DoBanUser()
+        {
+            // Arrange
+            var user = new User { Id = 999, IsBanned = false, Name = "Kiss Bela" };
+            _dataManager.SaveUser(user);
+
+            // Act
+            var result = _controller.BanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Content.IsBanned);
+        }
+
+        public abstract void UnBanUser();
+
+        private void DoUnBanUser()
+        {
+            // Arrange
+            var user = new User { Id = 999, IsBanned = true, Name = "Kiss Bela" };
+            _dataManager.SaveUser(user);
+
+            // Act
+            var result = _controller.UnBanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Content.IsBanned);
+        }
+
+        [TestClass]
+        public class AdminControllerMemoryTests : AdminControllerTests
+        {
+            [TestInitialize]
+            public override void Initialize()
             {
-                return new SampleDataModel().CreateDataManager();
+                DoInitialize(new SampleDataModel().CreateDataManager());
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/AdminController")]
+            public override void BanUser()
+            {
+                DoBanUser();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/AdminController")]
+            public override void UnBanUser()
+            {
+                DoUnBanUser();
             }
         }
 
         [TestClass]
-        public class AdminControllerTableStorageTests : AdminControllerGenericTests
+        public class AdminControllerTableStorageTests : AdminControllerTests
         {
-            protected override IDataManager CreateDataManager()
-            {
-                // TODO Lali
-                return new SampleDataModel().CreateDataManager();
-            }
-        }
-
-        public abstract class AdminControllerGenericTests
-        {
-            private AdminController _controller;
-            private IDataManager _dataManager;
+            private DataTableStorageTestHelper _helper;
 
             [TestInitialize]
-            public void Initialize()
+            public override void Initialize()
             {
-                _dataManager = new SampleDataModel().CreateDataManager();
-                _controller = new AdminController(_dataManager);
+                _helper = new DataTableStorageTestHelper();
+                _helper.Initialize(new SampleDataModel());
+                DoInitialize(_helper.TableStorageDataManager);
             }
 
-            protected abstract IDataManager CreateDataManager();
-
-            [TestMethod]
-            public void BanUser()
+            [TestCleanup]
+            public void Cleanup()
             {
-                // Arrange
-                var user = new User { Id = 999, IsBanned = false, Name = "Kiss Bela" };
-                _dataManager.SaveUser(user);
-
-                // Act
-                var result = _controller.BanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
-
-                // Assert
-                Assert.IsNotNull(result);
-                Assert.IsTrue((result.Content.IsBanned == true));
+                _helper.CleanUp();
             }
 
             [TestMethod]
-            public void UnBanUser()
+            [TestCategory("Integration/RestService/TableStorage/AdminController")]
+            public override void BanUser()
             {
-                // Arrange
-                var user = new User { Id = 999, IsBanned = true, Name = "Kiss Bela" };
-                _dataManager.SaveUser(user);
+                DoBanUser();
+            }
 
-                // Act
-                var result = _controller.UnBanUser(user.Id.ToString("D8")) as OkNegotiatedContentResult<User>;
-
-                // Assert
-                Assert.IsNotNull(result);
-                Assert.IsTrue((result.Content.IsBanned == false));
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/AdminController")]
+            public override void UnBanUser()
+            {
+                DoUnBanUser();
             }
         }
     }

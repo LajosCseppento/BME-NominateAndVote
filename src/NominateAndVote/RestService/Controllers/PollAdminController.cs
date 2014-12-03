@@ -1,35 +1,26 @@
 ﻿using NominateAndVote.DataModel;
 using NominateAndVote.RestService.Models;
-using System;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
 {
     [RoutePrefix("api/PollAdmin")]
-    public class PollAdminController : ApiController
+    public class PollAdminController : BaseApiController
     {
-        private readonly IDataManager _dataManager;
-
         public PollAdminController()
         {
-            // TODO Lali tablestorage / config alapján
-            _dataManager = new MemoryDataManager(new DefaultDataModel());
         }
 
         public PollAdminController(IDataManager dataManager)
+            : base(dataManager)
         {
-            if (dataManager == null)
-            {
-                throw new ArgumentNullException("dataManager", "The data manager must not be null");
-            }
-
-            _dataManager = dataManager;
         }
 
         [Route("Save")]
         [HttpPost]
         public IHttpActionResult Save(SavePollBindingModel savePollBindingModel)
         {
+            // TODO Ági teszt invalid bejövő adatokra
             if (savePollBindingModel == null)
             {
                 return BadRequest("No data");

@@ -23,9 +23,9 @@ namespace NominateAndVote.RestService.Controllers
             long id;
             if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(id);
+                var user = DataManager.QueryUser(id);
                 user.IsBanned = true;
-                _dataManager.SaveUser(user);
+                DataManager.SaveUser(user);
 
                 return Ok(user);
             }
@@ -41,12 +41,12 @@ namespace NominateAndVote.RestService.Controllers
             long id;
             if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(id);
+                var user = DataManager.QueryUser(id);
 
                 if (user != null)
                 {
                     user.IsBanned = false;
-                    _dataManager.SaveUser(user);
+                    DataManager.SaveUser(user);
 
                     return Ok(user);
                 }

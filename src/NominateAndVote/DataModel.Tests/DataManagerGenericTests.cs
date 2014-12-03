@@ -8,24 +8,6 @@ namespace NominateAndVote.DataModel.Tests
 {
     public abstract class DataManagerGenericTests
     {
-        // TODO a null paramétereket NEM kell tesztelni! Ez integrációs teszt!
-        // TODO hibás argumentum esetén (pl null) argumentexception / argumentnullexception jön
-        // TODO hibás ADAT esetén DataExceptionnek kell jönnie (pl olyan cucc részeit kérjük le ami nem létezik!)
-        // TODO ezeket valószínűleg rosszul tudja a program
-        // TODO a futtatást a memorydatamanager-en végezd. A sampledatamodel-en futnak a tesztek!
-        // TODO ez azért fontos mert bugol a db és így a leggyorsabb megtalálni a hibát
-        // TODO amikor nézed az eredményeket, MINDEN rendezve kell, hogy visszajöjjön. Mi alapján rendezünk? Lásd POCO osztályok compareto függvénye
-
-        /*
-         * Tippek:
-         * - lekérdezésnél megnézed a sorrendet és PÁR fontos adattagot (mindet felesleges) ; ha valami valamijét kérdezzük le, és az első valami nem ltezik akkor DataException-t kell várni ([ExpectedException])
-         * - mentésnél: példát lásd híreknél (meg kell erősíteni, hogy ÚJRA lekérdezés után BEKERÜLT, és ID-t is kapott)
-         * - törlésnél: ha olyat törlünk, ami nem létezik, azt nemes egyszerűséggel lefossuk, DE ellenőrizni kell hogy nem okoz-e hibát
-         * - search: ezek általában szó eleji egyezést néznek, szóval érdemes kipróálni! ha valami nincs akkor üres lista értelemszerűen
-         *
-         * Persze ha lekérdezésnél ID alapján kérdezek valamit, és nem találom, akkor null-t kell visszaadni, ha több elemet akkor meg öres liste (tehát ha X szavazáshpzkérek jelöléseket és NINCS, akkor az üres lista, ha NEM LÉTEZIK A SZAVAZÁS, az exception)
-         */
-
         protected IDataManager _dataManager;
 
         [TestInitialize]
@@ -135,7 +117,7 @@ namespace NominateAndVote.DataModel.Tests
         {
             // Act
             var user = new User { Id = 40, Name = "V", IsBanned = false };
-            var list = _dataManager.QueryNominations(user);
+            _dataManager.QueryNominations(user);
 
             // Assert
             // expected exception
@@ -297,7 +279,7 @@ namespace NominateAndVote.DataModel.Tests
 
             // Act
             // create
-            var subject = new PollSubject { Id=5, Title="Titanic", Year=1976};
+            var subject = new PollSubject { Id = 5, Title = "Titanic", Year = 1976 };
             _dataManager.SavePollSubject(subject);
 
             // update
@@ -316,19 +298,18 @@ namespace NominateAndVote.DataModel.Tests
         [TestMethod]
         public void SavePollSubjectsBatch()
         {
-            // Arrange
-            var list = _dataManager.QueryPollSubject(1);
-
             // Act
             // create
-            List<PollSubject> subject=new List<PollSubject>();
-            subject.Add(new PollSubject { Id = 5, Title = "Titanic", Year = 1976 });
-            subject.Add(new PollSubject { Id = 6, Title = "Egy", Year = 2001 });
-            subject.Add(new PollSubject { Id = 7, Title = "Ketto", Year = 2003 });
+            var subject = new List<PollSubject>
+            {
+                new PollSubject {Id = 5, Title = "Titanic", Year = 1976},
+                new PollSubject {Id = 6, Title = "Egy", Year = 2001},
+                new PollSubject {Id = 7, Title = "Ketto", Year = 2003}
+            };
             _dataManager.SavePollSubjectsBatch(subject);
 
             // Assert
-            list = _dataManager.QueryPollSubject(6);
+            var list = _dataManager.QueryPollSubject(6);
             Assert.AreNotEqual(null, list);
             Assert.AreEqual("Egy", list.Title);
             list = _dataManager.QueryPollSubject(7);
@@ -378,7 +359,7 @@ namespace NominateAndVote.DataModel.Tests
 
             // Act
             // create
-            var user = new User { Id = 5, Name="Valaki", IsBanned=false};
+            var user = new User { Id = 5, Name = "Valaki", IsBanned = false };
             _dataManager.SaveUser(user);
 
             // update
@@ -410,7 +391,6 @@ namespace NominateAndVote.DataModel.Tests
         [TestMethod]
         public void QueryVoteUserNotVotes()
         {
-
             // Act
             var poll = _dataManager.QueryPolls(PollState.Voting)[0];
             var user = _dataManager.QueryUser(4);
@@ -448,7 +428,7 @@ namespace NominateAndVote.DataModel.Tests
         {
             // Act
             var poll = _dataManager.QueryPolls(PollState.Voting)[0];
-            var user = new User {Id=6, Name="v", IsBanned=true };
+            var user = new User { Id = 6, Name = "v", IsBanned = true };
             var vote = _dataManager.QueryVote(poll, user);
 
             // Assert
@@ -468,7 +448,7 @@ namespace NominateAndVote.DataModel.Tests
 
             // Act
             // create
-            var newVote = new Vote { Date=DateTime.Now, User=user4, Nomination=nom};
+            var newVote = new Vote { Date = DateTime.Now, User = user4, Nomination = nom };
             _dataManager.SaveVote(newVote);
 
             // update

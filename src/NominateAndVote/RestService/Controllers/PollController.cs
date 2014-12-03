@@ -25,7 +25,7 @@ namespace NominateAndVote.RestService.Controllers
             Guid id;
             if (Guid.TryParse(pollId, out id))
             {
-                return _dataManager.QueryPoll(id);
+                return DataManager.QueryPoll(id);
             }
             return null;
         }
@@ -48,12 +48,12 @@ namespace NominateAndVote.RestService.Controllers
         [HttpGet]
         public IEnumerable<Poll> ListClosedPolls()
         {
-            return _dataManager.QueryPolls(PollState.Closed);
+            return DataManager.QueryPolls(PollState.Closed);
         }
 
         private IEnumerable<Poll> QueryPolls(PollState state)
         {
-            var polls = _dataManager.QueryPolls(state);
+            var polls = DataManager.QueryPolls(state);
 
             // avoid circle references
             foreach (var poll in polls)

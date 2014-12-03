@@ -32,7 +32,7 @@ namespace NominateAndVote.RestService.Controllers
 
             var poll = savePollBindingModel.ToPoco();
 
-            _dataManager.SavePoll(poll);
+            DataManager.SavePoll(poll);
 
             return Ok(poll);
         }

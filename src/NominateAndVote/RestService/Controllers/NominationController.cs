@@ -27,8 +27,8 @@ namespace NominateAndVote.RestService.Controllers
             long id;
             if (long.TryParse(userId, out id))
             {
-                var user = _dataManager.QueryUser(id);
-                return _dataManager.QueryNominations(user);
+                var user = DataManager.QueryUser(id);
+                return DataManager.QueryNominations(user);
             }
             return null;
         }
@@ -48,7 +48,7 @@ namespace NominateAndVote.RestService.Controllers
             }
 
             var nomination = saveNominationBindingModel.ToPoco();
-            _dataManager.SaveNomination(nomination);
+            DataManager.SaveNomination(nomination);
 
             return Ok(nomination);
         }
@@ -60,7 +60,7 @@ namespace NominateAndVote.RestService.Controllers
             Guid id;
             if (Guid.TryParse(nominationId, out id))
             {
-                _dataManager.DeleteNomination(id);
+                DataManager.DeleteNomination(id);
                 return true;
             }
             return false;

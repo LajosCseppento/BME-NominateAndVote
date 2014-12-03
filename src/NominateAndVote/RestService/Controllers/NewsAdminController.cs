@@ -39,7 +39,7 @@ namespace NominateAndVote.RestService.Controllers
             }
             else
             {
-                var oldNews = _dataManager.QueryNews(news.Id);
+                var oldNews = DataManager.QueryNews(news.Id);
                 if (oldNews == null)
                 {
                     news.PublicationDate = DateTime.Now;
@@ -50,7 +50,7 @@ namespace NominateAndVote.RestService.Controllers
                 }
             }
 
-            _dataManager.SaveNews(news);
+            DataManager.SaveNews(news);
 
             return Ok(news);
         }
@@ -62,7 +62,7 @@ namespace NominateAndVote.RestService.Controllers
             Guid id;
             if (Guid.TryParse(newsId, out id))
             {
-                _dataManager.DeleteNews(id);
+                DataManager.DeleteNews(id);
                 return true;
             }
             return false;

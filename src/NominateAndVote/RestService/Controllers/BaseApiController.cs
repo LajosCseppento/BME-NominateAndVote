@@ -5,7 +5,7 @@ namespace NominateAndVote.RestService.Controllers
 {
     public abstract class BaseApiController : ApiController
     {
-        protected readonly IDataManager _dataManager;
+        protected readonly IDataManager DataManager;
 
         public BaseApiController()
             : this(null)
@@ -16,12 +16,12 @@ namespace NominateAndVote.RestService.Controllers
         {
             if (dataManager != null)
             {
-                _dataManager = dataManager;
+                DataManager = dataManager;
             }
             else
             {
                 // TODO Csepi table storage configos csatlakozás
-                _dataManager = new MemoryDataManager(new DefaultDataModel());
+                DataManager = new MemoryDataManager(new DefaultDataModel());
             }
         }
     }

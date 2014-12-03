@@ -21,7 +21,7 @@ namespace NominateAndVote.RestService.Controllers
         [HttpGet]
         public IEnumerable<News> List()
         {
-            return _dataManager.QueryNews();
+            return DataManager.QueryNews();
         }
     }
 }

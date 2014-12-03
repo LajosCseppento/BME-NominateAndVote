@@ -16,6 +16,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void Constructor()
         {
             Assert.AreEqual(0, _data.Administrators.Count);
@@ -28,6 +29,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Poll_Nominations_Add()
         {
             var p = new Poll();
@@ -45,6 +47,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Poll_Nominations_Delete()
         {
             var p = new Poll();
@@ -65,6 +68,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Poll_Nominations_ListAdd()
         {
             var p = new Poll();
@@ -80,6 +84,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_User_Nominations_Add()
         {
             var u = new User();
@@ -97,6 +102,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_User_Nominations_Delete()
         {
             var u = new User();
@@ -117,6 +123,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_User_Nominations_ListAdd()
         {
             var u = new User();
@@ -132,6 +139,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Nomination_Votes_Add()
         {
             var n = new Nomination();
@@ -149,6 +157,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Nomination_Votes_Delete()
         {
             var n = new Nomination();
@@ -169,6 +178,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/DefaultDataModel")]
         public void RefreshPocoRelationalLists_Nomination_Votes_ListAdd()
         {
             var n = new Nomination();

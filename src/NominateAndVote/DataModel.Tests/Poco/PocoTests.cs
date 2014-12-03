@@ -5,7 +5,7 @@ using System;
 namespace NominateAndVote.DataModel.Tests.Poco
 {
     [TestClass]
-    public class ModelPocoTests
+    public class PocoTests
     {
         private Administrator _administrator;
         private News _news;
@@ -28,12 +28,14 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void Administrator_Constructor()
         {
             Assert.AreEqual(0, _administrator.UserId);
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void News_Constructor()
         {
             Assert.AreEqual(Guid.Empty, _news.Id);
@@ -43,6 +45,7 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void Nomination_Constructor()
         {
             Assert.AreEqual(Guid.Empty, _nomination.Id);
@@ -55,6 +58,7 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void Poll_Constructor()
         {
             Assert.AreEqual(Guid.Empty, _poll.Id);
@@ -70,6 +74,7 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void PollSubject_Constructor()
         {
             Assert.AreEqual(0, _pollSubject.Id);
@@ -78,6 +83,7 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void User_Constructor()
         {
             Assert.AreEqual(0, _user.Id);
@@ -87,6 +93,7 @@ namespace NominateAndVote.DataModel.Tests.Poco
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/Poco")]
         public void Vote_Constructor()
         {
             Assert.IsNull(_vote.User);

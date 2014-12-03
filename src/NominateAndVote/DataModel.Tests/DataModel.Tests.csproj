@@ -98,7 +98,7 @@
     <Compile Include="DefaultDataModelTests.cs" />
     <Compile Include="MemoryDataManagerTests.cs" />
     <Compile Include="DataManagerGenericTests.cs" />
-    <Compile Include="Poco\ModelPocoTests.cs" />
+    <Compile Include="Poco\PocoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleDataModel.cs" />
     <Compile Include="Common\PocoWithIdStoreTests.cs" />

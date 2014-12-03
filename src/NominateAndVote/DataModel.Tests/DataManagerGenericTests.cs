@@ -24,7 +24,7 @@ namespace NominateAndVote.DataModel.Tests
          * Persze ha lekérdezésnél ID alapján kérdezek valamit, és nem találom, akkor null-t kell visszaadni, ha több elemet akkor meg öres liste (tehát ha X szavazáshpzkérek jelöléseket és NINCS, akkor az üres lista, ha NEM LÉTEZIK A SZAVAZÁS, az exception)
          */
 
-        private IDataManager _dataManager;
+        protected IDataManager _dataManager;
 
         [TestInitialize]
         public void Initialize()

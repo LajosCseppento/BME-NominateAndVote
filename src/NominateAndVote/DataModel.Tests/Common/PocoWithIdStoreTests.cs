@@ -21,6 +21,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Count()
         {
             // Act & Assert
@@ -28,6 +29,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Contains_Poco()
         {
             // Act & Assert
@@ -45,6 +47,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Contains_Id()
         {
             // Act & Assert
@@ -54,6 +57,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void AddOrUpdate()
         {
             // Act
@@ -77,6 +81,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Get_Poco()
         {
             // Act
@@ -91,6 +96,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Get_Id()
         {
             // Act
@@ -105,6 +111,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Remove_Poco()
         {
             // Act
@@ -122,6 +129,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Remove_Id()
         {
             // Act
@@ -139,6 +147,7 @@ namespace NominateAndVote.DataModel.Tests.Common
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataModel/PocoWithIdStore")]
         public void Clear()
         {
             // Act

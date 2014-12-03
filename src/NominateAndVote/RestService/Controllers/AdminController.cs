@@ -23,13 +23,14 @@ namespace NominateAndVote.RestService.Controllers
             if (long.TryParse(userId, out id))
             {
                 var user = DataManager.QueryUser(id);
-                if (user != null) {
+                if (user != null)
+                {
                     user.IsBanned = true;
                     DataManager.SaveUser(user);
 
                     return Ok(user);
                 }
-                return NotFound();             
+                return NotFound();
             }
 
             return NotFound();

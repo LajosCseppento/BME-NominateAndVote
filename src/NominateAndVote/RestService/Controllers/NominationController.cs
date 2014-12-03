@@ -27,7 +27,7 @@ namespace NominateAndVote.RestService.Controllers
             if (long.TryParse(userId, out id))
             {
                 var user = DataManager.QueryUser(id);
-                var nominations=DataManager.QueryNominations(user);
+                var nominations = DataManager.QueryNominations(user);
                 if (nominations != null)
                 {
                     return nominations;

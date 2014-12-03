@@ -54,8 +54,6 @@ namespace NominateAndVote.RestService.Controllers
             return Ok(news);
         }
 
-
-
         [Route("Delete")]
         [HttpDelete]
         public bool Delete(string newsId)

@@ -62,7 +62,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             var bindingModel = new SaveNominationBindingModel
             {
-                Id=nom[0].Id.ToString(),
+                Id = nom[0].Id.ToString(),
                 Text = "proba",
                 PollId = nom[0].Poll.Id.ToString(),
                 UserId = nom[0].User.Id,
@@ -70,13 +70,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
             };
 
             // Act
-            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<Nomination>;
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("proba", result.Content.Text);
-
         }
 
         public abstract void Save_Null();

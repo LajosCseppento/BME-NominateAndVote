@@ -24,7 +24,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
             _dataManager = dataManager;
             _controller = new NewsAdminController(_dataManager);
             _controllerNews = new NewsController(_dataManager);
-
         }
 
         public abstract void Save_New();
@@ -56,12 +55,12 @@ namespace NominateAndVote.RestService.Tests.Controllers
         {
             // Arrange
             var news = _controllerNews.List() as List<News>;
-            
+
             var bindingModel = new SaveNewsBindingModel
             {
                 Title = "Ez",
                 Text = news[0].Text,
-                Id=news[0].Id.ToString()
+                Id = news[0].Id.ToString()
             };
 
             // Act
@@ -122,7 +121,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             public override void Save_Update()
             {
                 DoSave_Update();
-            }         
+            }
 
             [TestMethod]
             [TestCategory("Integration/RestService/Memory/NewsAdminController")]

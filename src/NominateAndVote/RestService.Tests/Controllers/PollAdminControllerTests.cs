@@ -73,11 +73,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
                 VotingStartDate = polls[0].VotingStartDate,
                 PublicationDate = polls[0].PublicationDate,
                 NominationDeadline = polls[0].NominationDeadline,
-                Id=polls[0].Id.ToString()
+                Id = polls[0].Id.ToString()
             };
 
             // Act
-            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<Poll>;
 
             // Assert
             Assert.IsNotNull(result);

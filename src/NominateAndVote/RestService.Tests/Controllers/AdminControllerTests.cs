@@ -10,7 +10,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 {
     public abstract class AdminControllerTests
     {
-
         private AdminController _controller;
 
         private IDataManager _dataManager;

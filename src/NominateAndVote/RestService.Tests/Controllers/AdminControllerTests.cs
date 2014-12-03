@@ -10,8 +10,6 @@ namespace NominateAndVote.RestService.Tests.Controllers
 {
     public abstract class AdminControllerTests
     {
-        // TODO Ági hiányoznak azok, amikor nem létező usert piszkálunk
-        // TODO Ági assert-nél le kellene kérdezni újra az adattárból
 
         private AdminController _controller;
 
@@ -38,7 +36,20 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Content.IsBanned);
+            Assert.IsTrue(_dataManager.QueryBannedUsers().Contains(user));
+        }
+
+        public abstract void BanInvalidUser();
+
+        private void DoBanInvalidUser()
+        {
+            // Arrange
+
+            // Act
+            var result = _controller.BanUser(56.ToString("D8")) as NotFoundResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
 
         public abstract void UnBanUser();
@@ -54,7 +65,20 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsFalse(result.Content.IsBanned);
+            Assert.IsFalse(_dataManager.QueryBannedUsers().Contains(user));
+        }
+
+        public abstract void UnBanInvalidUser();
+
+        private void DoUnBanInvalidUser()
+        {
+            // Arrange
+
+            // Act
+            var result = _controller.UnBanUser(56.ToString("D8")) as NotFoundResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
 
         [TestClass]
@@ -75,9 +99,23 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             [TestMethod]
             [TestCategory("Integration/RestService/Memory/AdminController")]
+            public override void BanInvalidUser()
+            {
+                DoBanInvalidUser();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/AdminController")]
             public override void UnBanUser()
             {
                 DoUnBanUser();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/AdminController")]
+            public override void UnBanInvalidUser()
+            {
+                DoUnBanInvalidUser();
             }
         }
 
@@ -109,9 +147,23 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             [TestMethod]
             [TestCategory("Integration/RestService/TableStorage/AdminController")]
+            public override void BanInvalidUser()
+            {
+                DoBanInvalidUser();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/AdminController")]
             public override void UnBanUser()
             {
                 DoUnBanUser();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/AdminController")]
+            public override void UnBanInvalidUser()
+            {
+                DoUnBanInvalidUser();
             }
         }
     }

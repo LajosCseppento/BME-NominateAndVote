@@ -6,6 +6,7 @@ using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
+using System.Collections.Generic;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -13,6 +14,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
     public abstract class NewsAdminControllerTests
     {
         private NewsAdminController _controller;
+        private NewsController _controllerNews;
         private IDataManager _dataManager;
 
         public abstract void Initialize();
@@ -21,13 +23,14 @@ namespace NominateAndVote.RestService.Tests.Controllers
         {
             _dataManager = dataManager;
             _controller = new NewsAdminController(_dataManager);
+            _controllerNews = new NewsController(_dataManager);
+
         }
 
         public abstract void Save_New();
 
         private void DoSave_New()
         {
-            // TODO Ági ugyanaz mint a save_update, mi a különbség / cél??
             // Arrange
             var bindingModel = new SaveNewsBindingModel
             {
@@ -51,12 +54,14 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
         private void DoSave_Update()
         {
-            // TODO Ági ugyanaz mint a Save_new, nem értem a különbséget, valamint így nem is sok értelme van! légyszi gondold át
             // Arrange
+            var news = _controllerNews.List() as List<News>;
+            
             var bindingModel = new SaveNewsBindingModel
             {
-                Title = "title",
-                Text = "text"
+                Title = "Ez",
+                Text = news[0].Text,
+                Id=news[0].Id.ToString()
             };
 
             // Act
@@ -65,8 +70,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreNotEqual(Guid.Empty, result.Content.Id);
-            Assert.AreEqual("title", result.Content.Title);
-            Assert.AreEqual("text", result.Content.Text);
+            Assert.AreEqual("Ez", result.Content.Title);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
             Assert.AreEqual(result.Content, _dataManager.QueryNews(result.Content.Id));
         }
@@ -118,7 +122,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             public override void Save_Update()
             {
                 DoSave_Update();
-            }
+            }         
 
             [TestMethod]
             [TestCategory("Integration/RestService/Memory/NewsAdminController")]

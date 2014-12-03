@@ -6,6 +6,7 @@ using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Results;
 
@@ -52,6 +53,44 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreEqual("text", result.Content.Text);
         }
 
+        public abstract void Save_Update();
+
+        private void DoSave_Update()
+        {
+            // Arrange
+            var nom = _controller.GetForUser("1") as List<Nomination>;
+
+            var bindingModel = new SaveNominationBindingModel
+            {
+                Id=nom[0].Id.ToString(),
+                Text = "proba",
+                PollId = nom[0].Poll.Id.ToString(),
+                UserId = nom[0].User.Id,
+                SubjectId = nom[0].Subject.Id
+            };
+
+            // Act
+            var result = _controller.Save(bindingModel) as OkNegotiatedContentResult<News>;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(Guid.Empty, result.Content.Id);
+            Assert.AreEqual("proba", result.Content.Text);
+
+        }
+
+        public abstract void Save_Null();
+
+        private void DoSave_Null()
+        {
+            // Act
+            var result = _controller.Save(null) as BadRequestErrorMessageResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Message, "No data");
+        }
+
         public abstract void Delete();
 
         private void DoDelete()
@@ -89,6 +128,20 @@ namespace NominateAndVote.RestService.Tests.Controllers
 
             [TestMethod]
             [TestCategory("Integration/RestService/Memory/NominationController")]
+            public override void Save_Update()
+            {
+                DoSave_Update();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NominationController")]
+            public override void Save_Null()
+            {
+                DoSave_Null();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/Memory/NominationController")]
             public override void Delete()
             {
                 DoDelete();
@@ -119,6 +172,20 @@ namespace NominateAndVote.RestService.Tests.Controllers
             public override void Save()
             {
                 DoSave();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NominationController")]
+            public override void Save_Update()
+            {
+                DoSave_Update();
+            }
+
+            [TestMethod]
+            [TestCategory("Integration/RestService/TableStorage/NominationController")]
+            public override void Save_Null()
+            {
+                DoSave_Null();
             }
 
             [TestMethod]

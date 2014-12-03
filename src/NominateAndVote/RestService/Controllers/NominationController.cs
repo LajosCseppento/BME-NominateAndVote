@@ -23,12 +23,16 @@ namespace NominateAndVote.RestService.Controllers
         [HttpGet]
         public IEnumerable<Nomination> GetForUser(string userId)
         {
-            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {
                 var user = DataManager.QueryUser(id);
-                return DataManager.QueryNominations(user);
+                var nominations=DataManager.QueryNominations(user);
+                if (nominations != null)
+                {
+                    return nominations;
+                }
+                return null;
             }
             return null;
         }
@@ -37,7 +41,6 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult Save(SaveNominationBindingModel saveNominationBindingModel)
         {
-            // TODO Ági teszt invalid bejövő adatokra
             if (saveNominationBindingModel == null)
             {
                 return BadRequest("No data");

@@ -19,15 +19,17 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult BanUser(string userId)
         {
-            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {
                 var user = DataManager.QueryUser(id);
-                user.IsBanned = true;
-                DataManager.SaveUser(user);
+                if (user != null) {
+                    user.IsBanned = true;
+                    DataManager.SaveUser(user);
 
-                return Ok(user);
+                    return Ok(user);
+                }
+                return NotFound();             
             }
 
             return NotFound();
@@ -37,7 +39,6 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult UnBanUser(string userId)
         {
-            // TODO Ági nem létező user???
             long id;
             if (long.TryParse(userId, out id))
             {

@@ -21,7 +21,6 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult Save(SaveNewsBindingModel newsBindingModel)
         {
-            // TODO Ági teszt invalid bejövő adatokra
             if (newsBindingModel == null)
             {
                 return BadRequest("No data");
@@ -54,6 +53,8 @@ namespace NominateAndVote.RestService.Controllers
 
             return Ok(news);
         }
+
+
 
         [Route("Delete")]
         [HttpDelete]

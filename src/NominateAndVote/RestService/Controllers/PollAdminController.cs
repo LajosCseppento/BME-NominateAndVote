@@ -20,7 +20,6 @@ namespace NominateAndVote.RestService.Controllers
         [HttpPost]
         public IHttpActionResult Save(SavePollBindingModel savePollBindingModel)
         {
-            // TODO Ági teszt invalid bejövő adatokra
             if (savePollBindingModel == null)
             {
                 return BadRequest("No data");

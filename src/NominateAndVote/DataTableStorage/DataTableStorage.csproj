@@ -114,6 +114,7 @@
     <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Common\DataStorageException.cs" />
     <Compile Include="TableNames.cs" />
+    <Compile Include="TableStorageDataManagerBase.cs" />
     <Compile Include="TableStorageDataManager.cs" />
     <Compile Include="Entity\AdministratorEntity.cs" />
     <Compile Include="Entity\NominationEntity.cs" />

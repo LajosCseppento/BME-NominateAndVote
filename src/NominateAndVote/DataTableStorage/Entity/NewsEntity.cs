@@ -1,6 +1,7 @@
 ﻿using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataTableStorage.Common;
 using System;
+using System.Collections.Generic;
 
 namespace NominateAndVote.DataTableStorage.Entity
 {

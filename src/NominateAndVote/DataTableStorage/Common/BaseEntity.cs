@@ -6,11 +6,11 @@ namespace NominateAndVote.DataTableStorage.Common
 {
     public abstract class BaseEntity<T> : TableEntity where T : BasePoco<T>, new()
     {
-        public BaseEntity()
+        protected BaseEntity()
         {
         }
 
-        public BaseEntity(T poco)
+        protected BaseEntity(T poco)
         {
             if (poco == null)
             {

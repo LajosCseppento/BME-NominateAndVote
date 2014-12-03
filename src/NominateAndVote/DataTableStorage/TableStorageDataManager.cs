@@ -1,83 +1,19 @@
 ﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Common;
 using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataTableStorage.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NominateAndVote.DataTableStorage
 {
-    public class TableStorageDataManager : IDataManager
+    public class TableStorageDataManager : TableStorageDataManagerBase, IDataManager
     {
-        private readonly CloudStorageAccount _storageAccount;
-        private readonly CloudTableClient _tableClient;
-
         public TableStorageDataManager(CloudStorageAccount storageAccount)
+            : base(storageAccount)
         {
-            if (storageAccount == null)
-            {
-                throw new ArgumentNullException("storageAccount", "The storage account must not be null");
-            }
-
-            _storageAccount = storageAccount;
-            _tableClient = storageAccount.CreateCloudTableClient();
-        }
-
-        public void CreateTablesIfNeeded()
-        {
-            foreach (var entityType in TableNames.GetEntityTypes())
-            {
-                GetTableReference(entityType).CreateIfNotExists();
-            }
-        }
-
-        public void DeleteTablesIfNeeded()
-        {
-            foreach (var entityType in TableNames.GetEntityTypes())
-            {
-                GetTableReference(entityType).DeleteIfExists();
-            }
-        }
-
-        public bool SaveEntity(ITableEntity entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity", "The entity must not be null");
-            }
-
-            var table = GetTableReference(entity.GetType());
-
-            var op = TableOperation.InsertOrReplace(entity);
-            var result = table.Execute(op);
-            return result.Result.Equals(entity);
-        }
-
-        private CloudTable GetTableReference(Type entityType)
-        {
-            if (entityType == null)
-            {
-                throw new ArgumentNullException("entityType", "The entity type must not be null");
-            }
-
-            return _tableClient.GetTableReference(TableNames.GetTableName(entityType));
-        }
-
-        private TEntity RetrieveEntity<TEntity>(TEntity entity) where TEntity : class, ITableEntity
-        {
-            return RetrieveEntity<TEntity>(entity.PartitionKey, entity.RowKey);
-        }
-
-        private TEntity RetrieveEntity<TEntity>(string partitionKey, string rowKey) where TEntity : class, ITableEntity
-        {
-            var table = GetTableReference(typeof(TEntity));
-
-            var retrieveOperation = TableOperation.Retrieve<TEntity>(partitionKey, rowKey);
-            var result = table.Execute(retrieveOperation);
-            var entity = result.Result as TEntity;
-
-            return entity;
         }
 
         public bool IsAdmin(User user)
@@ -91,27 +27,49 @@ namespace NominateAndVote.DataTableStorage
 
         public List<News> QueryNews()
         {
-            throw new NotImplementedException();
+            var q = from e in RetrieveEntities<NewsEntity>()
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public News QueryNews(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = RetrieveEntity(new NewsEntity(new News { Id = id }));
+
+            if (entity == null) { return null; }
+
+            return entity.ToPoco();
         }
 
         public void SaveNews(News news)
         {
-            throw new NotImplementedException();
+            // check
+            if (news == null) { throw new ArgumentNullException("news", "The news must not be null"); }
+
+            // new object, new ID
+            if (news.Id == Guid.Empty) { news.Id = Guid.NewGuid(); }
+
+            // save
+            SaveEntity(new NewsEntity(news));
         }
 
         public void DeleteNews(Guid id)
         {
-            throw new NotImplementedException();
+            DeleteEntity(new NewsEntity(new News { Id = id }));
         }
 
         public List<Nomination> QueryNominations(Poll poll)
         {
-            throw new NotImplementedException();
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+
+            var dbPoll = RetrieveEntity(new PollEntity(poll));
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
+
+            // query
+            var q = from e in RetrieveEntitiesByPartition(new NominationEntity(new Nomination { Poll = dbPoll.ToPoco(), User = new User(), Subject = new PollSubject() }))
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(Poll poll, User user)
@@ -126,37 +84,63 @@ namespace NominateAndVote.DataTableStorage
 
         public void SaveNomination(Nomination nomination)
         {
-            throw new NotImplementedException();
+            // check
+            if (nomination == null) { throw new ArgumentNullException("nomination", "The nomination must not be null"); }
+
+            // new object, new ID
+            if (nomination.Id == Guid.Empty) { nomination.Id = Guid.NewGuid(); }
+
+            // save
+            SaveEntity(new NominationEntity(nomination));
         }
 
         public void DeleteNomination(Guid id)
         {
-            throw new NotImplementedException();
+            DeleteEntity(new NominationEntity(new Nomination { Id = id }));
         }
 
         public List<Poll> QueryPolls()
         {
-            throw new NotImplementedException();
+            var q = from e in RetrieveEntities<PollEntity>()
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public Poll QueryPoll(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = RetrieveEntity(new PollEntity(new Poll { Id = id }));
+
+            if (entity == null) { return null; }
+
+            return entity.ToPoco();
         }
 
         public List<Poll> QueryPolls(PollState state)
         {
-            throw new NotImplementedException();
+            var q = from e in RetrieveEntitiesByPartition(new PollEntity(new Poll { State = state }))
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public void SavePoll(Poll poll)
         {
-            throw new NotImplementedException();
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+
+            // new object, new ID
+            if (poll.Id == Guid.Empty) { poll.Id = Guid.NewGuid(); }
+
+            // save
+            SaveEntity(new PollEntity(poll));
         }
 
         public PollSubject QueryPollSubject(long id)
         {
-            throw new NotImplementedException();
+            var entity = RetrieveEntity(new PollSubjectEntity(new PollSubject { Id = id }));
+
+            if (entity == null) { return null; }
+
+            return entity.ToPoco();
         }
 
         public List<PollSubject> SearchPollSubjects(string term)
@@ -166,7 +150,11 @@ namespace NominateAndVote.DataTableStorage
 
         public void SavePollSubject(PollSubject pollSubject)
         {
-            throw new NotImplementedException();
+            // check
+            if (pollSubject == null) { throw new ArgumentNullException("pollSubject", "The poll subject must not be null"); }
+
+            // save
+            SaveEntity(new PollSubjectEntity(pollSubject));
         }
 
         public void SavePollSubjectsBatch(IEnumerable<PollSubject> pollSubjects)
@@ -181,7 +169,11 @@ namespace NominateAndVote.DataTableStorage
 
         public User QueryUser(long id)
         {
-            throw new NotImplementedException();
+            var entity = RetrieveEntity(new UserEntity(new User { Id = id }));
+
+            if (entity == null) { return null; }
+
+            return entity.ToPoco();
         }
 
         public List<User> SearchUsers(string term)
@@ -191,7 +183,11 @@ namespace NominateAndVote.DataTableStorage
 
         public void SaveUser(User user)
         {
-            throw new NotImplementedException();
+            // check
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
+
+            // save
+            SaveEntity(new UserEntity(user));
         }
 
         public Vote QueryVote(Poll poll, User user)
@@ -201,7 +197,11 @@ namespace NominateAndVote.DataTableStorage
 
         public void SaveVote(Vote vote)
         {
-            throw new NotImplementedException();
+            // check
+            if (vote == null) { throw new ArgumentNullException("vote", "The vote must not be null"); }
+
+            // save
+            SaveEntity(new VoteEntity(vote));
         }
     }
 }

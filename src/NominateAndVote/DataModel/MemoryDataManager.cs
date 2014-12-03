@@ -49,10 +49,10 @@ namespace NominateAndVote.DataModel
             DataModel.RefreshPocoRelationalLists();
         }
 
-        public void DeleteNews(Guid id)
+        public void DeleteNews(News news)
         {
             // remove
-            DataModel.News.Remove(id);
+            DataModel.News.Remove(news);
 
             // refresh
             DataModel.RefreshPocoRelationalLists();
@@ -113,10 +113,10 @@ namespace NominateAndVote.DataModel
             DataModel.RefreshPocoRelationalLists();
         }
 
-        public void DeleteNomination(Guid id)
+        public void DeleteNomination(Nomination nomination)
         {
             // remove
-            DataModel.Nominations.Remove(id);
+            DataModel.Nominations.Remove(nomination);
 
             // refresh
             DataModel.RefreshPocoRelationalLists();
@@ -188,7 +188,10 @@ namespace NominateAndVote.DataModel
             // save
             foreach (var ps in pollSubjects)
             {
-                DataModel.PollSubjects.AddOrUpdate(ps);
+                if (ps != null)
+                {
+                    DataModel.PollSubjects.AddOrUpdate(ps);
+                }
             }
 
             // refresh
@@ -233,6 +236,11 @@ namespace NominateAndVote.DataModel
             // check
             if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
             if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
+
+            var dbPoll = DataModel.Polls.Get(poll);
+            var dbUser = DataModel.Users.Get(user);
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
 
             // query
             var q = from v in DataModel.Votes

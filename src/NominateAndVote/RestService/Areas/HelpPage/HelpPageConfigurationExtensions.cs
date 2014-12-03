@@ -1,5 +1,6 @@
 using NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions;
 using NominateAndVote.RestService.Areas.HelpPage.Models;
+using NominateAndVote.RestService.Areas.HelpPage.SampleGeneration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

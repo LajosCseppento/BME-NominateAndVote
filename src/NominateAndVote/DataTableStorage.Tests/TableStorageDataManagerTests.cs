@@ -193,12 +193,13 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [TestCategory("Integration/DataTableStorage/TableStorageDataManager")]
-        public override void QueryVoteUserNotVotes()
+        public override void QueryVoteUserNoVote()
         {
-            base.QueryVoteUserNotVotes();
+            base.QueryVoteUserNoVote();
         }
 
         [TestMethod]
+        [ExpectedException(typeof(DataException))]
         [TestCategory("Integration/DataTableStorage/TableStorageDataManager")]
         public override void QueryVoteNotExistingPoll()
         {
@@ -206,6 +207,7 @@ namespace NominateAndVote.DataTableStorage.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(DataException))]
         [TestCategory("Integration/DataTableStorage/TableStorageDataManager")]
         public override void QueryVoteNotExistingUser()
         {

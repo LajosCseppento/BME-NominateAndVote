@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace NominateAndVote.RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This class will create an object of a given type and populate it with sample data.
@@ -14,7 +14,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
     public class ObjectGenerator
     {
         internal const int DefaultCollectionSize = 2;
-        private readonly SimpleTypeObjectGenerator SimpleObjectGenerator = new SimpleTypeObjectGenerator();
+        private readonly SimpleTypeObjectGenerator _simpleObjectGenerator = new SimpleTypeObjectGenerator();
 
         /// <summary>
         /// Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
@@ -42,7 +42,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
             {
                 if (SimpleTypeObjectGenerator.CanGenerateObject(type))
                 {
-                    return SimpleObjectGenerator.GenerateObject(type);
+                    return _simpleObjectGenerator.GenerateObject(type);
                 }
 
                 if (type.IsArray)
@@ -303,7 +303,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
                 return asQueryableMethod.Invoke(null, new[] { list });
             }
 
-            return Queryable.AsQueryable((IEnumerable)list);
+            return ((IEnumerable)list).AsQueryable();
         }
 
         private static object GenerateCollection(Type collectionType, int size, Dictionary<Type, object> createdObjectReferences)
@@ -339,7 +339,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
 
         private static object GenerateComplexObject(Type type, Dictionary<Type, object> createdObjectReferences)
         {
-            object result = null;
+            object result;
 
             if (createdObjectReferences.TryGetValue(type, out result))
             {
@@ -410,34 +410,25 @@ namespace NominateAndVote.RestService.Areas.HelpPage
                     { typeof(DateTimeOffset), index => new DateTimeOffset(DateTime.Now) },
                     { typeof(DBNull), index => DBNull.Value },
                     { typeof(Decimal), index => (Decimal)index },
-                    { typeof(Double), index => (Double)(index + 0.1) },
+                    { typeof(Double), index => (index + 0.1) },
                     { typeof(Guid), index => Guid.NewGuid() },
                     { typeof(Int16), index => (Int16)(index % Int16.MaxValue) },
                     { typeof(Int32), index => (Int32)(index % Int32.MaxValue) },
-                    { typeof(Int64), index => (Int64)index },
+                    { typeof(Int64), index => index },
                     { typeof(Object), index => new object() },
                     { typeof(SByte), index => (SByte)64 },
                     { typeof(Single), index => (Single)(index + 0.1) },
                     {
-                        typeof(String), index =>
-                        {
-                            return String.Format(CultureInfo.CurrentCulture, "sample string {0}", index);
-                        }
+                        typeof(String), index => String.Format(CultureInfo.CurrentCulture, "sample string {0}", index)
                     },
                     {
-                        typeof(TimeSpan), index =>
-                        {
-                            return TimeSpan.FromTicks(1234567);
-                        }
+                        typeof(TimeSpan), index => TimeSpan.FromTicks(1234567)
                     },
                     { typeof(UInt16), index => (UInt16)(index % UInt16.MaxValue) },
                     { typeof(UInt32), index => (UInt32)(index % UInt32.MaxValue) },
                     { typeof(UInt64), index => (UInt64)index },
                     {
-                        typeof(Uri), index =>
-                        {
-                            return new Uri(String.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
-                        }
+                        typeof(Uri), index => new Uri(String.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index))
                     },
                 };
             }

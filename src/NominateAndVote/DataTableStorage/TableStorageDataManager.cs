@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel;
 using NominateAndVote.DataModel.Common;
 using NominateAndVote.DataModel.Poco;
@@ -6,6 +7,7 @@ using NominateAndVote.DataTableStorage.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace NominateAndVote.DataTableStorage
 {
@@ -53,9 +55,9 @@ namespace NominateAndVote.DataTableStorage
             SaveEntity(new NewsEntity(news));
         }
 
-        public void DeleteNews(Guid id)
+        public void DeleteNews(News news)
         {
-            DeleteEntity(new NewsEntity(new News { Id = id }));
+            DeleteEntity(new NewsEntity(news));
         }
 
         public List<Nomination> QueryNominations(Poll poll)
@@ -67,19 +69,88 @@ namespace NominateAndVote.DataTableStorage
             if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
 
             // query
-            var q = from e in RetrieveEntitiesByPartition(new NominationEntity(new Nomination { Poll = dbPoll.ToPoco(), User = new User(), Subject = new PollSubject() }))
+            var q = from e in RetrieveEntitiesByPartition<NominationEntity>(dbPoll.Id.ToString())
                     select e.ToPoco();
-            return q.ToSortedList();
+            var nominations = q.ToList();
+            FillNominationObjects(nominations, dbPoll.ToPoco());
+            return nominations.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(Poll poll, User user)
         {
-            throw new NotImplementedException();
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
+
+            var dbPoll = RetrieveEntity(new PollEntity(poll));
+            var dbUser = RetrieveEntity(new UserEntity(user));
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
+
+            // query
+            var userFilter = TableQuery.GenerateFilterConditionForLong("UserId", QueryComparisons.Equal, dbUser.Id);
+            var q = from e in RetrieveEntitiesByPartition<NominationEntity>(dbPoll.Id.ToString(), userFilter)
+                    select e.ToPoco();
+            var nominations = q.ToList();
+            FillNominationObjects(nominations, dbPoll.ToPoco());
+            return nominations.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(User user)
         {
-            throw new NotImplementedException();
+            // check
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
+
+            var dbUser = RetrieveEntity(new UserEntity(user));
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
+
+            // query
+            var userFilter = TableQuery.GenerateFilterConditionForLong("UserId", QueryComparisons.Equal, dbUser.Id);
+            var q = from e in RetrieveEntitiesByFilter<NominationEntity>(userFilter)
+                    select e.ToPoco();
+            var nominations = q.ToList();
+            FillNominationObjects(nominations);
+            return nominations.ToSortedList();
+        }
+
+        private void FillNominationObjects(List<Nomination> nominations, Poll dbPoll = null)
+        {
+            // connect poll
+            if (dbPoll != null)
+            {
+                foreach (var nomination in nominations) { nomination.Poll = dbPoll; }
+            }
+            else
+            {
+                foreach (var nomination in nominations) { nomination.Poll = QueryPoll(nomination.Poll.Id); }
+            }
+
+            // connect poll subject
+            var ids = new Dictionary<long, List<Nomination>>();
+
+            foreach (var nomination in nominations)
+            {
+                var subjectId = nomination.Subject.Id;
+                List<Nomination> subList;
+                if (ids.TryGetValue(subjectId, out subList))
+                {
+                    subList.Add(nomination);
+                }
+                else
+                {
+                    ids.Add(subjectId, new List<Nomination> { nomination });
+                }
+            }
+
+            foreach (var entry in ids)
+            {
+                var subject = QueryPollSubject(entry.Key);
+
+                foreach (var nomination in entry.Value)
+                {
+                    nomination.Subject = subject;
+                }
+            }
         }
 
         public void SaveNomination(Nomination nomination)
@@ -94,9 +165,9 @@ namespace NominateAndVote.DataTableStorage
             SaveEntity(new NominationEntity(nomination));
         }
 
-        public void DeleteNomination(Guid id)
+        public void DeleteNomination(Nomination nomination)
         {
-            DeleteEntity(new NominationEntity(new Nomination { Id = id }));
+            DeleteEntity(new NominationEntity(nomination));
         }
 
         public List<Poll> QueryPolls()
@@ -108,7 +179,9 @@ namespace NominateAndVote.DataTableStorage
 
         public Poll QueryPoll(Guid id)
         {
-            var entity = RetrieveEntity(new PollEntity(new Poll { Id = id }));
+            var filter = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, id.ToString());
+            var entities = RetrieveEntitiesByFilter<PollEntity>(filter);
+            var entity = entities.FirstOrDefault();
 
             if (entity == null) { return null; }
 
@@ -117,7 +190,7 @@ namespace NominateAndVote.DataTableStorage
 
         public List<Poll> QueryPolls(PollState state)
         {
-            var q = from e in RetrieveEntitiesByPartition(new PollEntity(new Poll { State = state }))
+            var q = from e in RetrieveEntitiesByPartition<PollEntity>(state.ToString())
                     select e.ToPoco();
             return q.ToSortedList();
         }
@@ -145,7 +218,14 @@ namespace NominateAndVote.DataTableStorage
 
         public List<PollSubject> SearchPollSubjects(string term)
         {
-            throw new NotImplementedException();
+            // check
+            if (term == null) { throw new ArgumentNullException("term", "The search term must not be null"); }
+
+            // query
+            var filter = CreateSearchFilter("Title", term);
+            var q = from e in RetrieveEntitiesByFilter<PollSubjectEntity>(filter)
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public void SavePollSubject(PollSubject pollSubject)
@@ -159,12 +239,41 @@ namespace NominateAndVote.DataTableStorage
 
         public void SavePollSubjectsBatch(IEnumerable<PollSubject> pollSubjects)
         {
-            throw new NotImplementedException();
+            // check
+            if (pollSubjects == null) { throw new ArgumentNullException("pollSubjects", "The poll subjects must not be null"); }
+
+            // save
+            var q = pollSubjects.Where(ps => ps != null);
+            var list = q.ToList();
+
+            var toProcess = list.Count();
+            using (var resetEvent = new ManualResetEvent(false))
+            {
+                WaitCallback waitCallback = (
+                    ps =>
+                    {
+                        SaveEntity(new PollSubjectEntity((PollSubject)ps));
+                        if (Interlocked.Decrement(ref toProcess) == 0)
+                        {
+                            resetEvent.Set();
+                        }
+                    });
+
+                foreach (var pollSubject in list)
+                {
+                    ThreadPool.QueueUserWorkItem(waitCallback, pollSubject);
+                }
+
+                resetEvent.WaitOne();
+            }
         }
 
         public List<User> QueryBannedUsers()
         {
-            throw new NotImplementedException();
+            var filter = TableQuery.GenerateFilterConditionForBool("IsBanned", QueryComparisons.Equal, true);
+            var q = from e in RetrieveEntitiesByFilter<UserEntity>(filter)
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public User QueryUser(long id)
@@ -178,7 +287,14 @@ namespace NominateAndVote.DataTableStorage
 
         public List<User> SearchUsers(string term)
         {
-            throw new NotImplementedException();
+            // check
+            if (term == null) { throw new ArgumentNullException("term", "The search term must not be null"); }
+
+            // query
+            var filter = CreateSearchFilter("Name", term);
+            var q = from e in RetrieveEntitiesByFilter<UserEntity>(filter)
+                    select e.ToPoco();
+            return q.ToSortedList();
         }
 
         public void SaveUser(User user)
@@ -192,7 +308,37 @@ namespace NominateAndVote.DataTableStorage
 
         public Vote QueryVote(Poll poll, User user)
         {
-            throw new NotImplementedException();
+            // check
+            if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
+            if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
+
+            var dbPoll = RetrieveEntity(new PollEntity(poll));
+            var dbUser = RetrieveEntity(new UserEntity(user));
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
+
+            // get nominations
+            var nominations = QueryNominations(poll);
+
+            // determine whether the user has a vote for a nomination
+
+            foreach (var nomination in nominations)
+            {
+                // query
+                var vote = new VoteEntity(new Vote { User = user, Nomination = nomination });
+                vote = RetrieveEntity(vote);
+
+                if (vote != null)
+                {
+                    // found
+                    var votePoco = vote.ToPoco();
+                    votePoco.Nomination = nomination;
+                    return votePoco;
+                }
+            }
+
+            // not found, not voted yet
+            return null;
         }
 
         public void SaveVote(Vote vote)

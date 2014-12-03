@@ -15,9 +15,9 @@ namespace NominateAndVote.DataModel.Poco
             if (ReferenceEquals(this, other)) return 0;
 
             var cmp = string.Compare(Title, other.Title, System.StringComparison.OrdinalIgnoreCase);
+            if (cmp != 0) { return cmp; }
 
-            if (cmp == 0) { return Year.CompareTo(Year); }
-            else { return cmp; }
+            return Year.CompareTo(Year);
         }
     }
 }

@@ -181,12 +181,13 @@ namespace NominateAndVote.DataModel.Tests
 
         [TestMethod]
         [TestCategory("Integration/DataModel/MemoryDataManager")]
-        public override void QueryVoteUserNotVotes()
+        public override void QueryVoteUserNoVote()
         {
-            base.QueryVoteUserNotVotes();
+            base.QueryVoteUserNoVote();
         }
 
         [TestMethod]
+        [ExpectedException(typeof(DataException))]
         [TestCategory("Integration/DataModel/MemoryDataManager")]
         public override void QueryVoteNotExistingPoll()
         {
@@ -194,6 +195,7 @@ namespace NominateAndVote.DataModel.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(DataException))]
         [TestCategory("Integration/DataModel/MemoryDataManager")]
         public override void QueryVoteNotExistingUser()
         {

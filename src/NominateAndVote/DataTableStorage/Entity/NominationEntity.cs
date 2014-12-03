@@ -75,7 +75,7 @@ namespace NominateAndVote.DataTableStorage.Entity
 
         public override Nomination ToPoco()
         {
-            return new Nomination()
+            return new Nomination
             {
                 Id = Id,
                 Poll = new Poll { Id = PollId },

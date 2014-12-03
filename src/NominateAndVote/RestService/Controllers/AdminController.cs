@@ -52,10 +52,6 @@ namespace NominateAndVote.RestService.Controllers
 
                     return Ok(user);
                 }
-                else
-                {
-                    return NotFound();
-                }
             }
 
             return NotFound();

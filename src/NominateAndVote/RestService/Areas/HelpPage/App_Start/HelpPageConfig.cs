@@ -2,15 +2,16 @@
 // package to your project.
 ////#define Handle_PageResultOfT
 
-using System.Diagnostics.CodeAnalysis;
-using System.Net.Http.Headers;
-using System.Web.Http;
-
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
 
-namespace NominateAndVote.RestService.Areas.HelpPage
+using NominateAndVote.RestService.Areas.HelpPage.SampleGeneration;
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http.Headers;
+using System.Web.Http;
+
+namespace NominateAndVote.RestService.Areas.HelpPage.App_Start
 {
     /// <summary>
     /// Use this class to customize the Help Page.

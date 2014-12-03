@@ -6,7 +6,6 @@ using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Results;
 
@@ -58,15 +57,15 @@ namespace NominateAndVote.RestService.Tests.Controllers
         private void DoSave_Update()
         {
             // Arrange
-            var nom = _controller.GetForUser("1") as List<Nomination>;
-
+            var nominations = _controller.GetForUser("1");
+            var one = nominations.ElementAt(0);
             var bindingModel = new SaveNominationBindingModel
             {
-                Id = nom[0].Id.ToString(),
+                Id = one.Id.ToString(),
                 Text = "proba",
-                PollId = nom[0].Poll.Id.ToString(),
-                UserId = nom[0].User.Id,
-                SubjectId = nom[0].Subject.Id
+                PollId = one.Poll.Id.ToString(),
+                UserId = one.User.Id,
+                SubjectId = one.Subject.Id
             };
 
             // Act
@@ -96,11 +95,11 @@ namespace NominateAndVote.RestService.Tests.Controllers
         {
             // Arrange
             var poll = _dataManager.QueryPolls()[1];
-
-            var nomination = poll.Nominations.First();
+            var q = _dataManager.QueryNominations(poll);
+            var nomination = q.First();
 
             // Act
-            var result = _controller.Delete(nomination.Id.ToString());
+            var result = _controller.Delete(poll.Id.ToString(), nomination.Id.ToString());
 
             // Assert
             poll = _dataManager.QueryPolls()[1];

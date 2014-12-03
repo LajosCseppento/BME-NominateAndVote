@@ -24,11 +24,15 @@ namespace NominateAndVote.DataModel.Poco
 
         public override int CompareTo(Nomination other)
         {
-            // PollSubject ASC
+            // PollSubject ASC, Text ASC
             if (ReferenceEquals(null, other)) return 1;
             if (ReferenceEquals(this, other)) return 0;
             if (ReferenceEquals(null, Subject)) return -1;
-            return Subject.CompareTo(other.Subject);
+
+            var cmp = Subject.CompareTo(other.Subject);
+            if (cmp != 0) { return cmp; }
+
+            return String.Compare(Text, other.Text, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

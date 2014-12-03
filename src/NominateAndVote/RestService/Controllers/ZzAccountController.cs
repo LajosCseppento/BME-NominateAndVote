@@ -9,6 +9,7 @@ using NominateAndVote.RestService.Providers;
 using NominateAndVote.RestService.Results;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -84,16 +85,11 @@ namespace NominateAndVote.RestService.Controllers
                 return null;
             }
 
-            var logins = new List<UserLoginInfoViewModel>();
-
-            foreach (var linkedAccount in user.Logins)
+            var logins = user.Logins.Select(linkedAccount => new UserLoginInfoViewModel
             {
-                logins.Add(new UserLoginInfoViewModel
-                {
-                    LoginProvider = linkedAccount.LoginProvider,
-                    ProviderKey = linkedAccount.ProviderKey
-                });
-            }
+                LoginProvider = linkedAccount.LoginProvider,
+                ProviderKey = linkedAccount.ProviderKey
+            }).ToList();
 
             if (user.PasswordHash != null)
             {
@@ -286,7 +282,6 @@ namespace NominateAndVote.RestService.Controllers
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
         {
             var descriptions = Authentication.GetExternalAuthenticationTypes();
-            var logins = new List<ExternalLoginViewModel>();
 
             string state;
 
@@ -300,12 +295,10 @@ namespace NominateAndVote.RestService.Controllers
                 state = null;
             }
 
-            foreach (var description in descriptions)
+            return descriptions.Select(description => new ExternalLoginViewModel
             {
-                var login = new ExternalLoginViewModel
-                {
-                    Name = description.Caption,
-                    Url = Url.Route("ExternalLogin", new
+                Name = description.Caption,
+                Url = Url.Route("ExternalLogin", new
                     {
                         provider = description.AuthenticationType,
                         response_type = "token",
@@ -313,12 +306,8 @@ namespace NominateAndVote.RestService.Controllers
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
                         state
                     }),
-                    State = state
-                };
-                logins.Add(login);
-            }
-
-            return logins;
+                State = state
+            }).ToList();
         }
 
         // POST api/Account/Register

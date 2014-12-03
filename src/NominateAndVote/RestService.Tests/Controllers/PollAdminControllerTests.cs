@@ -6,7 +6,7 @@ using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -61,19 +61,21 @@ namespace NominateAndVote.RestService.Tests.Controllers
         private void DoSave_Update()
         {
             // Arrange
-            var polls = _controllerPoll.ListNominationPolls() as List<Poll>;
+            var polls = _controllerPoll.ListNominationPolls();
+
+            var one = polls.ElementAt(0);
 
             var bindingModel = new SavePollBindingModel
             {
                 Title = "xxx",
-                Text = polls[0].Text,
-                State = polls[0].State.ToString(),
-                AnnouncementDate = polls[0].AnnouncementDate,
-                VotingDeadline = polls[0].VotingDeadline,
-                VotingStartDate = polls[0].VotingStartDate,
-                PublicationDate = polls[0].PublicationDate,
-                NominationDeadline = polls[0].NominationDeadline,
-                Id = polls[0].Id.ToString()
+                Text = one.Text,
+                State = one.State.ToString(),
+                AnnouncementDate = one.AnnouncementDate,
+                VotingDeadline = one.VotingDeadline,
+                VotingStartDate = one.VotingStartDate,
+                PublicationDate = one.PublicationDate,
+                NominationDeadline = one.NominationDeadline,
+                Id = one.Id.ToString()
             };
 
             // Act
@@ -84,7 +86,7 @@ namespace NominateAndVote.RestService.Tests.Controllers
             Assert.AreNotEqual(Guid.Empty, result.Content.Id);
             Assert.AreEqual("xxx", result.Content.Title);
             Assert.AreNotEqual(DateTime.MinValue, result.Content.PublicationDate);
-            Assert.AreEqual(result.Content, _dataManager.QueryPoll(polls[0].Id));
+            Assert.AreEqual(result.Content, _dataManager.QueryPoll(one.Id));
         }
 
         public abstract void Save_Null();

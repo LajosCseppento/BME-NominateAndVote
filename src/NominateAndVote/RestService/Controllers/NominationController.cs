@@ -58,12 +58,12 @@ namespace NominateAndVote.RestService.Controllers
 
         [Route("Delete")]
         [HttpDelete]
-        public bool Delete(string nominationId)
+        public bool Delete(string pollId, string nominationId)
         {
-            Guid id;
-            if (Guid.TryParse(nominationId, out id))
+            Guid id, idPoll;
+            if (Guid.TryParse(nominationId, out id) && Guid.TryParse(pollId, out idPoll))
             {
-                DataManager.DeleteNomination(id);
+                DataManager.DeleteNomination(new Nomination { Id = id, Poll = new Poll { Id = idPoll }, User = new User(), Subject = new PollSubject() });
                 return true;
             }
             return false;

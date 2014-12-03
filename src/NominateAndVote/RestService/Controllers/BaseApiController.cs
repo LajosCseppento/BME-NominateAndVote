@@ -1,4 +1,7 @@
-﻿using NominateAndVote.DataModel;
+﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using NominateAndVote.DataModel;
+using NominateAndVote.DataTableStorage;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
@@ -7,22 +10,27 @@ namespace NominateAndVote.RestService.Controllers
     {
         protected readonly IDataManager DataManager;
 
-        public BaseApiController()
+        protected BaseApiController()
             : this(null)
         {
         }
 
-        public BaseApiController(IDataManager dataManager)
+        protected BaseApiController(IDataManager dataManager)
         {
-            if (dataManager != null)
-            {
-                DataManager = dataManager;
-            }
-            else
-            {
-                // TODO Csepi table storage configos csatlakozás
-                DataManager = new MemoryDataManager(new DefaultDataModel());
-            }
+            // table storage
+
+            // set table names
+            TableNames.ResetToDefault();
+
+            // connect and create tables
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            var manager = new TableStorageDataManager(storageAccount);
+            manager.CreateTablesIfNeeded();
+
+            DataManager = manager;
+
+            // temporary memory
+            // DataManager = dataManager ?? new MemoryDataManager(new DefaultDataModel());
         }
     }
 }

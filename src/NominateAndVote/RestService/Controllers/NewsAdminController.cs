@@ -1,4 +1,5 @@
 ﻿using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.RestService.Models;
 using System;
 using System.Web.Http;
@@ -39,14 +40,7 @@ namespace NominateAndVote.RestService.Controllers
             else
             {
                 var oldNews = DataManager.QueryNews(news.Id);
-                if (oldNews == null)
-                {
-                    news.PublicationDate = DateTime.Now;
-                }
-                else
-                {
-                    news.PublicationDate = oldNews.PublicationDate;
-                }
+                news.PublicationDate = oldNews == null ? DateTime.Now : oldNews.PublicationDate;
             }
 
             DataManager.SaveNews(news);
@@ -61,7 +55,7 @@ namespace NominateAndVote.RestService.Controllers
             Guid id;
             if (Guid.TryParse(newsId, out id))
             {
-                DataManager.DeleteNews(id);
+                DataManager.DeleteNews(new News { Id = id });
                 return true;
             }
             return false;

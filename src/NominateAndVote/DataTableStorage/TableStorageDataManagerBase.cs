@@ -2,23 +2,20 @@
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace NominateAndVote.DataTableStorage
 {
     public abstract class TableStorageDataManagerBase
     {
-        private readonly CloudStorageAccount _storageAccount;
         private readonly CloudTableClient _tableClient;
 
-        public TableStorageDataManagerBase(CloudStorageAccount storageAccount)
+        protected TableStorageDataManagerBase(CloudStorageAccount storageAccount)
         {
             if (storageAccount == null)
             {
                 throw new ArgumentNullException("storageAccount", "The storage account must not be null");
             }
 
-            _storageAccount = storageAccount;
             _tableClient = storageAccount.CreateCloudTableClient();
         }
 
@@ -81,14 +78,19 @@ namespace NominateAndVote.DataTableStorage
             return entities;
         }
 
-        protected List<TEntity> RetrieveEntitiesByPartition<TEntity>(TEntity search) where TEntity : ITableEntity, new()
+        protected List<TEntity> RetrieveEntitiesByPartition<TEntity>(string partitionKey, string additionalFilter = null) where TEntity : ITableEntity, new()
         {
-            var filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal,
-                search.PartitionKey);
+            var filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey);
+
+            if (additionalFilter != null)
+            {
+                filter = TableQuery.CombineFilters(filter, TableOperators.And, additionalFilter);
+            }
+
             return RetrieveEntitiesByFilter<TEntity>(filter);
         }
 
-        private List<TEntity> RetrieveEntitiesByFilter<TEntity>(string filter) where TEntity : ITableEntity, new()
+        protected List<TEntity> RetrieveEntitiesByFilter<TEntity>(string filter) where TEntity : ITableEntity, new()
         {
             var table = GetTableReference(typeof(TEntity));
 
@@ -143,6 +145,18 @@ namespace NominateAndVote.DataTableStorage
                 }
                 throw;
             }
+        }
+
+        protected string CreateSearchFilter(string columnName, string term)
+        {
+            var lastChar = term[term.Length - 1];
+            var nextLastChar = (char)(lastChar + 1);
+            var nextSearchStr = term.Substring(0, term.Length - 1) + nextLastChar;
+
+            var filter = TableQuery.CombineFilters(TableQuery.GenerateFilterCondition(columnName, QueryComparisons.GreaterThanOrEqual, term),
+                TableOperators.And, TableQuery.GenerateFilterCondition(columnName, QueryComparisons.LessThan, nextSearchStr));
+
+            return filter;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
     public class ModelDescriptionGenerator
     {
         // Modify this to support more data annotation attributes.
-        private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
+        private readonly IDictionary<Type, Func<object, string>> _annotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
             { typeof(RequiredAttribute), a => "Required" },
             { typeof(RangeAttribute), a =>
@@ -61,7 +61,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
         };
 
         // Modify this to add more default documentations.
-        private readonly IDictionary<Type, string> DefaultTypeDocumentation = new Dictionary<Type, string>
+        private readonly IDictionary<Type, string> _defaultTypeDocumentation = new Dictionary<Type, string>
         {
             { typeof(Int16), "integer" },
             { typeof(Int32), "integer" },
@@ -84,7 +84,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
             { typeof(Boolean), "boolean" },
         };
 
-        private Lazy<IModelDocumentationProvider> _documentationProvider;
+        private readonly Lazy<IModelDocumentationProvider> _documentationProvider;
 
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
@@ -139,7 +139,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
                 return modelDescription;
             }
 
-            if (DefaultTypeDocumentation.ContainsKey(modelType))
+            if (_defaultTypeDocumentation.ContainsKey(modelType))
             {
                 return GenerateSimpleTypeModelDescription(modelType);
             }
@@ -252,7 +252,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
         private string CreateDefaultDocumentation(Type type)
         {
             string documentation;
-            if (DefaultTypeDocumentation.TryGetValue(type, out documentation))
+            if (_defaultTypeDocumentation.TryGetValue(type, out documentation))
             {
                 return documentation;
             }
@@ -272,7 +272,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage.ModelDescriptions
             foreach (var attribute in attributes)
             {
                 Func<object, string> textGenerator;
-                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
+                if (_annotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
                 {
                     annotations.Add(
                         new ParameterAnnotation

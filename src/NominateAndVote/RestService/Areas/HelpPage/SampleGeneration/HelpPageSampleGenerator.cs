@@ -13,7 +13,7 @@ using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using System.Xml.Linq;
 
-namespace NominateAndVote.RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This class will generate the samples for the help page.
@@ -87,7 +87,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
         /// <returns>The samples keyed by media type.</returns>
-        public virtual IDictionary<MediaTypeHeaderValue, object> GetSample(ApiDescription api, SampleDirection sampleDirection)
+        public IDictionary<MediaTypeHeaderValue, object> GetSample(ApiDescription api, SampleDirection sampleDirection)
         {
             if (api == null)
             {
@@ -95,17 +95,13 @@ namespace NominateAndVote.RestService.Areas.HelpPage
             }
             var controllerName = api.ActionDescriptor.ControllerDescriptor.ControllerName;
             var actionName = api.ActionDescriptor.ActionName;
-            var parameterNames = api.ParameterDescriptions.Select(p => p.Name);
+            var parameterNames = api.ParameterDescriptions.Select(p => p.Name).ToList();
             Collection<MediaTypeFormatter> formatters;
             var type = ResolveType(api, controllerName, actionName, parameterNames, sampleDirection, out formatters);
-            var samples = new Dictionary<MediaTypeHeaderValue, object>();
 
             // Use the samples provided directly for actions
             var actionSamples = GetAllActionSamples(controllerName, actionName, parameterNames, sampleDirection);
-            foreach (var actionSample in actionSamples)
-            {
-                samples.Add(actionSample.Key.MediaType, WrapSampleIfString(actionSample.Value));
-            }
+            var samples = actionSamples.ToDictionary(actionSample => actionSample.Key.MediaType, actionSample => WrapSampleIfString(actionSample.Value));
 
             // Do the sample generation based on formatters only if an action doesn't return an HttpResponseMessage.
             // Here we cannot rely on formatters because we don't know what's in the HttpResponseMessage, it might not even use formatters.
@@ -146,7 +142,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// <param name="mediaType">The media type.</param>
         /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
         /// <returns>The sample that matches the parameters.</returns>
-        public virtual object GetActionSample(string controllerName, string actionName, IEnumerable<string> parameterNames, Type type, MediaTypeFormatter formatter, MediaTypeHeaderValue mediaType, SampleDirection sampleDirection)
+        public object GetActionSample(string controllerName, string actionName, IEnumerable<string> parameterNames, Type type, MediaTypeFormatter formatter, MediaTypeHeaderValue mediaType, SampleDirection sampleDirection)
         {
             object sample;
 
@@ -175,7 +171,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// <returns>The sample object.</returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes",
             Justification = "Even if all items in SampleObjectFactories throw, problem will be visible as missing sample.")]
-        public virtual object GetSampleObject(Type type)
+        public object GetSampleObject(Type type)
         {
             object sampleObject;
 
@@ -212,7 +208,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <returns>The type.</returns>
-        public virtual Type ResolveHttpRequestMessageType(ApiDescription api)
+        public Type ResolveHttpRequestMessageType(ApiDescription api)
         {
             var controllerName = api.ActionDescriptor.ControllerDescriptor.ControllerName;
             var actionName = api.ActionDescriptor.ActionName;
@@ -231,7 +227,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
         /// <param name="formatters">The formatters.</param>
         [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", Justification = "This is only used in advanced scenarios.")]
-        public virtual Type ResolveType(ApiDescription api, string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection, out Collection<MediaTypeFormatter> formatters)
+        public Type ResolveType(ApiDescription api, string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection, out Collection<MediaTypeFormatter> formatters)
         {
             if (!Enum.IsDefined(typeof(SampleDirection), sampleDirection))
             {
@@ -285,7 +281,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         /// <param name="mediaType">Type of the media.</param>
         /// <returns></returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The exception is recorded as InvalidSample.")]
-        public virtual object WriteSampleObjectUsingFormatter(MediaTypeFormatter formatter, object value, Type type, MediaTypeHeaderValue mediaType)
+        public object WriteSampleObjectUsingFormatter(MediaTypeFormatter formatter, object value, Type type, MediaTypeHeaderValue mediaType)
         {
             if (formatter == null)
             {
@@ -296,7 +292,7 @@ namespace NominateAndVote.RestService.Areas.HelpPage
                 throw new ArgumentNullException("mediaType");
             }
 
-            object sample = String.Empty;
+            object sample;
             MemoryStream ms = null;
             HttpContent content = null;
             try
@@ -418,17 +414,13 @@ namespace NominateAndVote.RestService.Areas.HelpPage
         private IEnumerable<KeyValuePair<HelpPageSampleKey, object>> GetAllActionSamples(string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection)
         {
             var parameterNamesSet = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
-            foreach (var sample in ActionSamples)
-            {
-                var sampleKey = sample.Key;
-                if (String.Equals(controllerName, sampleKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                    String.Equals(actionName, sampleKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
-                    (sampleKey.ParameterNames.SetEquals(new[] { "*" }) || parameterNamesSet.SetEquals(sampleKey.ParameterNames)) &&
-                    sampleDirection == sampleKey.SampleDirection)
-                {
-                    yield return sample;
-                }
-            }
+            return from sample in ActionSamples
+                   let sampleKey = sample.Key
+                   where String.Equals(controllerName, sampleKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
+                         String.Equals(actionName, sampleKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
+                         (sampleKey.ParameterNames.SetEquals(new[] { "*" }) || parameterNamesSet.SetEquals(sampleKey.ParameterNames)) &&
+                         sampleDirection == sampleKey.SampleDirection
+                   select sample;
         }
 
         private static object WrapSampleIfString(object sample)

@@ -6,7 +6,7 @@ using NominateAndVote.DataTableStorage.Tests;
 using NominateAndVote.RestService.Controllers;
 using NominateAndVote.RestService.Models;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http.Results;
 
 namespace NominateAndVote.RestService.Tests.Controllers
@@ -54,13 +54,14 @@ namespace NominateAndVote.RestService.Tests.Controllers
         private void DoSave_Update()
         {
             // Arrange
-            var news = _controllerNews.List() as List<News>;
+            var news = _controllerNews.List();
 
+            var one = news.ElementAt(0);
             var bindingModel = new SaveNewsBindingModel
             {
                 Title = "Ez",
-                Text = news[0].Text,
-                Id = news[0].Id.ToString()
+                Text = one.Text,
+                Id = one.Id.ToString()
             };
 
             // Act

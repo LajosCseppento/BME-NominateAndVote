@@ -1,7 +1,6 @@
 ﻿using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataTableStorage.Common;
 using System;
-using System.Collections.Generic;
 
 namespace NominateAndVote.DataTableStorage.Entity
 {
@@ -43,7 +42,7 @@ namespace NominateAndVote.DataTableStorage.Entity
 
         public override News ToPoco()
         {
-            return new News() { Id = Id, Title = Title, Text = Text, PublicationDate = PublicationDate };
+            return new News { Id = Id, Title = Title, Text = Text, PublicationDate = PublicationDate };
         }
     }
 }

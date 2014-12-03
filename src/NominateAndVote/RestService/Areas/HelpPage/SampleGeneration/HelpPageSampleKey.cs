@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Net.Http.Headers;
 
-namespace NominateAndVote.RestService.Areas.HelpPage
+namespace NominateAndVote.RestService.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This is used to identify the place where the sample should be applied.
@@ -161,12 +162,8 @@ namespace NominateAndVote.RestService.Areas.HelpPage
             {
                 hashCode ^= ParameterType.GetHashCode();
             }
-            foreach (var parameterName in ParameterNames)
-            {
-                hashCode ^= parameterName.ToUpperInvariant().GetHashCode();
-            }
 
-            return hashCode;
+            return ParameterNames.Aggregate(hashCode, (current, parameterName) => current ^ parameterName.ToUpperInvariant().GetHashCode());
         }
     }
 }

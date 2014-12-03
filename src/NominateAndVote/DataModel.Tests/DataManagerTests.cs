@@ -73,10 +73,10 @@ namespace NominateAndVote.DataModel.Tests
             var list = _dataManager.QueryNews();
 
             // exists, should delete
-            _dataManager.DeleteNews(list[1].Id);
+            _dataManager.DeleteNews(list[1]);
 
             // not exists, should not cause exception
-            _dataManager.DeleteNews(Guid.NewGuid());
+            _dataManager.DeleteNews(new News { Id = Guid.NewGuid() });
 
             // Assert
             list = _dataManager.QueryNews();
@@ -163,10 +163,10 @@ namespace NominateAndVote.DataModel.Tests
             var list = _dataManager.QueryNominations(poll);
 
             // exists, should delete
-            _dataManager.DeleteNomination(list[0].Id);
+            _dataManager.DeleteNomination(list[0]);
 
             // not exists, should not cause exception
-            _dataManager.DeleteNomination(Guid.NewGuid());
+            _dataManager.DeleteNomination(new Nomination { Id = Guid.NewGuid(), Poll = list[0].Poll, User = list[0].User, Subject = list[0].Subject });
 
             // Assert
             list = _dataManager.QueryNominations(poll);
@@ -195,13 +195,15 @@ namespace NominateAndVote.DataModel.Tests
 
         public virtual void QueryPoll()
         {
-            // Act
+            // Arrange
             var poll = _dataManager.QueryPolls(PollState.Nomination)[0];
-            var list = _dataManager.QueryPoll(poll.Id);
+
+            // Act
+            var one = _dataManager.QueryPoll(poll.Id);
 
             // Assert
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Ki a legjobb?", list.Title);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Ki a legjobb?", one.Title);
         }
 
         public virtual void SavePoll()
@@ -261,7 +263,7 @@ namespace NominateAndVote.DataModel.Tests
         public virtual void SavePollSubject()
         {
             // Arrange
-            var list = _dataManager.QueryPollSubject(1);
+            var one = _dataManager.QueryPollSubject(1);
 
             // Act
             // create
@@ -269,37 +271,48 @@ namespace NominateAndVote.DataModel.Tests
             _dataManager.SavePollSubject(subject);
 
             // update
-            list.Title = "Ehezok viadala 2";
-            _dataManager.SavePollSubject(list);
+            one.Title = "Ehezok viadala 2";
+            _dataManager.SavePollSubject(one);
 
             // Assert
-            list = _dataManager.QueryPollSubject(1);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Ehezok viadala 2", list.Title);
-            list = _dataManager.QueryPollSubject(5);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Titanic", list.Title);
+            one = _dataManager.QueryPollSubject(1);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Ehezok viadala 2", one.Title);
+            one = _dataManager.QueryPollSubject(5);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Titanic", one.Title);
         }
 
         public virtual void SavePollSubjectsBatch()
         {
             // Act
             // create
-            var subject = new List<PollSubject>
+            var subjects = new List<PollSubject>
             {
                 new PollSubject {Id = 5, Title = "Titanic", Year = 1976},
                 new PollSubject {Id = 6, Title = "Egy", Year = 2001},
                 new PollSubject {Id = 7, Title = "Ketto", Year = 2003}
             };
-            _dataManager.SavePollSubjectsBatch(subject);
+
+            // event a lot
+            for (var i = 0; i < 1500; i++)
+            {
+                subjects.Add(new PollSubject { Id = 1000 + i, Title = "z Film #" + i, Year = 1980 + i / 50 });
+            }
+
+            _dataManager.SavePollSubjectsBatch(subjects);
 
             // Assert
-            var list = _dataManager.QueryPollSubject(6);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Egy", list.Title);
-            list = _dataManager.QueryPollSubject(7);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Ketto", list.Title);
+            var one = _dataManager.QueryPollSubject(6);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Egy", one.Title);
+
+            one = _dataManager.QueryPollSubject(7);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Ketto", one.Title);
+
+            var list = _dataManager.SearchPollSubjects("z Film #");
+            Assert.AreEqual(1500, list.Count);
         }
 
         public virtual void QueryBannedUsers()
@@ -339,7 +352,7 @@ namespace NominateAndVote.DataModel.Tests
         public virtual void SaveUser()
         {
             // Arrange
-            var list = _dataManager.QueryUser(1);
+            var one = _dataManager.QueryUser(1);
 
             // Act
             // create
@@ -347,16 +360,16 @@ namespace NominateAndVote.DataModel.Tests
             _dataManager.SaveUser(user);
 
             // update
-            list.Name = "La";
-            _dataManager.SaveUser(list);
+            one.Name = "La";
+            _dataManager.SaveUser(one);
 
             // Assert
-            list = _dataManager.QueryUser(1);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("La", list.Name);
-            list = _dataManager.QueryUser(5);
-            Assert.AreNotEqual(null, list);
-            Assert.AreEqual("Valaki", list.Name);
+            one = _dataManager.QueryUser(1);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("La", one.Name);
+            one = _dataManager.QueryUser(5);
+            Assert.AreNotEqual(null, one);
+            Assert.AreEqual("Valaki", one.Name);
         }
 
         public virtual void QueryVoteUserVoted()
@@ -371,7 +384,7 @@ namespace NominateAndVote.DataModel.Tests
             Assert.AreEqual("Valami Amerika", vote.Nomination.Subject.Title);
         }
 
-        public virtual void QueryVoteUserNotVotes()
+        public virtual void QueryVoteUserNoVote()
         {
             // Act
             var poll = _dataManager.QueryPolls(PollState.Voting)[0];
@@ -398,10 +411,10 @@ namespace NominateAndVote.DataModel.Tests
                 AnnouncementDate = DateTime.Now.AddDays(+8)
             };
             var user = _dataManager.QueryUser(4);
-            var vote = _dataManager.QueryVote(poll, user);
+            _dataManager.QueryVote(poll, user);
 
             // Assert
-            Assert.AreEqual(null, vote);
+            // expected exception
         }
 
         public virtual void QueryVoteNotExistingUser()
@@ -409,10 +422,10 @@ namespace NominateAndVote.DataModel.Tests
             // Act
             var poll = _dataManager.QueryPolls(PollState.Voting)[0];
             var user = new User { Id = 6, Name = "v", IsBanned = true };
-            var vote = _dataManager.QueryVote(poll, user);
+            _dataManager.QueryVote(poll, user);
 
             // Assert
-            Assert.AreEqual(null, vote);
+            // expected exception
         }
 
         public virtual void SaveVote()
@@ -435,10 +448,10 @@ namespace NominateAndVote.DataModel.Tests
             _dataManager.SaveVote(vote);
 
             // Assert
-            var list = _dataManager.QueryVote(poll, user4);
-            Assert.AreNotEqual(null, list);
-            list = _dataManager.QueryVote(poll, user4);
-            Assert.AreNotEqual(null, list);
+            var one = _dataManager.QueryVote(poll, user4);
+            Assert.AreNotEqual(null, one);
+            one = _dataManager.QueryVote(poll, user4);
+            Assert.AreNotEqual(null, one);
         }
     }
 }

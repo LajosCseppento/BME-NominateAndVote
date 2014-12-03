@@ -15,7 +15,7 @@ namespace NominateAndVote.DataModel.Poco
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Object.Equals(User, other.User) && Object.Equals(Nomination, other.Nomination);
+            return Equals(User, other.User) && Equals(Nomination, other.Nomination);
         }
 
         public override int GetHashCode()

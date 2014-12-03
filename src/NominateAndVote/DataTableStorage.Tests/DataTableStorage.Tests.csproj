@@ -82,6 +82,8 @@
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.1.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -96,8 +98,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataTableStorageTestHelper.cs" />
     <Compile Include="TableNamesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableStorageDataManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModel.Tests\DataModel.Tests.csproj">
@@ -112,6 +116,12 @@
       <Project>{058d9126-c9c7-4cb2-b38a-5849f7bfc32d}</Project>
       <Name>DataTableStorage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App.sample.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

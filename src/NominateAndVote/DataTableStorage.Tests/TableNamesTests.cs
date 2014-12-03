@@ -14,6 +14,7 @@ namespace NominateAndVote.DataTableStorage.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void Clear()
         {
             // Act & Assert
@@ -23,6 +24,7 @@ namespace NominateAndVote.DataTableStorage.Tests
         }
 
         [TestMethod]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName()
         {
             // Act
@@ -49,6 +51,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName_InvalidType()
         {
             // Act
@@ -60,6 +63,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName_NullName()
         {
             // Act
@@ -71,6 +75,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName_NullType()
         {
             // Act
@@ -82,6 +87,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName_InvalidName()
         {
             // Act
@@ -93,6 +99,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void SetTableName_DuplicateName()
         {
             // Act
@@ -105,6 +112,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void GetEntityType_NotFound()
         {
             // Act
@@ -116,6 +124,7 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        [TestCategory("Unit/DataTableStorage/TableNames")]
         public void GetTableName_NotFound()
         {
             // Act

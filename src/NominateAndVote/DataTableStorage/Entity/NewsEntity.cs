@@ -1,11 +1,24 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Poco;
+﻿using NominateAndVote.DataModel.Poco;
+using NominateAndVote.DataTableStorage.Common;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Entity
 {
-    public class NewsEntity : TableEntity
+    public class NewsEntity : BaseEntity<News>
     {
+        public Guid Id
+        {
+            get
+            {
+                Guid id;
+                if (!Guid.TryParse(PartitionKey, out id))
+                {
+                    throw new DataStorageException("Data inconsistency: the stored ID is not a Guid: " + PartitionKey) { DataElement = this };
+                }
+                return id;
+            }
+        }
+
         public string Title { get; set; }
 
         public string Text { get; set; }
@@ -17,18 +30,19 @@ namespace NominateAndVote.DataTableStorage.Entity
         }
 
         public NewsEntity(News poco)
+            : base(poco)
         {
-            if (poco == null)
-            {
-                throw new ArgumentNullException("poco", "The poco must not be null");
-            }
-
             PartitionKey = poco.Id.ToString();
             RowKey = "";
 
             Title = poco.Title;
             Text = poco.Text;
             PublicationDate = poco.PublicationDate;
+        }
+
+        public override News ToPoco()
+        {
+            return new News() { Id = Id, Title = Title, Text = Text, PublicationDate = PublicationDate };
         }
     }
 }

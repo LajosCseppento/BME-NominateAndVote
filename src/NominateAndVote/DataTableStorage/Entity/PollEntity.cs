@@ -1,11 +1,37 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Poco;
+﻿using NominateAndVote.DataModel.Poco;
+using NominateAndVote.DataTableStorage.Common;
 using System;
 
 namespace NominateAndVote.DataTableStorage.Entity
 {
-    public class PollEntity : TableEntity
+    public class PollEntity : BaseEntity<Poll>
     {
+        public Guid Id
+        {
+            get
+            {
+                Guid id;
+                if (!Guid.TryParse(RowKey, out id))
+                {
+                    throw new DataStorageException("Data inconsistency: the stored ID is not a Guid: " + RowKey) { DataElement = this };
+                }
+                return id;
+            }
+        }
+
+        public PollState State
+        {
+            get
+            {
+                PollState state;
+                if (!Enum.TryParse(PartitionKey, true, out state))
+                {
+                    throw new DataStorageException("Data inconsistency: the stored state is not valid: " + PartitionKey) { DataElement = this };
+                }
+                return state;
+            }
+        }
+
         public string Title { get; set; }
 
         public string Text { get; set; }
@@ -25,12 +51,8 @@ namespace NominateAndVote.DataTableStorage.Entity
         }
 
         public PollEntity(Poll poco)
+            : base(poco)
         {
-            if (poco == null)
-            {
-                throw new ArgumentNullException("poco", "The poco must not be null");
-            }
-
             PartitionKey = poco.State.ToString();
             RowKey = poco.Id.ToString();
 
@@ -41,6 +63,22 @@ namespace NominateAndVote.DataTableStorage.Entity
             VotingStartDate = poco.VotingStartDate;
             VotingDeadline = poco.VotingDeadline;
             AnnouncementDate = poco.AnnouncementDate;
+        }
+
+        public override Poll ToPoco()
+        {
+            return new Poll
+            {
+                Id = Id,
+                State = State,
+                Title = Title,
+                Text = Text,
+                PublicationDate = PublicationDate,
+                NominationDeadline = NominationDeadline,
+                VotingStartDate = VotingStartDate,
+                VotingDeadline = VotingDeadline,
+                AnnouncementDate = AnnouncementDate
+            };
         }
     }
 }

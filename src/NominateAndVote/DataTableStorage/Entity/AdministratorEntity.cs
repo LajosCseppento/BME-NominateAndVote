@@ -1,29 +1,37 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataModel.Poco;
-using System;
+﻿using NominateAndVote.DataModel.Poco;
+using NominateAndVote.DataTableStorage.Common;
 
 namespace NominateAndVote.DataTableStorage.Entity
 {
-    public class AdministratorEntity : TableEntity
+    public class AdministratorEntity : BaseEntity<Administrator>
     {
+        public long UserId
+        {
+            get
+            {
+                long userId;
+                if (!long.TryParse(PartitionKey, out userId))
+                {
+                    throw new DataStorageException("Data inconsistency: the stored user ID is not a number: " + PartitionKey) { DataElement = this };
+                }
+                return userId;
+            }
+        }
+
         public AdministratorEntity()
         {
         }
 
         public AdministratorEntity(Administrator poco)
+            : base(poco)
         {
-            if (poco == null)
-            {
-                throw new ArgumentNullException("poco", "The poco must not be null");
-            }
-
             PartitionKey = poco.UserId.ToString("D8");
             RowKey = "";
         }
 
-        public Administrator ToPoco()
+        public override Administrator ToPoco()
         {
-            return new Administrator { UserId = long.Parse(PartitionKey) };
+            return new Administrator { UserId = UserId };
         }
     }
 }

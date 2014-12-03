@@ -40,7 +40,7 @@ namespace NominateAndVote.DataTableStorage
             }
         }
 
-        private bool SaveEntity(ITableEntity entity)
+        public bool SaveEntity(ITableEntity entity)
         {
             if (entity == null)
             {

@@ -23,22 +23,22 @@ namespace NominateAndVote.DataTableStorage
             TableNamesDictionary.Clear();
         }
 
-        public static void ResetToDefault(string prefix = null)
+        public static void ResetToDefault(string tablePrefix = null)
         {
-            if (prefix == null)
+            if (tablePrefix == null)
             {
-                prefix = "";
+                tablePrefix = "";
             }
 
             Clear();
 
-            SetTableName(typeof(AdministratorEntity), prefix + "administrator");
-            SetTableName(typeof(NewsEntity), prefix + "news");
-            SetTableName(typeof(NominationEntity), prefix + "nomination");
-            SetTableName(typeof(PollEntity), prefix + "poll");
-            SetTableName(typeof(PollSubjectEntity), prefix + "pollsubject");
-            SetTableName(typeof(UserEntity), prefix + "user");
-            SetTableName(typeof(VoteEntity), prefix + "vote");
+            SetTableName(typeof(AdministratorEntity), tablePrefix + "administrator");
+            SetTableName(typeof(NewsEntity), tablePrefix + "news");
+            SetTableName(typeof(NominationEntity), tablePrefix + "nomination");
+            SetTableName(typeof(PollEntity), tablePrefix + "poll");
+            SetTableName(typeof(PollSubjectEntity), tablePrefix + "pollsubject");
+            SetTableName(typeof(UserEntity), tablePrefix + "user");
+            SetTableName(typeof(VoteEntity), tablePrefix + "vote");
         }
 
         public static void SetTableName(Type entityType, String tableName)

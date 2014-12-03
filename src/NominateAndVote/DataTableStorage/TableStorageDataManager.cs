@@ -1,9 +1,8 @@
 ﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using NominateAndVote.DataModel;
-using NominateAndVote.DataModel.Common;
 using NominateAndVote.DataModel.Poco;
-using NominateAndVote.DataTableStorage.Model;
+using NominateAndVote.DataTableStorage.Entity;
 using System;
 using System.Collections.Generic;
 
@@ -65,16 +64,21 @@ namespace NominateAndVote.DataTableStorage
             return _tableClient.GetTableReference(TableNames.GetTableName(entityType));
         }
 
-        // TODO
-        /*
-        private TEntity RetrieveEntity<TEntity>(string partitionKey, string rowKey) where TEntity : ITableEntity
+        private TEntity RetrieveEntity<TEntity>(TEntity entity) where TEntity : class, ITableEntity
+        {
+            return RetrieveEntity<TEntity>(entity.PartitionKey, entity.RowKey);
+        }
+
+        private TEntity RetrieveEntity<TEntity>(string partitionKey, string rowKey) where TEntity : class, ITableEntity
         {
             var table = GetTableReference(typeof(TEntity));
-            var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(partitionKey, rowKey);
+
+            var retrieveOperation = TableOperation.Retrieve<TEntity>(partitionKey, rowKey);
             var result = table.Execute(retrieveOperation);
-            var entity = result.Result as PollSubjectEntity;
+            var entity = result.Result as TEntity;
+
+            return entity;
         }
-        */
 
         public bool IsAdmin(User user)
         {
@@ -82,11 +86,7 @@ namespace NominateAndVote.DataTableStorage
             if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
             // query
-            var table = GetTableReference(typeof(Administrator));
-            var retrieveOperation = TableOperation.Retrieve<PollSubjectEntity>(user.Id.ToString("D8"), "");
-            var result = table.Execute(retrieveOperation);
-            var entity = result.Result as PollSubjectEntity;
-            return entity != null;
+            return RetrieveEntity(new AdministratorEntity(new Administrator { UserId = user.Id })) != null;
         }
 
         public List<News> QueryNews()

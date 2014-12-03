@@ -2,19 +2,19 @@
 using NominateAndVote.DataModel.Poco;
 using System;
 
-namespace NominateAndVote.DataTableStorage.Model
+namespace NominateAndVote.DataTableStorage.Entity
 {
-    public class UserEntity : TableEntity
+    public class PollSubjectEntity : TableEntity
     {
-        public string Name { get; set; }
+        public string Title { get; set; }
 
-        public bool IsBanned { get; set; }
+        public int Year { get; set; }
 
-        public UserEntity()
+        public PollSubjectEntity()
         {
         }
 
-        public UserEntity(User poco)
+        public PollSubjectEntity(PollSubject poco)
         {
             if (poco == null)
             {
@@ -24,8 +24,8 @@ namespace NominateAndVote.DataTableStorage.Model
             PartitionKey = poco.Id.ToString("D8");
             RowKey = "";
 
-            Name = poco.Name;
-            IsBanned = poco.IsBanned;
+            Title = poco.Title;
+            Year = poco.Year;
         }
     }
 }

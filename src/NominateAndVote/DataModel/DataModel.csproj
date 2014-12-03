@@ -78,7 +78,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\DataException.cs" />
     <Compile Include="Common\ExtensionMethods.cs" />
+    <Compile Include="Common\TypeComparer.cs" />
     <Compile Include="IDataManager.cs" />
     <Compile Include="IDataModel.cs" />
     <Compile Include="Poco\Administrator.cs" />

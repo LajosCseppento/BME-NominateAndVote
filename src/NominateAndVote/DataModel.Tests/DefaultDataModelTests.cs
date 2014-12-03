@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NominateAndVote.DataModel.Poco;
 using System;
 
-namespace NominateAndVote.DataModel.Tests.Unit
+namespace NominateAndVote.DataModel.Tests
 {
     [TestClass]
     public class DefaultDataModelTests

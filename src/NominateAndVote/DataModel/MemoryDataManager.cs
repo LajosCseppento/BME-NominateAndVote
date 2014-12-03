@@ -63,11 +63,11 @@ namespace NominateAndVote.DataModel
             // check
             if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
 
-            poll = DataModel.Polls.Get(poll);
-            if (poll == null) { throw new ArgumentException("The given poll is not present in the data model", "poll"); }
+            var dbPoll = DataModel.Polls.Get(poll);
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
 
             // query
-            return poll.Nominations.ToSortedList();
+            return dbPoll.Nominations.ToSortedList();
         }
 
         public List<Nomination> QueryNominations(Poll poll, User user)
@@ -76,13 +76,13 @@ namespace NominateAndVote.DataModel
             if (poll == null) { throw new ArgumentNullException("poll", "The poll must not be null"); }
             if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            poll = DataModel.Polls.Get(poll);
-            user = DataModel.Users.Get(user);
-            if (poll == null) { throw new ArgumentException("The given poll is not present in the data model", "poll"); }
-            if (user == null) { throw new ArgumentException("The given user is not present in the data model", "user"); }
+            var dbPoll = DataModel.Polls.Get(poll);
+            var dbUser = DataModel.Users.Get(user);
+            if (dbPoll == null) { throw new DataException("The given poll does not exists") { DataElement = poll }; }
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
 
             // query
-            var q = poll.Nominations.Where(n => (n.User != null && n.User.Id == user.Id));
+            var q = dbPoll.Nominations.Where(n => (n.User != null && n.User.Id == dbUser.Id));
             return q.ToSortedList();
         }
 
@@ -91,11 +91,11 @@ namespace NominateAndVote.DataModel
             // check
             if (user == null) { throw new ArgumentNullException("user", "The user must not be null"); }
 
-            user = DataModel.Users.Get(user);
-            if (user == null) { throw new ArgumentException("The given user is not present in the data model", "user"); }
+            var dbUser = DataModel.Users.Get(user);
+            if (dbUser == null) { throw new DataException("The given user does not exists") { DataElement = user }; }
 
             // query
-            return user.Nominations.ToSortedList();
+            return dbUser.Nominations.ToSortedList();
         }
 
         public void SaveNomination(Nomination nomination)

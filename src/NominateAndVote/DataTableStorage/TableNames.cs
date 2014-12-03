@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
-using NominateAndVote.DataTableStorage.Model;
+using NominateAndVote.DataModel.Common;
+using NominateAndVote.DataTableStorage.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace NominateAndVote.DataTableStorage
             ResetToDefault();
         }
 
+        public static void Clear()
+        {
+            TableNamesDictionary.Clear();
+        }
+
         public static void ResetToDefault(string prefix = null)
         {
             if (prefix == null)
@@ -24,7 +30,8 @@ namespace NominateAndVote.DataTableStorage
                 prefix = "";
             }
 
-            TableNamesDictionary.Clear();
+            Clear();
+
             SetTableName(typeof(AdministratorEntity), prefix + "administrator");
             SetTableName(typeof(NewsEntity), prefix + "news");
             SetTableName(typeof(NominationEntity), prefix + "nomination");
@@ -39,6 +46,16 @@ namespace NominateAndVote.DataTableStorage
             CheckType(entityType);
             CheckTableName(tableName);
 
+            if (GetTableNames().Contains(tableName.ToLower()))
+            {
+                var otherEntityType = GetEntityType(tableName);
+                if (otherEntityType != entityType)
+                {
+                    // not an update
+                    throw new ArgumentException("The table name '" + tableName + "' is already taken by '" + otherEntityType.FullName + "'");
+                }
+            }
+
             // table names are case-insensitive, so make it lowercase
             tableName = tableName.ToLower();
 
@@ -52,16 +69,36 @@ namespace NominateAndVote.DataTableStorage
             }
         }
 
+        public static Type GetEntityType(string tableName)
+        {
+            CheckTableName(tableName);
+
+            var q = from entry in TableNamesDictionary
+                    where entry.Value == tableName.ToLower()
+                    select entry.Key;
+
+            var entityType = q.SingleOrDefault();
+
+            if (entityType == null)
+            {
+                throw new ArgumentException(
+                    "No entity type is set for the given table name '" + tableName + "'", "tableName");
+            }
+
+            return entityType;
+        }
+
         public static string GetTableName(Type entityType)
         {
             CheckType(entityType);
 
             string tableName;
-            if (TableNamesDictionary.TryGetValue(entityType, out tableName))
+
+            if (!TableNamesDictionary.TryGetValue(entityType, out tableName))
             {
-                return tableName;
+                throw new ArgumentException("No table name is set for the given entity type '" + entityType.FullName + "'", "entityType");
             }
-            throw new ArgumentException("No table name is set for the given entity type '" + entityType.FullName + "'", "entityType");
+            return tableName;
         }
 
         public static List<Type> GetEntityTypes()
@@ -70,7 +107,7 @@ namespace NominateAndVote.DataTableStorage
                     orderby entityType.FullName
                     select entityType;
 
-            return q.ToList();
+            return q.ToSortedList(new TypeComparer());
         }
 
         public static List<string> GetTableNames()

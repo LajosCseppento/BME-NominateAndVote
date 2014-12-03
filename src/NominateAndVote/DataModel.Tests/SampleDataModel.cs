@@ -16,6 +16,7 @@ namespace NominateAndVote.DataModel.Tests
 
             // News
             var news1 = new News { Id = Guid.NewGuid(), Title = "First", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-2) };
+            var news2 = new News { Id = Guid.NewGuid(), Title = "Second", Text = "Blah blah", PublicationDate = DateTime.Now.AddDays(-1) };
 
             // Users
             var user1 = new User { Id = 1, IsBanned = false, Name = "Lali" };
@@ -172,6 +173,7 @@ namespace NominateAndVote.DataModel.Tests
             Administrators.AddOrUpdate(admin);
 
             News.AddOrUpdate(news1);
+            News.AddOrUpdate(news2);
 
             Nominations.AddOrUpdate(poll1Nom);
             Nominations.AddOrUpdate(poll2Nom1);

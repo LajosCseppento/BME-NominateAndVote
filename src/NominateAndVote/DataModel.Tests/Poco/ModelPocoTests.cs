@@ -2,7 +2,7 @@
 using NominateAndVote.DataModel.Poco;
 using System;
 
-namespace NominateAndVote.DataModel.Tests.Unit
+namespace NominateAndVote.DataModel.Tests.Poco
 {
     [TestClass]
     public class ModelPocoTests

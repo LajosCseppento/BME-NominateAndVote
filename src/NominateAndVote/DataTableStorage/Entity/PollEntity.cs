@@ -2,7 +2,7 @@
 using NominateAndVote.DataModel.Poco;
 using System;
 
-namespace NominateAndVote.DataTableStorage.Model
+namespace NominateAndVote.DataTableStorage.Entity
 {
     public class PollEntity : TableEntity
     {

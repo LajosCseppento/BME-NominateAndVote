@@ -2,7 +2,7 @@
 using NominateAndVote.DataModel.Common;
 using System.Linq;
 
-namespace NominateAndVote.DataModel.Tests.Unit
+namespace NominateAndVote.DataModel.Tests.Common
 {
     [TestClass]
     public class PocoWithIdStoreTests

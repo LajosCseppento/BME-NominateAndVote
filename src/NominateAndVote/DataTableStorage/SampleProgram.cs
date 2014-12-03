@@ -1,11 +1,11 @@
 ﻿using NominateAndVote.DataModel.Poco;
+using NominateAndVote.DataTableStorage.Entity;
 
 namespace NominateAndVote.DataTableStorage
 {
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
-    using Model;
     using System;
 
     public class SampleProgram

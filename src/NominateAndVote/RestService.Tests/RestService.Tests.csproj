@@ -146,10 +146,8 @@
     <Compile Include="Controllers\ValuesControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="App.sample.config" />
+    <Content Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

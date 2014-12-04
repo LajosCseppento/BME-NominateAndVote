@@ -26,12 +26,15 @@ try {
             if($title.StartsWith('"')) {
                 $title = $title.Substring(1, $title.Length-2)
             }
+			
+			# only a few are needed
+			if($year -eq 2014) {
+				$outLine = $year + ' ' + $title # in this format reading+splitting will be faster
 
-            $outLine = $year + ' ' + $title # in this format reading+splitting will be faster
-
-            if($set.Add($outLine)) {
-                $streamMovies.WriteLine($outLine)
-            }
+				if($set.Add($outLine)) {
+					$streamMovies.WriteLine($outLine)
+				}
+			}
         } else {
             # no match, skip
             $streamSkip.WriteLine($line)

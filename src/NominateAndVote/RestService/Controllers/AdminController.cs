@@ -1,4 +1,6 @@
 ﻿using NominateAndVote.DataModel;
+using NominateAndVote.DataModel.Poco;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
@@ -13,6 +15,13 @@ namespace NominateAndVote.RestService.Controllers
         public AdminController(IDataManager dataManager)
             : base(dataManager)
         {
+        }
+
+        [Route("SearchUser")]
+        [HttpPost]
+        public IEnumerable<User> SearchUser(string term)
+        {
+            return term.Length >= 4 ? DataManager.SearchUsers(term) : new List<User>();
         }
 
         [Route("BanUser")]

@@ -68,5 +68,12 @@ namespace NominateAndVote.RestService.Controllers
 
             return polls;
         }
+
+        [Route("SearchPollSubject")]
+        [HttpPost]
+        public IEnumerable<PollSubject> SearchPollSubject(string term)
+        {
+            return term.Length >= 4 ? DataManager.SearchPollSubjects(term) : new List<PollSubject>();
+        }
     }
 }

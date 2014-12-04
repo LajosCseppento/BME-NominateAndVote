@@ -57,7 +57,7 @@ namespace NominateAndVote.RestService.Controllers
         }
 
         [Route("Delete")]
-        [HttpDelete]
+        [HttpPost]
         public bool Delete(string pollId, string nominationId)
         {
             Guid id, idPoll;

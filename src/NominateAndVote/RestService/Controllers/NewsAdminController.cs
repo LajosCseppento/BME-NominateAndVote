@@ -49,7 +49,7 @@ namespace NominateAndVote.RestService.Controllers
         }
 
         [Route("Delete")]
-        [HttpDelete]
+        [HttpPost]
         public bool Delete(string newsId)
         {
             Guid id;

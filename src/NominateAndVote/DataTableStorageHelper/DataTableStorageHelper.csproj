@@ -137,6 +137,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel.Tests\DataModel.Tests.csproj">
+      <Project>{9af45c16-8047-47ac-872e-3a4f7fd78684}</Project>
+      <Name>DataModel.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{5a337d57-f738-4122-8ab6-bff83c3f49e8}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableStorage\DataTableStorage.csproj">
+      <Project>{058d9126-c9c7-4cb2-b38a-5849f7bfc32d}</Project>
+      <Name>DataTableStorage</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

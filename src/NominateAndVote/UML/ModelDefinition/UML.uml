@@ -89,6 +89,16 @@
             handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Model Type%3DAdministrator"
             tag="ViewCode" />
         </referencesInternal>
+        <generalsInternal>
+          <generalization
+            Id="e06bd6f5-da8e-4926-b0cc-9a22e42005a1"
+            isSubstitutable="false">
+            <classMoniker
+              Id="ad232fe6-ae9f-4bd6-9c40-ecc673597738"
+              LastKnownName="BasePoco"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association
             Id="e9fdb2ff-db33-4150-95fc-c29f66b0d6cc"
@@ -254,6 +264,16 @@
             handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Model Type%3DNews"
             tag="ViewCode" />
         </referencesInternal>
+        <generalsInternal>
+          <generalization
+            Id="758e6944-b1fc-4680-b818-be4a9fe98f9e"
+            isSubstitutable="false">
+            <classMoniker
+              Id="10accaaf-5ea9-49a8-bb60-3b58008bb289"
+              LastKnownName="BasePocoWithId"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association
             Id="ec03a89d-d2e1-41cb-9865-ef1883dc5785"
@@ -3233,6 +3253,2496 @@
       <undefinedType
         Id="b7a084cd-e449-4940-a205-7383ea9164cf"
         name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="10accaaf-5ea9-49a8-bb60-3b58008bb289"
+        name="BasePocoWithId"
+        visibility="Private"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="ff452d6a-af05-4ea3-919c-fcce2d6e4f41"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="58e8b481-277f-4909-aa95-1924f3175ad8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c4f3cafc-5d2e-48b4-a641-0f353caf408c">
+                <propertyInstance
+                  Id="5a0e625d-dd16-4ab5-bad8-165b1f6d389e"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="94f20d15-5b43-416c-b5de-41a7f2d930e5">
+                <propertyInstance
+                  Id="e1667b1e-4a76-4940-be8f-c1b45ae7412e"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6d5eb15b-82d7-44ee-8274-77d8a347e261">
+                <propertyInstance
+                  Id="26ef018e-0a36-4bf5-9ac4-e9ae46e11bd2"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eeb32636-abb8-4f0c-ae97-7e86c8dcea03">
+                <propertyInstance
+                  Id="c37a418c-05c8-4884-b5a6-39acc454f52c"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="435d95c4-dcd3-4f55-82b3-764594424445">
+                <propertyInstance
+                  Id="5f96caa9-41c0-4bfd-864a-ef172bec5daf"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="c4a23b6e-3656-4488-a336-bbbdbd5cb8a0"
+            isSubstitutable="false">
+            <classMoniker
+              Id="98ca8c00-ef5c-4a46-a460-fcb0e5a8ab53"
+              LastKnownName="BasePoco&lt;TPoco‎&gt;"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+          <generalization
+            Id="cab0288a-44f0-4ad1-9c19-10a034d5e7b3"
+            isSubstitutable="false">
+            <classMoniker
+              Id="ad232fe6-ae9f-4bd6-9c40-ecc673597738"
+              LastKnownName="BasePoco"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+          <generalization
+            Id="944684fd-64e5-4fb3-a8c2-a5183a61bfc5"
+            isSubstitutable="false">
+            <classMoniker
+              Id="08bdcd32-504b-4b1d-b6cd-71e44b202bb1"
+              LastKnownName="BasePoco&lt;Administrator‎&gt;"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="6a016084-54c1-43d2-bdc9-32ee5782306c"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="7d47e955-e31b-49ec-8c40-4d8dd8f21811">
+                <referencesInternal>
+                  <reference
+                    Id="d39fc73e-bb0d-4631-b954-36ee2f64ac55"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="67d960c1-bb2c-4654-93b4-377ebe0d2a36"
+                    name="TId"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+              <classifierTemplateParameter
+                Id="71704e13-7531-4412-9f9e-4e7c35bd212c">
+                <referencesInternal>
+                  <reference
+                    Id="a81fe225-e77b-4105-b65f-aa1fe39c43de"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D1"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="f338f030-f86f-4575-ab7a-2d6bc6974c7f"
+                    name="TPoco"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="9ea33685-0a68-49ca-9d85-6769948636ee"
+            name="Id"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="123dfef3-38a9-43f7-81a8-8c5b2c83d980"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) Member%3DId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bcd70fb3-af04-46a2-b7a0-0b073f8ee136"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="810d8638-a39d-4d48-837e-931c0d636f76">
+                    <propertyInstance
+                      Id="2f9cc136-7c68-4d51-9f15-29b9a8345f93"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8bbf8cb2-44cf-46a3-b82e-61e118ea11bb">
+                    <propertyInstance
+                      Id="df213392-4b06-4ceb-a186-7fcc882add3c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd4c7919-bf28-4971-beac-96bb68c45192">
+                    <propertyInstance
+                      Id="0a899942-e9f8-4dee-8522-e93c8c7e30bc"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="846aad0f-ce55-4cc5-972c-4ddba64d4630">
+                    <propertyInstance
+                      Id="2e8b75f7-4967-4220-9f92-a168e45d4f03"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="54aa1102-00f5-4008-9637-4130e95ffd50">
+                    <propertyInstance
+                      Id="55edc6c2-6c77-432c-9620-8f4e545bcd98"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43cd8920-c564-4943-a54a-42b6b135c3b5">
+                    <propertyInstance
+                      Id="f238489f-3df4-4484-96b2-83f3cb769730"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b70f65c-144a-4396-8234-161b7eb3a0b8">
+                    <propertyInstance
+                      Id="8f27dd0a-1c1a-4de0-975f-dbf62ee8a86c"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="67d960c1-bb2c-4654-93b4-377ebe0d2a36"
+                LastKnownName="TId"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="290c7f6d-29d1-488d-9e6a-b85d78417a66"
+            name="IdEquals"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="eb172ac9-647c-4cc2-a67b-b59d6f92bfc5"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) Member%3D(Name%3DIdEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="006a9cb2-c98d-4132-b2d8-604a0e11b10d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7ccbdf45-3c32-4970-8590-ffa762fe95b0">
+                    <propertyInstance
+                      Id="86cce07f-e7c0-4068-96b6-9b5df423a901"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52ecdcd1-88cf-4292-8f91-e0beab41b788">
+                    <propertyInstance
+                      Id="7250b34e-a4a8-4e24-a1b6-15f23f6d5aa6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05d76593-2416-44df-bbc4-9228a991d8a7">
+                    <propertyInstance
+                      Id="580365c2-16fe-49e3-9eb5-77b8cdfb1a05"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="369c3333-0573-4c66-a203-be64e2e62603">
+                    <propertyInstance
+                      Id="6ce9194c-cce5-47c8-a884-b549cd6c0634"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd411c00-37d8-4ece-b6d9-0528016b0fb9">
+                    <propertyInstance
+                      Id="d57b5dec-0699-4c39-8de3-6c94290f84ae"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="662030ba-2d06-4591-8ac8-346067d6978e">
+                    <propertyInstance
+                      Id="49317527-3568-4aee-a61f-539ceae35127"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6ffc859f-c4d4-49ed-ac44-4cfbc164a4dc"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3167d1a9-9b82-4e54-a05e-8a9178ebf73c"
+                  name="otherId"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="9097c514-02bd-44b7-8e83-2da93498e6e8"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) Member%3D(Name%3DIdEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D0)]) ParameterIdentifier%3DotherId"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="67d960c1-bb2c-4654-93b4-377ebe0d2a36"
+                      LastKnownName="TId"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c11d154f-60c3-453e-be41-153648c659d4"
+            name="IdEquals"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="d76e0f6e-e20d-4094-83f3-8abefe43c698"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) Member%3D(Name%3DIdEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D1)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d4802853-f41a-404f-9ad4-cad40b49c02b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7abb4371-7640-4cd4-914d-16db6a82080f">
+                    <propertyInstance
+                      Id="2443015c-ebe1-482e-8cb0-627ac11738d9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="596efdf6-4e0f-4554-94ed-73d9d2959f7f">
+                    <propertyInstance
+                      Id="bb8f4730-fa8f-420b-b5d4-5c08c2f6ea37"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4ecd23d4-884f-4104-9a68-fd03d9113c38">
+                    <propertyInstance
+                      Id="c0d1fe6f-0573-4e4e-885d-167e0629b5a8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74e6d359-4dec-446d-b4b4-6f69dbd19a1c">
+                    <propertyInstance
+                      Id="3eec6316-d57e-4123-bac6-bdde053596fb"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8d23476-f54d-4bcf-a81c-7ef4d4f10baf">
+                    <propertyInstance
+                      Id="d0006b2a-ca48-479d-bd0f-f5ed10d62d29"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ea275f92-6d32-4883-91c8-70d2636e2627">
+                    <propertyInstance
+                      Id="785a86a5-65ce-4b54-8e33-65df31f7c752"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ab269ee4-b2ab-4d57-a3d8-b143eb601db8"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="28aef93e-ca0d-40e2-af24-d61c022650ab"
+                  name="other"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="4ac6a9e4-df68-4daf-a9bd-4f62385e6acc"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) Member%3D(Name%3DIdEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePocoWithId GenericParameterCount%3D2) ParameterIdentifier%3D1)]) ParameterIdentifier%3Dother"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f338f030-f86f-4575-ab7a-2d6bc6974c7f"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="08bdcd32-504b-4b1d-b6cd-71e44b202bb1"
+        name="BasePoco&lt;Administrator‎&gt;"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4a33e804-4349-4abc-adf6-55596f10ab72"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b1e1e706-f218-44b1-bf20-74621f9054d1">
+                <propertyInstance
+                  Id="143fe4bb-137a-40a8-a63f-e6c3f2c8a129"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a508d45a-f921-465e-a46e-2b48cbca944b">
+                <propertyInstance
+                  Id="1e65fbd2-9d01-4fe7-8384-222217d947fa"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="667a2c54-6c7a-458a-a217-a24945132d21">
+                <propertyInstance
+                  Id="9a43054c-ee44-4712-9649-e57764c9712e"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c35e6e5f-7f4f-49fe-aaf8-a43cb41b2de5">
+                <propertyInstance
+                  Id="b8fbd88f-78ae-4157-bc62-e4d196bf391a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c9dd75a1-db21-4780-9c77-06228a7b2ef4">
+                <propertyInstance
+                  Id="d5c688da-21f5-4b32-8d24-d6a0410882ea"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="333a61b5-bacb-4862-8347-42a7d29bf6a1">
+            <redefinableTemplateSignatureMoniker
+              Id="729d2cde-96cf-42a3-9a4b-cf634c6e6fd7"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="462ab480-07ad-40fb-bbfc-291dc5d88e0b">
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="1602be4b-b0cf-417f-8025-50afa578e540"
+                      LastKnownLocation="UML.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ad232fe6-ae9f-4bd6-9c40-ecc673597738"
+        name="BasePoco"
+        visibility="Private"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="54273adf-1fe2-47cf-ae04-a460c0a907c6"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="10ee4fb0-afbb-4412-9bfb-a2e75aadd23a"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="462a65bd-d4ab-4883-a5ad-899bd505836d">
+                <propertyInstance
+                  Id="d14646df-d9c7-44d7-b265-694ab171d9ef"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="afcc66d1-ae42-4be1-a978-cdf822c72770">
+                <propertyInstance
+                  Id="3078f358-802a-406b-be0e-18afd5ba7552"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="911bc744-4cd3-476a-ac42-ea1e98858de2">
+                <propertyInstance
+                  Id="3c0ac357-1b8c-4c89-9ce0-70bd95f314a7"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="aa1ded7a-72c1-434a-883f-45408d954d25">
+                <propertyInstance
+                  Id="a8831d5d-67d6-4c2d-b7ae-2d838dbd3b66"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="dfb3d3ae-8d09-4bb4-a595-eb0b9c252fb4">
+                <propertyInstance
+                  Id="2891e858-0051-4348-983c-3adfc869732f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="729d2cde-96cf-42a3-9a4b-cf634c6e6fd7"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="1602be4b-b0cf-417f-8025-50afa578e540">
+                <referencesInternal>
+                  <reference
+                    Id="be09b1eb-1bd0-43d8-85b0-f013e922724b"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="75953465-8420-4fd8-b40d-d3eaff655671"
+                    name="TPoco"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="88153fe4-8688-49a9-b419-395b82fa9b64"
+            name="CompareTo"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="7503554a-c65e-4980-926f-29632ef9df23"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DCompareTo OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ac7fb8b7-f9e0-4f3b-b973-8e7c70e767bf"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d8fcadfd-5511-41e6-bd38-5f886afe51ba">
+                    <propertyInstance
+                      Id="faf8f5c4-f76a-4751-ba3b-520ac82e0b96"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4351ffd4-d2ab-4fd0-bf88-c1a1f5608774">
+                    <propertyInstance
+                      Id="d2882648-2efe-445c-9d3d-fbfa2a02a270"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66facfcd-30ff-466f-b214-71f0d5b8014b">
+                    <propertyInstance
+                      Id="33d2d431-104b-4ebd-a41d-21a5046a3615"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82736c72-56e2-4a1c-ba4d-6be4a8998911">
+                    <propertyInstance
+                      Id="f4adc422-fc81-4aae-970d-26512f7e5766"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21316459-f731-482b-b6f6-0f171e5f254c">
+                    <propertyInstance
+                      Id="93ab0aa1-b50b-42b8-bf0f-ddf7b19f1ae3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a910f589-2ccc-4f88-bf54-1a84392d5f4f">
+                    <propertyInstance
+                      Id="71ba80f7-dc6b-4b5a-b491-b3f91d2703fe"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0100cb9b-1491-48c4-a4ce-129fa0e83e87"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2611177e-286a-4925-80b3-9e3fbec3b0a7"
+                      LastKnownName="int"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8ef66037-ede3-473b-ab48-bc65473cbc8f"
+                  name="other"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="06d76952-1622-4da0-977d-ede089f58e64"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DCompareTo OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dother"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="75953465-8420-4fd8-b40d-d3eaff655671"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d2eec58a-4c39-4182-b748-036689d1b4cf"
+            name="Equals"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6e66d123-fdee-47db-9456-3a82a80ea484"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f705d266-b589-4b08-88e7-bad921c60bac"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="122b889f-dead-4d31-8a57-336318bab109">
+                    <propertyInstance
+                      Id="23173bd4-9a15-4c69-bb83-113a06239cf3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="624a6631-1ce0-4507-99b8-b397a8ba55b8">
+                    <propertyInstance
+                      Id="560c8c5b-acf7-4066-a5aa-489efbadf657"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb642e91-1f24-42d6-a5fc-70db43fa7b71">
+                    <propertyInstance
+                      Id="a759cdaf-a9fa-4204-86da-e9c67a10aaa4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="76e1daaa-7023-42ca-818d-03f10ed477b7">
+                    <propertyInstance
+                      Id="5f4941d7-a19e-46c5-8f6b-3534f0a733f1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e01b68f4-2756-485f-93af-f93f6dc65385">
+                    <propertyInstance
+                      Id="b92a5634-8030-4596-8268-0f1bd39747d8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ea08543e-3aa3-4bb1-824f-43af96f86125">
+                    <propertyInstance
+                      Id="b2f02914-08a2-4bcd-be33-ed75ab719097"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="67325f6b-244b-4ddf-aee0-e393f91c8ac2"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="61e8b182-daf2-484e-919f-7a19b6ff78c0"
+                  name="other"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="863200d3-fa9b-4132-a836-eb8cef352321"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DEquals OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dother"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="75953465-8420-4fd8-b40d-d3eaff655671"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="4dd09a04-2b9c-42c7-9df9-febb11c95cfc"
+            name="Equals"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b0b23257-1aac-4c1f-89f9-7e5dc56b5d71"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETPortable%2Fv4.5%2FProfile%2FProfile259%2FSystem.Runtime.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0409997f-60d9-4721-9347-4b8ec9437529"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f39effd6-ad4f-4ebb-97cc-58aec2bc9417">
+                    <propertyInstance
+                      Id="dd4fc207-a989-4dc7-81b0-db42e81f09b9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34c819e8-a030-4d49-9036-4d3ba0dd91f8">
+                    <propertyInstance
+                      Id="35fbc581-2cc6-41b5-aebb-229ecd17e5e8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="217659d5-0ecd-4909-9637-3171486d8d60">
+                    <propertyInstance
+                      Id="48002bfe-af87-44f8-b7a8-4155cf2be6f9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e5e1edc-d06c-445f-be09-8807fd660060">
+                    <propertyInstance
+                      Id="8ca2984b-98b2-4978-9765-49bc7dd88b01"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05791078-071f-484d-975b-230db7a6cfc1">
+                    <propertyInstance
+                      Id="83ae9958-70e6-484f-8488-403f8046bc6c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="59216b6c-3cd1-430b-bbca-1fbba9f4cd92">
+                    <propertyInstance
+                      Id="94221a13-bf42-41f4-b6a7-242cd56c03b1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0185a84d-f0a4-4408-8c82-8e37b62d4ae5"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0703403a-d499-4256-b022-b795001b6c48"
+                  name="obj"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="8224a986-2fb4-4ccb-8ee2-cc3f7f3c4436"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3D(Name%3DEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETPortable%2Fv4.5%2FProfile%2FProfile259%2FSystem.Runtime.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dobj"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="cde1b7b5-5a20-48c8-89a6-98d79d7d48b3"
+                      LastKnownName="object"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="27dd0d01-333d-4eb9-9618-d444584eff08"
+            name="GetHashCode"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a8b33855-6ab4-4de6-8828-ce0788896015"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DBasePoco GenericParameterCount%3D1) Member%3DGetHashCode"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4cdc80be-681c-42c0-a473-30c24817eefe"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae753745-ce95-4920-b373-91512f494f20">
+                    <propertyInstance
+                      Id="3bb19d55-48e4-4a1c-99c6-bef4eaee79ff"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="af441513-9d41-434a-8db5-73913b1309d5">
+                    <propertyInstance
+                      Id="a51b4727-2fee-48e5-8405-7fda163cf2a5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="390bbce0-cf7c-4cc3-a941-24e5fb80bce5">
+                    <propertyInstance
+                      Id="5af7bd15-94cf-496c-8fa9-4b635a5db140"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a3eae1ca-89f0-45fe-bce4-764ad0fb75f0">
+                    <propertyInstance
+                      Id="f29c248a-c1f1-41fe-996e-19da0a5699bd"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2215c904-5eca-4b62-93e7-2fc76d1a431f">
+                    <propertyInstance
+                      Id="5e51f2c0-34ac-4d49-828b-9b0a214e15d3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="61fb4ff6-7b7f-4863-935b-20f46a211d4d">
+                    <propertyInstance
+                      Id="51b4b764-913f-429d-872c-46670b6df3bb"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f63dbcc8-5321-48f2-bbc8-2307b5c8c42a"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2611177e-286a-4925-80b3-9e3fbec3b0a7"
+                      LastKnownName="int"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="98ca8c00-ef5c-4a46-a460-fcb0e5a8ab53"
+        name="BasePoco&lt;TPoco‎&gt;"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="0e1bb19d-1393-4e1c-9436-77122e394d63"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="38b9ef3c-4f52-469b-8bac-3be17d8cf63e">
+                <propertyInstance
+                  Id="380be505-633d-437d-92ed-c2355d369e30"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a0bee2b6-4678-4323-8e48-8fd6feb3f8de">
+                <propertyInstance
+                  Id="5becc528-7a4d-4b60-8f3d-0690c1f2c1b0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7676ee4d-4785-43a4-b537-23c1f688e1a6">
+                <propertyInstance
+                  Id="fbd6ca82-fc1d-49aa-a358-81c4dceae044"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d34b81e5-bc76-4471-ac03-5992b0e70e1e">
+                <propertyInstance
+                  Id="756da386-0524-4f2b-8364-4593c98766f7"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f3b9f4d0-335d-4733-bad0-fe09750be9d7">
+                <propertyInstance
+                  Id="46ed8f6a-9aea-4cf4-8b23-0bd607ad6e02"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="174609a6-6c97-40aa-aea8-f57d8de45db5">
+            <redefinableTemplateSignatureMoniker
+              Id="729d2cde-96cf-42a3-9a4b-cf634c6e6fd7"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="827b5fb8-d3b4-43ea-ae8f-9726539472c3">
+                  <actuals>
+                    <classMoniker
+                      Id="f338f030-f86f-4575-ab7a-2d6bc6974c7f"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </actuals>
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="1602be4b-b0cf-417f-8025-50afa578e540"
+                      LastKnownLocation="UML.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d87e4faf-1383-49a6-b6d0-01293e6f42e6"
+        name="BasePocoWithId&lt;Guid‎, News‎&gt;"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="6ba2e13c-0b66-4fc6-8198-7e858ee0c359"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3120ffde-3e5b-4208-a525-0343a86f1e40">
+                <propertyInstance
+                  Id="3d3259d5-f0c2-4e2f-a3f5-11f3854790a0"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e1a7d6fb-a7a8-4a12-89d8-ffc6dbcb0667">
+                <propertyInstance
+                  Id="0e418d6a-8a22-4d10-9c0a-9fbc2ea3004e"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f16e0701-ad26-49f2-8f04-4ca8b20131d6">
+                <propertyInstance
+                  Id="9f42082e-c799-4be7-9d29-7b0322f8bf5b"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ba0442dd-5f9f-4a0c-bb94-65b9e128ac6c">
+                <propertyInstance
+                  Id="dc6006f7-3283-4524-91a4-9e2a72dd543f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f1359344-2da8-4fb3-96b1-a61a07e12009">
+                <propertyInstance
+                  Id="e8c46d12-0733-490e-8d79-eef8e26abdb7"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="0c3b976f-3584-41ec-8942-035414d6c494">
+            <redefinableTemplateSignatureMoniker
+              Id="6a016084-54c1-43d2-bdc9-32ee5782306c"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="156c24d7-2eb9-442b-842d-32d30135c509">
+                  <actuals>
+                    <classMoniker
+                      Id="80383ce1-c413-4b4d-af29-cb23d3308f87"
+                      LastKnownName="Guid"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </actuals>
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="7d47e955-e31b-49ec-8c40-4d8dd8f21811"
+                      LastKnownLocation="UML.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="3d93bbd3-1085-4743-9c8b-54a0b9cf54c6">
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="71704e13-7531-4412-9f9e-4e7c35bd212c"
+                      LastKnownLocation="UML.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="341a05d9-d37f-4ba6-bec9-f8039450d11b"
+        name="PocoStore"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a58fad87-ab3a-477f-ac17-968be29ef1ac"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="d1350ce3-68b6-4aa0-8f51-fa3cf5d1fa85"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c3c05b33-6246-4375-a947-c481514a75fe">
+                <propertyInstance
+                  Id="0f76bae7-80e3-40cb-983b-5b3e3eadfe3f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5a95b0b0-0571-457c-acf7-e2df1b8bee73">
+                <propertyInstance
+                  Id="7124bd74-cf75-40b1-9363-39620cab77fa"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c9df7d89-0940-42d3-9bfa-3c2b2c1f4077">
+                <propertyInstance
+                  Id="b1b4d903-128d-4336-9da5-73376f4d2c10"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d180e911-e2d2-4642-9c67-39180fb2069a">
+                <propertyInstance
+                  Id="814f8a7b-d518-44b5-bed5-df1d409a108d"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2e861acb-4986-4e1b-bad5-d59b9c8e8585">
+                <propertyInstance
+                  Id="7a6746d3-a789-4de2-89db-4a6543710ee3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="7957bd75-94c5-421b-8c04-17ad43786f87"
+            isDerived="false"
+            sourceEndRoleName="PocoStore"
+            targetEndRoleName="Count"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2611177e-286a-4925-80b3-9e3fbec3b0a7"
+              LastKnownName="int"
+              LastKnownLocation="Package3_1721.uml" />
+            <description>Property Count references type Int32.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4ebe2412-cd12-49e9-842c-fad55b7f5df4"
+                  name="PocoStore"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1077ea2b-e8b7-402a-adfd-6b7490307e8b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="47b92e88-79f7-4f24-af9d-25fd846af49f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5b2f49b3-8a57-4cfa-9bec-e99a425eae57"
+                  name="Count"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="124c840d-52fb-41b3-a11d-a2582559db82"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0aa8e5e7-0671-49df-a754-1fe44ea1f6bc"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bf259ee6-4b71-41cd-800d-e691a50987e1"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="ad232fe6-ae9f-4bd6-9c40-ecc673597738"
+              LastKnownName="BasePoco"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2cf2eee1-ffcf-4d32-85c3-8a4a24f0b2d8"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8eca96cb-abaf-4d26-ab34-8a73c1ddb188"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0407fc03-6424-4522-9d00-7b83842c3e3d"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40fc9355-5428-417d-a611-7cdc48147fc5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f4a30370-670b-4169-95a6-f0c344b3fe96"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="466b7e22-1101-4049-87c1-309c47600223"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="9c8e281c-6a4c-4724-8c67-b0da5cd012db"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="c42b3b9a-dd72-4fed-a0d0-135b0257ef18">
+                <referencesInternal>
+                  <reference
+                    Id="3e18fbe2-5445-457e-b655-4a1d93593f46"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                    name="TPoco"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="4b62b443-9c69-4ea4-a294-3a3d91a4baab"
+            name="Count"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1b3d47eb-68f8-4026-9d99-207fbe09e7a5"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3DCount"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="beead7ad-0452-49b0-a5ca-66dbbf07591f"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="81be9c83-854f-43a2-815d-1f1c654711a2">
+                    <propertyInstance
+                      Id="e8914143-9723-4ee9-8b41-efb87664f1ef"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3253d41c-b3e1-4007-8b23-4d8cce863192">
+                    <propertyInstance
+                      Id="2663f318-366c-4916-930b-4ff0927048aa"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3dcbbaee-e00e-4d29-960c-fd15e88ac299">
+                    <propertyInstance
+                      Id="38d67814-e402-45e7-ae2d-25b8c14ff9f7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7aef184-dc9e-43d0-b138-735c5ec3e91e">
+                    <propertyInstance
+                      Id="59c6dfa5-7b39-467a-9431-682c8b678e77"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4a96553f-e065-42c4-ab09-baa0582e62ea">
+                    <propertyInstance
+                      Id="00509221-1db0-4764-bfca-90135e58ccd4"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3f3fdbc9-c256-4469-8cb3-bbb057a57c51">
+                    <propertyInstance
+                      Id="e15e631e-359a-474b-bb93-653c9a09b806"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d88ebb23-2041-4231-b186-2cc984a3247c">
+                    <propertyInstance
+                      Id="d95f1588-b246-4aa8-b7d8-12f33198fc60"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2611177e-286a-4925-80b3-9e3fbec3b0a7"
+                LastKnownName="int"
+                LastKnownLocation="Package3_1721.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="815b3426-e263-40bf-8e11-a1543538d17f"
+            name="AddOrUpdate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="00517c05-356c-4774-9c50-0479d4f44c8d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DAddOrUpdate OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="27b8c0bc-8cbb-4735-831c-c9a6ff2bf8e2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e3ea7f0c-a1c0-4a5b-b97b-06ad3c9fb135">
+                    <propertyInstance
+                      Id="dd635539-04e8-419d-8a38-b85b5439132c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4536d1f9-bb51-4b22-9074-01a08e79d5ca">
+                    <propertyInstance
+                      Id="ce115929-581b-4b1a-bd1b-1f1e2b082ec9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e694ad6-6712-472a-aeb2-e1101bf02d4a">
+                    <propertyInstance
+                      Id="b6e7180c-6e62-4e11-8d14-e6860c6be7f1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7da7b838-379a-41e0-8e0d-f399795b2d1b">
+                    <propertyInstance
+                      Id="d685a621-f19a-4e37-a048-67ee8da1530c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a27100e3-4737-4b96-8d23-8de812323af6">
+                    <propertyInstance
+                      Id="8e9cd3d4-859c-43d2-8cbd-2b607edc79a3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ddaf429-6541-4277-bce3-2abd9ece3850">
+                    <propertyInstance
+                      Id="8fac0c60-3a06-407f-a073-284a82892d25"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="177fc52a-37a4-47be-b37b-3b43215f4893"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3aab72dc-40e4-4da5-b850-3b4ba0cae5f5"
+                  name="poco"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="46372142-bef7-4599-8171-9fb0c835a0c1"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DAddOrUpdate OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dpoco"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="fc820435-5114-410c-93bf-27d0bdccf7fe"
+            name="Contains"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e99ccbfb-8bf1-4ae6-9ea8-d9863022550a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DContains OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a643d968-b23f-411d-88f9-bd0bf2035128"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6d0cf6f-bcc3-4a67-ab5d-0da59803d3d2">
+                    <propertyInstance
+                      Id="d0aa3cb6-1322-45a4-b83d-890db66dcfac"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8755e4d6-f15d-49ca-86d8-fdae7b2b2f70">
+                    <propertyInstance
+                      Id="e8506e6b-d6b8-45d0-a448-4051c305f1b3"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="68493bc7-c35b-4ebb-8699-087451f3d387">
+                    <propertyInstance
+                      Id="1827397f-ae38-4d4c-b0eb-2ca88da279ef"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cafe5a82-c163-4fcc-b78c-3479d726af40">
+                    <propertyInstance
+                      Id="eac76fad-8669-4487-81de-34bf33b551d2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0aafff4f-8ef7-45bd-b4f4-51130347e905">
+                    <propertyInstance
+                      Id="96b8fded-cc35-40d7-b5d6-7675347a1da3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="456be954-09a9-45e4-99c6-16b87ab5c1bf">
+                    <propertyInstance
+                      Id="d673affe-5e89-440c-86a4-a4a1dc2eda98"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="56062fe3-a926-4725-8ba8-2c0a23bb820d"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8176ae20-ee3f-43fd-a60a-c6114afa41dc"
+                  name="poco"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="83c0a002-43a1-43eb-9f53-a06058367f02"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DContains OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dpoco"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5c94d765-d593-4754-a676-8d4461800b58"
+            name="Get"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="7c4094df-bfb7-49f0-a9d0-9d2ae38b2e74"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DGet OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c67a7178-a303-49a2-a185-e972903661fc"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="89345169-b71e-4ad2-af34-e90e8648e477">
+                    <propertyInstance
+                      Id="9904806e-d0ae-4924-a990-146896c4803b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4ec4c0c7-db6e-429b-aa0e-d2f360217f64">
+                    <propertyInstance
+                      Id="2a21112d-f902-4494-9717-701488eb84ac"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0da88e0e-6d4e-45f4-9217-b94b0fde9346">
+                    <propertyInstance
+                      Id="32c7ad63-aee9-4a02-8fd5-4305ab05013f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab799a95-6025-4de6-8bec-88e261e553a6">
+                    <propertyInstance
+                      Id="456222b3-eaa9-4f2c-9bcb-1fea869229e6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd7b9be1-cc08-4b7e-846e-e06083321178">
+                    <propertyInstance
+                      Id="cd0c0667-bdea-45be-97d6-0a4d50b34616"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b1becdb-e21e-42b8-9689-d34ee04a209c">
+                    <propertyInstance
+                      Id="fc53e67e-5e79-488c-b0aa-a36f4b7f95f2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8971c8fc-42ec-4e91-97d1-66b2dbb59d98"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3b9fbf96-073e-4f75-8829-ed75aeb5fa4a"
+                  name="poco"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="c4e8d78c-6712-4b15-ac7b-8100123be6d7"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DGet OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dpoco"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d2f0168b-5f74-404b-9c1f-1a41fab7ceb4"
+            name="Remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3ad9ae0e-0bef-46d8-980d-d4a367a9bb23"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DRemove OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9a0cc253-655e-440c-924a-26c3dae6631e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="03664ee4-aa20-4490-95f2-cf0568904ba7">
+                    <propertyInstance
+                      Id="94f3c830-edb5-41fc-849d-b97ec1af99ac"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08a6ba84-c873-4653-a35a-876e5c7c7ffc">
+                    <propertyInstance
+                      Id="142cc64c-73fc-4941-bede-f4542703d433"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="accc92f1-61f2-4e43-b299-d46bab136099">
+                    <propertyInstance
+                      Id="9b6e0d6d-9fe0-446d-b473-455447c88513"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8de2d74-b60f-443e-ae7f-7840d5d63a9f">
+                    <propertyInstance
+                      Id="f80a690e-1167-4c7f-b01d-1fa553c9cc74"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c403a0a-d2bd-4d9c-96c7-913fd4612036">
+                    <propertyInstance
+                      Id="ca042423-b268-4dde-967c-359a43173f89"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a3969fd-1bd8-4b9e-942b-3fa4626c2734">
+                    <propertyInstance
+                      Id="063362bc-f6c4-4f09-bf34-d01816403001"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="560d6992-7200-431f-9531-d5e1ce5d22f8"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4436ca53-748a-4bf2-8fac-afb50a43c3e2"
+                  name="poco"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="37b72bcd-d086-4cab-8b7d-4dd35008c614"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3D(Name%3DRemove OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) ParameterIdentifier%3D0)]) ParameterIdentifier%3Dpoco"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5e6de002-a024-4b03-ba1b-be1057233cf4"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b1fb5ad4-2f2e-428b-a099-3333aa9866df"
+            name="Clear"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="7eb8e770-6adf-4b8f-bd20-7ca30ce616f6"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3DClear"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cf7ad74c-9a44-45fd-96cb-9f32807ce6d0"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10b2674f-7faf-4b69-a227-e13fbee56972">
+                    <propertyInstance
+                      Id="6ed39bda-29e3-454f-9527-70972fbd1f68"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="944e34d7-38d6-47b4-a7da-05f5ff532e43">
+                    <propertyInstance
+                      Id="00f5395a-e4c0-49ff-9b0e-28a5f44b18b1"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="327f445d-459e-46d5-800d-d1cf6d81da88">
+                    <propertyInstance
+                      Id="5e856668-4774-412a-8448-56a884b6179b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a390936e-9a8c-4694-8871-0c73d7a73740">
+                    <propertyInstance
+                      Id="2c13f01c-c204-4fa3-b13d-22b11998d92e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e91228b7-684f-46b6-967b-92d79dea5a96">
+                    <propertyInstance
+                      Id="1af9990d-ced5-4bcb-a8db-5459cc2f0fa7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91ea3334-fc80-48a6-a8ea-58f9c4d8fe51">
+                    <propertyInstance
+                      Id="89615afd-1dfb-4a38-842e-c9789af44716"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="23f4c380-8f70-4cb9-b6a1-856f815fc868"
+            name="GetEnumerator"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="be6d7a34-5687-41f1-ae19-918ef570a261"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoStore GenericParameterCount%3D1) Member%3DGetEnumerator"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2450e1ea-c8c7-43b1-b8f4-d1233949911a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6c21b842-8f25-400b-8dad-bbedc4a71192">
+                    <propertyInstance
+                      Id="e1056c72-c57c-43d1-be2b-a16f6f1ac298"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85825c05-7810-4020-9c26-f1347cda267a">
+                    <propertyInstance
+                      Id="d01f3d1b-7991-4841-8732-cfbbc112843e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0cfa0a4-602a-45a0-be80-339510e54bb7">
+                    <propertyInstance
+                      Id="507f9684-9f9f-49f8-b1d9-bd4ed22db00c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2943f0d9-a6ee-48a3-b842-3a4d2d9155e1">
+                    <propertyInstance
+                      Id="34ef690d-e527-4dc5-93f8-5540e391fb38"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0e231310-ddaf-42d7-9148-8c48b78dd371">
+                    <propertyInstance
+                      Id="c01e91e4-6c5b-4f54-9f42-8710128ed041"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="191d3066-499b-4e1c-91b3-c489f1eadfd6">
+                    <propertyInstance
+                      Id="2aaed9b2-9283-45f6-a0d5-dfabcab09284"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5ff6f04e-e2a5-403a-b16e-1e1fcd965018"
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="d7a73f2c-0ab4-4c88-ba10-b95ab10c088a"
+                      LastKnownName="IEnumerator&lt;TPoco‎&gt;"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="029c4a51-08b2-4feb-ab14-203ebc924add"
+        name="PocoStore&lt;TPoco‎&gt;"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e0fbc2a4-903f-4ad8-bd78-ff8deb27da15"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="347b671c-14db-464d-a2f2-b34fadb2192c">
+                <propertyInstance
+                  Id="cf40287f-e006-4fed-b11b-9ee422cae811"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b5035d16-2cdf-4626-810b-7d477b6c705c">
+                <propertyInstance
+                  Id="84804ae8-1049-45dd-ba19-961cbe6adfc9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="be3a1082-7117-45e2-b3f0-6a2b28c06dce">
+                <propertyInstance
+                  Id="22f4bf42-242d-4fa0-9542-16cc5d6bf040"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7d198784-c8de-4e9d-a696-016ad101bae1">
+                <propertyInstance
+                  Id="b4a10aee-61b6-490b-ac16-400555580a41"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cfa5559d-934e-48f0-9c14-d4115a337551">
+                <propertyInstance
+                  Id="84f095b5-1b2c-4bcb-b308-460ed7cd374a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="b0ddd9bb-93e7-41c2-9bf3-dbdf5c014dea">
+            <redefinableTemplateSignatureMoniker
+              Id="9c8e281c-6a4c-4724-8c67-b0da5cd012db"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="1f790b27-ae0f-40f4-b326-0d14d38b7aef">
+                  <actuals>
+                    <classMoniker
+                      Id="e33cfc06-e6f8-4141-92c5-8652755435f1"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </actuals>
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="c42b3b9a-dd72-4fed-a0d0-135b0257ef18"
+                      LastKnownLocation="UML.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8ed6c1fd-5812-400a-af0d-8c6db68ef719"
+        name="PocoWithIdStore"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="1093e1ee-7770-4d2b-8cd0-848c04b9dc69"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e409e201-2943-45e7-ac31-8d8f34d6ba42"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="14720fc5-0442-4556-8a62-61cd9f871bc7">
+                <propertyInstance
+                  Id="6e61a714-ed94-4234-81f3-839bae256104"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f2069109-90e2-465d-8db9-451e3d338228">
+                <propertyInstance
+                  Id="25fc8c4a-fcc7-4f3d-b3e5-ad5772388fef"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb3ead45-6524-4dc5-aa62-3ea6f8d6367c">
+                <propertyInstance
+                  Id="73850802-f0b8-4795-94ad-9ac2f491d883"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="06228f5a-a338-4bba-a054-7ee53c4a2798">
+                <propertyInstance
+                  Id="ac954352-9ebc-40d3-9fd1-7ccb0c7548de"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a2f5f26c-508f-4afb-bbdb-1dd94e5ad042">
+                <propertyInstance
+                  Id="fffba220-8e4d-4387-a4d6-4a771318c6ea"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="d16d1928-8446-4c6c-bb83-dbbb1ffb97aa"
+            isSubstitutable="false">
+            <classMoniker
+              Id="029c4a51-08b2-4feb-ab14-203ebc924add"
+              LastKnownName="PocoStore&lt;TPoco‎&gt;"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+          <generalization
+            Id="f36b3fec-4b27-47e8-9041-a5f61920caa5"
+            isSubstitutable="false">
+            <classMoniker
+              Id="341a05d9-d37f-4ba6-bec9-f8039450d11b"
+              LastKnownName="PocoStore"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="1d53bfcb-a76e-45da-81d4-a98409fb5295"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="10accaaf-5ea9-49a8-bb60-3b58008bb289"
+              LastKnownName="BasePocoWithId"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ed64dc8c-c2ba-4ba5-b872-4ceb5be3f913"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="573004b0-26f8-4aa2-ae20-c373d6f805ff"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a721e71e-7345-477c-9c14-e37b8b607b23"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4f4a2d4d-b974-4605-9b4b-4bdf284b485e"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="15d172bf-ff9a-4409-bc53-31284b631f5b"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="9f4dfda2-c646-4957-a143-b6229d61e55d">
+                <referencesInternal>
+                  <reference
+                    Id="2a3df621-741f-4239-ad0d-e30b96134d79"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="2e2e4f4c-3cfd-4787-b252-ca687cab2709"
+                    name="TId"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+              <classifierTemplateParameter
+                Id="a003d0d6-5209-4393-be3f-28e543c179bb">
+                <referencesInternal>
+                  <reference
+                    Id="6a368158-d90e-48fc-be6a-d95ee75567b4"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D1"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="e33cfc06-e6f8-4141-92c5-8652755435f1"
+                    name="TPoco"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="0d1ed893-5ea5-41ba-911c-e3925d349a8f"
+            name="Contains"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2a5bd4d6-7176-49da-87fb-934adc140017"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DContains OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f5af4f2d-b548-4f8f-878f-022d8df49550"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51268b85-8cbc-4b82-9e07-cc4fa7e84a4c">
+                    <propertyInstance
+                      Id="68647900-70e8-43dd-8bfb-75e43d0c17f8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dcc2dc71-8748-421c-bec7-6ec8417ed8e4">
+                    <propertyInstance
+                      Id="7f1e190e-29d4-4d43-b26d-ccd8c95cdeea"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ee8058d-1ec1-4c02-a0ed-e80dcf58e817">
+                    <propertyInstance
+                      Id="883e6147-83a2-4923-b48c-4e787210cb04"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f474980-f61c-466b-9f09-0751a3e1d8b7">
+                    <propertyInstance
+                      Id="ea01e62b-7794-4bc4-b87d-1faab448fd9a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebbf0bd2-51ed-4772-8fcd-22cc544b01f7">
+                    <propertyInstance
+                      Id="41690277-13dd-4b7c-a1a2-674dd74471db"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a94b8ff-4c01-439d-83a5-ab597c393fe6">
+                    <propertyInstance
+                      Id="b5977ad8-dbf6-4889-a282-a386216a06e7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6f820b64-6042-498d-a62f-723c902acbc6"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dede1958-4930-41a9-a3df-115c5aeedc58"
+                  name="id"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="ab1eab94-0ccc-461c-b692-3236d1177f44"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DContains OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)]) ParameterIdentifier%3Did"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2e2e4f4c-3cfd-4787-b252-ca687cab2709"
+                      LastKnownName="TId"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="287a1667-6d31-4e3f-90ad-b7439eaa41ef"
+            name="Get"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="56d69e2d-aca1-4801-8217-ec7ac5c4a5a3"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DGet OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7355e5ec-f52b-40e1-8155-0b5860280362"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="37019d24-c4e6-40ef-a79f-1379dbd1fa73">
+                    <propertyInstance
+                      Id="e6a2efe3-5b55-428e-aed3-6cbc414dbf22"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9856c49a-6032-48ad-b6e8-ed28eb2e0257">
+                    <propertyInstance
+                      Id="f13ca497-a82b-4846-a8c6-0439c69ea800"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a8ba53c4-3278-464e-b226-dd7f254b31f4">
+                    <propertyInstance
+                      Id="c65cecdc-3be8-43a4-91ef-defbc65ce1c3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5042d976-e009-4c7e-a81b-21347ba2422e">
+                    <propertyInstance
+                      Id="e1b2d0f7-16a9-476a-a134-877a2795e23e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="365705b6-7ad1-470d-b695-5b4e12a9b386">
+                    <propertyInstance
+                      Id="86d989ba-9e80-4fe4-b5ef-ab12dcd2956c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a8d89843-bcc9-437f-b11b-fe9acf5f7fdb">
+                    <propertyInstance
+                      Id="8657d407-de6e-46b2-93cc-45a20644a249"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9883d5ff-fd2e-4960-b7fd-ac6ed2e5d471"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e33cfc06-e6f8-4141-92c5-8652755435f1"
+                      LastKnownName="TPoco"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b0650633-eb44-4ef3-beb5-7db74a5cd588"
+                  name="id"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="0c02addf-a34b-496e-8d58-a48df07ed51d"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DGet OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)]) ParameterIdentifier%3Did"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2e2e4f4c-3cfd-4787-b252-ca687cab2709"
+                      LastKnownName="TId"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="11740304-0331-4f18-9899-fbe7967d70d3"
+            name="Remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="995c5fcb-350b-45c4-b3f4-74464432dc84"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DRemove OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="acb8cf8b-c240-4e06-8998-b57cf4439b06"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5081405f-efcf-4a80-9d4e-8d37e976034d">
+                    <propertyInstance
+                      Id="d95e232f-f11b-460f-ba9b-ea06d3f8b18f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db61055a-f01b-4d4f-bc33-5f2089b37d4d">
+                    <propertyInstance
+                      Id="9a1d3d7b-5dd9-4219-a660-13ab87e5ea0d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cae60482-b8ee-44f2-b181-4448208c15f4">
+                    <propertyInstance
+                      Id="50da5378-c8c0-49a8-a0d2-0ec049bdb9f6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cfea7ee9-8ea6-47db-9a21-03c100aae8de">
+                    <propertyInstance
+                      Id="804fa236-13b1-49c6-a70f-1bb432459da2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28a66cb9-fec2-4bab-976b-c7795cf70765">
+                    <propertyInstance
+                      Id="6d82dc49-e30b-4f9b-a222-06c65ccaba9f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4757ac8e-8c03-423c-ac4b-e8d2f5506794">
+                    <propertyInstance
+                      Id="dd2668e3-4969-40a7-90e9-c7c33db66e2b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4d618b76-babb-4044-84e2-74bb551fde0b"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1f4286c7-10a0-4189-b85b-4871c4cca02e"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package3_1721.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="38a4c18e-01d8-47c1-958a-01fa3c6558d9"
+                  name="id"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="5ecccc2d-c556-4b14-b91a-bfd96ee65fb4"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) Member%3D(Name%3DRemove OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2FBME%2Fszarch%2Fgit%2Fsrc%2FNominateAndVote%2FDataModel%2Fbin%2FDebug%2FNominateAndVote.DataModel.dll Namespace%3DNominateAndVote.DataModel.Common Type%3D(Name%3DPocoWithIdStore GenericParameterCount%3D2) ParameterIdentifier%3D0)]) ParameterIdentifier%3Did"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2e2e4f4c-3cfd-4787-b252-ca687cab2709"
+                      LastKnownName="TId"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

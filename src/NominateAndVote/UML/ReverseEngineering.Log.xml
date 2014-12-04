@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2014-12-04T13:38:14" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '71704e13-7531-4412-9f9e-4e7c35bd212c' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '7d47e955-e31b-49ec-8c40-4d8dd8f21811' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote' -  (Package)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel' -  (Package)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Common' -  (Package)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Common::BasePocoWithId' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Common::BasePocoWithId&lt;Guid‎, News‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco' -  (Package)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Medium" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News' -  (Class)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::CompareTo' -  (Operation)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::CompareTo::other' -  (Parameter)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::News' -  (Operation)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::PublicationDate' -  (Property)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::Text' -  (Property)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::NominateAndVote::DataModel::Poco::News::Title' -  (Property)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::System' -  (Package)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::System::DateTime' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::System::Guid' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::System::Int32' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'UML::System::String' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Poco::News to UML::System::String (Association)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Poco::News to UML::System::String (Association)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Poco::News to UML::System::DateTime (Association)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Poco::News to UML::NominateAndVote::DataModel::Common::BasePocoWithId&lt;Guid‎, News‎&gt; (Generalization)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Common::BasePocoWithId to UML::NominateAndVote::DataModel::Common::BasePoco&lt;TPoco‎&gt; (Generalization)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: UML::NominateAndVote::DataModel::Poco::News to UML::NominateAndVote::DataModel::Common::BasePocoWithId (Generalization)" />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="High" Text="(6) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2014-12-04T13:38:16" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>

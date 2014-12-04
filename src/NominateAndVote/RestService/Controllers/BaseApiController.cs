@@ -17,20 +17,20 @@ namespace NominateAndVote.RestService.Controllers
 
         protected BaseApiController(IDataManager dataManager)
         {
-            // table storage
+            if (dataManager == null)
+            {
+                // connect and create tables
+                var storageAccount =
+                    CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+                var manager = new TableStorageDataManager(storageAccount);
+                manager.CreateTablesIfNeeded();
 
-            // set table names
-            TableNames.ResetToDefault();
-
-            // connect and create tables
-            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            var manager = new TableStorageDataManager(storageAccount);
-            manager.CreateTablesIfNeeded();
-
-            DataManager = manager;
-
-            // temporary memory
-            // DataManager = dataManager ?? new MemoryDataManager(new DefaultDataModel());
+                DataManager = manager;
+            }
+            else
+            {
+                DataManager = dataManager;
+            }
         }
     }
 }

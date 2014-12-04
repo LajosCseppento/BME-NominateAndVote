@@ -60,6 +60,9 @@ namespace NominateAndVote.DataTableStorage.Tests
 
         public void CleanUp()
         {
+            // set table names again
+            TableNames.ResetToDefault(TablePrefix);
+
             TableStorageDataManager.DeleteTablesIfNeeded();
         }
     }

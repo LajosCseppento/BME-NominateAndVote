@@ -18,10 +18,10 @@ namespace NominateAndVote.RestService.Controllers
         }
 
         [Route("SearchUser")]
-        [HttpPost]
+        [HttpGet]
         public IEnumerable<User> SearchUser(string term)
         {
-            return term.Length >= 4 ? DataManager.SearchUsers(term) : new List<User>();
+            return term.Length >= 3 ? DataManager.SearchUsers(term) : new List<User>();
         }
 
         [Route("BanUser")]

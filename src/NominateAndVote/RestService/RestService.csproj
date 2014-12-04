@@ -349,6 +349,7 @@
     <Content Include="Scripts\jquery.validate.min.js.map">
       <DependentUpon>jquery.validate.min.js</DependentUpon>
     </Content>
+    <Content Include="Web.sample.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

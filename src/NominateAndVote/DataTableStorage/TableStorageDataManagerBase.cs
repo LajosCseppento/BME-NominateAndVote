@@ -35,7 +35,7 @@ namespace NominateAndVote.DataTableStorage
             }
         }
 
-        private CloudTable GetTableReference(Type entityType)
+        public CloudTable GetTableReference(Type entityType)
         {
             if (entityType == null)
             {

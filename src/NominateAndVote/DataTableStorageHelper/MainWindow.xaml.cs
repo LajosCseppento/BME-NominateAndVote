@@ -1,10 +1,19 @@
-﻿using Microsoft.WindowsAzure;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
+using NominateAndVote.DataModel.Poco;
 using NominateAndVote.DataModel.Tests;
 using NominateAndVote.DataTableStorage;
 using NominateAndVote.DataTableStorage.Entity;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Threading;
 using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace NominateAndVote.DataTableStorageHelper
 {
@@ -79,6 +88,57 @@ namespace NominateAndVote.DataTableStorageHelper
             dataManager.CreateTablesIfNeeded();
 
             MessageBox.Show("Done!");
+        }
+
+        private void Button_Upload_Click(object sender, RoutedEventArgs e)
+        {
+            // browse file
+            var fileDialog = new OpenFileDialog();
+
+            // optional filter to restrict file types
+            fileDialog.Filter = "CSV Files|*.csv";
+
+            if (fileDialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+            var csv = new CsvReader(new StreamReader(fileDialog.FileName));
+
+            var pollSubjects = new List<PollSubject>();
+            while (csv.Read())
+            {
+                var ps = new PollSubject
+                {
+                    Id = csv.GetField<long>(0),
+                    Title = csv.GetField<string>(2),
+                    Year = csv.GetField<int>(3)
+                };
+                pollSubjects.Add(ps);
+            }
+
+            MessageBox.Show("Read " + pollSubjects.Count + " poll subjects, saving them will take a while");
+            MessageBox.Show("Make sure you have no poll subjects in the table before continuing");
+
+            // create data manager
+            var dataManager = CreateDataManager();
+            dataManager.CreateTablesIfNeeded();
+
+            // save poll subjects
+            var total = pollSubjects.Count;
+            var remaining = total;
+
+            // tactic: remove saved items from list
+            while (remaining > 0)
+            {
+                var n = Math.Min(500, remaining);
+                var somePs = pollSubjects.GetRange(0, n);
+
+                dataManager.SavePollSubjectsBatch(somePs);
+
+                pollSubjects.RemoveRange(0, n);
+                remaining -= n;
+            }
         }
 
         private TableStorageDataManager CreateDataManager()

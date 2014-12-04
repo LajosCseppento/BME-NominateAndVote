@@ -1,0 +1,11 @@
+﻿<div class="row" ng-repeat="n in news">
+    <div class="col-md-3 col-sm-3"></div>
+
+    <div class="col-md-6 col-sm-6  text-center">
+        <h3 ng-bind="n.title"></h3>
+        <span style="font-size: smaller;font-style: italic;">Publication Date: {{n.publicationDate | date: 'medium'}}</span>
+        <p ng-bind-html="n.text | nl2br | unsafe"></p>
+    </div>
+
+    <div class="col-md-3 col-sm-3"></div>
+</div>

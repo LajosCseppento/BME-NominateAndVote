@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-md-4 col-sm-4 text-center">
+        <h3>Jelölés</h3>
+
+        <div ng-repeat="p in polls.nomination">
+            <h4 ng-bind="p.title"></h4>
+            <h5>Határidő: {{p.nominationDeadline | date: 'medium'}}</h5>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 text-center">
+        <h3>Szavazás</h3>
+
+        <div ng-repeat="p in polls.voting">
+            <h4 ng-bind="p.title"></h4>
+            <h5>Határidő: {{p.votingDeadline | date: 'medium'}}</h5>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 text-center">
+        <h3>Lezárult</h3>
+
+        <div ng-repeat="p in polls.closed">
+            <h4 ng-bind="p.title"></h4>
+        </div>
+    </div>
+</div>

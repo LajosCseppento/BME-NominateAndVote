@@ -2,6 +2,7 @@
 using NominateAndVote.DataModel.Poco;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace NominateAndVote.RestService.Controllers
@@ -73,7 +74,7 @@ namespace NominateAndVote.RestService.Controllers
         [HttpGet]
         public IEnumerable<PollSubject> SearchPollSubject(string term)
         {
-            return term.Length >= 3 ? DataManager.SearchPollSubjects(term) : new List<PollSubject>();
+            return term.Length >= 3 ? DataManager.SearchPollSubjects(term).Take(100) : new List<PollSubject>();
         }
     }
 }

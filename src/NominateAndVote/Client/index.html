@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en" ng-app="NominateAndVoteClient"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en" ng-app="NominateAndVoteClient"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en" ng-app="NominateAndVoteClient"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
 <!--<![endif]-->
+<html lang="en" ng-app="NominateAndVoteClient">
 <!-- HEAD SECTION -->
 <head>
     <meta charset="utf-8">
@@ -13,57 +13,21 @@
     <meta name="author" content="">
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
+    <![endif]-->
     <title>Nominate &amp; Vote</title>
-    <!--GOOGLE FONT -->
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <!--BOOTSTRAP MAIN STYLES -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!--FONTAWESOME MAIN STYLE -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <!--SLIDER CSS CLASES -->
-    <link href="assets/Slides-SlidesJS-3/examples/playing/css/slider.css" rel="stylesheet" />
-    <!--CUSTOM STYLE -->
     <link href="assets/css/style.css" rel="stylesheet" />
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<!--END HEAD SECTION -->
+
 <body>
-    <script type="text/javascript">
-        function log(variable) { if (console) { console.log(variable); } }
-        function log2(name, variable) { if (console) { console.log(name, variable); } }
-
-        //var url = 'http://nominateandvoteservice.azurewebsites.net/api/Admin/SearchUser?term=Lal';
-        var url = 'http://nominateandvoteservice.azurewebsites.net/api';
-        function restServiceCall(type, controller, action, data, callback) {
-            log('Request to ' + controller + '/' + action);
-            log2('Data:', data);
-
-            $.ajax({
-                url: url + '/' + controller + '/' + action,
-                data: data,
-                type: type, // GET or POST
-                contentType: 'application/json',
-                dataType: 'jsonp',
-                jsonpCallback: "localJsonpCallback",
-                success: function (responseData) {
-                    log2('Response from ' + controller + '/' + action + ':', responseData);
-                    callback(responseData);
-                },
-                error: function (xhr, status, error) {
-                    log("An error happened, see log");
-                    log2(status, error);
-                },
-            });
-        }
-    </script>
-
-    <!-- NAV SECTION -->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -72,220 +36,60 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Nominate &amp; Vote</a>
+                <a class="navbar-brand" href="#!/">Nominate &amp; Vote</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html">News</a></li>
-                    <li><a href="about.html">Polls</a></li>
-                    <li><a href="services.html">FAQ</a></li>
-                    <li><a href="pricing.html">Contact us</a></li>
-                    <li><a href="gallery.html">Log in with Facebook</a></li>
+                    <li><a href="#!/News">News</a></li>
+                    <li><a href="#!/Polls">Polls</a></li>
+                    <li><a href="#!/FAQ">FAQ</a></li>
+                    <li><a href="#!/ContactUs">Contact Us</a></li>
+                    <li><a href="#!/TODO">Log in with Facebook</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <!--END NAV SECTION -->
-    <!-- HOME SECTION -->
-    <!-- SLIDER SECTION -->
-    <div id="slides">
-        <img src="assets/img/slider/images/1.jpg" alt="" />
-        <img src="assets/img/slider/images/2.jpg" alt="" />
-        <img src="assets/img/slider/images/1.jpg" alt="" />
-        <img src="assets/img/slider/images/2.jpg" alt="" />
-    </div>
-    <!-- END SLIDER SECTION -->
 
-    <div class="container">
-        <div class="row main-low-margin ">
-            <div class="col-md-8 col-sm-8">
-                <button onclick="restServiceCall('GET', 'Admin', 'SearchUser', { term: 'Noe' }, function(data) { alert(data[0].name); })">Search user</button>
-                <button onclick="restServiceCall('GET', 'News', 'List', null, function (data) { alert(data[2].title ); })">News</button>
+    <div class="container main-low-margin" ng-view></div>
 
-                <h3>News 1 title</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                </p>
-            </div>
-
-            <div class="col-md-4 col-sm-4 text-center">
-                <img class="img-circle" src="assets/img/person.png">
-                <h3>Lorem ipsum dolor</h3>
-                <h4>Lorem ipsum dolor sit</h4>
+    <!--
+        <div class="container">
+            <div class="row main-low-margin ">
+                <div class="col-md-8 col-sm-8">
+                    <h3>Closed polls</h3>
+                    <dl>
+                        <dt>Poll title winner is XY 70%</dt>
+                        <dt>Poll title winner is XY 70%</dt>
+                        <dt>Poll title winner is XY 70%</dt>
+                    </dl>
+                </div>
             </div>
         </div>
-        <hr />
-        <div class="row main-low-margin ">
+        -->
+    <!--
+        <div class="space-bottom"></div>
 
-            <div class="col-md-12 col-sm-12">
-                <h3>News 2 title</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                </p>
+        <div id="footer">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h4>Need Help?</h4>
+                    <h4>Use the menu bar</h4>
+                    <h4>...</h4>
+                    <h4>and the Force!</h4>
+                </div>
+                <div class="col-md-4">
+                </div>
             </div>
         </div>
+        -->
 
-        <hr />
-
-        <div class="col-md-7 col-sm-7">
-            <h3>Contact us </h3>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-            </p>
-        </div>
-        <div class="col-md-5 col-sm-5 text-center">
-            <div class="circle-body"><i class="fa fa-tint fa-5x  icon-set"></i></div>
-            <h3>OUR LOCATION </h3>
-            <p>
-            <p>
-                103, New Street,<br>
-                New York, USA.<br>
-                Call: +23-00-89-009<br>
-                Email: demo@yourdomain.com<br>
-            </p>
-            </p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row main-low-margin ">
-            <div class="col-md-8 col-sm-8">
-                <h3>Closed polls</h3>
-                <dl>
-                    <dt>Poll title winner is XY 70%</dt>
-                    <dt>Poll title winner is XY 70%</dt>
-                    <dt>Poll title winner is XY 70%</dt>
-                </dl>
-            </div>
-        </div>
-    </div>
-
-    <div class="space-bottom"></div>
-    <!--END HOME SECTION -->
-    <!--FOOTER SECTION -->
-
-    <div id="footer">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Quick Information :</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                </p>
-                <button type="submit" class="btn btn-primary">Get Quote</button>
-            </div>
-            <div class="col-md-4">
-                <h4>Need Help ? Write Us. </h4>
-                <hr>
-                <form>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" required="required" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" required="required" placeholder="Email address">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <textarea name="message" id="message" required="required" class="form-control" rows="3" placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit Request</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-4">
-                <a href="#"><i class="fa fa-facebook-square fa-3x color-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter-square fa-3x color-twitter"></i></a>
-                <a href="#"><i class="fa fa-google-plus-square fa-3x color-google-plus"></i></a>
-                <a href="#"><i class="fa fa-linkedin-square fa-3x color-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-square fa-3x color-pinterest"></i></a>
-                <hr>
-                <p>
-                    103, New Street,<br>
-                    New York, USA.<br>
-                    Call: +23-00-89-009<br>
-                    Email: demo@yourdomain.com<br>
-                </p>
-
-                2014 www.yourdomain.com | All Right Reserved
-            </div>
-        </div>
-    </div>
-
-    <!--END FOOTER SECTION -->
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY LIBRARY -->
     <script src="assets/js/jquery.js"></script>
-    <!-- CORE BOOTSTRAP LIBRARY -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- SLIDER SCRIPTS LIBRARY -->
-    <script src="assets/Slides-SlidesJS-3/examples/playing/js/jquery.slides.min.js"></script>
-    <!-- CUSTOM SCRIPT-->
-    <script>
-        $(document).ready(function () {
-            $('#slides').slidesjs({
-                width: 940,
-                height: 528,
-                play: {
-                    active: true,
-                    auto: true,
-                    interval: 4000,
-                    swap: true
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="assets/js/angular/angular-route.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>

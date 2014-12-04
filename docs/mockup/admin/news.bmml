@@ -19,9 +19,9 @@
       </controlProperties>
     </control>
     <control controlID="9" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="952" y="91" w="-1" h="645" measuredW="16" measuredH="100" zOrder="3" locked="false" isInGroup="-1"/>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="797" y="159" w="134" h="27" measuredW="88" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="797" y="159" w="134" h="27" measuredW="99" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Send%20news</text>
+        <text>Create%20News</text>
       </controlProperties>
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::DataGrid" x="63" y="209" w="856" h="141" measuredW="219" measuredH="141" zOrder="5" locked="false" isInGroup="-1">

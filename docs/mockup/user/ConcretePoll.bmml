@@ -5,12 +5,13 @@
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextArea" x="32" y="180" w="873" h="154" measuredW="200" measuredH="140" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextArea" x="70" y="180" w="873" h="154" measuredW="200" measuredH="140" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
+        <borderColor>16777215</borderColor>
         <text>%20%0A%20%0APoll%20description</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="39" y="191" w="-1" h="-1" measuredW="105" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="77" y="191" w="-1" h="-1" measuredW="105" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Poll%20name</text>
       </controlProperties>
@@ -23,7 +24,7 @@
         <text>News%2C%20Polls%2C%20FAQ%2C%20Contact%20us%2C%20Log%20in%20with%20Facebook</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::List" x="51" y="239" w="172" h="72" measuredW="100" measuredH="126" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::List" x="89" y="239" w="172" h="72" measuredW="100" measuredH="126" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Item%20One%2010%25%0AItem%20Two%2020%25%0AItem%20Three%2070%25</text>
       </controlProperties>

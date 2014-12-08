@@ -5,23 +5,12 @@
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="38" y="164" w="-1" h="-1" measuredW="121" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="436" y="184" w="-1" h="-1" measuredW="121" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Contact%20us</text>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::Paragraph" x="38" y="223" w="529" h="117" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Lorem%20Ipsum%20is%20simply%20dummy%20text%20of%20the%20printing%20and%20typesetting%20industry.%20Lorem%20Ipsum%20has%20been%20the%20industry%27s%20standard%20dummy%20text%20ever%20since%20the%201500s%2C%20when%20an%20unknown%20printer%20took%20a%20galley%20of%20type%20and%20scrambled%20it%20to%20make%20a%20type%20specimen%20book.%20It%20has%20survived%20not%20only%20five%20centuries%2C%20but%20also%20the%20leap%20into%20electronic%20typesetting%2C%20remaining%20essentially%20unchanged.%20It%20was%20popularised%20in%20the%201960s%20with%20the%20release%20of%20Letraset%20sheets%20containing%20Lorem%20Ipsum%20passages%2C%20and%20more%20recently%20with%20desktop%20publishing%20software%20like%20Aldus%20PageMaker%20including%20versions%20of%20Lorem%20Ipsum.</text>
-      </controlProperties>
-    </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Paragraph" x="676" y="309" w="121" h="80" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Our%20location%0AA%20%5Bparagraph%5D%20of%20*text*.%0AA%20_second_%20%26row%26%20of%20%7Etext%7E.</text>
-      </controlProperties>
-    </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::Icon" x="704" y="223" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="4" locked="false" isInGroup="-1"/>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="396" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ButtonBar" x="244" y="117" w="687" h="27" measuredW="396" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>news%26bm%3Bnews.bmml%26bm%3Bnews.bmml%26bm%3Bnews.bmml%2CPolls%26bm%3BPolls.bmml%26bm%3BPolls.bmml%26bm%3BPolls.bmml%2CFAQ%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%26bm%3BFAQ.bmml%2CcontactUs%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%26bm%3BcontactUs.bmml%2C</hrefs>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22228%2C101%2C326%2C128%22%20href%3D%22news.bmml%22%20alt%3D%22news%22%20id%3D%229%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22326%2C101%2C414%2C128%22%20href%3D%22Polls.bmml%22%20alt%3D%22Polls%22%20id%3D%229%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22414%2C101%2C499%2C128%22%20href%3D%22FAQ.bmml%22%20alt%3D%22FAQ%22%20id%3D%229%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22499%2C101%2C655%2C128%22%20href%3D%22contactUs.bmml%22%20alt%3D%22contactUs%22%20id%3D%229%22/%3E%0A</map>
@@ -29,11 +18,18 @@
         <text>News%2C%20Polls%2C%20FAQ%2C%20Contact%20us%2C%20Log%20in%20with%20Facebook</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::SubTitle" x="44" y="117" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Logo/%20Title</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="952" y="91" w="-1" h="645" measuredW="16" measuredH="100" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="952" y="91" w="-1" h="645" measuredW="16" measuredH="100" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::TextArea" x="264" y="226" w="465" h="156" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <borderColor>16777215</borderColor>
+        <text>Curabitur%20ultricies%20fringilla%20commodo.%20Sed%20eu%20lorem%20id%20odio%20tristique%20suscipit.%20Aenean%20dapibus%20in%20enim%20vitae%20iaculis.%20Etiam%20ullamcorper%20enim%20nisl%2C%20ut%20gravida%20lectus%20sollicitudin%20eu.%20Curabitur%20luctus%20blandit%20eros%2C%20id%20malesuada%20sapien.%20Suspendisse%20ac%20suscipit%20lectus.%20Maecenas%20interdum%20quam%20vitae%20nibh%20malesuada%20euismod.%20Quisque%20at%20porta%20sem%2C%20non%20luctus%20nisl.%20Maecenas%20malesuada%20libero%20vitae%20mi%20venenatis%20euismod%20ut%20et%20nunc.%20Vivamus%20lacinia%20augue%20a%20metus%20feugiat%2C%20vitae%20dictum%20velit%20dapibus.%20Donec%20porttitor%20tellus%20lorem%2C%20at%20maximus%20purus%20maximus%20ac.%20Nunc%20sed%20risus%20efficitur%2C%20accumsan%20orci%20eu%2C%20volutpat%20erat.</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
